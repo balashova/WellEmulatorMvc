@@ -1,0 +1,115 @@
+﻿@model WellEmulator.Models.Tag
+@{
+    ViewBag.Title = "Управление";
+    ViewBag.SubTitle = "процессом эмуляции";
+}
+
+@section Styles {
+    <style>
+        .form-control {
+            display: inline-block;
+            width: auto;
+        }
+
+        label:first-child {
+            width: 26%;
+            margin-right: 5px;
+        }
+
+        input[type=number] {
+            padding: 0 10px;
+            width: 17%;
+        }
+
+        label {
+            width: 4.5%;
+            text-align: right;
+        }
+
+        input[type=range] {
+            width: 40%;
+            margin-left: 20px;
+        }
+
+        div.control {
+            margin: 30px 0;
+        }
+
+        button#start, button#stop {
+            padding: 15px;
+            width: 300px;
+            margin: 25px;
+            font-size: 1.2em;
+            display: inline-block;
+        }
+
+        div#button-container {
+            text-align: center;
+            border-top: 1px solid #eeeeee;
+            border-bottom: 1px solid #eeeeee;
+        }
+    </style>
+}
+
+<div id="sampling-rate-block" class="control">
+    <label for="sampling-rate">Частота опроса датчиков:</label>
+    <input id="sampling-rate" type="number" min="1" class="form-control" max="100" value="1" />
+    <label for="sampling-rate-units">раз в</label>
+    <select id="sampling-rate-units" class="form-control">
+        <option>Сек</option>
+        <option selected="selected">Мин</option>
+        <option>Час</option>
+        <option>Сутки</option>
+    </select>
+    <input type="range" min="1" max="100" value="1" />
+</div>
+
+<div id="report-save-block" class="control">
+    <label for="report-save">Сохранять отчет через каждые:</label>
+    <input id="report-save" type="number" min="1" max="100" class="form-control" value="1" />
+    <label></label>
+    <select id="report-save-units" class="form-control">
+        <option>Сек</option>
+        <option selected="selected">Мин</option>
+        <option>Час</option>
+        <option>Сутки</option>
+    </select>
+    <input type="range" min="1" max="100" value="1" />
+</div>
+
+<div id="delay-block" class="control">
+    <label for="delay">Отставание значений:</label>
+    <input id="delay" type="number" class="form-control" min="1" max="100" value="30" />
+    <label></label>
+    <select id="delay-units" class="form-control">
+        <option selected="selected">Сек</option>
+        <option>Мин</option>
+        <option>Час</option>
+        <option>Сутки</option>
+    </select>
+    <input type="range" min="1" max="100" value="30" />
+</div>
+
+<div id="button-container">
+    <button type="button" class="btn btn-success" id="start">
+        <span class="glyphicon glyphicon-play"></span>
+        Запустить
+    </button>
+    <button type="button" class="btn btn-danger" id="stop">
+        <span class="glyphicon glyphicon-stop"></span>
+        Остановить
+    </button>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            $("input[type=range]").change(function () {
+                $(this).parent().children().filter("input[type=number]").val($(this).val());
+            });
+            $("input[type=number]").change(function () {
+                $(this).parent().children().filter("input[type=range]").val($(this).val());
+            });
+        });
+    </script>
+}

@@ -1,0 +1,98 @@
+﻿@{
+    ViewBag.Title = "Новый тег";
+    ViewBag.SubTitle = "определение нового эмулируемого параметра";
+}
+
+@section Styles {
+    <style>
+        .form-control {
+            display: inline-block;
+            width: auto;
+        }
+
+        div#new-tag > div {
+            margin: 30px 0;
+        }
+
+        div#new-tag div label:first-child {
+            text-align: right;
+            width: 35%;
+        }
+
+        div#new-tag div select, div#new-tag div input {
+            width: 40%;
+        }
+
+        div#new-tag div:last-child input[type=checkbox] {
+            width: 34px;
+            margin: 0;
+        }
+
+        div#add-new-tag-button-container {
+            text-align: center;
+            border-top: 1px solid #eeeeee;
+            padding-top: 20px;
+        }
+
+        button#add-new-tag {
+            padding: 10px 200px;
+            font-size: 1.2em;
+        }
+    </style>
+}
+
+<div id="new-tag">
+    <div>
+        <label>Стандарт:</label>
+        <select class="form-control">
+            <option>WITSML</option>
+            <option>PRODML</option>
+            <option>RESQML</option>
+        </select>
+    </div>
+    <div>
+        <label>Объект:</label>
+        <select class="form-control">
+            
+        </select>
+    </div>
+    <div>
+        <label>Параметр:</label>
+        <select class="form-control">
+            
+        </select>
+    </div>
+    <div>
+        <label>Скважина:</label>
+        <select class="form-control">
+        </select>
+    </div>
+    <div>
+        <label>Начальное значение:</label>
+        <input class="form-control" type="text" />
+    </div>
+    <div>
+        <label>Максимальное значение:</label>
+        <input class="form-control" type="text" />
+    </div>
+    <div>
+        <label>Минимальное значение:</label>
+        <input class="form-control" type="text" />
+    </div>
+    <div>
+        <label>Величина изменения на каждом шаге:</label>
+        <input class="form-control" type="text" />
+        <input class="form-control" type="checkbox" />
+        <label>Авто</label>
+    </div>
+</div>
+
+<div id="add-new-tag-button-container">
+    <button id="add-new-tag" type="button" class="btn btn-lg btn-info">Добавить</button>
+</div>
+
+@section Scripts {
+    <script>
+        
+    </script>
+}
