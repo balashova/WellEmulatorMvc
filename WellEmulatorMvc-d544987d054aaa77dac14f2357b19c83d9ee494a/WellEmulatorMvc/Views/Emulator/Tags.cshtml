@@ -1,0 +1,95 @@
+﻿@{
+    ViewBag.Title = "Теги";
+    ViewBag.SubTitle = "список тегов определенных в системе";
+}
+
+@section Styles {
+    <style>
+        select.form-control {
+            font-size: 1.0em;
+        }
+
+        .column-header {
+            text-align: center;
+            padding: 10px;
+            margin: 0px 50px 30px;
+            font-weight: bold;
+            color: #999999;
+            border-bottom: 1px solid #eeeeee;
+        }
+        
+        input.form-control[type=text] {
+            padding: 0 10px;
+            width: 60%;
+            display: inline-block;
+            cursor: default;
+        }
+
+        .properties {
+            margin: 30px 0;
+            display: block;
+            text-align: right;
+        }
+
+        .properties label {
+            width: 35%;
+        }
+    </style>
+}
+
+<div class="col-lg-4">
+    <div class="column-header">
+        <span>Теги</span>
+    </div>
+
+    <select size="23" class="form-control">
+        <option>Тег 1</option>
+        <option>Тег 2</option>
+        <option>Тег 3</option>
+    </select>
+</div>
+
+<div class="col-lg-8">
+    <div class="column-header">
+        <span>Информация о теге</span>
+    </div>
+
+    <div class="properties">
+        <label>Стандарт:</label>
+        <input class="form-control" type="text" readonly="readonly" />
+    </div>
+    <div class="properties">
+        <label>Объект:</label>
+        <input class="form-control" type="text" readonly="readonly" />
+    </div>
+    <div class="properties">
+        <label>Параметр:</label>
+        <input class="form-control" type="text" readonly="readonly" />
+    </div>
+    <div class="properties">
+        <label>Скважина:</label>
+        <input class="form-control" type="text" readonly="readonly" />
+    </div>
+    <div class="properties">
+        <label>Начальное значение:</label>
+        <input class="form-control" type="text" readonly="readonly" />
+    </div>
+    <div class="properties">
+        <label>Максимальное значение:</label>
+        <input class="form-control" type="text" readonly="readonly" />
+    </div>
+    <div class="properties">
+        <label>Минимальное значение:</label>
+        <input class="form-control" type="text" readonly="readonly" />
+    </div>
+    <div class="properties">
+        <label>Величина изменения на каждом шаге:</label>
+        <input class="form-control" type="text" readonly="readonly" />
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        
+    </script>
+}

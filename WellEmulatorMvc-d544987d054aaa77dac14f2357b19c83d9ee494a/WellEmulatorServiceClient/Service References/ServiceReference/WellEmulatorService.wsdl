@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://WellEmulator.com" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://WellEmulator.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://WellEmulator.com/Imports">
+      <xsd:import schemaLocation="http://localhost:9439/WellEmulatorService?xsd=xsd0" namespace="http://WellEmulator.com" />
+      <xsd:import schemaLocation="http://localhost:9439/WellEmulatorService?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:9439/WellEmulatorService?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WellEmulator.Models" />
+      <xsd:import schemaLocation="http://localhost:9439/WellEmulatorService?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IWellEmulator_IsRunning_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsRunning" />
+  </wsdl:message>
+  <wsdl:message name="IWellEmulator_IsRunning_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsRunningResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWellEmulator_Start_InputMessage">
+    <wsdl:part name="parameters" element="tns:Start" />
+  </wsdl:message>
+  <wsdl:message name="IWellEmulator_Start_OutputMessage">
+    <wsdl:part name="parameters" element="tns:StartResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWellEmulator_Stop_InputMessage">
+    <wsdl:part name="parameters" element="tns:Stop" />
+  </wsdl:message>
+  <wsdl:message name="IWellEmulator_Stop_OutputMessage">
+    <wsdl:part name="parameters" element="tns:StopResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWellEmulator_SetSettings_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetSettings" />
+  </wsdl:message>
+  <wsdl:message name="IWellEmulator_SetSettings_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetSettingsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWellEmulator_GetSettings_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSettings" />
+  </wsdl:message>
+  <wsdl:message name="IWellEmulator_GetSettings_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSettingsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWellEmulator_AddTag_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddTag" />
+  </wsdl:message>
+  <wsdl:message name="IWellEmulator_AddTag_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddTagResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWellEmulator_RemoveTag_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveTag" />
+  </wsdl:message>
+  <wsdl:message name="IWellEmulator_RemoveTag_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveTagResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWellEmulator_GetTag_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTag" />
+  </wsdl:message>
+  <wsdl:message name="IWellEmulator_GetTag_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTagResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWellEmulator_GetTagList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTagList" />
+  </wsdl:message>
+  <wsdl:message name="IWellEmulator_GetTagList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTagListResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IWellEmulator">
+    <wsdl:operation name="IsRunning">
+      <wsdl:input wsaw:Action="http://WellEmulator.com/IWellEmulator/IsRunning" message="tns:IWellEmulator_IsRunning_InputMessage" />
+      <wsdl:output wsaw:Action="http://WellEmulator.com/IWellEmulator/IsRunningResponse" message="tns:IWellEmulator_IsRunning_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Start">
+      <wsdl:input wsaw:Action="http://WellEmulator.com/IWellEmulator/Start" message="tns:IWellEmulator_Start_InputMessage" />
+      <wsdl:output wsaw:Action="http://WellEmulator.com/IWellEmulator/StartResponse" message="tns:IWellEmulator_Start_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Stop">
+      <wsdl:input wsaw:Action="http://WellEmulator.com/IWellEmulator/Stop" message="tns:IWellEmulator_Stop_InputMessage" />
+      <wsdl:output wsaw:Action="http://WellEmulator.com/IWellEmulator/StopResponse" message="tns:IWellEmulator_Stop_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetSettings">
+      <wsdl:input wsaw:Action="http://WellEmulator.com/IWellEmulator/SetSettings" message="tns:IWellEmulator_SetSettings_InputMessage" />
+      <wsdl:output wsaw:Action="http://WellEmulator.com/IWellEmulator/SetSettingsResponse" message="tns:IWellEmulator_SetSettings_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSettings">
+      <wsdl:input wsaw:Action="http://WellEmulator.com/IWellEmulator/GetSettings" message="tns:IWellEmulator_GetSettings_InputMessage" />
+      <wsdl:output wsaw:Action="http://WellEmulator.com/IWellEmulator/GetSettingsResponse" message="tns:IWellEmulator_GetSettings_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddTag">
+      <wsdl:input wsaw:Action="http://WellEmulator.com/IWellEmulator/AddTag" message="tns:IWellEmulator_AddTag_InputMessage" />
+      <wsdl:output wsaw:Action="http://WellEmulator.com/IWellEmulator/AddTagResponse" message="tns:IWellEmulator_AddTag_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveTag">
+      <wsdl:input wsaw:Action="http://WellEmulator.com/IWellEmulator/RemoveTag" message="tns:IWellEmulator_RemoveTag_InputMessage" />
+      <wsdl:output wsaw:Action="http://WellEmulator.com/IWellEmulator/RemoveTagResponse" message="tns:IWellEmulator_RemoveTag_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTag">
+      <wsdl:input wsaw:Action="http://WellEmulator.com/IWellEmulator/GetTag" message="tns:IWellEmulator_GetTag_InputMessage" />
+      <wsdl:output wsaw:Action="http://WellEmulator.com/IWellEmulator/GetTagResponse" message="tns:IWellEmulator_GetTag_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTagList">
+      <wsdl:input wsaw:Action="http://WellEmulator.com/IWellEmulator/GetTagList" message="tns:IWellEmulator_GetTagList_InputMessage" />
+      <wsdl:output wsaw:Action="http://WellEmulator.com/IWellEmulator/GetTagListResponse" message="tns:IWellEmulator_GetTagList_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

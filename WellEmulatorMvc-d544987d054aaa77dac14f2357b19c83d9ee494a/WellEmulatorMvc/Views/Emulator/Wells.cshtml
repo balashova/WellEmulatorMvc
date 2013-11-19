@@ -1,0 +1,107 @@
+﻿@{
+    ViewBag.Title = "Скважины";
+    ViewBag.SubTitle = "управление скважинами";
+}
+
+@section Styles {
+    <style>
+        select.form-control {
+            font-size: 1.0em;
+        }
+
+        .column-header {
+            text-align: center;
+            padding: 10px;
+            margin: 0px 50px 30px;
+            font-weight: bold;
+            color: #999999;
+            border-bottom: 1px solid #eeeeee;
+        }
+        
+        input.form-control[type=text] {
+            padding: 0 10px;
+            width: 60%;
+            display: inline-block;
+            cursor: default;
+        }
+
+        .properties {
+            margin: 30px 0;
+            display: block;
+            text-align: right;
+        }
+
+        .properties label {
+            width: 35%;
+        }
+
+        div#add-remove-button-container {
+            padding: 10px;
+            text-align: center;
+        }
+
+        div#add-remove-button-container button {
+            padding-right: 50px;
+            padding-left: 50px;
+        }
+
+        div#add-well-button-container {
+            text-align: right;
+        }
+
+        div#add-well-button-container button {
+            padding: 10px;
+            width: 60%;
+        }
+
+        button#add-well {
+            font-size: 1.2em;
+        }
+    </style>
+}
+
+<div class="col-lg-4">
+    <div class="column-header">
+        <span>Скважины</span>
+    </div>
+    
+    <select size="20" class="form-control">
+        <option>Скважина 1</option>
+        <option>Скважина 2</option>
+        <option>Скважина 3</option>
+    </select>
+
+    <div id="add-remove-button-container">
+        <button id="new-well" type="button" class="btn btn-default">Новая</button>
+        <button id="remove-well" type="button" class="btn btn-default">Удалить</button>
+    </div>
+</div>
+
+<div class="col-lg-8">
+    <div class="column-header">
+        <span>Свойтсва скважины</span>
+    </div>
+    
+    <div class="properties">
+        <label>Название:</label>
+        <input type="text" class="form-control" readonly="readonly"/>
+    </div>
+    <div class="properties">
+        <label>Количество параметров:</label>
+        <input type="text" class="form-control" readonly="readonly" />
+    </div>
+    <div class="properties">
+        <label>Дата создания:</label>
+        <input type="text" class="form-control" readonly="readonly" />
+    </div>
+    <div id="add-well-button-container">
+        <div class="column-header"></div>
+        <button id="add-well" type="button" class="btn btn-lg btn-info">Добавить</button>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        
+    </script>
+}
