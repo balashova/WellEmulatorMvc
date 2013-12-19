@@ -6,14 +6,19 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.WebPages;
 using WellEmulatorMvc.Parsers;
+using WellEmulatorServiceClient.ServiceReference;
 
 namespace WellEmulatorMvc.Controllers
 {
     public class EmulatorController : Controller
     {
+        private readonly WellEmulatorClient _client = new WellEmulatorClient();
+
         public ActionResult Control()
         {
-            return View();
+            string outMessage = null;
+            var settings = _client.GetSettings(ref outMessage);
+            return View(settings);
         }
 
         public ActionResult NewTag()

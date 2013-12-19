@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using WellEmulator.Core.Annotations;
 using WellEmulator.Models;
 
 namespace WellEmulator.Core
@@ -45,9 +46,9 @@ namespace WellEmulator.Core
             set { _valuesDelay = value; }
         }
 
-        public List<Tag> Tags
+        public IEnumerable<string> Tags
         {
-            get { return _tags; }
+            get { return _tags.Select(t => t.Name).ToList(); }
         }
 
         private readonly Random _random = new Random(DateTime.Now.Second);
@@ -58,6 +59,7 @@ namespace WellEmulator.Core
         private TimeSpan _valuesDelay = new TimeSpan(0, 0, 3, 0);
         private StopableThread _emulationThread;
         private StopableThread _autoSaveThread;
+        private readonly HistorianAdapter _historian = new HistorianAdapter();
 
         private readonly CsvReporter _reporter;
 
@@ -67,14 +69,8 @@ namespace WellEmulator.Core
             var directory = new DirectoryInfo(path ?? @"C:\Historian\Data\DataImport\FastLoad");
             if (!directory.Exists) directory.Create();
             _reporter = new CsvReporter(directory);
-        }
 
-        public void AddTags(List<Tag> tags)
-        {
-            lock (_tags)
-            {
-                tags.ForEach(t => _tags.Add(t));
-            }
+            //TODO Load from Historian
         }
 
         public void AddTag(Tag tag)
@@ -83,14 +79,12 @@ namespace WellEmulator.Core
             {
                 _tags.Add(tag);
             }
+            _historian.AddTag(tag);
         }
 
-        public void RemoveTags(List<Tag> tags)
+        public Tag GetTag(string name)
         {
-            lock (_tags)
-            {
-                _tags.RemoveAll(tags.Contains);
-            }
+            return _tags.Single(t => t.Name.Equals(name));
         }
 
         public void RemoveTag(Tag tag)
@@ -99,22 +93,7 @@ namespace WellEmulator.Core
             {
                 _tags.Remove(tag);
             }
-        }
-
-        public void RemoveTag(String tagName)
-        {
-            lock (_tags)
-            {
-                _tags.RemoveAll(t => t.Name == tagName);
-            }
-        }
-
-        public void RemoveTags(List<string> tagsName)
-        {
-            lock (_tags)
-            {
-                _tags.RemoveAll(t => tagsName.Contains(t.Name));
-            }
+            _historian.RemoveTag(tag);
         }
 
         public void Start()
@@ -156,7 +135,7 @@ namespace WellEmulator.Core
                 foreach (var tag in _tags)
                 {
                     tag.NextValue(_random);
-                    _reporter[tag.Name] = tag.Value;
+                    _reporter[string.Format("{0}.{1}", tag.WellName, tag.Name)] = tag.Value;
                 }
             }
         }

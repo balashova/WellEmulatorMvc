@@ -12,20 +12,24 @@ namespace TestApplication
     {
         static void Main(string[] args)
         {
-            var emulator = new Emulator();
-            emulator.AddTag(new Tag
-            {
-                Delta = 10,
-                Group = "Witsml",
-                MaxValue = 100,
-                MinValue = 0,
-                Name = "tp3",
-                Object = "Log",
-                Value = 50
-            });
-            emulator.Start();
+            var historianProvider = new HistorianAdapter();
+            var a = historianProvider.GetTagList();
 
-            Console.ReadLine();
+            historianProvider.AddTag(new Tag()
+            {
+                Name = "tp4",
+                WellName = "well_1"
+            });
+
+            historianProvider.RemoveTag(new Tag()
+            {
+                Name = "tp4",
+                WellName = "well_1"
+            });
+
+            //var b = historianProvider.GetTag("tp3");
+
+            Console.WriteLine();
         }
     }
 }

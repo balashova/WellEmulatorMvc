@@ -9,8 +9,6 @@ using System.Text;
 using System.Threading.Tasks;
 
 using System.ServiceModel;
-using WellEmulator.Core;
-using WellEmulator.Models;
 
 namespace WellEmulatorService
 {
@@ -31,11 +29,13 @@ namespace WellEmulatorService
                 _serviceHost = null;
             }
 
-            _serviceHost = new ServiceHost(typeof(Emulator));
+            _serviceHost = new ServiceHost(typeof(WellEmulator));
+            _serviceHost.Open();
         }
 
         protected override void OnStop()
         {
+            if (_serviceHost != null) _serviceHost.Close();
         }
     }
 }

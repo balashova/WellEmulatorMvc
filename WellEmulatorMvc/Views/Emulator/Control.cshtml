@@ -1,7 +1,9 @@
-﻿@model WellEmulator.Models.Tag
+﻿@using WellEmulatorMvc.Extensions
+@model WellEmulatorServiceClient.ServiceReference.Settings
 @{
     ViewBag.Title = "Управление";
     ViewBag.SubTitle = "процессом эмуляции";
+    string units = null;
 }
 
 @section Styles {
@@ -35,7 +37,7 @@
             margin: 30px 0;
         }
 
-        button#start, button#stop {
+        div#button-container button {
             padding: 15px;
             width: 300px;
             margin: 25px;
@@ -53,47 +55,64 @@
 
 <div id="sampling-rate-block" class="control">
     <label for="sampling-rate">Частота опроса датчиков:</label>
-    <input id="sampling-rate" type="number" min="1" class="form-control" max="100" value="1" />
+    <input id="sampling-rate" type="number" min="1" class="form-control" max="100" value="@Model.SamplingRate.ToPerTime(ref units)" />
     <label for="sampling-rate-units">раз в</label>
     <select id="sampling-rate-units" class="form-control">
-        <option>Сек</option>
-        <option selected="selected">Мин</option>
-        <option>Час</option>
-        <option>Сутки</option>
+        <option @(units.Equals("Сек") ? "selected=\"selected\"" : "")>Сек</option>
+        <option @(units.Equals("Мин") ? "selected=\"selected\"" : "")>Мин</option>
+        <option @(units.Equals("Час") ? "selected=\"selected\"" : "")>Час</option>
+        <option @(units.Equals("Сут") ? "selected=\"selected\"" : "")>Сут</option>
     </select>
-    <input type="range" min="1" max="100" value="1" />
+    <input type="range" min="1" max="100" value="@Model.SamplingRate.ToPerTime(ref units)" />
 </div>
 
 <div id="report-save-block" class="control">
     <label for="report-save">Сохранять отчет через каждые:</label>
-    <input id="report-save" type="number" min="1" max="100" class="form-control" value="1" />
+    <input id="report-save" type="number" min="1" max="100" class="form-control" value="@Model.ReportSave.ToPeriod(ref units)" />
     <label></label>
     <select id="report-save-units" class="form-control">
-        <option>Сек</option>
-        <option selected="selected">Мин</option>
-        <option>Час</option>
-        <option>Сутки</option>
+        <option @(units.Equals("Сек") ? "selected=\"selected\"" : "")>Сек</option>
+        <option @(units.Equals("Мин") ? "selected=\"selected\"" : "")>Мин</option>
+        <option @(units.Equals("Час") ? "selected=\"selected\"" : "")>Час</option>
+        <option @(units.Equals("Сут") ? "selected=\"selected\"" : "")>Сут</option>
     </select>
-    <input type="range" min="1" max="100" value="1" />
+    <input type="range" min="1" max="100" value="@Model.ReportSave.ToPeriod(ref units)" />
 </div>
 
 <div id="delay-block" class="control">
     <label for="delay">Отставание значений:</label>
-    <input id="delay" type="number" class="form-control" min="1" max="100" value="30" />
+    <input id="delay" type="number" class="form-control" min="1" max="100" value="@Model.Delay.ToPeriod(ref units)" />
     <label></label>
     <select id="delay-units" class="form-control">
-        <option selected="selected">Сек</option>
-        <option>Мин</option>
-        <option>Час</option>
-        <option>Сутки</option>
+        <option @(units.Equals("Сек") ? "selected=\"selected\"" : "")>Сек</option>
+        <option @(units.Equals("Мин") ? "selected=\"selected\"" : "")>Мин</option>
+        <option @(units.Equals("Час") ? "selected=\"selected\"" : "")>Час</option>
+        <option @(units.Equals("Сут") ? "selected=\"selected\"" : "")>Сут</option>
     </select>
-    <input type="range" min="1" max="100" value="30" />
+    <input type="range" min="1" max="100" value="@Model.Delay.ToPeriod(ref units)" />
+</div>
+
+<div id="replication-block" class="control">
+    <label for="delay">Период репликаии:</label>
+    <input id="replication" type="number" class="form-control" min="1" max="100" value="@Model.ReplicationPeriod.ToPeriod(ref units)" />
+    <label></label>
+    <select id="replication-units" class="form-control">
+        <option @(units.Equals("Сек") ? "selected=\"selected\"" : "")>Сек</option>
+        <option @(units.Equals("Мин") ? "selected=\"selected\"" : "")>Мин</option>
+        <option @(units.Equals("Час") ? "selected=\"selected\"" : "")>Час</option>
+        <option @(units.Equals("Сут") ? "selected=\"selected\"" : "")>Сут</option>
+    </select>
+    <input type="range" min="1" max="100" value="@Model.Delay.ToPeriod(ref units)" />
 </div>
 
 <div id="button-container">
     <button type="button" class="btn btn-success" id="start">
         <span class="glyphicon glyphicon-play"></span>
         Запустить
+    </button>
+    <button type="button" class="btn btn-primary" id="apply">
+        <span class="glyphicon glyphicon-ok"></span>
+        Применить
     </button>
     <button type="button" class="btn btn-danger" id="stop">
         <span class="glyphicon glyphicon-stop"></span>

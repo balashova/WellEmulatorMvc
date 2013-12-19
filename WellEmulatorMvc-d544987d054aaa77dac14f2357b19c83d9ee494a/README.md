@@ -1,4 +1,0 @@
-WellEmulatorMvc
-===============
-
-WellEmulatorMvc
