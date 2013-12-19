@@ -25,7 +25,7 @@
                                         <a href="@Url.Action("Control", "Emulator")">Управление</a>
                                     </li>
                                     <li class="@("Скважины".Equals(ViewBag.Title) ? "active": "")">
-                                        <a href="@Url.Action("Wells", "Emulator")">Управление скважинами</a>
+                                        <a href="@Url.Action("Wells", "Emulator")">Скважины</a>
                                     </li>
                                     <li class="@("Новый тег".Equals(ViewBag.Title) ? "active": "")">
                                         <a href="@Url.Action("NewTag", "Emulator")">Добавление тега</a>
@@ -33,9 +33,6 @@
                                     <li class="@("Теги".Equals(ViewBag.Title) ? "active": "")">
                                         <a href="@Url.Action("Tags", "Emulator")">Список тегов</a>
                                     </li>
-                                    @*                            <li class="@("Тренды".Equals(ViewBag.Title) ? "active": "")">
-                                <a href="@Url.Action("NewTag", "Emulator")">Данные со SCADA</a>
-                            </li>*@
                                 </ul>
                                 <ul class="nav navbar-nav navbar-right">
                                     <li>

@@ -37,6 +37,12 @@
             margin: 30px 0;
         }
 
+        div#replication-button-container {
+            padding: 10px 0;
+            text-align: center;
+            border-top: 1px solid #eeeeee;
+        }
+
         div#button-container button {
             padding: 15px;
             width: 300px;
@@ -50,6 +56,11 @@
             border-top: 1px solid #eeeeee;
             border-bottom: 1px solid #eeeeee;
         }
+
+        button.btn:disabled {
+            background-color: #CCCCCC;
+            border-color: #CCCCCC;
+        }
     </style>
 }
 
@@ -58,63 +69,74 @@
     <input id="sampling-rate" type="number" min="1" class="form-control" max="100" value="@Model.SamplingRate.ToPerTime(ref units)" />
     <label for="sampling-rate-units">раз в</label>
     <select id="sampling-rate-units" class="form-control">
-        <option @(units.Equals("Сек") ? "selected=\"selected\"" : "")>Сек</option>
-        <option @(units.Equals("Мин") ? "selected=\"selected\"" : "")>Мин</option>
-        <option @(units.Equals("Час") ? "selected=\"selected\"" : "")>Час</option>
-        <option @(units.Equals("Сут") ? "selected=\"selected\"" : "")>Сут</option>
+        <option @(units.Equals("Сек") ? "selected='selected'" : "")>Сек</option>
+        <option @(units.Equals("Мин") ? "selected='selected'" : "")>Мин</option>
+        <option @(units.Equals("Час") ? "selected='selected'" : "")>Час</option>
+        <option @(units.Equals("Сут") ? "selected='selected'" : "")>Сут</option>
     </select>
     <input type="range" min="1" max="100" value="@Model.SamplingRate.ToPerTime(ref units)" />
 </div>
 
 <div id="report-save-block" class="control">
     <label for="report-save">Сохранять отчет через каждые:</label>
-    <input id="report-save" type="number" min="1" max="100" class="form-control" value="@Model.ReportAutoSavePeriod.ToPeriod(ref units)" />
+    <input id="report-save" type="number" min="1" max="59" class="form-control" value="@Model.ReportAutoSavePeriod.ToPeriod(ref units)" />
     <label></label>
     <select id="report-save-units" class="form-control">
-        <option @(units.Equals("Сек") ? "selected=\"selected\"" : "")>Сек</option>
-        <option @(units.Equals("Мин") ? "selected=\"selected\"" : "")>Мин</option>
-        <option @(units.Equals("Час") ? "selected=\"selected\"" : "")>Час</option>
-        <option @(units.Equals("Сут") ? "selected=\"selected\"" : "")>Сут</option>
+        <option @(units.Equals("Сек") ? "selected='selected'" : "")>Сек</option>
+        <option @(units.Equals("Мин") ? "selected='selected'" : "")>Мин</option>
+        <option @(units.Equals("Час") ? "selected='selected'" : "")>Час</option>
+        <option @(units.Equals("Сут") ? "selected='selected'" : "")>Сут</option>
     </select>
-    <input type="range" min="1" max="100" value="@Model.ReportAutoSavePeriod.ToPeriod(ref units)" />
+    <input type="range" min="1" max="59" value="@Model.ReportAutoSavePeriod.ToPeriod(ref units)" />
 </div>
 
 <div id="delay-block" class="control">
     <label for="delay">Отставание значений:</label>
-    <input id="delay" type="number" class="form-control" min="1" max="100" value="@Model.ValuesDelay.ToPeriod(ref units)" />
+    <input id="delay" type="number" class="form-control" min="1" max="59" value="@Model.ValuesDelay.ToPeriod(ref units)" />
     <label></label>
     <select id="delay-units" class="form-control">
-        <option @(units.Equals("Сек") ? "selected=\"selected\"" : "")>Сек</option>
-        <option @(units.Equals("Мин") ? "selected=\"selected\"" : "")>Мин</option>
-        <option @(units.Equals("Час") ? "selected=\"selected\"" : "")>Час</option>
-        <option @(units.Equals("Сут") ? "selected=\"selected\"" : "")>Сут</option>
+        <option @(units.Equals("Сек") ? "selected='selected'" : "")>Сек</option>
+        <option @(units.Equals("Мин") ? "selected='selected'" : "")>Мин</option>
+        <option @(units.Equals("Час") ? "selected='selected'" : "")>Час</option>
+        <option @(units.Equals("Сут") ? "selected='selected'" : "")>Сут</option>
     </select>
-    <input type="range" min="1" max="100" value="@Model.ValuesDelay.ToPeriod(ref units)" />
+    <input type="range" min="1" max="59" value="@Model.ValuesDelay.ToPeriod(ref units)" />
 </div>
 
 <div id="replication-block" class="control">
     <label for="delay">Период репликаии:</label>
-    <input id="replication" type="number" class="form-control" min="1" max="100" value="@Model.ReplicationPeriod.ToPeriod(ref units)" />
+    <input id="replication" type="number" class="form-control" min="1" max="59" value="@Model.ReplicationPeriod.ToPeriod(ref units)" />
     <label></label>
     <select id="replication-units" class="form-control">
-        <option @(units.Equals("Сек") ? "selected=\"selected\"" : "")>Сек</option>
-        <option @(units.Equals("Мин") ? "selected=\"selected\"" : "")>Мин</option>
-        <option @(units.Equals("Час") ? "selected=\"selected\"" : "")>Час</option>
-        <option @(units.Equals("Сут") ? "selected=\"selected\"" : "")>Сут</option>
+        <option @(units.Equals("Сек") ? "selected='selected'" : "")>Сек</option>
+        <option @(units.Equals("Мин") ? "selected='selected'" : "")>Мин</option>
+        <option @(units.Equals("Час") ? "selected='selected'" : "")>Час</option>
+        <option @(units.Equals("Сут") ? "selected='selected'" : "")>Сут</option>
     </select>
-    <input type="range" min="1" max="100" value="@Model.ReplicationPeriod.ToPeriod(ref units)" />
+    <input type="range" min="1" max="59" value="@Model.ReplicationPeriod.ToPeriod(ref units)" />
+</div>
+
+<div id="replication-button-container">
+    <button type="button" class="btn btn-success" id="start-replication" @(Model.IsReplicate ? "disabled='disabled'" : "")>
+        <span class="glyphicon glyphicon-play"></span>
+        Запустить репликацию
+    </button>
+    <button type="button" class="btn btn-danger" id="stop-replication" @(Model.IsReplicate ? "" : "disabled='disabled'")>
+        <span class="glyphicon glyphicon-stop"></span>
+        Остановить репликацию
+    </button>
 </div>
 
 <div id="button-container">
-    <button type="button" class="btn btn-success" id="start">
+    <button type="button" class="btn btn-success" id="start-emulator" @(Model.IsRunning ? "disabled='disabled'" : "")>
         <span class="glyphicon glyphicon-play"></span>
         Запустить
     </button>
-    <button type="button" class="btn btn-primary" id="apply">
+    <button type="button" class="btn btn-primary" id="apply-settings" disabled="disabled">
         <span class="glyphicon glyphicon-ok"></span>
         Применить
     </button>
-    <button type="button" class="btn btn-danger" id="stop">
+    <button type="button" class="btn btn-danger" id="stop-emulator" @(Model.IsRunning ? "" : "disabled='disabled'")>
         <span class="glyphicon glyphicon-stop"></span>
         Остановить
     </button>
@@ -122,7 +144,7 @@
 
 @section Scripts {
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             $("input[type=range]").change(function () {
                 $(this).parent().children().filter("input[type=number]").val($(this).val());
             });
@@ -130,5 +152,136 @@
                 $(this).parent().children().filter("input[type=range]").val($(this).val());
             });
         });
+
+        $("input, select").change(function () {
+            $("button#apply-settings").removeAttr("disabled");
+        });
+
+        $("button#start-replication").click(function () {
+            $.ajax({
+                type: "POST",
+                url: "/api/service/repon",
+                success: function (result) {
+                    if (result == "ok") {
+                        $("button#start-replication").attr("disabled", "disabled");
+                        $("button#stop-replication").removeAttr("disabled");
+                    } else {
+                        alert(result);
+                    }
+                },
+                error: function (result) {
+                    alert(result);
+                }
+            });
+        });
+
+        $("button#stop-replication").click(function () {
+            $.ajax({
+                type: "POST",
+                url: "/api/service/repoff",
+                success: function (result) {
+                    if (result == "ok") {
+                        $("button#start-replication").removeAttr("disabled");
+                        $("button#stop-replication").attr("disabled", "disabled");
+                    } else {
+                        alert(result);
+                    }
+                },
+                error: function (result) {
+                    alert(result);
+                }
+            });
+        });
+
+        $("button#start-emulator").click(function () {
+            $.ajax({
+                type: "POST",
+                url: "/api/service/start",
+                success: function (result) {
+                    if (result == "ok") {
+                        $("button#start-emulator").attr("disabled", "disabled");
+                        $("button#stop-emulator").removeAttr("disabled");
+                    } else {
+                        alert(result);
+                    }
+                },
+                error: function (result) {
+                    alert(result);
+                }
+            });
+        });
+
+        $("button#stop-emulator").click(function () {
+            $.ajax({
+                type: "POST",
+                url: "/api/service/stop",
+                success: function (result) {
+                    if (result == "ok") {
+                        $("button#start-emulator").removeAttr("disabled");
+                        $("button#stop-emulator").attr("disabled", "disabled");
+                    } else {
+                        alert(result);
+                    }
+                },
+                error: function (result) {
+                    alert(result);
+                }
+            });
+        });
+
+        $("button#apply-settings").click(function () {
+            var samplingRate = getMilliseconds("div#sampling-rate-block", true);
+            var reportAutoSavePeriod = getMilliseconds("div#report-save-block");
+            var valuesDelay = getMilliseconds("div#delay-block");
+            var replicationPeriod = getMilliseconds("div#replication-block");
+
+            var settings = {
+                SamplingRate: samplingRate,
+                ReportAutoSavePeriod: reportAutoSavePeriod,
+                ValuesDelay: valuesDelay,
+                ReplicationPeriod: replicationPeriod
+            };
+
+            $.ajax({
+                type: "POST",
+                url: "/api/service/apply",
+                data: JSON.stringify(settings),
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                success: function (result) {
+                    if (result == "ok") {
+                        $("button#apply-settings").attr("disabled", "disabled");
+                    } else {
+                        alert(result);
+                    }
+                },
+                error: function (result) {
+                    alert(result);
+                }
+            });
+        });
+
+        var getMilliseconds = function (divSelector, perTime) {
+            var milliseconds = $(divSelector).children("input[type=number]").val();
+            var factor = $(divSelector).children("select").val();
+            if (perTime) {
+                var times = milliseconds;
+                milliseconds = 1000;
+                if (factor == "Сек") return milliseconds / times;
+                milliseconds *= 60;
+                if (factor == "Мин") return milliseconds / times;
+                milliseconds *= 60;
+                if (factor == "Час") return milliseconds / times;
+                return milliseconds *= 24;
+            } else {
+                milliseconds *= 1000;
+                if (factor == "Сек") return milliseconds;
+                milliseconds *= 60;
+                if (factor == "Мин") return milliseconds;
+                milliseconds *= 60;
+                if (factor == "Час") return milliseconds;
+                return milliseconds *= 24;
+            }
+        };
     </script>
 }

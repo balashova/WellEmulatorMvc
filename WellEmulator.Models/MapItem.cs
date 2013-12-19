@@ -18,5 +18,8 @@ namespace WellEmulator.Models
 
         [DataMember]
         public string PdgtmTag { get; set; }
+
+        [DataMember]
+        public string PdgtmWellName { get; set; }
     }
 }

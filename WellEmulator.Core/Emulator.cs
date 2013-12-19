@@ -43,24 +43,39 @@ namespace WellEmulator.Core
         public TimeSpan ValuesDelay
         {
             get { return _valuesDelay; }
-            set { _valuesDelay = value; }
+            set
+            {
+                if (value.Equals(default(TimeSpan))) throw new InvalidTimeSpanException();
+                _valuesDelay = value;
+            }
         }
 
-        public IEnumerable<string> Tags
+        public IEnumerable<string> TagNames
         {
-            get { return _tags.Select(t => t.Name).ToList(); }
+            get
+            {
+                return _tags.Select(t => t.Name).ToList();
+            }
+        }
+
+        public List<Tag> Tags
+        {
+            get { return _tags; }
+            set
+            {
+                if (value == null) throw new NullReferenceException();
+                _tags = value;
+            }
         }
 
         private readonly Random _random = new Random(DateTime.Now.Second);
-        private bool _isRunning;
-        private readonly List<Tag> _tags = new List<Tag>();
+        private List<Tag> _tags = new List<Tag>();
         private TimeSpan _autoSaveReportPeriod = new TimeSpan(0, 0, 0, 10);
         private TimeSpan _generationPeriod = new TimeSpan(0, 0, 0, 1);
         private TimeSpan _valuesDelay = new TimeSpan(0, 0, 3, 0);
+        private bool _isRunning;
         private StopableThread _emulationThread;
         private StopableThread _autoSaveThread;
-        private readonly HistorianAdapter _historian = new HistorianAdapter();
-
         private readonly CsvReporter _reporter;
 
         public Emulator()
@@ -69,8 +84,6 @@ namespace WellEmulator.Core
             var directory = new DirectoryInfo(path ?? @"C:\Historian\Data\DataImport\FastLoad");
             if (!directory.Exists) directory.Create();
             _reporter = new CsvReporter(directory);
-
-            //TODO Load settings from DB
         }
 
         public void AddTag(Tag tag)
@@ -79,7 +92,6 @@ namespace WellEmulator.Core
             {
                 _tags.Add(tag);
             }
-            _historian.AddTag(tag);
         }
 
         public Tag GetTag(string name)
@@ -93,7 +105,6 @@ namespace WellEmulator.Core
             {
                 _tags.Remove(tag);
             }
-            _historian.RemoveTag(tag);
         }
 
         public void Start()

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WellEmulator.Models;
 
 namespace WellEmulator.Core
 {
@@ -24,11 +25,40 @@ namespace WellEmulator.Core
             }
         }
 
+        public List<MapItem> Mappings
+        {
+            get { return _mappings; }
+            set
+            {
+                if (value == null) return;
+                _mappings = value;
+            }
+        }
+
         private TimeSpan _replicationPeriod = new TimeSpan(0, 0, 15, 0);
+        private readonly PdgtmDbAdapter _pdgtmDbAdapter = new PdgtmDbAdapter();
+        private readonly HistorianAdapter _historianAdapter = new HistorianAdapter();
+        private List<MapItem> _mappings = new List<MapItem>();
         private StopableThread _replicationThread;
         private bool _isRunning;
-        private PdgtmDbAdapter _pdgtmDbAdapter = new PdgtmDbAdapter();
-        private HistorianAdapter _historianAdapter = new HistorianAdapter();
+
+        public void AddMapping(MapItem mapItem)
+        {
+            lock (_mappings)
+            {
+                _mappings.Add(mapItem);
+            }
+        }
+
+        public void RemoveMapping(MapItem mapItem)
+        {
+            lock (_mappings)
+            {
+                _mappings.Add(_mappings.Single(m => m.HistorianTag.Equals(mapItem.HistorianTag) &&
+                                                    m.PdgtmTag.Equals(mapItem.PdgtmTag) &&
+                                                    m.PdgtmWellName.Equals(mapItem.PdgtmWellName)));
+            }
+        }
 
         public void Start()
         {
@@ -62,7 +92,20 @@ namespace WellEmulator.Core
 
         private void Replicate()
         {
+            lock (_mappings)
+            {
+                var mappings = _mappings;
+                var tags = _historianAdapter.GetTagValues(mappings.Select(m => string.Format("{0}.{1}", m.PdgtmWellName, m.HistorianTag)).ToList());
 
+                foreach (var well in mappings.GroupBy(m => m.PdgtmWellName))
+                {
+                    var oilRate = tags[well.Single(m => m.PdgtmTag.Equals("oilRate")).HistorianTag];
+                    var gasRate = tags[well.Single(m => m.PdgtmTag.Equals("gasRate")).HistorianTag];
+                    var waterRate = tags[well.Single(m => m.PdgtmTag.Equals("waterRate")).HistorianTag];
+
+                    _pdgtmDbAdapter.InsertValues(_pdgtmDbAdapter.GetWellId(well.Key), oilRate, gasRate, waterRate);
+                }
+            }
         }
     }
 }

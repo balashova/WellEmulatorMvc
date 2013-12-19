@@ -27,6 +27,22 @@ namespace WellEmulator.Core
             }
         }
 
+        public int GetWellId(string wellName)
+        {
+            using (var connection = new SqlConnection(this._connectionString))
+            {
+                connection.Open();
+                using (var command = new SqlCommand(this._connectionString, connection)
+                    {
+                        CommandText =
+                            string.Format("select w.idWell from PDGTM.dbo.Well w where w.nameWell = '{0}'", wellName)
+                    })
+                {
+                    return Convert.ToInt32(command.ExecuteScalar());
+                }
+            }
+        }
+
         public IEnumerable<Well> GetWells()
         {
             var wells = new List<Well>();

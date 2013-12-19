@@ -11,6 +11,8 @@ namespace WellEmulator.Models
     [DataContract]
     public class Settings
     {
+        public int Id { get; set; }
+
         [DataMember]
         public TimeSpan SamplingRate { get; set; }
 
@@ -23,11 +25,15 @@ namespace WellEmulator.Models
         [DataMember]
         public TimeSpan ReplicationPeriod { get; set; }
 
-        //[NotMapped]
+        [NotMapped]
         [DataMember]
         public bool IsRunning { get; set; }
 
-        //[NotMapped]
+        [DataMember]
+        [NotMapped]
+        public bool IsReplicate { get; set; }
+
+        [NotMapped]
         [DataMember]
         public string Message { get; set; }
     }

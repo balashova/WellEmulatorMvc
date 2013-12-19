@@ -34,6 +34,24 @@
   <wsdl:binding name="NetTcpBinding_IWellEmulator" type="i0:IWellEmulator">
     <wsp:PolicyReference URI="#NetTcpBinding_IWellEmulator_policy" />
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="DisableReplication">
+      <soap12:operation soapAction="http://WellEmulator.com/IWellEmulator/DisableReplication" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnableReplication">
+      <soap12:operation soapAction="http://WellEmulator.com/IWellEmulator/EnableReplication" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="IsReplicate">
       <soap12:operation soapAction="http://WellEmulator.com/IWellEmulator/IsReplicate" style="document" />
       <wsdl:input>
@@ -133,9 +151,45 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetTags">
+      <soap12:operation soapAction="http://WellEmulator.com/IWellEmulator/GetTags" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWellList">
+      <soap12:operation soapAction="http://WellEmulator.com/IWellEmulator/GetWellList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="BasicHttpBinding_IWellEmulator" type="i0:IWellEmulator">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="DisableReplication">
+      <soap:operation soapAction="http://WellEmulator.com/IWellEmulator/DisableReplication" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnableReplication">
+      <soap:operation soapAction="http://WellEmulator.com/IWellEmulator/EnableReplication" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="IsReplicate">
       <soap:operation soapAction="http://WellEmulator.com/IWellEmulator/IsReplicate" style="document" />
       <wsdl:input>
@@ -228,6 +282,24 @@
     </wsdl:operation>
     <wsdl:operation name="GetTagList">
       <soap:operation soapAction="http://WellEmulator.com/IWellEmulator/GetTagList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTags">
+      <soap:operation soapAction="http://WellEmulator.com/IWellEmulator/GetTags" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWellList">
+      <soap:operation soapAction="http://WellEmulator.com/IWellEmulator/GetWellList" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -12,6 +12,12 @@ namespace WellEmulatorService
     public interface IWellEmulator
     {
         [OperationContract]
+        void DisableReplication();
+
+        [OperationContract]
+        void EnableReplication();
+
+        [OperationContract]
         bool IsReplicate();
 
         [OperationContract]
@@ -45,6 +51,9 @@ namespace WellEmulatorService
         IEnumerable<string> GetTagList(string wellName);
 
         [OperationContract]
-        IEnumerable<Well> GetWellList(ref string message);
+        IEnumerable<Tag> GetTags();
+
+        [OperationContract]
+        IEnumerable<Well> GetWellList();
     }
 }

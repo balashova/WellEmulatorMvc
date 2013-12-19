@@ -8,6 +8,18 @@
       <xsd:import schemaLocation="http://localhost:9439/WellEmulatorService?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="IWellEmulator_DisableReplication_InputMessage">
+    <wsdl:part name="parameters" element="tns:DisableReplication" />
+  </wsdl:message>
+  <wsdl:message name="IWellEmulator_DisableReplication_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DisableReplicationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWellEmulator_EnableReplication_InputMessage">
+    <wsdl:part name="parameters" element="tns:EnableReplication" />
+  </wsdl:message>
+  <wsdl:message name="IWellEmulator_EnableReplication_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EnableReplicationResponse" />
+  </wsdl:message>
   <wsdl:message name="IWellEmulator_IsReplicate_InputMessage">
     <wsdl:part name="parameters" element="tns:IsReplicate" />
   </wsdl:message>
@@ -74,7 +86,27 @@
   <wsdl:message name="IWellEmulator_GetTagList_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetTagListResponse" />
   </wsdl:message>
+  <wsdl:message name="IWellEmulator_GetTags_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTags" />
+  </wsdl:message>
+  <wsdl:message name="IWellEmulator_GetTags_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTagsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWellEmulator_GetWellList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetWellList" />
+  </wsdl:message>
+  <wsdl:message name="IWellEmulator_GetWellList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetWellListResponse" />
+  </wsdl:message>
   <wsdl:portType name="IWellEmulator">
+    <wsdl:operation name="DisableReplication">
+      <wsdl:input wsaw:Action="http://WellEmulator.com/IWellEmulator/DisableReplication" message="tns:IWellEmulator_DisableReplication_InputMessage" />
+      <wsdl:output wsaw:Action="http://WellEmulator.com/IWellEmulator/DisableReplicationResponse" message="tns:IWellEmulator_DisableReplication_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EnableReplication">
+      <wsdl:input wsaw:Action="http://WellEmulator.com/IWellEmulator/EnableReplication" message="tns:IWellEmulator_EnableReplication_InputMessage" />
+      <wsdl:output wsaw:Action="http://WellEmulator.com/IWellEmulator/EnableReplicationResponse" message="tns:IWellEmulator_EnableReplication_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="IsReplicate">
       <wsdl:input wsaw:Action="http://WellEmulator.com/IWellEmulator/IsReplicate" message="tns:IWellEmulator_IsReplicate_InputMessage" />
       <wsdl:output wsaw:Action="http://WellEmulator.com/IWellEmulator/IsReplicateResponse" message="tns:IWellEmulator_IsReplicate_OutputMessage" />
@@ -118,6 +150,14 @@
     <wsdl:operation name="GetTagList">
       <wsdl:input wsaw:Action="http://WellEmulator.com/IWellEmulator/GetTagList" message="tns:IWellEmulator_GetTagList_InputMessage" />
       <wsdl:output wsaw:Action="http://WellEmulator.com/IWellEmulator/GetTagListResponse" message="tns:IWellEmulator_GetTagList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTags">
+      <wsdl:input wsaw:Action="http://WellEmulator.com/IWellEmulator/GetTags" message="tns:IWellEmulator_GetTags_InputMessage" />
+      <wsdl:output wsaw:Action="http://WellEmulator.com/IWellEmulator/GetTagsResponse" message="tns:IWellEmulator_GetTags_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWellList">
+      <wsdl:input wsaw:Action="http://WellEmulator.com/IWellEmulator/GetWellList" message="tns:IWellEmulator_GetWellList_InputMessage" />
+      <wsdl:output wsaw:Action="http://WellEmulator.com/IWellEmulator/GetWellListResponse" message="tns:IWellEmulator_GetWellList_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
 </wsdl:definitions>

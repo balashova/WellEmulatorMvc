@@ -23,6 +23,9 @@ namespace WellEmulatorServiceClient.ServiceReference {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool IsReplicateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private bool IsRunningField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -47,6 +50,19 @@ namespace WellEmulatorServiceClient.ServiceReference {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsReplicate {
+            get {
+                return this.IsReplicateField;
+            }
+            set {
+                if ((this.IsReplicateField.Equals(value) != true)) {
+                    this.IsReplicateField = value;
+                    this.RaisePropertyChanged("IsReplicate");
+                }
             }
         }
         
@@ -295,9 +311,82 @@ namespace WellEmulatorServiceClient.ServiceReference {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Well", Namespace="http://schemas.datacontract.org/2004/07/WellEmulator.Models")]
+    [System.SerializableAttribute()]
+    public partial class Well : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(Namespace="http://WellEmulator.com", ConfigurationName="ServiceReference.IWellEmulator")]
     public interface IWellEmulator {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/DisableReplication", ReplyAction="http://WellEmulator.com/IWellEmulator/DisableReplicationResponse")]
+        void DisableReplication();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/DisableReplication", ReplyAction="http://WellEmulator.com/IWellEmulator/DisableReplicationResponse")]
+        System.Threading.Tasks.Task DisableReplicationAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/EnableReplication", ReplyAction="http://WellEmulator.com/IWellEmulator/EnableReplicationResponse")]
+        void EnableReplication();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/EnableReplication", ReplyAction="http://WellEmulator.com/IWellEmulator/EnableReplicationResponse")]
+        System.Threading.Tasks.Task EnableReplicationAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/IsReplicate", ReplyAction="http://WellEmulator.com/IWellEmulator/IsReplicateResponse")]
         bool IsReplicate();
@@ -364,6 +453,18 @@ namespace WellEmulatorServiceClient.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/GetTagList", ReplyAction="http://WellEmulator.com/IWellEmulator/GetTagListResponse")]
         System.Threading.Tasks.Task<string[]> GetTagListAsync(string wellName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/GetTags", ReplyAction="http://WellEmulator.com/IWellEmulator/GetTagsResponse")]
+        WellEmulatorServiceClient.ServiceReference.Tag[] GetTags();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/GetTags", ReplyAction="http://WellEmulator.com/IWellEmulator/GetTagsResponse")]
+        System.Threading.Tasks.Task<WellEmulatorServiceClient.ServiceReference.Tag[]> GetTagsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/GetWellList", ReplyAction="http://WellEmulator.com/IWellEmulator/GetWellListResponse")]
+        WellEmulatorServiceClient.ServiceReference.Well[] GetWellList();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/GetWellList", ReplyAction="http://WellEmulator.com/IWellEmulator/GetWellListResponse")]
+        System.Threading.Tasks.Task<WellEmulatorServiceClient.ServiceReference.Well[]> GetWellListAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -391,6 +492,22 @@ namespace WellEmulatorServiceClient.ServiceReference {
         
         public WellEmulatorClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        public void DisableReplication() {
+            base.Channel.DisableReplication();
+        }
+        
+        public System.Threading.Tasks.Task DisableReplicationAsync() {
+            return base.Channel.DisableReplicationAsync();
+        }
+        
+        public void EnableReplication() {
+            base.Channel.EnableReplication();
+        }
+        
+        public System.Threading.Tasks.Task EnableReplicationAsync() {
+            return base.Channel.EnableReplicationAsync();
         }
         
         public bool IsReplicate() {
@@ -479,6 +596,22 @@ namespace WellEmulatorServiceClient.ServiceReference {
         
         public System.Threading.Tasks.Task<string[]> GetTagListAsync(string wellName) {
             return base.Channel.GetTagListAsync(wellName);
+        }
+        
+        public WellEmulatorServiceClient.ServiceReference.Tag[] GetTags() {
+            return base.Channel.GetTags();
+        }
+        
+        public System.Threading.Tasks.Task<WellEmulatorServiceClient.ServiceReference.Tag[]> GetTagsAsync() {
+            return base.Channel.GetTagsAsync();
+        }
+        
+        public WellEmulatorServiceClient.ServiceReference.Well[] GetWellList() {
+            return base.Channel.GetWellList();
+        }
+        
+        public System.Threading.Tasks.Task<WellEmulatorServiceClient.ServiceReference.Well[]> GetWellListAsync() {
+            return base.Channel.GetWellListAsync();
         }
     }
 }

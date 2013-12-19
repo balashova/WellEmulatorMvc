@@ -140,37 +140,10 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\EmulatorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ScadaController.cs" />
+    <Compile Include="Controllers\ServiceController.cs" />
     <Compile Include="Extensions\Extension.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Models\PdgtmDb.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PdgtmDb.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\PdgtmDb.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PdgtmDb.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\PdgtmDb.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PdgtmDb.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ProductionTest.cs">
-      <DependentUpon>PdgtmDb.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ProductionTestResult.cs">
-      <DependentUpon>PdgtmDb.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Well.cs">
-      <DependentUpon>PdgtmDb.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\WellTest.cs">
-      <DependentUpon>PdgtmDb.tt</DependentUpon>
     </Compile>
     <Compile Include="Parsers\WitsmlElementsParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -240,23 +213,6 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
-    <EntityDeploy Include="Models\PdgtmDb.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>PdgtmDb.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\PdgtmDb.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>PdgtmDb.edmx</DependentUpon>
-      <LastGenOutput>PdgtmDb.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\PdgtmDb.edmx.diagram">
-      <DependentUpon>PdgtmDb.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\PdgtmDb.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>PdgtmDb.edmx</DependentUpon>
-      <LastGenOutput>PdgtmDb.cs</LastGenOutput>
-    </Content>
     <Content Include="app.config">
       <SubType>Designer</SubType>
     </Content>
@@ -295,12 +251,12 @@
     <Content Include="Views\Emulator\Control.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Emulator\NewTag.cshtml" />
-    <Content Include="Views\Scada\Plots.cshtml" />
     <Content Include="Views\Emulator\Tags.cshtml" />
     <Content Include="Views\Emulator\Wells.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

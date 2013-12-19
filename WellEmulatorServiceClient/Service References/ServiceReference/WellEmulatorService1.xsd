@@ -3,6 +3,7 @@
   <xs:import schemaLocation="http://localhost:9439/WellEmulatorService?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
   <xs:complexType name="Settings">
     <xs:sequence>
+      <xs:element minOccurs="0" name="IsReplicate" type="xs:boolean" />
       <xs:element minOccurs="0" name="IsRunning" type="xs:boolean" />
       <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ReplicationPeriod" type="ser:duration" />
@@ -25,4 +26,23 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Tag" nillable="true" type="tns:Tag" />
+  <xs:complexType name="ArrayOfTag">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Tag" nillable="true" type="tns:Tag" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTag" nillable="true" type="tns:ArrayOfTag" />
+  <xs:complexType name="ArrayOfWell">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Well" nillable="true" type="tns:Well" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfWell" nillable="true" type="tns:ArrayOfWell" />
+  <xs:complexType name="Well">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Well" nillable="true" type="tns:Well" />
 </xs:schema>
