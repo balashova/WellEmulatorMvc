@@ -87,8 +87,8 @@ namespace WellEmulatorService
         {
             try
             {
-                _emulator.AutoSaveReportPeriod = settings.ReportSave;
-                _emulator.ValuesDelay = settings.Delay;
+                _emulator.AutoSaveReportPeriod = settings.ReportAutoSavePeriod;
+                _emulator.ValuesDelay = settings.ValuesDelay;
                 _emulator.GenerationPeriod = settings.SamplingRate;
                 _replicationPeriod = settings.ReplicationPeriod;
             }
@@ -104,14 +104,15 @@ namespace WellEmulatorService
         {
             try
             {
-                return new Settings
+                var settings = new Settings
                 {
-                    ReportSave = _emulator.AutoSaveReportPeriod,
-                    Delay = _emulator.ValuesDelay,
+                    ReportAutoSavePeriod = _emulator.AutoSaveReportPeriod,
+                    ValuesDelay = _emulator.ValuesDelay,
                     SamplingRate = _emulator.GenerationPeriod,
                     IsRunning = _emulator.IsRunning,
                     ReplicationPeriod = _replicationPeriod
                 };
+                return settings;
             }
             catch (Exception ex)
             {
@@ -148,7 +149,7 @@ namespace WellEmulatorService
             return true;
         }
 
-        public bool RemoveTag(string tagName, ref string message)
+        public bool RemoveTagByName(string tagName, ref string message)
         {
             try
             {

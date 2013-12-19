@@ -122,10 +122,7 @@ namespace WellEmulator.Core
 
         private void AutoSave()
         {
-            lock (_tags)
-            {
-                _reporter.Save(_valuesDelay);
-            }
+            _reporter.Save(_valuesDelay);
         }
 
         private void Emulation()

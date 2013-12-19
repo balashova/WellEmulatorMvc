@@ -113,8 +113,8 @@ namespace WellEmulator.Core
                             {
                                 Name = reader["TagName"].ToString().Split('.').Last(),
                                 WellName = reader["TagName"].ToString().Split('.').First(),
-                                MaxValue = Int32.Parse(reader["MaxRaw"].ToString()),
-                                MinValue = Int32.Parse(reader["MinRaw"].ToString()),
+                                MaxValue = Double.Parse(reader["MaxRaw"].ToString()),
+                                MinValue = Double.Parse(reader["MinRaw"].ToString()),
                             };
                         }
                     }
@@ -122,6 +122,42 @@ namespace WellEmulator.Core
                 connection.Close();
             }
             return null;
+        }
+
+        public Dictionary<string, double> GetTagValues(List<string> tags)
+        {
+            var dictionary = new Dictionary<string, double>(tags.Count);
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                using (var command = new SqlCommand(_connectionString, connection)
+                {
+                    CommandText = string.Format("select h.TagName, h.Value " +
+                                                "from WINL6VE6TCINN4.Runtime.dbo.History h " +
+                                                "where h.TagName in ({0})",
+                                                tags.Aggregate(new StringBuilder(), (builder, tag) => builder.
+                                                     Append((builder.Length == 0 ? "" : ", ") + "'" + tag + "'")))
+                })
+                {
+                    try
+                    {
+                        using (var reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                dictionary.Add(reader["TagName"].ToString(),
+                                               Double.Parse(reader["Value"].ToString()));
+                            }
+                        }
+                    }
+                    catch (SqlException ex)
+                    {
+                        throw new HistorianServerNotRunningException(ex);
+                    }
+                }
+                connection.Close();
+            }
+            return dictionary;
         }
     }
 }

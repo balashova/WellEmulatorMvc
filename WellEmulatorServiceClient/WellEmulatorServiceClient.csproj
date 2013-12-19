@@ -49,10 +49,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\ServiceReference\WellEmulator.wsdl" />
     <None Include="Service References\ServiceReference\WellEmulatorService.wsdl" />
     <None Include="Service References\ServiceReference\WellEmulatorService.xsd">
@@ -79,6 +78,9 @@
     <None Include="Service References\ServiceReference\WellEmulatorServiceClient.ServiceReference.GetTagResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\ServiceReference\WellEmulatorServiceClient.ServiceReference.RemoveTagByNameResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\ServiceReference\WellEmulatorServiceClient.ServiceReference.RemoveTagResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -97,6 +99,9 @@
     <None Include="Service References\ServiceReference\WellEmulatorServiceClient.ServiceReference.Tag.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\ServiceReference\" />

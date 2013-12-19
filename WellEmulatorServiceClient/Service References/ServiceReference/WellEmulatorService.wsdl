@@ -8,6 +8,12 @@
       <xsd:import schemaLocation="http://localhost:9439/WellEmulatorService?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="IWellEmulator_IsReplicate_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsReplicate" />
+  </wsdl:message>
+  <wsdl:message name="IWellEmulator_IsReplicate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsReplicateResponse" />
+  </wsdl:message>
   <wsdl:message name="IWellEmulator_IsRunning_InputMessage">
     <wsdl:part name="parameters" element="tns:IsRunning" />
   </wsdl:message>
@@ -50,6 +56,12 @@
   <wsdl:message name="IWellEmulator_RemoveTag_OutputMessage">
     <wsdl:part name="parameters" element="tns:RemoveTagResponse" />
   </wsdl:message>
+  <wsdl:message name="IWellEmulator_RemoveTagByName_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveTagByName" />
+  </wsdl:message>
+  <wsdl:message name="IWellEmulator_RemoveTagByName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveTagByNameResponse" />
+  </wsdl:message>
   <wsdl:message name="IWellEmulator_GetTag_InputMessage">
     <wsdl:part name="parameters" element="tns:GetTag" />
   </wsdl:message>
@@ -63,6 +75,10 @@
     <wsdl:part name="parameters" element="tns:GetTagListResponse" />
   </wsdl:message>
   <wsdl:portType name="IWellEmulator">
+    <wsdl:operation name="IsReplicate">
+      <wsdl:input wsaw:Action="http://WellEmulator.com/IWellEmulator/IsReplicate" message="tns:IWellEmulator_IsReplicate_InputMessage" />
+      <wsdl:output wsaw:Action="http://WellEmulator.com/IWellEmulator/IsReplicateResponse" message="tns:IWellEmulator_IsReplicate_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="IsRunning">
       <wsdl:input wsaw:Action="http://WellEmulator.com/IWellEmulator/IsRunning" message="tns:IWellEmulator_IsRunning_InputMessage" />
       <wsdl:output wsaw:Action="http://WellEmulator.com/IWellEmulator/IsRunningResponse" message="tns:IWellEmulator_IsRunning_OutputMessage" />
@@ -90,6 +106,10 @@
     <wsdl:operation name="RemoveTag">
       <wsdl:input wsaw:Action="http://WellEmulator.com/IWellEmulator/RemoveTag" message="tns:IWellEmulator_RemoveTag_InputMessage" />
       <wsdl:output wsaw:Action="http://WellEmulator.com/IWellEmulator/RemoveTagResponse" message="tns:IWellEmulator_RemoveTag_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveTagByName">
+      <wsdl:input wsaw:Action="http://WellEmulator.com/IWellEmulator/RemoveTagByName" message="tns:IWellEmulator_RemoveTagByName_InputMessage" />
+      <wsdl:output wsaw:Action="http://WellEmulator.com/IWellEmulator/RemoveTagByNameResponse" message="tns:IWellEmulator_RemoveTagByName_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetTag">
       <wsdl:input wsaw:Action="http://WellEmulator.com/IWellEmulator/GetTag" message="tns:IWellEmulator_GetTag_InputMessage" />

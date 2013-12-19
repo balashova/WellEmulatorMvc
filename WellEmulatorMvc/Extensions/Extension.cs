@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using System.Text;
-using WellEmulatorServiceClient.ServiceReference;
 
 namespace WellEmulatorMvc.Extensions
 {

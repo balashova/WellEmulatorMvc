@@ -36,7 +36,7 @@ namespace WellEmulatorService
         bool RemoveTag(Tag tag, ref string message);
 
         [OperationContract]
-        bool RemoveTag(string tagName, ref string message);
+        bool RemoveTagByName(string tagName, ref string message);
 
         [OperationContract]
         Tag GetTag(string name, ref string message);

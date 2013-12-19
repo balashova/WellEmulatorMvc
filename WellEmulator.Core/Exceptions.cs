@@ -10,4 +10,13 @@ namespace WellEmulator.Core
     {
         public InvalidTimeSpanException() : base("Invalid TimeStamp value.") { }
     }
+
+    public class HistorianServerNotRunningException : Exception
+    {
+        public HistorianServerNotRunningException() : base("Wonderware Historian server is not running.") { }
+
+        public HistorianServerNotRunningException(Exception innerException)
+            : base("Wonderware Historian server is not running.",
+                innerException) { }
+    }
 }

@@ -3,12 +3,12 @@
   <xs:import schemaLocation="http://localhost:9439/WellEmulatorService?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
   <xs:complexType name="Settings">
     <xs:sequence>
-      <xs:element minOccurs="0" name="Delay" type="ser:duration" />
       <xs:element minOccurs="0" name="IsRunning" type="xs:boolean" />
       <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ReplicationPeriod" type="ser:duration" />
-      <xs:element minOccurs="0" name="ReportSave" type="ser:duration" />
+      <xs:element minOccurs="0" name="ReportAutoSavePeriod" type="ser:duration" />
       <xs:element minOccurs="0" name="SamplingRate" type="ser:duration" />
+      <xs:element minOccurs="0" name="ValuesDelay" type="ser:duration" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Settings" nillable="true" type="tns:Settings" />

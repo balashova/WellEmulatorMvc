@@ -23,9 +23,6 @@ namespace WellEmulatorServiceClient.ServiceReference {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.TimeSpan DelayField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private bool IsRunningField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -35,10 +32,13 @@ namespace WellEmulatorServiceClient.ServiceReference {
         private System.TimeSpan ReplicationPeriodField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.TimeSpan ReportSaveField;
+        private System.TimeSpan ReportAutoSavePeriodField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.TimeSpan SamplingRateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.TimeSpan ValuesDelayField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -47,19 +47,6 @@ namespace WellEmulatorServiceClient.ServiceReference {
             }
             set {
                 this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.TimeSpan Delay {
-            get {
-                return this.DelayField;
-            }
-            set {
-                if ((this.DelayField.Equals(value) != true)) {
-                    this.DelayField = value;
-                    this.RaisePropertyChanged("Delay");
-                }
             }
         }
         
@@ -103,14 +90,14 @@ namespace WellEmulatorServiceClient.ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.TimeSpan ReportSave {
+        public System.TimeSpan ReportAutoSavePeriod {
             get {
-                return this.ReportSaveField;
+                return this.ReportAutoSavePeriodField;
             }
             set {
-                if ((this.ReportSaveField.Equals(value) != true)) {
-                    this.ReportSaveField = value;
-                    this.RaisePropertyChanged("ReportSave");
+                if ((this.ReportAutoSavePeriodField.Equals(value) != true)) {
+                    this.ReportAutoSavePeriodField = value;
+                    this.RaisePropertyChanged("ReportAutoSavePeriod");
                 }
             }
         }
@@ -124,6 +111,19 @@ namespace WellEmulatorServiceClient.ServiceReference {
                 if ((this.SamplingRateField.Equals(value) != true)) {
                     this.SamplingRateField = value;
                     this.RaisePropertyChanged("SamplingRate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.TimeSpan ValuesDelay {
+            get {
+                return this.ValuesDelayField;
+            }
+            set {
+                if ((this.ValuesDelayField.Equals(value) != true)) {
+                    this.ValuesDelayField = value;
+                    this.RaisePropertyChanged("ValuesDelay");
                 }
             }
         }
@@ -299,6 +299,12 @@ namespace WellEmulatorServiceClient.ServiceReference {
     [System.ServiceModel.ServiceContractAttribute(Namespace="http://WellEmulator.com", ConfigurationName="ServiceReference.IWellEmulator")]
     public interface IWellEmulator {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/IsReplicate", ReplyAction="http://WellEmulator.com/IWellEmulator/IsReplicateResponse")]
+        bool IsReplicate();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/IsReplicate", ReplyAction="http://WellEmulator.com/IWellEmulator/IsReplicateResponse")]
+        System.Threading.Tasks.Task<bool> IsReplicateAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/IsRunning", ReplyAction="http://WellEmulator.com/IWellEmulator/IsRunningResponse")]
         bool IsRunning();
         
@@ -346,6 +352,13 @@ namespace WellEmulatorServiceClient.ServiceReference {
         // CODEGEN: Идет формирование контракта на сообщение, так как операция может иметь много возвращаемых значений.
         [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/RemoveTag", ReplyAction="http://WellEmulator.com/IWellEmulator/RemoveTagResponse")]
         System.Threading.Tasks.Task<WellEmulatorServiceClient.ServiceReference.RemoveTagResponse> RemoveTagAsync(WellEmulatorServiceClient.ServiceReference.RemoveTagRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/RemoveTagByName", ReplyAction="http://WellEmulator.com/IWellEmulator/RemoveTagByNameResponse")]
+        WellEmulatorServiceClient.ServiceReference.RemoveTagByNameResponse RemoveTagByName(WellEmulatorServiceClient.ServiceReference.RemoveTagByNameRequest request);
+        
+        // CODEGEN: Идет формирование контракта на сообщение, так как операция может иметь много возвращаемых значений.
+        [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/RemoveTagByName", ReplyAction="http://WellEmulator.com/IWellEmulator/RemoveTagByNameResponse")]
+        System.Threading.Tasks.Task<WellEmulatorServiceClient.ServiceReference.RemoveTagByNameResponse> RemoveTagByNameAsync(WellEmulatorServiceClient.ServiceReference.RemoveTagByNameRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/GetTag", ReplyAction="http://WellEmulator.com/IWellEmulator/GetTagResponse")]
         WellEmulatorServiceClient.ServiceReference.GetTagResponse GetTag(WellEmulatorServiceClient.ServiceReference.GetTagRequest request);
@@ -556,7 +569,7 @@ namespace WellEmulatorServiceClient.ServiceReference {
     public partial class RemoveTagRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WellEmulator.com", Order=0)]
-        public string name;
+        public WellEmulatorServiceClient.ServiceReference.Tag tag;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WellEmulator.com", Order=1)]
         public string message;
@@ -564,8 +577,8 @@ namespace WellEmulatorServiceClient.ServiceReference {
         public RemoveTagRequest() {
         }
         
-        public RemoveTagRequest(string name, string message) {
-            this.name = name;
+        public RemoveTagRequest(WellEmulatorServiceClient.ServiceReference.Tag tag, string message) {
+            this.tag = tag;
             this.message = message;
         }
     }
@@ -586,6 +599,46 @@ namespace WellEmulatorServiceClient.ServiceReference {
         
         public RemoveTagResponse(bool RemoveTagResult, string message) {
             this.RemoveTagResult = RemoveTagResult;
+            this.message = message;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="RemoveTagByName", WrapperNamespace="http://WellEmulator.com", IsWrapped=true)]
+    public partial class RemoveTagByNameRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WellEmulator.com", Order=0)]
+        public string tagName;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WellEmulator.com", Order=1)]
+        public string message;
+        
+        public RemoveTagByNameRequest() {
+        }
+        
+        public RemoveTagByNameRequest(string tagName, string message) {
+            this.tagName = tagName;
+            this.message = message;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="RemoveTagByNameResponse", WrapperNamespace="http://WellEmulator.com", IsWrapped=true)]
+    public partial class RemoveTagByNameResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WellEmulator.com", Order=0)]
+        public bool RemoveTagByNameResult;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WellEmulator.com", Order=1)]
+        public string message;
+        
+        public RemoveTagByNameResponse() {
+        }
+        
+        public RemoveTagByNameResponse(bool RemoveTagByNameResult, string message) {
+            this.RemoveTagByNameResult = RemoveTagByNameResult;
             this.message = message;
         }
     }
@@ -697,6 +750,14 @@ namespace WellEmulatorServiceClient.ServiceReference {
                 base(binding, remoteAddress) {
         }
         
+        public bool IsReplicate() {
+            return base.Channel.IsReplicate();
+        }
+        
+        public System.Threading.Tasks.Task<bool> IsReplicateAsync() {
+            return base.Channel.IsReplicateAsync();
+        }
+        
         public bool IsRunning() {
             return base.Channel.IsRunning();
         }
@@ -797,9 +858,9 @@ namespace WellEmulatorServiceClient.ServiceReference {
             return base.Channel.RemoveTag(request);
         }
         
-        public bool RemoveTag(string name, ref string message) {
+        public bool RemoveTag(WellEmulatorServiceClient.ServiceReference.Tag tag, ref string message) {
             WellEmulatorServiceClient.ServiceReference.RemoveTagRequest inValue = new WellEmulatorServiceClient.ServiceReference.RemoveTagRequest();
-            inValue.name = name;
+            inValue.tag = tag;
             inValue.message = message;
             WellEmulatorServiceClient.ServiceReference.RemoveTagResponse retVal = ((WellEmulatorServiceClient.ServiceReference.IWellEmulator)(this)).RemoveTag(inValue);
             message = retVal.message;
@@ -808,6 +869,24 @@ namespace WellEmulatorServiceClient.ServiceReference {
         
         public System.Threading.Tasks.Task<WellEmulatorServiceClient.ServiceReference.RemoveTagResponse> RemoveTagAsync(WellEmulatorServiceClient.ServiceReference.RemoveTagRequest request) {
             return base.Channel.RemoveTagAsync(request);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        WellEmulatorServiceClient.ServiceReference.RemoveTagByNameResponse WellEmulatorServiceClient.ServiceReference.IWellEmulator.RemoveTagByName(WellEmulatorServiceClient.ServiceReference.RemoveTagByNameRequest request) {
+            return base.Channel.RemoveTagByName(request);
+        }
+        
+        public bool RemoveTagByName(string tagName, ref string message) {
+            WellEmulatorServiceClient.ServiceReference.RemoveTagByNameRequest inValue = new WellEmulatorServiceClient.ServiceReference.RemoveTagByNameRequest();
+            inValue.tagName = tagName;
+            inValue.message = message;
+            WellEmulatorServiceClient.ServiceReference.RemoveTagByNameResponse retVal = ((WellEmulatorServiceClient.ServiceReference.IWellEmulator)(this)).RemoveTagByName(inValue);
+            message = retVal.message;
+            return retVal.RemoveTagByNameResult;
+        }
+        
+        public System.Threading.Tasks.Task<WellEmulatorServiceClient.ServiceReference.RemoveTagByNameResponse> RemoveTagByNameAsync(WellEmulatorServiceClient.ServiceReference.RemoveTagByNameRequest request) {
+            return base.Channel.RemoveTagByNameAsync(request);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]

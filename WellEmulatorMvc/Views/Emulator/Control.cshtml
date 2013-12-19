@@ -68,7 +68,7 @@
 
 <div id="report-save-block" class="control">
     <label for="report-save">Сохранять отчет через каждые:</label>
-    <input id="report-save" type="number" min="1" max="100" class="form-control" value="@Model.ReportSave.ToPeriod(ref units)" />
+    <input id="report-save" type="number" min="1" max="100" class="form-control" value="@Model.ReportAutoSavePeriod.ToPeriod(ref units)" />
     <label></label>
     <select id="report-save-units" class="form-control">
         <option @(units.Equals("Сек") ? "selected=\"selected\"" : "")>Сек</option>
@@ -76,12 +76,12 @@
         <option @(units.Equals("Час") ? "selected=\"selected\"" : "")>Час</option>
         <option @(units.Equals("Сут") ? "selected=\"selected\"" : "")>Сут</option>
     </select>
-    <input type="range" min="1" max="100" value="@Model.ReportSave.ToPeriod(ref units)" />
+    <input type="range" min="1" max="100" value="@Model.ReportAutoSavePeriod.ToPeriod(ref units)" />
 </div>
 
 <div id="delay-block" class="control">
     <label for="delay">Отставание значений:</label>
-    <input id="delay" type="number" class="form-control" min="1" max="100" value="@Model.Delay.ToPeriod(ref units)" />
+    <input id="delay" type="number" class="form-control" min="1" max="100" value="@Model.ValuesDelay.ToPeriod(ref units)" />
     <label></label>
     <select id="delay-units" class="form-control">
         <option @(units.Equals("Сек") ? "selected=\"selected\"" : "")>Сек</option>
@@ -89,7 +89,7 @@
         <option @(units.Equals("Час") ? "selected=\"selected\"" : "")>Час</option>
         <option @(units.Equals("Сут") ? "selected=\"selected\"" : "")>Сут</option>
     </select>
-    <input type="range" min="1" max="100" value="@Model.Delay.ToPeriod(ref units)" />
+    <input type="range" min="1" max="100" value="@Model.ValuesDelay.ToPeriod(ref units)" />
 </div>
 
 <div id="replication-block" class="control">
@@ -102,7 +102,7 @@
         <option @(units.Equals("Час") ? "selected=\"selected\"" : "")>Час</option>
         <option @(units.Equals("Сут") ? "selected=\"selected\"" : "")>Сут</option>
     </select>
-    <input type="range" min="1" max="100" value="@Model.Delay.ToPeriod(ref units)" />
+    <input type="range" min="1" max="100" value="@Model.ReplicationPeriod.ToPeriod(ref units)" />
 </div>
 
 <div id="button-container">

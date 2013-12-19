@@ -12,24 +12,42 @@ namespace TestApplication
     {
         static void Main(string[] args)
         {
-            var historianProvider = new HistorianAdapter();
-            var a = historianProvider.GetTagList();
+            //var historianProvider = new HistorianAdapter();
+            ////var a = historianProvider.GetTagList();
 
-            historianProvider.AddTag(new Tag()
-            {
-                Name = "tp4",
-                WellName = "well_1"
-            });
+            //historianProvider.AddTag(new Tag()
+            //{
+            //    Name = "tp4",
+            //    WellName = "well_1"
+            //});
 
-            historianProvider.RemoveTag(new Tag()
-            {
-                Name = "tp4",
-                WellName = "well_1"
-            });
+            //historianProvider.RemoveTag(new Tag()
+            //{
+            //    Name = "tp4",
+            //    WellName = "well_1"
+            //});
 
             //var b = historianProvider.GetTag("tp3");
 
-            Console.WriteLine();
+            //var s = new List<string>
+            //{
+            //    "test_pressure",
+            //    "test_pressure_2",
+            //    "tp3"
+            //};
+
+            //foreach (var tag in historianProvider.GetTagValues(s))
+            //{
+            //    Console.WriteLine("{0}: {1}", tag.Key, tag.Value);
+            //}
+
+            //var pdgtmAdapter = new PdgtmDbAdapter();
+
+            //var wells = pdgtmAdapter.GetWells();
+
+            //pdgtmAdapter.InsertValues(wells.First().Id, 33, 33, 33);
+
+            //Console.ReadLine();
         }
     }
 }

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="/GLasnYXa5Jmx5jRvIsB3PjPow0=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="0DgQrX3AJi4Gz9Yd1y/w+9Gq3L0=">
   <bindingConfigurations>
-    <bindingConfiguration bindingType="basicHttpBinding" name="BasicHttpBinding_IWellEmulator">
+    <bindingConfiguration bindingType="basicHttpBinding" name="BasicHttpBinding_IWellEmulator1">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>BasicHttpBinding_IWellEmulator</serializedValue>
+          <serializedValue>BasicHttpBinding_IWellEmulator1</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -110,10 +110,10 @@
         </property>
       </properties>
     </bindingConfiguration>
-    <bindingConfiguration bindingType="netTcpBinding" name="NetTcpBinding_IWellEmulator">
+    <bindingConfiguration bindingType="netTcpBinding" name="NetTcpBinding_IWellEmulator1">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>NetTcpBinding_IWellEmulator</serializedValue>
+          <serializedValue>NetTcpBinding_IWellEmulator1</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -227,7 +227,7 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="NetTcpBinding_IWellEmulator" contract="ServiceReference.IWellEmulator" bindingType="netTcpBinding" address="net.tcp://localhost:9438/WellEmulatorService" bindingConfiguration="NetTcpBinding_IWellEmulator">
+    <endpoint name="NetTcpBinding_IWellEmulator1" contract="ServiceReference.IWellEmulator" bindingType="netTcpBinding" address="net.tcp://localhost:9438/WellEmulatorService" bindingConfiguration="NetTcpBinding_IWellEmulator1">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>net.tcp://localhost:9438/WellEmulatorService</serializedValue>
@@ -239,7 +239,7 @@
           <serializedValue>netTcpBinding</serializedValue>
         </property>
         <property path="/bindingConfiguration" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>NetTcpBinding_IWellEmulator</serializedValue>
+          <serializedValue>NetTcpBinding_IWellEmulator1</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>ServiceReference.IWellEmulator</serializedValue>
@@ -302,7 +302,7 @@
           <serializedValue>False</serializedValue>
         </property>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>NetTcpBinding_IWellEmulator</serializedValue>
+          <serializedValue>NetTcpBinding_IWellEmulator1</serializedValue>
         </property>
         <property path="/kind" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -312,7 +312,7 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="BasicHttpBinding_IWellEmulator" contract="ServiceReference.IWellEmulator" bindingType="basicHttpBinding" address="http://localhost:9439/WellEmulatorService" bindingConfiguration="BasicHttpBinding_IWellEmulator">
+    <endpoint name="BasicHttpBinding_IWellEmulator1" contract="ServiceReference.IWellEmulator" bindingType="basicHttpBinding" address="http://localhost:9439/WellEmulatorService" bindingConfiguration="BasicHttpBinding_IWellEmulator1">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>http://localhost:9439/WellEmulatorService</serializedValue>
@@ -324,7 +324,7 @@
           <serializedValue>basicHttpBinding</serializedValue>
         </property>
         <property path="/bindingConfiguration" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>BasicHttpBinding_IWellEmulator</serializedValue>
+          <serializedValue>BasicHttpBinding_IWellEmulator1</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>ServiceReference.IWellEmulator</serializedValue>
@@ -387,7 +387,7 @@
           <serializedValue>False</serializedValue>
         </property>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>BasicHttpBinding_IWellEmulator</serializedValue>
+          <serializedValue>BasicHttpBinding_IWellEmulator1</serializedValue>
         </property>
         <property path="/kind" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

@@ -2,6 +2,18 @@
 <xs:schema xmlns:tns="http://WellEmulator.com" elementFormDefault="qualified" targetNamespace="http://WellEmulator.com" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:9439/WellEmulatorService?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WellEmulator.Models" />
   <xs:import schemaLocation="http://localhost:9439/WellEmulatorService?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:element name="IsReplicate">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsReplicateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="IsReplicateResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="IsRunning">
     <xs:complexType>
       <xs:sequence />
@@ -94,7 +106,7 @@
   <xs:element name="RemoveTag">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/WellEmulator.Models" minOccurs="0" name="tag" nillable="true" type="q4:Tag" />
         <xs:element minOccurs="0" name="message" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -103,6 +115,22 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="RemoveTagResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="message" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveTagByName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="tagName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="message" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveTagByNameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RemoveTagByNameResult" type="xs:boolean" />
         <xs:element minOccurs="0" name="message" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -118,7 +146,7 @@
   <xs:element name="GetTagResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/WellEmulator.Models" minOccurs="0" name="GetTagResult" nillable="true" type="q4:Tag" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/WellEmulator.Models" minOccurs="0" name="GetTagResult" nillable="true" type="q5:Tag" />
         <xs:element minOccurs="0" name="message" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -134,7 +162,7 @@
   <xs:element name="GetTagListResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetTagListResult" nillable="true" type="q5:ArrayOfstring" />
+        <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetTagListResult" nillable="true" type="q6:ArrayOfstring" />
         <xs:element minOccurs="0" name="message" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>

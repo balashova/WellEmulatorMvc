@@ -257,6 +257,9 @@
       <DependentUpon>PdgtmDb.edmx</DependentUpon>
       <LastGenOutput>PdgtmDb.cs</LastGenOutput>
     </Content>
+    <Content Include="app.config">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -276,7 +279,9 @@
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -301,13 +306,13 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\WellEmulatorServiceClient\WellEmulatorServiceClient.csproj">
       <Project>{54d2c4a6-37da-425d-84aa-f93d33b1fe1c}</Project>
       <Name>WellEmulatorServiceClient</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
