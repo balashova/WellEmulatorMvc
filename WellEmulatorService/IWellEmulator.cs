@@ -18,42 +18,33 @@ namespace WellEmulatorService
         bool IsRunning();
 
         [OperationContract]
-        bool Start(ref string message);
+        void Start();
 
         [OperationContract]
-        bool Stop(ref string message);
+        void Stop();
 
         [OperationContract]
-        bool SetSettings(Settings settings, ref string message);
+        void SetSettings(Settings settings);
 
         [OperationContract]
-        Settings GetSettings(ref string message);
+        Settings GetSettings();
 
         [OperationContract]
-        bool AddTag(Tag tag, ref string message);
+        void AddTag(Tag tag);
 
         [OperationContract]
-        bool RemoveTag(Tag tag, ref string message);
+        void RemoveTag(Tag tag);
 
         [OperationContract]
-        bool RemoveTagByName(string tagName, ref string message);
+        void RemoveTagByName(string tagName);
 
         [OperationContract]
-        Tag GetTag(string name, ref string message);
+        Tag GetTag(string name);
 
         [OperationContract]
-        IEnumerable<string> GetTagList(string wellName, ref string message);
+        IEnumerable<string> GetTagList(string wellName);
 
-        //[OperationContract]
-        //IEnumerable<string> GetWellList(ref string message);
-
-        //[OperationContract]
-        //Well GetWell(string name, ref string message);
-
-        //[OperationContract]
-        //bool AddWell(Well well, ref string message);
-
-        //[OperationContract]
-        //bool RemoveWell(string name, ref string message);
+        [OperationContract]
+        IEnumerable<Well> GetWellList(ref string message);
     }
 }

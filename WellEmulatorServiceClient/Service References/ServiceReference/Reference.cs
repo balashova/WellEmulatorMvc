@@ -312,415 +312,58 @@ namespace WellEmulatorServiceClient.ServiceReference {
         System.Threading.Tasks.Task<bool> IsRunningAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/Start", ReplyAction="http://WellEmulator.com/IWellEmulator/StartResponse")]
-        WellEmulatorServiceClient.ServiceReference.StartResponse Start(WellEmulatorServiceClient.ServiceReference.StartRequest request);
+        void Start();
         
-        // CODEGEN: Идет формирование контракта на сообщение, так как операция может иметь много возвращаемых значений.
         [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/Start", ReplyAction="http://WellEmulator.com/IWellEmulator/StartResponse")]
-        System.Threading.Tasks.Task<WellEmulatorServiceClient.ServiceReference.StartResponse> StartAsync(WellEmulatorServiceClient.ServiceReference.StartRequest request);
+        System.Threading.Tasks.Task StartAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/Stop", ReplyAction="http://WellEmulator.com/IWellEmulator/StopResponse")]
-        WellEmulatorServiceClient.ServiceReference.StopResponse Stop(WellEmulatorServiceClient.ServiceReference.StopRequest request);
+        void Stop();
         
-        // CODEGEN: Идет формирование контракта на сообщение, так как операция может иметь много возвращаемых значений.
         [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/Stop", ReplyAction="http://WellEmulator.com/IWellEmulator/StopResponse")]
-        System.Threading.Tasks.Task<WellEmulatorServiceClient.ServiceReference.StopResponse> StopAsync(WellEmulatorServiceClient.ServiceReference.StopRequest request);
+        System.Threading.Tasks.Task StopAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/SetSettings", ReplyAction="http://WellEmulator.com/IWellEmulator/SetSettingsResponse")]
-        WellEmulatorServiceClient.ServiceReference.SetSettingsResponse SetSettings(WellEmulatorServiceClient.ServiceReference.SetSettingsRequest request);
+        void SetSettings(WellEmulatorServiceClient.ServiceReference.Settings settings);
         
-        // CODEGEN: Идет формирование контракта на сообщение, так как операция может иметь много возвращаемых значений.
         [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/SetSettings", ReplyAction="http://WellEmulator.com/IWellEmulator/SetSettingsResponse")]
-        System.Threading.Tasks.Task<WellEmulatorServiceClient.ServiceReference.SetSettingsResponse> SetSettingsAsync(WellEmulatorServiceClient.ServiceReference.SetSettingsRequest request);
+        System.Threading.Tasks.Task SetSettingsAsync(WellEmulatorServiceClient.ServiceReference.Settings settings);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/GetSettings", ReplyAction="http://WellEmulator.com/IWellEmulator/GetSettingsResponse")]
-        WellEmulatorServiceClient.ServiceReference.GetSettingsResponse GetSettings(WellEmulatorServiceClient.ServiceReference.GetSettingsRequest request);
+        WellEmulatorServiceClient.ServiceReference.Settings GetSettings();
         
-        // CODEGEN: Идет формирование контракта на сообщение, так как операция может иметь много возвращаемых значений.
         [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/GetSettings", ReplyAction="http://WellEmulator.com/IWellEmulator/GetSettingsResponse")]
-        System.Threading.Tasks.Task<WellEmulatorServiceClient.ServiceReference.GetSettingsResponse> GetSettingsAsync(WellEmulatorServiceClient.ServiceReference.GetSettingsRequest request);
+        System.Threading.Tasks.Task<WellEmulatorServiceClient.ServiceReference.Settings> GetSettingsAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/AddTag", ReplyAction="http://WellEmulator.com/IWellEmulator/AddTagResponse")]
-        WellEmulatorServiceClient.ServiceReference.AddTagResponse AddTag(WellEmulatorServiceClient.ServiceReference.AddTagRequest request);
+        void AddTag(WellEmulatorServiceClient.ServiceReference.Tag tag);
         
-        // CODEGEN: Идет формирование контракта на сообщение, так как операция может иметь много возвращаемых значений.
         [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/AddTag", ReplyAction="http://WellEmulator.com/IWellEmulator/AddTagResponse")]
-        System.Threading.Tasks.Task<WellEmulatorServiceClient.ServiceReference.AddTagResponse> AddTagAsync(WellEmulatorServiceClient.ServiceReference.AddTagRequest request);
+        System.Threading.Tasks.Task AddTagAsync(WellEmulatorServiceClient.ServiceReference.Tag tag);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/RemoveTag", ReplyAction="http://WellEmulator.com/IWellEmulator/RemoveTagResponse")]
-        WellEmulatorServiceClient.ServiceReference.RemoveTagResponse RemoveTag(WellEmulatorServiceClient.ServiceReference.RemoveTagRequest request);
+        void RemoveTag(WellEmulatorServiceClient.ServiceReference.Tag tag);
         
-        // CODEGEN: Идет формирование контракта на сообщение, так как операция может иметь много возвращаемых значений.
         [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/RemoveTag", ReplyAction="http://WellEmulator.com/IWellEmulator/RemoveTagResponse")]
-        System.Threading.Tasks.Task<WellEmulatorServiceClient.ServiceReference.RemoveTagResponse> RemoveTagAsync(WellEmulatorServiceClient.ServiceReference.RemoveTagRequest request);
+        System.Threading.Tasks.Task RemoveTagAsync(WellEmulatorServiceClient.ServiceReference.Tag tag);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/RemoveTagByName", ReplyAction="http://WellEmulator.com/IWellEmulator/RemoveTagByNameResponse")]
-        WellEmulatorServiceClient.ServiceReference.RemoveTagByNameResponse RemoveTagByName(WellEmulatorServiceClient.ServiceReference.RemoveTagByNameRequest request);
+        void RemoveTagByName(string tagName);
         
-        // CODEGEN: Идет формирование контракта на сообщение, так как операция может иметь много возвращаемых значений.
         [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/RemoveTagByName", ReplyAction="http://WellEmulator.com/IWellEmulator/RemoveTagByNameResponse")]
-        System.Threading.Tasks.Task<WellEmulatorServiceClient.ServiceReference.RemoveTagByNameResponse> RemoveTagByNameAsync(WellEmulatorServiceClient.ServiceReference.RemoveTagByNameRequest request);
+        System.Threading.Tasks.Task RemoveTagByNameAsync(string tagName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/GetTag", ReplyAction="http://WellEmulator.com/IWellEmulator/GetTagResponse")]
-        WellEmulatorServiceClient.ServiceReference.GetTagResponse GetTag(WellEmulatorServiceClient.ServiceReference.GetTagRequest request);
+        WellEmulatorServiceClient.ServiceReference.Tag GetTag(string name);
         
-        // CODEGEN: Идет формирование контракта на сообщение, так как операция может иметь много возвращаемых значений.
         [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/GetTag", ReplyAction="http://WellEmulator.com/IWellEmulator/GetTagResponse")]
-        System.Threading.Tasks.Task<WellEmulatorServiceClient.ServiceReference.GetTagResponse> GetTagAsync(WellEmulatorServiceClient.ServiceReference.GetTagRequest request);
+        System.Threading.Tasks.Task<WellEmulatorServiceClient.ServiceReference.Tag> GetTagAsync(string name);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/GetTagList", ReplyAction="http://WellEmulator.com/IWellEmulator/GetTagListResponse")]
-        WellEmulatorServiceClient.ServiceReference.GetTagListResponse GetTagList(WellEmulatorServiceClient.ServiceReference.GetTagListRequest request);
+        string[] GetTagList(string wellName);
         
-        // CODEGEN: Идет формирование контракта на сообщение, так как операция может иметь много возвращаемых значений.
         [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/GetTagList", ReplyAction="http://WellEmulator.com/IWellEmulator/GetTagListResponse")]
-        System.Threading.Tasks.Task<WellEmulatorServiceClient.ServiceReference.GetTagListResponse> GetTagListAsync(WellEmulatorServiceClient.ServiceReference.GetTagListRequest request);
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="Start", WrapperNamespace="http://WellEmulator.com", IsWrapped=true)]
-    public partial class StartRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WellEmulator.com", Order=0)]
-        public string message;
-        
-        public StartRequest() {
-        }
-        
-        public StartRequest(string message) {
-            this.message = message;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="StartResponse", WrapperNamespace="http://WellEmulator.com", IsWrapped=true)]
-    public partial class StartResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WellEmulator.com", Order=0)]
-        public bool StartResult;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WellEmulator.com", Order=1)]
-        public string message;
-        
-        public StartResponse() {
-        }
-        
-        public StartResponse(bool StartResult, string message) {
-            this.StartResult = StartResult;
-            this.message = message;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="Stop", WrapperNamespace="http://WellEmulator.com", IsWrapped=true)]
-    public partial class StopRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WellEmulator.com", Order=0)]
-        public string message;
-        
-        public StopRequest() {
-        }
-        
-        public StopRequest(string message) {
-            this.message = message;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="StopResponse", WrapperNamespace="http://WellEmulator.com", IsWrapped=true)]
-    public partial class StopResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WellEmulator.com", Order=0)]
-        public bool StopResult;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WellEmulator.com", Order=1)]
-        public string message;
-        
-        public StopResponse() {
-        }
-        
-        public StopResponse(bool StopResult, string message) {
-            this.StopResult = StopResult;
-            this.message = message;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="SetSettings", WrapperNamespace="http://WellEmulator.com", IsWrapped=true)]
-    public partial class SetSettingsRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WellEmulator.com", Order=0)]
-        public WellEmulatorServiceClient.ServiceReference.Settings settings;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WellEmulator.com", Order=1)]
-        public string message;
-        
-        public SetSettingsRequest() {
-        }
-        
-        public SetSettingsRequest(WellEmulatorServiceClient.ServiceReference.Settings settings, string message) {
-            this.settings = settings;
-            this.message = message;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="SetSettingsResponse", WrapperNamespace="http://WellEmulator.com", IsWrapped=true)]
-    public partial class SetSettingsResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WellEmulator.com", Order=0)]
-        public bool SetSettingsResult;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WellEmulator.com", Order=1)]
-        public string message;
-        
-        public SetSettingsResponse() {
-        }
-        
-        public SetSettingsResponse(bool SetSettingsResult, string message) {
-            this.SetSettingsResult = SetSettingsResult;
-            this.message = message;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="GetSettings", WrapperNamespace="http://WellEmulator.com", IsWrapped=true)]
-    public partial class GetSettingsRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WellEmulator.com", Order=0)]
-        public string message;
-        
-        public GetSettingsRequest() {
-        }
-        
-        public GetSettingsRequest(string message) {
-            this.message = message;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="GetSettingsResponse", WrapperNamespace="http://WellEmulator.com", IsWrapped=true)]
-    public partial class GetSettingsResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WellEmulator.com", Order=0)]
-        public WellEmulatorServiceClient.ServiceReference.Settings GetSettingsResult;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WellEmulator.com", Order=1)]
-        public string message;
-        
-        public GetSettingsResponse() {
-        }
-        
-        public GetSettingsResponse(WellEmulatorServiceClient.ServiceReference.Settings GetSettingsResult, string message) {
-            this.GetSettingsResult = GetSettingsResult;
-            this.message = message;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="AddTag", WrapperNamespace="http://WellEmulator.com", IsWrapped=true)]
-    public partial class AddTagRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WellEmulator.com", Order=0)]
-        public WellEmulatorServiceClient.ServiceReference.Tag tag;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WellEmulator.com", Order=1)]
-        public string message;
-        
-        public AddTagRequest() {
-        }
-        
-        public AddTagRequest(WellEmulatorServiceClient.ServiceReference.Tag tag, string message) {
-            this.tag = tag;
-            this.message = message;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="AddTagResponse", WrapperNamespace="http://WellEmulator.com", IsWrapped=true)]
-    public partial class AddTagResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WellEmulator.com", Order=0)]
-        public bool AddTagResult;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WellEmulator.com", Order=1)]
-        public string message;
-        
-        public AddTagResponse() {
-        }
-        
-        public AddTagResponse(bool AddTagResult, string message) {
-            this.AddTagResult = AddTagResult;
-            this.message = message;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="RemoveTag", WrapperNamespace="http://WellEmulator.com", IsWrapped=true)]
-    public partial class RemoveTagRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WellEmulator.com", Order=0)]
-        public WellEmulatorServiceClient.ServiceReference.Tag tag;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WellEmulator.com", Order=1)]
-        public string message;
-        
-        public RemoveTagRequest() {
-        }
-        
-        public RemoveTagRequest(WellEmulatorServiceClient.ServiceReference.Tag tag, string message) {
-            this.tag = tag;
-            this.message = message;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="RemoveTagResponse", WrapperNamespace="http://WellEmulator.com", IsWrapped=true)]
-    public partial class RemoveTagResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WellEmulator.com", Order=0)]
-        public bool RemoveTagResult;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WellEmulator.com", Order=1)]
-        public string message;
-        
-        public RemoveTagResponse() {
-        }
-        
-        public RemoveTagResponse(bool RemoveTagResult, string message) {
-            this.RemoveTagResult = RemoveTagResult;
-            this.message = message;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="RemoveTagByName", WrapperNamespace="http://WellEmulator.com", IsWrapped=true)]
-    public partial class RemoveTagByNameRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WellEmulator.com", Order=0)]
-        public string tagName;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WellEmulator.com", Order=1)]
-        public string message;
-        
-        public RemoveTagByNameRequest() {
-        }
-        
-        public RemoveTagByNameRequest(string tagName, string message) {
-            this.tagName = tagName;
-            this.message = message;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="RemoveTagByNameResponse", WrapperNamespace="http://WellEmulator.com", IsWrapped=true)]
-    public partial class RemoveTagByNameResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WellEmulator.com", Order=0)]
-        public bool RemoveTagByNameResult;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WellEmulator.com", Order=1)]
-        public string message;
-        
-        public RemoveTagByNameResponse() {
-        }
-        
-        public RemoveTagByNameResponse(bool RemoveTagByNameResult, string message) {
-            this.RemoveTagByNameResult = RemoveTagByNameResult;
-            this.message = message;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="GetTag", WrapperNamespace="http://WellEmulator.com", IsWrapped=true)]
-    public partial class GetTagRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WellEmulator.com", Order=0)]
-        public string name;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WellEmulator.com", Order=1)]
-        public string message;
-        
-        public GetTagRequest() {
-        }
-        
-        public GetTagRequest(string name, string message) {
-            this.name = name;
-            this.message = message;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="GetTagResponse", WrapperNamespace="http://WellEmulator.com", IsWrapped=true)]
-    public partial class GetTagResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WellEmulator.com", Order=0)]
-        public WellEmulatorServiceClient.ServiceReference.Tag GetTagResult;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WellEmulator.com", Order=1)]
-        public string message;
-        
-        public GetTagResponse() {
-        }
-        
-        public GetTagResponse(WellEmulatorServiceClient.ServiceReference.Tag GetTagResult, string message) {
-            this.GetTagResult = GetTagResult;
-            this.message = message;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="GetTagList", WrapperNamespace="http://WellEmulator.com", IsWrapped=true)]
-    public partial class GetTagListRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WellEmulator.com", Order=0)]
-        public string wellName;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WellEmulator.com", Order=1)]
-        public string message;
-        
-        public GetTagListRequest() {
-        }
-        
-        public GetTagListRequest(string wellName, string message) {
-            this.wellName = wellName;
-            this.message = message;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="GetTagListResponse", WrapperNamespace="http://WellEmulator.com", IsWrapped=true)]
-    public partial class GetTagListResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WellEmulator.com", Order=0)]
-        public string[] GetTagListResult;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://WellEmulator.com", Order=1)]
-        public string message;
-        
-        public GetTagListResponse() {
-        }
-        
-        public GetTagListResponse(string[] GetTagListResult, string message) {
-            this.GetTagListResult = GetTagListResult;
-            this.message = message;
-        }
+        System.Threading.Tasks.Task<string[]> GetTagListAsync(string wellName);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -766,163 +409,76 @@ namespace WellEmulatorServiceClient.ServiceReference {
             return base.Channel.IsRunningAsync();
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        WellEmulatorServiceClient.ServiceReference.StartResponse WellEmulatorServiceClient.ServiceReference.IWellEmulator.Start(WellEmulatorServiceClient.ServiceReference.StartRequest request) {
-            return base.Channel.Start(request);
+        public void Start() {
+            base.Channel.Start();
         }
         
-        public bool Start(ref string message) {
-            WellEmulatorServiceClient.ServiceReference.StartRequest inValue = new WellEmulatorServiceClient.ServiceReference.StartRequest();
-            inValue.message = message;
-            WellEmulatorServiceClient.ServiceReference.StartResponse retVal = ((WellEmulatorServiceClient.ServiceReference.IWellEmulator)(this)).Start(inValue);
-            message = retVal.message;
-            return retVal.StartResult;
+        public System.Threading.Tasks.Task StartAsync() {
+            return base.Channel.StartAsync();
         }
         
-        public System.Threading.Tasks.Task<WellEmulatorServiceClient.ServiceReference.StartResponse> StartAsync(WellEmulatorServiceClient.ServiceReference.StartRequest request) {
-            return base.Channel.StartAsync(request);
+        public void Stop() {
+            base.Channel.Stop();
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        WellEmulatorServiceClient.ServiceReference.StopResponse WellEmulatorServiceClient.ServiceReference.IWellEmulator.Stop(WellEmulatorServiceClient.ServiceReference.StopRequest request) {
-            return base.Channel.Stop(request);
+        public System.Threading.Tasks.Task StopAsync() {
+            return base.Channel.StopAsync();
         }
         
-        public bool Stop(ref string message) {
-            WellEmulatorServiceClient.ServiceReference.StopRequest inValue = new WellEmulatorServiceClient.ServiceReference.StopRequest();
-            inValue.message = message;
-            WellEmulatorServiceClient.ServiceReference.StopResponse retVal = ((WellEmulatorServiceClient.ServiceReference.IWellEmulator)(this)).Stop(inValue);
-            message = retVal.message;
-            return retVal.StopResult;
+        public void SetSettings(WellEmulatorServiceClient.ServiceReference.Settings settings) {
+            base.Channel.SetSettings(settings);
         }
         
-        public System.Threading.Tasks.Task<WellEmulatorServiceClient.ServiceReference.StopResponse> StopAsync(WellEmulatorServiceClient.ServiceReference.StopRequest request) {
-            return base.Channel.StopAsync(request);
+        public System.Threading.Tasks.Task SetSettingsAsync(WellEmulatorServiceClient.ServiceReference.Settings settings) {
+            return base.Channel.SetSettingsAsync(settings);
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        WellEmulatorServiceClient.ServiceReference.SetSettingsResponse WellEmulatorServiceClient.ServiceReference.IWellEmulator.SetSettings(WellEmulatorServiceClient.ServiceReference.SetSettingsRequest request) {
-            return base.Channel.SetSettings(request);
+        public WellEmulatorServiceClient.ServiceReference.Settings GetSettings() {
+            return base.Channel.GetSettings();
         }
         
-        public bool SetSettings(WellEmulatorServiceClient.ServiceReference.Settings settings, ref string message) {
-            WellEmulatorServiceClient.ServiceReference.SetSettingsRequest inValue = new WellEmulatorServiceClient.ServiceReference.SetSettingsRequest();
-            inValue.settings = settings;
-            inValue.message = message;
-            WellEmulatorServiceClient.ServiceReference.SetSettingsResponse retVal = ((WellEmulatorServiceClient.ServiceReference.IWellEmulator)(this)).SetSettings(inValue);
-            message = retVal.message;
-            return retVal.SetSettingsResult;
+        public System.Threading.Tasks.Task<WellEmulatorServiceClient.ServiceReference.Settings> GetSettingsAsync() {
+            return base.Channel.GetSettingsAsync();
         }
         
-        public System.Threading.Tasks.Task<WellEmulatorServiceClient.ServiceReference.SetSettingsResponse> SetSettingsAsync(WellEmulatorServiceClient.ServiceReference.SetSettingsRequest request) {
-            return base.Channel.SetSettingsAsync(request);
+        public void AddTag(WellEmulatorServiceClient.ServiceReference.Tag tag) {
+            base.Channel.AddTag(tag);
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        WellEmulatorServiceClient.ServiceReference.GetSettingsResponse WellEmulatorServiceClient.ServiceReference.IWellEmulator.GetSettings(WellEmulatorServiceClient.ServiceReference.GetSettingsRequest request) {
-            return base.Channel.GetSettings(request);
+        public System.Threading.Tasks.Task AddTagAsync(WellEmulatorServiceClient.ServiceReference.Tag tag) {
+            return base.Channel.AddTagAsync(tag);
         }
         
-        public WellEmulatorServiceClient.ServiceReference.Settings GetSettings(ref string message) {
-            WellEmulatorServiceClient.ServiceReference.GetSettingsRequest inValue = new WellEmulatorServiceClient.ServiceReference.GetSettingsRequest();
-            inValue.message = message;
-            WellEmulatorServiceClient.ServiceReference.GetSettingsResponse retVal = ((WellEmulatorServiceClient.ServiceReference.IWellEmulator)(this)).GetSettings(inValue);
-            message = retVal.message;
-            return retVal.GetSettingsResult;
+        public void RemoveTag(WellEmulatorServiceClient.ServiceReference.Tag tag) {
+            base.Channel.RemoveTag(tag);
         }
         
-        public System.Threading.Tasks.Task<WellEmulatorServiceClient.ServiceReference.GetSettingsResponse> GetSettingsAsync(WellEmulatorServiceClient.ServiceReference.GetSettingsRequest request) {
-            return base.Channel.GetSettingsAsync(request);
+        public System.Threading.Tasks.Task RemoveTagAsync(WellEmulatorServiceClient.ServiceReference.Tag tag) {
+            return base.Channel.RemoveTagAsync(tag);
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        WellEmulatorServiceClient.ServiceReference.AddTagResponse WellEmulatorServiceClient.ServiceReference.IWellEmulator.AddTag(WellEmulatorServiceClient.ServiceReference.AddTagRequest request) {
-            return base.Channel.AddTag(request);
+        public void RemoveTagByName(string tagName) {
+            base.Channel.RemoveTagByName(tagName);
         }
         
-        public bool AddTag(WellEmulatorServiceClient.ServiceReference.Tag tag, ref string message) {
-            WellEmulatorServiceClient.ServiceReference.AddTagRequest inValue = new WellEmulatorServiceClient.ServiceReference.AddTagRequest();
-            inValue.tag = tag;
-            inValue.message = message;
-            WellEmulatorServiceClient.ServiceReference.AddTagResponse retVal = ((WellEmulatorServiceClient.ServiceReference.IWellEmulator)(this)).AddTag(inValue);
-            message = retVal.message;
-            return retVal.AddTagResult;
+        public System.Threading.Tasks.Task RemoveTagByNameAsync(string tagName) {
+            return base.Channel.RemoveTagByNameAsync(tagName);
         }
         
-        public System.Threading.Tasks.Task<WellEmulatorServiceClient.ServiceReference.AddTagResponse> AddTagAsync(WellEmulatorServiceClient.ServiceReference.AddTagRequest request) {
-            return base.Channel.AddTagAsync(request);
+        public WellEmulatorServiceClient.ServiceReference.Tag GetTag(string name) {
+            return base.Channel.GetTag(name);
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        WellEmulatorServiceClient.ServiceReference.RemoveTagResponse WellEmulatorServiceClient.ServiceReference.IWellEmulator.RemoveTag(WellEmulatorServiceClient.ServiceReference.RemoveTagRequest request) {
-            return base.Channel.RemoveTag(request);
+        public System.Threading.Tasks.Task<WellEmulatorServiceClient.ServiceReference.Tag> GetTagAsync(string name) {
+            return base.Channel.GetTagAsync(name);
         }
         
-        public bool RemoveTag(WellEmulatorServiceClient.ServiceReference.Tag tag, ref string message) {
-            WellEmulatorServiceClient.ServiceReference.RemoveTagRequest inValue = new WellEmulatorServiceClient.ServiceReference.RemoveTagRequest();
-            inValue.tag = tag;
-            inValue.message = message;
-            WellEmulatorServiceClient.ServiceReference.RemoveTagResponse retVal = ((WellEmulatorServiceClient.ServiceReference.IWellEmulator)(this)).RemoveTag(inValue);
-            message = retVal.message;
-            return retVal.RemoveTagResult;
+        public string[] GetTagList(string wellName) {
+            return base.Channel.GetTagList(wellName);
         }
         
-        public System.Threading.Tasks.Task<WellEmulatorServiceClient.ServiceReference.RemoveTagResponse> RemoveTagAsync(WellEmulatorServiceClient.ServiceReference.RemoveTagRequest request) {
-            return base.Channel.RemoveTagAsync(request);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        WellEmulatorServiceClient.ServiceReference.RemoveTagByNameResponse WellEmulatorServiceClient.ServiceReference.IWellEmulator.RemoveTagByName(WellEmulatorServiceClient.ServiceReference.RemoveTagByNameRequest request) {
-            return base.Channel.RemoveTagByName(request);
-        }
-        
-        public bool RemoveTagByName(string tagName, ref string message) {
-            WellEmulatorServiceClient.ServiceReference.RemoveTagByNameRequest inValue = new WellEmulatorServiceClient.ServiceReference.RemoveTagByNameRequest();
-            inValue.tagName = tagName;
-            inValue.message = message;
-            WellEmulatorServiceClient.ServiceReference.RemoveTagByNameResponse retVal = ((WellEmulatorServiceClient.ServiceReference.IWellEmulator)(this)).RemoveTagByName(inValue);
-            message = retVal.message;
-            return retVal.RemoveTagByNameResult;
-        }
-        
-        public System.Threading.Tasks.Task<WellEmulatorServiceClient.ServiceReference.RemoveTagByNameResponse> RemoveTagByNameAsync(WellEmulatorServiceClient.ServiceReference.RemoveTagByNameRequest request) {
-            return base.Channel.RemoveTagByNameAsync(request);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        WellEmulatorServiceClient.ServiceReference.GetTagResponse WellEmulatorServiceClient.ServiceReference.IWellEmulator.GetTag(WellEmulatorServiceClient.ServiceReference.GetTagRequest request) {
-            return base.Channel.GetTag(request);
-        }
-        
-        public WellEmulatorServiceClient.ServiceReference.Tag GetTag(string name, ref string message) {
-            WellEmulatorServiceClient.ServiceReference.GetTagRequest inValue = new WellEmulatorServiceClient.ServiceReference.GetTagRequest();
-            inValue.name = name;
-            inValue.message = message;
-            WellEmulatorServiceClient.ServiceReference.GetTagResponse retVal = ((WellEmulatorServiceClient.ServiceReference.IWellEmulator)(this)).GetTag(inValue);
-            message = retVal.message;
-            return retVal.GetTagResult;
-        }
-        
-        public System.Threading.Tasks.Task<WellEmulatorServiceClient.ServiceReference.GetTagResponse> GetTagAsync(WellEmulatorServiceClient.ServiceReference.GetTagRequest request) {
-            return base.Channel.GetTagAsync(request);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        WellEmulatorServiceClient.ServiceReference.GetTagListResponse WellEmulatorServiceClient.ServiceReference.IWellEmulator.GetTagList(WellEmulatorServiceClient.ServiceReference.GetTagListRequest request) {
-            return base.Channel.GetTagList(request);
-        }
-        
-        public string[] GetTagList(string wellName, ref string message) {
-            WellEmulatorServiceClient.ServiceReference.GetTagListRequest inValue = new WellEmulatorServiceClient.ServiceReference.GetTagListRequest();
-            inValue.wellName = wellName;
-            inValue.message = message;
-            WellEmulatorServiceClient.ServiceReference.GetTagListResponse retVal = ((WellEmulatorServiceClient.ServiceReference.IWellEmulator)(this)).GetTagList(inValue);
-            message = retVal.message;
-            return retVal.GetTagListResult;
-        }
-        
-        public System.Threading.Tasks.Task<WellEmulatorServiceClient.ServiceReference.GetTagListResponse> GetTagListAsync(WellEmulatorServiceClient.ServiceReference.GetTagListRequest request) {
-            return base.Channel.GetTagListAsync(request);
+        public System.Threading.Tasks.Task<string[]> GetTagListAsync(string wellName) {
+            return base.Channel.GetTagListAsync(wellName);
         }
     }
 }

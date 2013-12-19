@@ -17,7 +17,14 @@ namespace WellEmulator.Core
 
         public PdgtmDbAdapter()
         {
-            _connectionString = ConfigurationManager.ConnectionStrings["TeamworkConnection"].ConnectionString;
+            try
+            {
+                _connectionString = ConfigurationManager.ConnectionStrings["TeamworkConnection"].ConnectionString;
+            }
+            catch (Exception ex)
+            {
+                throw new PDGTMConnectionStringException(ex);
+            }
         }
 
         public IEnumerable<Well> GetWells()

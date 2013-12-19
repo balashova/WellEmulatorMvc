@@ -64,6 +64,5 @@ namespace WellEmulator.Core
         {
 
         }
-
     }
 }

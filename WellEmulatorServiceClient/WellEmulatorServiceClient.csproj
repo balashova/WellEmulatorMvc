@@ -66,34 +66,7 @@
     <None Include="Service References\ServiceReference\WellEmulatorService3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference\WellEmulatorServiceClient.ServiceReference.AddTagResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\ServiceReference\WellEmulatorServiceClient.ServiceReference.GetSettingsResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\ServiceReference\WellEmulatorServiceClient.ServiceReference.GetTagListResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\ServiceReference\WellEmulatorServiceClient.ServiceReference.GetTagResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\ServiceReference\WellEmulatorServiceClient.ServiceReference.RemoveTagByNameResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\ServiceReference\WellEmulatorServiceClient.ServiceReference.RemoveTagResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\ServiceReference\WellEmulatorServiceClient.ServiceReference.SetSettingsResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Service References\ServiceReference\WellEmulatorServiceClient.ServiceReference.Settings.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\ServiceReference\WellEmulatorServiceClient.ServiceReference.StartResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\ServiceReference\WellEmulatorServiceClient.ServiceReference.StopResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\ServiceReference\WellEmulatorServiceClient.ServiceReference.Tag.datasource">

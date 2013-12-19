@@ -13,10 +13,40 @@ namespace WellEmulator.Core
 
     public class HistorianServerNotRunningException : Exception
     {
-        public HistorianServerNotRunningException() : base("Wonderware Historian server is not running.") { }
+        private new const string Message = "Wonderware Historian server is not running.";
+
+        public HistorianServerNotRunningException() : base(Message) { }
 
         public HistorianServerNotRunningException(Exception innerException)
-            : base("Wonderware Historian server is not running.",
-                innerException) { }
+            : base(Message + "\n\n" + innerException.StackTrace) { }
+
+        public HistorianServerNotRunningException(string message, Exception innerException)
+            : base(message, innerException) { }
+    }
+
+    public class HistorianConnectionStringException : Exception
+    {
+        private new const string Message = "Failed loading a connection string to Historian server.";
+
+        public HistorianConnectionStringException() : base(Message) { }
+
+        public HistorianConnectionStringException(Exception innerException)
+            : base(Message + "\n\n" + innerException.StackTrace) { }
+
+        public HistorianConnectionStringException(string message, Exception innerException)
+            : base(message, innerException) { }
+    }
+
+    public class PDGTMConnectionStringException : Exception
+    {
+        private new const string Message = "Failed loading a connection string to PDGTM server.";
+
+        public PDGTMConnectionStringException() : base(Message) { }
+
+        public PDGTMConnectionStringException(Exception innerException)
+            : base(Message + "\n\n" + innerException.StackTrace) { }
+
+        public PDGTMConnectionStringException(string message, Exception innerException)
+            : base(message, innerException) { }
     }
 }

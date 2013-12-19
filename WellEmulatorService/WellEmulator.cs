@@ -6,48 +6,57 @@ using System.Threading.Tasks;
 using WellEmulator.Core;
 using WellEmulator.Models;
 using System.Configuration;
+using System.Windows.Forms;
 
 namespace WellEmulatorService
 {
     public class WellEmulator : IWellEmulator
     {
-        private readonly Emulator _emulator = new Emulator();
-        private TimeSpan _replicationPeriod = new TimeSpan(0, 0, 30, 0);
-        private bool _enableReplication = false;
+        private readonly Emulator _emulator;
+        private readonly Replicator _replicator;
+        private readonly PdgtmDbAdapter _pdgtmDbAdapter;
 
-        //private readonly PdgtmDb _pdgtmDb = new PdgtmDb();
+        public WellEmulator()
+        {
+            try
+            {
+                _emulator = new Emulator();
+                _replicator = new Replicator();
+                _pdgtmDbAdapter = new PdgtmDbAdapter();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message + "\n" + ex.StackTrace, ex);
+            }
+        }
 
         public bool IsReplicate()
         {
-            return _enableReplication;
+            return _replicator.IsRunning;
         }
 
-        public bool EnableReplication(ref string message)
+        public void EnableReplication()
         {
             try
             {
-                //TODO Implement! 
+                _replicator.Start();
             }
             catch (Exception ex)
             {
-                message = ex.Message;
-                return false;
+                throw new Exception(ex.Message + "\n" + ex.StackTrace, ex);
             }
-            return true;
         }
 
-        public bool DisableReplication(ref string message)
+        public void DisableReplication()
         {
             try
             {
-                //TODO Implement! 
+                _replicator.Stop();
             }
             catch (Exception ex)
             {
-                message = ex.Message;
-                return false;
+                throw new Exception(ex.Message + "\n" + ex.StackTrace, ex);
             }
-            return true;
         }
 
         public bool IsRunning()
@@ -55,7 +64,7 @@ namespace WellEmulatorService
             return _emulator.IsRunning;
         }
 
-        public bool Start(ref string message)
+        public void Start()
         {
             try
             {
@@ -63,13 +72,11 @@ namespace WellEmulatorService
             }
             catch (Exception ex)
             {
-                message = ex.Message;
-                return false;
+                throw new Exception(ex.Message + "\n" + ex.StackTrace, ex);
             }
-            return true;
         }
 
-        public bool Stop(ref string message)
+        public void Stop()
         {
             try
             {
@@ -77,51 +84,45 @@ namespace WellEmulatorService
             }
             catch (Exception ex)
             {
-                message = ex.Message;
-                return false;
+                throw new Exception(ex.Message + "\n" + ex.StackTrace, ex);
             }
-            return true;
         }
 
-        public bool SetSettings(Settings settings, ref string message)
+        public void SetSettings(Settings settings)
         {
             try
             {
                 _emulator.AutoSaveReportPeriod = settings.ReportAutoSavePeriod;
                 _emulator.ValuesDelay = settings.ValuesDelay;
                 _emulator.GenerationPeriod = settings.SamplingRate;
-                _replicationPeriod = settings.ReplicationPeriod;
+                _replicator.ReplicationPeriod = settings.ReplicationPeriod;
             }
             catch (Exception ex)
             {
-                message = ex.Message;
-                return false;
+                throw new Exception(ex.Message + "\n" + ex.StackTrace, ex);
             }
-            return true;
         }
 
-        public Settings GetSettings(ref string message)
+        public Settings GetSettings()
         {
             try
             {
-                var settings = new Settings
+                return new Settings
                 {
                     ReportAutoSavePeriod = _emulator.AutoSaveReportPeriod,
                     ValuesDelay = _emulator.ValuesDelay,
                     SamplingRate = _emulator.GenerationPeriod,
                     IsRunning = _emulator.IsRunning,
-                    ReplicationPeriod = _replicationPeriod
+                    ReplicationPeriod = _replicator.ReplicationPeriod
                 };
-                return settings;
             }
             catch (Exception ex)
             {
-                message = ex.Message;
+                throw new Exception(ex.Message + "\n" + ex.StackTrace, ex);
             }
-            return null;
         }
 
-        public bool AddTag(Tag tag, ref string message)
+        public void AddTag(Tag tag)
         {
             try
             {
@@ -129,13 +130,11 @@ namespace WellEmulatorService
             }
             catch (Exception ex)
             {
-                message = ex.Message;
-                return false;
+                throw new Exception(ex.Message + "\n" + ex.StackTrace, ex);
             }
-            return true;
         }
 
-        public bool RemoveTag(Tag tag, ref string message)
+        public void RemoveTag(Tag tag)
         {
             try
             {
@@ -143,13 +142,11 @@ namespace WellEmulatorService
             }
             catch (Exception ex)
             {
-                message = ex.Message;
-                return false;
+                throw new Exception(ex.Message + "\n" + ex.StackTrace, ex);
             }
-            return true;
         }
 
-        public bool RemoveTagByName(string tagName, ref string message)
+        public void RemoveTagByName(string tagName)
         {
             try
             {
@@ -157,56 +154,37 @@ namespace WellEmulatorService
             }
             catch (Exception ex)
             {
-                message = ex.Message;
-                return false;
+                throw new Exception(ex.Message + "\n" + ex.StackTrace, ex);
             }
-            return true;
         }
 
-        public Tag GetTag(string name, ref string message)
+        public Tag GetTag(string name)
         {
             try
             {
-                _emulator.GetTag(name);
+                return _emulator.GetTag(name);
             }
             catch (Exception ex)
             {
-                message = ex.Message;
+                throw new Exception(ex.Message + "\n" + ex.StackTrace, ex);
             }
-            return null;
         }
 
-        public IEnumerable<string> GetTagList(string wellName, ref string message)
+        public IEnumerable<string> GetTagList(string wellName)
+        {
+            return _emulator.Tags;
+        }
+
+        public IEnumerable<Well> GetWellList(ref string message)
         {
             try
             {
-                return _emulator.Tags;
+                return _pdgtmDbAdapter.GetWells();
             }
             catch (Exception ex)
             {
-                message = ex.Message;
+                throw new Exception(ex.Message + "\n" + ex.StackTrace, ex);
             }
-            return null;
         }
-
-        //public IEnumerable<string> GetWellList(ref string message)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-        //public void GetWell(string name, ref string message)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-        //public bool AddWell(string well, ref string message)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-        //public bool RemoveWell(string name, ref string message)
-        //{
-        //    throw new NotImplementedException();
-        //}
     }
 }

@@ -70,7 +70,7 @@ namespace WellEmulator.Core
             if (!directory.Exists) directory.Create();
             _reporter = new CsvReporter(directory);
 
-            //TODO Load from Historian
+            //TODO Load settings from DB
         }
 
         public void AddTag(Tag tag)

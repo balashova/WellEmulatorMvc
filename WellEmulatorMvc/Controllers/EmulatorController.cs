@@ -16,8 +16,7 @@ namespace WellEmulatorMvc.Controllers
 
         public ActionResult Control()
         {
-            string outMessage = null;
-            var settings = _client.GetSettings(ref outMessage);
+            var settings = _client.GetSettings();
             return View(settings);
         }
 

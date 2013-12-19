@@ -16,10 +16,17 @@ namespace WellEmulator.Core
 
         public HistorianAdapter()
         {
-            _connectionString = ConfigurationManager.ConnectionStrings["HistorianConnection"].ConnectionString;
+            try
+            {
+                _connectionString = ConfigurationManager.ConnectionStrings["HistorianConnection"].ConnectionString;
+            }
+            catch (Exception ex)
+            {
+                throw new HistorianConnectionStringException(ex);
+            }
         }
 
-        public List<string> GetTagList()
+        public IEnumerable<string> GetTagList()
         {
             var tags = new List<string>();
             using (var connection = new SqlConnection(_connectionString))
@@ -43,6 +50,22 @@ namespace WellEmulator.Core
                 connection.Close();
             }
             return tags;
+        }
+
+        public Dictionary<string, List<string>> GetTagsGroupingByWell()
+        {
+            //return GetTagList().GroupBy(t => t.Split('.').First()).
+            //                    ToDictionary(well => well.Key, well => well.Select(w => w.Split('.').Last()));
+
+            var tags = GetTagList();
+            var dict = new Dictionary<string, List<string>>();
+            foreach (var tag in tags)
+            {
+                var names = tag.Split('.');
+                if (!dict.ContainsKey(names[0])) dict.Add(names[0], new List<string>());
+                dict[names[0]].Add(names[1]);
+            }
+            return dict;
         }
 
         public void AddTag(Tag tag)
