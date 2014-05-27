@@ -69,10 +69,10 @@
     <input id="sampling-rate" type="number" min="1" class="form-control" max="100" value="@Model.SamplingRate.ToPerTime(ref units)" />
     <label for="sampling-rate-units">раз в</label>
     <select id="sampling-rate-units" class="form-control">
-        <option @(units.Equals("Сек") ? "selected='selected'" : "")>Сек</option>
-        <option @(units.Equals("Мин") ? "selected='selected'" : "")>Мин</option>
-        <option @(units.Equals("Час") ? "selected='selected'" : "")>Час</option>
-        <option @(units.Equals("Сут") ? "selected='selected'" : "")>Сут</option>
+        <option @(units.Equals("Сек") ? new MvcHtmlString("selected=\"selected\"") : null)>Сек</option>
+        <option @(units.Equals("Мин") ? new MvcHtmlString("selected=\"selected\"") : null)>Мин</option>
+        <option @(units.Equals("Час") ? new MvcHtmlString("selected=\"selected\"") : null)>Час</option>
+        <option @(units.Equals("Сут") ? new MvcHtmlString("selected=\"selected\"") : null)>Сут</option>
     </select>
     <input type="range" min="1" max="100" value="@Model.SamplingRate.ToPerTime(ref units)" />
 </div>
@@ -82,10 +82,10 @@
     <input id="report-save" type="number" min="1" max="59" class="form-control" value="@Model.ReportAutoSavePeriod.ToPeriod(ref units)" />
     <label></label>
     <select id="report-save-units" class="form-control">
-        <option @(units.Equals("Сек") ? "selected='selected'" : "")>Сек</option>
-        <option @(units.Equals("Мин") ? "selected='selected'" : "")>Мин</option>
-        <option @(units.Equals("Час") ? "selected='selected'" : "")>Час</option>
-        <option @(units.Equals("Сут") ? "selected='selected'" : "")>Сут</option>
+        <option @(units.Equals("Сек") ? new MvcHtmlString("selected=\"selected\"") : null)>Сек</option>
+        <option @(units.Equals("Мин") ? new MvcHtmlString("selected=\"selected\"") : null)>Мин</option>
+        <option @(units.Equals("Час") ? new MvcHtmlString("selected=\"selected\"") : null)>Час</option>
+        <option @(units.Equals("Сут") ? new MvcHtmlString("selected=\"selected\"") : null)>Сут</option>
     </select>
     <input type="range" min="1" max="59" value="@Model.ReportAutoSavePeriod.ToPeriod(ref units)" />
 </div>
@@ -95,10 +95,10 @@
     <input id="delay" type="number" class="form-control" min="1" max="59" value="@Model.ValuesDelay.ToPeriod(ref units)" />
     <label></label>
     <select id="delay-units" class="form-control">
-        <option @(units.Equals("Сек") ? "selected='selected'" : "")>Сек</option>
-        <option @(units.Equals("Мин") ? "selected='selected'" : "")>Мин</option>
-        <option @(units.Equals("Час") ? "selected='selected'" : "")>Час</option>
-        <option @(units.Equals("Сут") ? "selected='selected'" : "")>Сут</option>
+        <option @(units.Equals("Сек") ? new MvcHtmlString("selected=\"selected\"") : null)>Сек</option>
+        <option @(units.Equals("Мин") ? new MvcHtmlString("selected=\"selected\"") : null)>Мин</option>
+        <option @(units.Equals("Час") ? new MvcHtmlString("selected=\"selected\"") : null)>Час</option>
+        <option @(units.Equals("Сут") ? new MvcHtmlString("selected=\"selected\"") : null)>Сут</option>
     </select>
     <input type="range" min="1" max="59" value="@Model.ValuesDelay.ToPeriod(ref units)" />
 </div>
@@ -108,27 +108,27 @@
     <input id="replication" type="number" class="form-control" min="1" max="59" value="@Model.ReplicationPeriod.ToPeriod(ref units)" />
     <label></label>
     <select id="replication-units" class="form-control">
-        <option @(units.Equals("Сек") ? "selected='selected'" : "")>Сек</option>
-        <option @(units.Equals("Мин") ? "selected='selected'" : "")>Мин</option>
-        <option @(units.Equals("Час") ? "selected='selected'" : "")>Час</option>
-        <option @(units.Equals("Сут") ? "selected='selected'" : "")>Сут</option>
+        <option @(units.Equals("Сек") ? new MvcHtmlString("selected=\"selected\"") : null)>Сек</option>
+        <option @(units.Equals("Мин") ? new MvcHtmlString("selected=\"selected\"") : null)>Мин</option>
+        <option @(units.Equals("Час") ? new MvcHtmlString("selected=\"selected\"") : null)>Час</option>
+        <option @(units.Equals("Сут") ? new MvcHtmlString("selected=\"selected\"") : null)>Сут</option>
     </select>
     <input type="range" min="1" max="59" value="@Model.ReplicationPeriod.ToPeriod(ref units)" />
 </div>
 
 <div id="replication-button-container">
-    <button type="button" class="btn btn-success" id="start-replication" @(Model.IsReplicate ? "disabled='disabled'" : "")>
+    <button type="button" class="btn btn-success" id="start-replication" @(Model.IsReplicate ? new MvcHtmlString("disabled=\"disabled\"") : null)>
         <span class="glyphicon glyphicon-play"></span>
         Запустить репликацию
     </button>
-    <button type="button" class="btn btn-danger" id="stop-replication" @(Model.IsReplicate ? "" : "disabled='disabled'")>
+    <button type="button" class="btn btn-danger" id="stop-replication" @(Model.IsReplicate ? null : new MvcHtmlString("disabled=\"disabled\""))>
         <span class="glyphicon glyphicon-stop"></span>
         Остановить репликацию
     </button>
 </div>
 
 <div id="button-container">
-    <button type="button" class="btn btn-success" id="start-emulator" @(Model.IsRunning ? "disabled='disabled'" : "")>
+    <button type="button" class="btn btn-success" id="start-emulator" @(Model.IsRunning ? new MvcHtmlString("disabled=\"disabled\"") : null)>
         <span class="glyphicon glyphicon-play"></span>
         Запустить
     </button>
@@ -136,7 +136,7 @@
         <span class="glyphicon glyphicon-ok"></span>
         Применить
     </button>
-    <button type="button" class="btn btn-danger" id="stop-emulator" @(Model.IsRunning ? "" : "disabled='disabled'")>
+    <button type="button" class="btn btn-danger" id="stop-emulator" @(Model.IsRunning ? null : new MvcHtmlString("disabled=\"disabled\""))>
         <span class="glyphicon glyphicon-stop"></span>
         Остановить
     </button>
@@ -157,7 +157,9 @@
             $("button#apply-settings").removeAttr("disabled");
         });
 
+
         $("button#start-replication").click(function () {
+            $("#wait-dialog").modal("show");
             $.ajax({
                 type: "POST",
                 url: "/api/service/repon",
@@ -171,11 +173,15 @@
                 },
                 error: function (result) {
                     alert(result);
+                },
+                complete: function() {
+                    $("#wait-dialog").modal("hide");
                 }
             });
         });
 
         $("button#stop-replication").click(function () {
+            $("#wait-dialog").modal("show");
             $.ajax({
                 type: "POST",
                 url: "/api/service/repoff",
@@ -189,11 +195,15 @@
                 },
                 error: function (result) {
                     alert(result);
+                },
+                complete: function () {
+                    $("#wait-dialog").modal("hide");
                 }
             });
         });
 
         $("button#start-emulator").click(function () {
+            $("#wait-dialog").modal("show");
             $.ajax({
                 type: "POST",
                 url: "/api/service/start",
@@ -207,11 +217,15 @@
                 },
                 error: function (result) {
                     alert(result);
+                },
+                complete: function () {
+                    $("#wait-dialog").modal("hide");
                 }
             });
         });
 
         $("button#stop-emulator").click(function () {
+            $("#wait-dialog").modal("show");
             $.ajax({
                 type: "POST",
                 url: "/api/service/stop",
@@ -225,6 +239,9 @@
                 },
                 error: function (result) {
                     alert(result);
+                },
+                complete: function () {
+                    $("#wait-dialog").modal("hide");
                 }
             });
         });
@@ -241,7 +258,7 @@
                 ValuesDelay: valuesDelay,
                 ReplicationPeriod: replicationPeriod
             };
-
+            $("#wait-dialog").modal("show");
             $.ajax({
                 type: "POST",
                 url: "/api/service/apply",
@@ -257,6 +274,9 @@
                 },
                 error: function (result) {
                     alert(result);
+                },
+                complete: function () {
+                    $("#wait-dialog").modal("hide");
                 }
             });
         });

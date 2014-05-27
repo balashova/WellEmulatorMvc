@@ -24,7 +24,13 @@ namespace WellEmulator.Models
 
         public void SaveSettings(Settings settings)
         {
-            if (_db.Settings.Any()) _db.Settings.Remove(_db.Settings.ToList().Last());
+            if (_db.Settings.Any())
+            {
+                foreach (var setting in _db.Settings)
+                {
+                    _db.Settings.Remove(setting);
+                }
+            }
             _db.Settings.Add(settings);
             _db.SaveChanges();
         }

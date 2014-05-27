@@ -1,4 +1,6 @@
-﻿@{
+﻿@using Microsoft.Ajax.Utilities
+@model  WellEmulatorMvc.Models.NewTagViewModel
+@{
     ViewBag.Title = "Новый тег";
     ViewBag.SubTitle = "определение нового эмулируемого параметра";
 }
@@ -38,52 +40,58 @@
             padding: 10px 200px;
             font-size: 1.2em;
         }
+
+        .need-validation {
+            
+        }
     </style>
 }
 
 <div id="new-tag">
     <div>
-        <label>Стандарт:</label>
-        <select class="form-control">
+        <label for="group">Стандарт:</label>
+        <select class="form-control need-validation" id="group">
             <option>WITSML</option>
             <option>PRODML</option>
             <option>RESQML</option>
         </select>
     </div>
     <div>
-        <label>Объект:</label>
-        <select class="form-control">
-            
+        <label for="group-object">Объект:</label>
+        <select class="form-control need-validation" id="group-object">
         </select>
     </div>
     <div>
-        <label>Параметр:</label>
-        <select class="form-control">
-            
+        <label for="tag-name">Тег:</label>
+        <select class="form-control need-validation" id="tag-name">
         </select>
     </div>
     <div>
-        <label>Скважина:</label>
-        <select class="form-control">
+        <label for="well-name">Скважина:</label>
+        <select class="form-control need-validation" id="well-name">
+            @foreach (var well in Model.Wells)
+            {
+                <option>@well.Name</option>
+            }
         </select>
     </div>
     <div>
-        <label>Начальное значение:</label>
-        <input class="form-control" type="text" />
+        <label for="initial-value">Начальное значение:</label>
+        <input class="form-control need-validation" type="text" id="initial-value" value="50" />
     </div>
     <div>
-        <label>Максимальное значение:</label>
-        <input class="form-control" type="text" />
+        <label for="max-value">Максимальное значение:</label>
+        <input class="form-control need-validation" type="text" id="max-value" value="100" />
     </div>
     <div>
-        <label>Минимальное значение:</label>
-        <input class="form-control" type="text" />
+        <label for="min-value">Минимальное значение:</label>
+        <input class="form-control need-validation" type="text" id="min-value" value="0"/>
     </div>
     <div>
-        <label>Величина изменения на каждом шаге:</label>
-        <input class="form-control" type="text" />
-        <input class="form-control" type="checkbox" />
-        <label>Авто</label>
+        <label for="delta-value">Величина изменения на каждом шаге:</label>
+        <input class="form-control need-validation" type="text" id="delta-value" value="10" readonly="readonly"/>
+        <input class="form-control" type="checkbox" checked="checked" id="auto-delta"/>
+        <label for="auto-delta">Авто</label>
     </div>
 </div>
 
@@ -92,7 +100,194 @@
 </div>
 
 @section Scripts {
-    <script>
+    <script>   
+        $("select#group").change(function () {
+            updateObjects(this.value);
+        });
+
+        $("select#group-object").change(function () {
+            updateTags(this.value);
+        });
+
+
+
         
+        var updateObjects = function (group) {
+            $("#wait-dialog").modal("show");
+            $.ajax({
+                type: "POST",
+                data: group,
+                url: "/api/service/getobjects", // TODO implement in controller
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                success: function (result) {
+                    if (result) {
+                        $("select#group-object").html(function() {
+                            var html = "";
+                            for (var i = 0; i < result.length; i++) {
+                                html += '<option>' + result[i] + '</option>';
+                            }
+                            return html;
+                        });
+                    } else {
+                        alert("error");
+                    }
+                },
+                error: function (result) {
+                    alert(result.responseText);
+                },
+                complete: function () {
+                    $("#wait-dialog").modal("hide");
+                }
+            });
+        };
+
+        var updateTags = function (object) {
+            $("#wait-dialog").modal("show");
+            $.ajax({
+                type: "POST",
+                data: object,
+                url: "/api/service/gettags", // TODO implement in controller
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                success: function (result) {
+                    if (result) {
+                        $("select#tag-name").html(function() {
+                            var html = "";
+                            for (var i = 0; i < result.length; i++) {
+                                html += '<option>' + result[i] + '</option>';
+                            }
+                            return html;
+                        });
+                    } else {
+                        alert("error");
+                    }
+                },
+                error: function (result) {
+                    alert(result.responseText);
+                },
+                complete: function () {
+                    $("#wait-dialog").modal("hide");
+                }
+            });
+        };
+
+
+
+
+        $("input#max-value, input#min-value").change(function () {
+            if (isAutoDelta) calculateDelta();
+        });
+
+        $("input#auto-delta").click(function() {
+            if (this.checked) {
+                isAutoDelta = true;
+                calculateDelta();
+                $("input#delta-value").attr("readonly", "readonly");
+            } else {
+                isAutoDelta = false;
+                $("input#delta-value").removeAttr("readonly");
+            }
+        });
+
+        var isAutoDelta = true;
+        var calculateDelta = function() {
+            var max = $("input#max-value").val();
+            var min = $("input#min-value").val();
+            var delta = (max - min) / 10;
+            $("input#delta-value").val(delta);
+        };
+        
+
+
+
+
+        $(".need-validation").focusin(function () {
+            $(this).removeClass("field-error");
+        });
+
+        var validateEditorFields = function() {
+            var allOkay = true;
+            $(".need-validation").each(function() {
+                var element = $(this);
+
+                var addClass = function() {
+                    element.addClass("field-error");
+                };
+
+                var removeClass = function() {
+                    element.removeClass("field-error");
+                };
+
+                var checkFields = function(el) {
+                    if (!el.val()) {
+                        if (el.hasClass("field-error")) {
+                            removeClass();
+                            setTimeout(addClass, 200);
+                            setTimeout(removeClass, 300);
+                            setTimeout(addClass, 400);
+                        } else {
+                            addClass();
+                            setTimeout(removeClass, 100);
+                            setTimeout(addClass, 200);
+                        }
+                        allOkay = false;
+                    }
+                };
+
+                var findFields = function(el) {
+                    var elementName = el.tagName.toLowerCase();
+                    if (elementName == "select" || elementName == "input") {
+                        checkFields($(el));
+                    } /*else { //рекурсивный поиск дочерних элементов
+                        element.find("input, select").each(function () {
+                            findFields(this);
+                        });
+                    }*/
+                };
+
+                findFields(this);
+            });
+            return allOkay;
+        };
+
+        $("button#add-new-tag").click(function () {
+            if (!validateEditorFields()) return;
+            $("#wait-dialog").modal("show");
+            $.ajax({
+                type: "POST",
+                data: JSON.stringify(createTag()),
+                url: "/api/service/newtag", // TODO implement in controller
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                success: function (result) {
+                    if (result == "ok") {
+                        
+                    } else {
+                        alert(result);
+                    }
+                },
+                error: function (result) {
+                    alert(result.responseText);
+                },
+                complete: function () {
+                    $("#wait-dialog").modal("hide");
+                }
+            });
+        });
+
+        var createTag = function() {
+            var tag = {
+                Group: $("select#group").val(),
+                WellName: $("select#well-name").val(),
+                'Object': $("select#group-object").val(),
+                Name: $("select#tag-name").val(),
+                Value: $("input#initial-value").val(),
+                MaxValue: $("input#max-value").val(),
+                MinValue: $("input#min-value").val(),
+                Delta: $("input#delta-value").val()
+            };
+            return tag;
+        };
     </script>
 }

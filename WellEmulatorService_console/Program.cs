@@ -15,6 +15,7 @@ namespace WellEmulatorService_console
             using (var serviceHost = new ServiceHost(typeof(WellEmulator)))
             {
                 // Open the host and start listening for incoming messages.
+                var instance = WellEmulatorSingle.Instance;
                 serviceHost.Open();
                 Console.WriteLine("The service is ready.");
                 Console.WriteLine("Press the Enter key to terminate service.");

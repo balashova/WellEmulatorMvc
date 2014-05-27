@@ -231,7 +231,14 @@ namespace WellEmulatorService
         {
             try
             {
-                return this._pdgtmDbAdapter.GetWells();
+#if DEBUG
+                return new List<Well>
+                    {
+                        new Well { Name = "asda", Id = 1 } ,
+                        new Well { Name = "gttnr", Id = 2 }
+                    };
+#endif
+                return _pdgtmDbAdapter.GetWells();
             }
             catch (Exception ex)
             {

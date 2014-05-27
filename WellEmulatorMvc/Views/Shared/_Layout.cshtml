@@ -34,7 +34,7 @@
                                         <a href="@Url.Action("Tags", "Emulator")">Список тегов</a>
                                     </li>
                                 </ul>
-                                <ul class="nav navbar-nav navbar-right">
+                                @*<ul class="nav navbar-nav navbar-right">
                                     <li>
                                         <button type="button" class="btn btn-default">
                                             <span class="glyphicon glyphicon-play"></span>
@@ -45,7 +45,7 @@
                                             Остановить
                                         </button>
                                     </li>
-                                </ul>
+                                </ul>*@
                             </div>
                         </nav>
                     </div>
@@ -68,18 +68,37 @@
             </footer>
         </div>
        
+        <div class="modal fade" id="wait-dialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Запрос выполняется</h4>
+                    </div>
+                    <div class="modal-body">
+                        <span>Пожалуйста подождите...</span>
+                    </div>
+                    <div class="modal-footer">
+                        
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+
         @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/bootstrap")
         @RenderSection("Scripts", required: false)
         
         
-        @*<script>
-            $(document).ready(function () {
-                $(".navbar-nav > li:has(a)").click(function () {
-                    $(".navbar-nav > li.active").removeClass("active");
-                    $(this).addClass("active");
-                });
-            });
-        </script>*@
+        <script>
+            //$(document).ready(function () {
+            //    $(".navbar-nav > li:has(a)").click(function () {
+            //        $(".navbar-nav > li.active").removeClass("active");
+            //        $(this).addClass("active");
+            //    });
+            //});
+        </script>
     </body>
 </html>
