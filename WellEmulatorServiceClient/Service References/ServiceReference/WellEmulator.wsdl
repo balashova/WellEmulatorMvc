@@ -169,6 +169,51 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetWitsmlObjects">
+      <soap12:operation soapAction="http://WellEmulator.com/IWellEmulator/GetWitsmlObjects" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWitsmlElements">
+      <soap12:operation soapAction="http://WellEmulator.com/IWellEmulator/GetWitsmlElements" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddMapItem">
+      <soap12:operation soapAction="http://WellEmulator.com/IWellEmulator/AddMapItem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveMapItem">
+      <soap12:operation soapAction="http://WellEmulator.com/IWellEmulator/RemoveMapItem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMappings">
+      <soap12:operation soapAction="http://WellEmulator.com/IWellEmulator/GetMappings" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="BasicHttpBinding_IWellEmulator" type="i0:IWellEmulator">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -300,6 +345,51 @@
     </wsdl:operation>
     <wsdl:operation name="GetWellList">
       <soap:operation soapAction="http://WellEmulator.com/IWellEmulator/GetWellList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWitsmlObjects">
+      <soap:operation soapAction="http://WellEmulator.com/IWellEmulator/GetWitsmlObjects" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWitsmlElements">
+      <soap:operation soapAction="http://WellEmulator.com/IWellEmulator/GetWitsmlElements" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddMapItem">
+      <soap:operation soapAction="http://WellEmulator.com/IWellEmulator/AddMapItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveMapItem">
+      <soap:operation soapAction="http://WellEmulator.com/IWellEmulator/RemoveMapItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMappings">
+      <soap:operation soapAction="http://WellEmulator.com/IWellEmulator/GetMappings" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

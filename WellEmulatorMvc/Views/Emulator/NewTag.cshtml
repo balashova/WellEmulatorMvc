@@ -59,11 +59,19 @@
     <div>
         <label for="group-object">Объект:</label>
         <select class="form-control need-validation" id="group-object">
+            @foreach (var obj in Model.WitsmlObjects)
+            {
+                <option>@obj</option>
+            }
         </select>
     </div>
     <div>
         <label for="tag-name">Тег:</label>
         <select class="form-control need-validation" id="tag-name">
+            @foreach (var tag in Model.WitsmlElements)
+            {
+                <option>@tag</option>
+            }
         </select>
     </div>
     <div>
@@ -100,27 +108,24 @@
 </div>
 
 @section Scripts {
-    <script>   
+    <script>
         $("select#group").change(function () {
             updateObjects(this.value);
         });
 
         $("select#group-object").change(function () {
-            updateTags(this.value);
+            updateTags($("select#group").val(), this.value);
         });
 
 
-
-        
         var updateObjects = function (group) {
             $("#wait-dialog").modal("show");
             $.ajax({
-                type: "POST",
-                data: group,
-                url: "/api/service/getobjects", // TODO implement in controller
+                data: { groupName: group },
+                url: "/api/service/getobjs",
                 dataType: 'json',
                 contentType: 'application/json; charset=utf-8',
-                success: function (result) {
+                success: function(result) {
                     if (result) {
                         $("select#group-object").html(function() {
                             var html = "";
@@ -128,29 +133,26 @@
                                 html += '<option>' + result[i] + '</option>';
                             }
                             return html;
-                        });
+                        }).change();
                     } else {
                         alert("error");
                     }
                 },
-                error: function (result) {
+                error: function(result) {
                     alert(result.responseText);
                 },
-                complete: function () {
+                complete: function() {
                     $("#wait-dialog").modal("hide");
                 }
             });
         };
 
-        var updateTags = function (object) {
+        var updateTags = function (group, object) {
             $("#wait-dialog").modal("show");
             $.ajax({
-                type: "POST",
-                data: object,
-                url: "/api/service/gettags", // TODO implement in controller
-                dataType: 'json',
-                contentType: 'application/json; charset=utf-8',
-                success: function (result) {
+                data: { groupName: group, objectName: object },
+                url: "/api/service/getels",
+                success: function(result) {
                     if (result) {
                         $("select#tag-name").html(function() {
                             var html = "";
@@ -163,19 +165,17 @@
                         alert("error");
                     }
                 },
-                error: function (result) {
+                error: function(result) {
                     alert(result.responseText);
                 },
-                complete: function () {
+                complete: function() {
                     $("#wait-dialog").modal("hide");
                 }
             });
         };
 
 
-
-
-        $("input#max-value, input#min-value").change(function () {
+        $("input#max-value, input#min-value").change(function() {
             if (isAutoDelta) calculateDelta();
         });
 
@@ -197,12 +197,9 @@
             var delta = (max - min) / 10;
             $("input#delta-value").val(delta);
         };
-        
 
 
-
-
-        $(".need-validation").focusin(function () {
+        $(".need-validation").focusin(function() {
             $(this).removeClass("field-error");
         });
 
@@ -251,7 +248,7 @@
             return allOkay;
         };
 
-        $("button#add-new-tag").click(function () {
+        $("button#add-new-tag").click(function() {
             if (!validateEditorFields()) return;
             $("#wait-dialog").modal("show");
             $.ajax({
@@ -260,17 +257,17 @@
                 url: "/api/service/newtag", // TODO implement in controller
                 dataType: 'json',
                 contentType: 'application/json; charset=utf-8',
-                success: function (result) {
+                success: function(result) {
                     if (result == "ok") {
-                        
+
                     } else {
                         alert(result);
                     }
                 },
-                error: function (result) {
+                error: function(result) {
                     alert(result.responseText);
                 },
-                complete: function () {
+                complete: function() {
                     $("#wait-dialog").modal("hide");
                 }
             });

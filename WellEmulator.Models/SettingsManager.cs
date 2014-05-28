@@ -77,6 +77,11 @@ namespace WellEmulator.Models
             return _db.MapItems.ToList();
         }
 
+        public Tag GetTag(int tagId)
+        {
+            return _db.Tags.Single(t => t.Id == tagId);
+        }
+
         public List<Tag> GetTags()
         {
             return _db.Tags.ToList();

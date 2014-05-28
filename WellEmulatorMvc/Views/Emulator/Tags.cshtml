@@ -1,4 +1,6 @@
-﻿@{
+﻿@using WellEmulator.Models
+@model WellEmulatorServiceClient.ServiceReference.Tag[]
+@{
     ViewBag.Title = "Теги";
     ViewBag.SubTitle = "список тегов определенных в системе";
 }
@@ -34,6 +36,15 @@
         .properties label {
             width: 35%;
         }
+
+        div#button-container {
+            padding: 10px 0;
+        }
+
+        button#remove-tag {
+            width: 100%;
+            
+        }
     </style>
 }
 
@@ -42,11 +53,16 @@
         <span>Теги</span>
     </div>
 
-    <select size="23" class="form-control">
-        <option>Тег 1</option>
-        <option>Тег 2</option>
-        <option>Тег 3</option>
+    <select size="23" class="form-control" id="tag-list">
+        @foreach (var tag in Model)
+        {
+            <option data-tag-id="@tag.Id">@tag.Name</option>
+        }
     </select>
+    
+    <div id="button-container">
+        <button id="remove-tag" class="btn btn-lg btn-info">Удалить выбранный тег</button>
+    </div>
 </div>
 
 <div class="col-lg-8">
@@ -55,41 +71,78 @@
     </div>
 
     <div class="properties">
-        <label>Стандарт:</label>
-        <input class="form-control" type="text" readonly="readonly" />
+        <label for="group">Стандарт:</label>
+        <input class="form-control" id="group" type="text" readonly="readonly"/>
     </div>
     <div class="properties">
-        <label>Объект:</label>
-        <input class="form-control" type="text" readonly="readonly" />
+        <label for="group-object">Объект:</label>
+        <input class="form-control" id="group-object" type="text" readonly="readonly"/>
     </div>
     <div class="properties">
-        <label>Параметр:</label>
-        <input class="form-control" type="text" readonly="readonly" />
+        <label for="tag-name">Параметр:</label>
+        <input class="form-control" id="tag-name" type="text" readonly="readonly"/>
     </div>
     <div class="properties">
-        <label>Скважина:</label>
-        <input class="form-control" type="text" readonly="readonly" />
+        <label for="well-name">Скважина:</label>
+        <input class="form-control" id="well-name" type="text" readonly="readonly"/>
     </div>
     <div class="properties">
-        <label>Начальное значение:</label>
-        <input class="form-control" type="text" readonly="readonly" />
+        <label for="initial-value">Начальное значение:</label>
+        <input class="form-control" id="initial-value" type="text" readonly="readonly"/>
     </div>
     <div class="properties">
-        <label>Максимальное значение:</label>
-        <input class="form-control" type="text" readonly="readonly" />
+        <label for="max-value">Максимальное значение:</label>
+        <input class="form-control" type="text" id="max-value" readonly="readonly"/>
     </div>
     <div class="properties">
-        <label>Минимальное значение:</label>
-        <input class="form-control" type="text" readonly="readonly" />
+        <label for="min-value">Минимальное значение:</label>
+        <input class="form-control" id="min-value" type="text" readonly="readonly"/>
     </div>
     <div class="properties">
-        <label>Величина изменения на каждом шаге:</label>
-        <input class="form-control" type="text" readonly="readonly" />
+        <label for="delta-value">Величина изменения на каждом шаге:</label>
+        <input class="form-control" id="delta-value" type="text" readonly="readonly"/>
     </div>
 </div>
 
 @section Scripts {
     <script>
-        
+        $("select#tag-list").change(function() {
+            
+        });
+
+        var getTag = function () {
+            $("#wait-dialog").modal("show");
+            var tagId = $("select#tag-list:selected").data("tag-id");
+            $.ajax({
+                url: "/api/service/gettag", // TODO implement in controller
+                data: tagId,
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                success: function (result) {
+                    if (result) {
+                        setTag(result);
+                    } else {
+                        alert("error");
+                    }
+                },
+                error: function (result) {
+                    alert(result.responseText);
+                },
+                complete: function () {
+                    $("#wait-dialog").modal("hide");
+                }
+            });
+        };
+
+        var setTag = function(tag) {
+            $("input#group").val(tag.Group);
+            $("input#well-name").val(tag.WellName);
+            $("input#group-object").val(tag.Object);
+            $("input#tag-name").val(tag.Name);
+            $("input#initial-value").val(tag.Value);
+            $("input#max-value").val(tag.MaxValue);
+            $("input#min-value").val(tag.MinValue);
+            $("input#delta-value").val(tag.Delta);
+        };
     </script>
 }

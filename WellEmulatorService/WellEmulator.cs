@@ -69,9 +69,9 @@ namespace WellEmulatorService
             _wellEmulator.RemoveTagByName(tagName);
         }
 
-        public Tag GetTag(string name)
+        public Tag GetTag(int tagId)
         {
-            return _wellEmulator.GetTag(name);
+            return _wellEmulator.GetTag(tagId);
         }
 
         public IEnumerable<string> GetTagList(string wellName)
@@ -87,6 +87,31 @@ namespace WellEmulatorService
         public IEnumerable<Well> GetWellList()
         {
             return _wellEmulator.GetWellList();
+        }
+
+        public IEnumerable<string> GetWitsmlObjects(string standard)
+        {
+            return _wellEmulator.GetWitsmlObjects(standard);
+        }
+
+        public IEnumerable<string> GetWitsmlElements(string standard, string @object)
+        {
+            return _wellEmulator.GetWitsmlElements(standard, @object);
+        }
+
+        public void AddMapItem(MapItem mapItem)
+        {
+            _wellEmulator.AddMapItem(mapItem);
+        }
+
+        public void RemoveMapItem(MapItem mapItem)
+        {
+            _wellEmulator.RemoveMapItem(mapItem);
+        }
+
+        public IEnumerable<MapItem> GetMappings()
+        {
+            return _wellEmulator.GetMappings();
         }
     }
 }

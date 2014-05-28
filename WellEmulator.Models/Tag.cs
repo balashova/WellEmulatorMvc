@@ -9,6 +9,7 @@ namespace WellEmulator.Models
     [DataContract]
     public class Tag
     {
+        [DataMember]
         public int Id { get; set; }
 
         [DataMember]

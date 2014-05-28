@@ -45,7 +45,7 @@ namespace WellEmulatorService
         void RemoveTagByName(string tagName);
 
         [OperationContract]
-        Tag GetTag(string name);
+        Tag GetTag(int tagId);
 
         [OperationContract]
         IEnumerable<string> GetTagList(string wellName);
@@ -55,5 +55,20 @@ namespace WellEmulatorService
 
         [OperationContract]
         IEnumerable<Well> GetWellList();
+
+        [OperationContract]
+        IEnumerable<string> GetWitsmlObjects(string standard);
+
+        [OperationContract]
+        IEnumerable<string> GetWitsmlElements(string standard, string @object);
+
+        [OperationContract]
+        void AddMapItem(MapItem mapItem);
+
+        [OperationContract]
+        void RemoveMapItem(MapItem mapItem);
+
+        [OperationContract]
+        IEnumerable<MapItem> GetMappings();
     }
 }

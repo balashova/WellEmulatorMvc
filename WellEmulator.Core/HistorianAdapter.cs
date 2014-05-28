@@ -99,6 +99,10 @@ namespace WellEmulator.Core
             RemoveTag(string.Format("{0}.{1}", tag.WellName, tag.Name));
         }
 
+        /// <summary>
+        /// Имя тега в формате "wellName.tagName".
+        /// </summary>
+        /// <param name="tagName">"wellName.tagName"</param>
         private void RemoveTag(string tagName)
         {
             using (var connection = new SqlConnection(_connectionString))
@@ -116,6 +120,11 @@ namespace WellEmulator.Core
             }
         }
 
+        /// <summary>
+        /// Имя тега в формате "wellName.tagName".
+        /// </summary>
+        /// <param name="tagName">"wellName.tagName"</param>
+        /// <returns></returns>
         public Tag GetTag(string tagName)
         {
             using (var connection = new SqlConnection(_connectionString))
@@ -147,6 +156,11 @@ namespace WellEmulator.Core
             return null;
         }
 
+        /// <summary>
+        /// Имя тега в формате "wellName.tagName".
+        /// </summary>
+        /// <param name="tags">"wellName.tagName"</param>
+        /// <returns></returns>
         public Dictionary<string, double> GetTagValues(List<string> tags)
         {
             var dictionary = new Dictionary<string, double>(tags.Count);

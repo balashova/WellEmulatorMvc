@@ -1,12 +1,13 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.WebPages;
+using NUnit.Framework;
 using WellEmulatorMvc.Models;
-using WellEmulatorMvc.Parsers;
 using WellEmulatorServiceClient.ServiceReference;
 
 namespace WellEmulatorMvc.Controllers
@@ -23,16 +24,50 @@ namespace WellEmulatorMvc.Controllers
 
         public ActionResult NewTag()
         {
-            var model = new NewTagViewModel()
+            var wells = new List<Well>() //_client.GetWellList(); TODO change on deploy!
                 {
-                    Wells = _client.GetWellList()
+                    new Well() { Name = "a", Id = 1 }
+                };
+            var objects = _client.GetWitsmlObjects("WITSML");
+            var tags = _client.GetWitsmlElements("WITSML", objects.First());
+
+            var model = new NewTagViewModel
+                {
+                    Wells = wells,
+                    WitsmlObjects = objects,
+                    WitsmlElements = tags
                 };
             return View(model);
         }
 
         public ActionResult Tags()
         {
-            return View();
+            var tags = new List<Tag> // _client.GetTags();  TODO change on deploy!
+                {
+                    new Tag
+                        {
+                            Delta = 2,
+                            Name = "t1",
+                            MaxValue = 99,
+                            MinValue = 12,
+                            Group = "g1",
+                            WellName = "w1",
+                            Object = "o1",
+                            Value = 15
+                        },
+                    new Tag
+                        { 
+                            Delta = 2,
+                            Name = "t1",
+                            MaxValue = 99,
+                            MinValue = 12,
+                            Group = "g1",
+                            WellName = "w1",
+                            Object = "o1",
+                            Value = 15
+                        }
+                }.ToArray();
+            return View(tags);
         }
 
         public ActionResult Wells()

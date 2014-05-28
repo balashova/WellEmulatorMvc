@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using WellEmulator.Core;
 using WellEmulator.Models;
+using WellEmulatorService.Parsers;
 
 namespace WellEmulatorService
 {
@@ -37,8 +38,6 @@ namespace WellEmulatorService
 
         private WellEmulatorSingle()
         {
-            MessageBox.Show("Start new emulator");
-
             try
             {
                 _emulator = new Emulator();
@@ -149,7 +148,7 @@ namespace WellEmulatorService
         {
             try
             {
-                return new Settings()
+                return new Settings
                 {
                     ReportAutoSavePeriod = _emulator.AutoSaveReportPeriod,
                     ValuesDelay = _emulator.ValuesDelay,
@@ -171,6 +170,7 @@ namespace WellEmulatorService
             {
                 _emulator.AddTag(tag);
                 _historianAdapter.AddTag(tag);
+                _settingsManager.AddTag(tag);
             }
             catch (Exception ex)
             {
@@ -184,6 +184,7 @@ namespace WellEmulatorService
             {
                 _emulator.RemoveTag(tag);
                 _historianAdapter.RemoveTag(tag);
+                _settingsManager.RemoveTag(tag);
             }
             catch (Exception ex)
             {
@@ -196,8 +197,7 @@ namespace WellEmulatorService
             try
             {
                 var tag = _emulator.GetTag(tagName);
-                _emulator.RemoveTag(tag);
-                _historianAdapter.RemoveTag(tag);
+                RemoveTag(tag);
             }
             catch (Exception ex)
             {
@@ -205,11 +205,11 @@ namespace WellEmulatorService
             }
         }
 
-        public Tag GetTag(string name)
+        public Tag GetTag(int tagId)
         {
             try
             {
-                return _emulator.GetTag(name);
+                return _settingsManager.GetTag(tagId);
             }
             catch (Exception ex)
             {
@@ -219,7 +219,7 @@ namespace WellEmulatorService
 
         public IEnumerable<Tag> GetTags()
         {
-            return _emulator.Tags;
+            return _settingsManager.GetTags();
         }
 
         public IEnumerable<string> GetTagList(string wellName)
@@ -231,14 +231,69 @@ namespace WellEmulatorService
         {
             try
             {
-#if DEBUG
-                return new List<Well>
-                    {
-                        new Well { Name = "asda", Id = 1 } ,
-                        new Well { Name = "gttnr", Id = 2 }
-                    };
-#endif
                 return _pdgtmDbAdapter.GetWells();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message + "\n" + ex.StackTrace, ex);
+            }
+        }
+
+        public IEnumerable<string> GetWitsmlObjects(string standard)
+        {
+            try
+            {
+                return WitsmlElementsParser.GetWitsmlObjects(standard);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message + "\n" + ex.StackTrace, ex);
+            }
+        }
+
+        public IEnumerable<string> GetWitsmlElements(string standard, string @object)
+        {
+            try
+            {
+                return WitsmlElementsParser.GetWitsmlElements(standard, @object);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message + "\n" + ex.StackTrace, ex);
+            }
+        }
+
+        public void AddMapItem(MapItem mapItem)
+        {
+            try
+            {
+                _replicator.AddMapping(mapItem);
+                _settingsManager.AddMapItem(mapItem);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message + "\n" + ex.StackTrace, ex);
+            }
+        }
+
+        public void RemoveMapItem(MapItem mapItem)
+        {
+            try
+            {
+                _replicator.RemoveMapping(mapItem);
+                _settingsManager.RemoveMapItem(mapItem);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message + "\n" + ex.StackTrace, ex);
+            }
+        }
+
+        public IEnumerable<MapItem> GetMappings()
+        {
+            try
+            {
+                return _settingsManager.GetMapping();
             }
             catch (Exception ex)
             {

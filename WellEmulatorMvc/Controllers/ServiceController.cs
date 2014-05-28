@@ -87,5 +87,39 @@ namespace WellEmulatorMvc.Controllers
                 return ex.Message + "\n" + ex.StackTrace;
             }
         }
+
+        [ActionName("getobjs")]
+        public IEnumerable<string> GetWitsmlObjects(string groupName)
+        {
+            return _client.GetWitsmlObjects(groupName);
+        }
+
+        [ActionName("getels")]
+        public IEnumerable<string> GetWitsmlElements(string groupName, string objectName)
+        {
+            return _client.GetWitsmlElements(groupName, objectName);
+        }
+
+        [ActionName("newtag")]
+        public string CreateNewTag(Tag tag)
+        {
+            try
+            {
+                _client.AddTag(tag);
+                return "ok";
+            }
+            catch (Exception ex)
+            {
+                return ex.Message + "\n" + ex.StackTrace;
+            }
+        }
+
+        [ActionName("gettag")]
+        public Tag GetTag(int tagId)
+        {
+            return _client.GetTag(tagId);
+        }
+
+
     }
 }
