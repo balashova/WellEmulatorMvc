@@ -105,23 +105,11 @@
   <xs:element name="RemoveTag">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/WellEmulator.Models" minOccurs="0" name="tag" nillable="true" type="q4:Tag" />
+        <xs:element minOccurs="0" name="tagId" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="RemoveTagResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="RemoveTagByName">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="tagName" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="RemoveTagByNameResponse">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
@@ -136,7 +124,7 @@
   <xs:element name="GetTagResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/WellEmulator.Models" minOccurs="0" name="GetTagResult" nillable="true" type="q5:Tag" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/WellEmulator.Models" minOccurs="0" name="GetTagResult" nillable="true" type="q4:Tag" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -150,7 +138,7 @@
   <xs:element name="GetTagListResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetTagListResult" nillable="true" type="q6:ArrayOfstring" />
+        <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetTagListResult" nillable="true" type="q5:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -162,7 +150,7 @@
   <xs:element name="GetTagsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/WellEmulator.Models" minOccurs="0" name="GetTagsResult" nillable="true" type="q7:ArrayOfTag" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/WellEmulator.Models" minOccurs="0" name="GetTagsResult" nillable="true" type="q6:ArrayOfTag" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -174,7 +162,7 @@
   <xs:element name="GetWellListResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/WellEmulator.Models" minOccurs="0" name="GetWellListResult" nillable="true" type="q8:ArrayOfWell" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/WellEmulator.Models" minOccurs="0" name="GetWellListResult" nillable="true" type="q7:ArrayOfWell" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -188,7 +176,7 @@
   <xs:element name="GetWitsmlObjectsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetWitsmlObjectsResult" nillable="true" type="q9:ArrayOfstring" />
+        <xs:element xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetWitsmlObjectsResult" nillable="true" type="q8:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -203,14 +191,14 @@
   <xs:element name="GetWitsmlElementsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetWitsmlElementsResult" nillable="true" type="q10:ArrayOfstring" />
+        <xs:element xmlns:q9="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetWitsmlElementsResult" nillable="true" type="q9:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddMapItem">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/WellEmulator.Models" minOccurs="0" name="mapItem" nillable="true" type="q11:MapItem" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/WellEmulator.Models" minOccurs="0" name="mapItem" nillable="true" type="q10:MapItem" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -222,7 +210,7 @@
   <xs:element name="RemoveMapItem">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/WellEmulator.Models" minOccurs="0" name="mapItem" nillable="true" type="q12:MapItem" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/WellEmulator.Models" minOccurs="0" name="mapItem" nillable="true" type="q11:MapItem" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -239,7 +227,7 @@
   <xs:element name="GetMappingsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/WellEmulator.Models" minOccurs="0" name="GetMappingsResult" nillable="true" type="q13:ArrayOfMapItem" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/WellEmulator.Models" minOccurs="0" name="GetMappingsResult" nillable="true" type="q12:ArrayOfMapItem" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

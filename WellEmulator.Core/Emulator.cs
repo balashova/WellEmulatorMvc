@@ -94,21 +94,16 @@ namespace WellEmulator.Core
             }
         }
 
-        /// <summary>
-        /// Имя тега в формате "tagName".
-        /// </summary>
-        /// <param name="name">"tagName"</param>
-        /// <returns></returns>
-        public Tag GetTag(string name)
+        public Tag GetTag(int tagId)
         {
-            return _tags.Single(t => t.Name.Equals(name));
+            return _tags.Single(t => t.Id == tagId);
         }
 
         public void RemoveTag(Tag tag)
         {
             lock (_tags)
             {
-                _tags.Remove(tag);
+                _tags.Remove(_tags.Single(t => t.Id == tag.Id));
             }
         }
 

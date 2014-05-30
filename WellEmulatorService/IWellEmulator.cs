@@ -39,10 +39,7 @@ namespace WellEmulatorService
         void AddTag(Tag tag);
 
         [OperationContract]
-        void RemoveTag(Tag tag);
-
-        [OperationContract]
-        void RemoveTagByName(string tagName);
+        void RemoveTag(int tagId);
 
         [OperationContract]
         Tag GetTag(int tagId);

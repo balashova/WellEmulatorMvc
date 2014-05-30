@@ -540,16 +540,10 @@ namespace WellEmulatorServiceClient.ServiceReference {
         System.Threading.Tasks.Task AddTagAsync(WellEmulatorServiceClient.ServiceReference.Tag tag);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/RemoveTag", ReplyAction="http://WellEmulator.com/IWellEmulator/RemoveTagResponse")]
-        void RemoveTag(WellEmulatorServiceClient.ServiceReference.Tag tag);
+        void RemoveTag(int tagId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/RemoveTag", ReplyAction="http://WellEmulator.com/IWellEmulator/RemoveTagResponse")]
-        System.Threading.Tasks.Task RemoveTagAsync(WellEmulatorServiceClient.ServiceReference.Tag tag);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/RemoveTagByName", ReplyAction="http://WellEmulator.com/IWellEmulator/RemoveTagByNameResponse")]
-        void RemoveTagByName(string tagName);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/RemoveTagByName", ReplyAction="http://WellEmulator.com/IWellEmulator/RemoveTagByNameResponse")]
-        System.Threading.Tasks.Task RemoveTagByNameAsync(string tagName);
+        System.Threading.Tasks.Task RemoveTagAsync(int tagId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/GetTag", ReplyAction="http://WellEmulator.com/IWellEmulator/GetTagResponse")]
         WellEmulatorServiceClient.ServiceReference.Tag GetTag(int tagId);
@@ -705,20 +699,12 @@ namespace WellEmulatorServiceClient.ServiceReference {
             return base.Channel.AddTagAsync(tag);
         }
         
-        public void RemoveTag(WellEmulatorServiceClient.ServiceReference.Tag tag) {
-            base.Channel.RemoveTag(tag);
+        public void RemoveTag(int tagId) {
+            base.Channel.RemoveTag(tagId);
         }
         
-        public System.Threading.Tasks.Task RemoveTagAsync(WellEmulatorServiceClient.ServiceReference.Tag tag) {
-            return base.Channel.RemoveTagAsync(tag);
-        }
-        
-        public void RemoveTagByName(string tagName) {
-            base.Channel.RemoveTagByName(tagName);
-        }
-        
-        public System.Threading.Tasks.Task RemoveTagByNameAsync(string tagName) {
-            return base.Channel.RemoveTagByNameAsync(tagName);
+        public System.Threading.Tasks.Task RemoveTagAsync(int tagId) {
+            return base.Channel.RemoveTagAsync(tagId);
         }
         
         public WellEmulatorServiceClient.ServiceReference.Tag GetTag(int tagId) {

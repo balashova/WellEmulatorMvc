@@ -168,9 +168,9 @@ namespace WellEmulatorService
         {
             try
             {
-                _emulator.AddTag(tag);
-                _historianAdapter.AddTag(tag);
                 _settingsManager.AddTag(tag);
+                _emulator.Tags = _settingsManager.GetTags();
+                _historianAdapter.AddTag(tag);
             }
             catch (Exception ex)
             {
@@ -178,26 +178,15 @@ namespace WellEmulatorService
             }
         }
 
-        public void RemoveTag(Tag tag)
+        public void RemoveTag(int tagId)
         {
             try
             {
+                var tag = _emulator.GetTag(tagId);
+
                 _emulator.RemoveTag(tag);
                 _historianAdapter.RemoveTag(tag);
                 _settingsManager.RemoveTag(tag);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message + "\n" + ex.StackTrace, ex);
-            }
-        }
-
-        public void RemoveTagByName(string tagName)
-        {
-            try
-            {
-                var tag = _emulator.GetTag(tagName);
-                RemoveTag(tag);
             }
             catch (Exception ex)
             {

@@ -107,20 +107,49 @@
 @section Scripts {
     <script>
         $("select#tag-list").change(function() {
-            
+            getTag();
         });
 
-        var getTag = function () {
+        var getTag = function() {
             $("#wait-dialog").modal("show");
-            var tagId = $("select#tag-list:selected").data("tag-id");
+            var tagId = $("select#tag-list :selected").data("tag-id");
             $.ajax({
-                url: "/api/service/gettag", // TODO implement in controller
-                data: tagId,
+                url: "/api/service/gettag", // TODO check
+                data: { tagId: tagId },
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                success: function(result) {
+                    if (result) {
+                        setTag(result);
+                    } else {
+                        alert("error");
+                    }
+                },
+                error: function(result) {
+                    alert(result.responseText);
+                },
+                complete: function() {
+                    $("#wait-dialog").modal("hide");
+                }
+            });
+        };
+
+        $("button#remove-tag").click(function() {
+            removeTag();
+        });
+
+        var removeTag = function () {
+            $("#wait-dialog").modal("show");
+            var tagId = $("select#tag-list :selected").data("tag-id");
+            console.log({ tagId: tagId });
+            $.ajax({
+                url: "/api/service/removetag", // TODO check
+                data: { tagId: tagId },
                 dataType: 'json',
                 contentType: 'application/json; charset=utf-8',
                 success: function (result) {
-                    if (result) {
-                        setTag(result);
+                    if (result == "ok") {
+                        updateTags();
                     } else {
                         alert("error");
                     }
@@ -130,6 +159,31 @@
                 },
                 complete: function () {
                     $("#wait-dialog").modal("hide");
+                }
+            });
+        };
+        
+        var updateTags = function () {
+            $.ajax({
+                url: "/api/service/gettags",
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                success: function (result) {
+                    console.log(result);
+                    if (result) {
+                        $("select#tag-list").html(function () {
+                            var html = "";
+                            for (var i = 0; i < result.length; i++) {
+                                html += '<option data-tag-id"' + result[i].Id + '">' + result[i].Name + '</option>';
+                            }
+                            return html;
+                        });
+                    } else {
+                        alert("error");
+                    }
+                },
+                error: function (result) {
+                    alert(result.responseText);
                 }
             });
         };

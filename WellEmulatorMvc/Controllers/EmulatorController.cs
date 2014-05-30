@@ -46,6 +46,7 @@ namespace WellEmulatorMvc.Controllers
                 {
                     new Tag
                         {
+                            Id = 1,
                             Delta = 2,
                             Name = "t1",
                             MaxValue = 99,
@@ -57,22 +58,29 @@ namespace WellEmulatorMvc.Controllers
                         },
                     new Tag
                         { 
-                            Delta = 2,
-                            Name = "t1",
-                            MaxValue = 99,
-                            MinValue = 12,
-                            Group = "g1",
-                            WellName = "w1",
-                            Object = "o1",
-                            Value = 15
+                            Id = 2,
+                            Delta = 33,
+                            Name = "t2",
+                            MaxValue = 66,
+                            MinValue = 1,
+                            Group = "g2",
+                            WellName = "w2",
+                            Object = "o2",
+                            Value = 44
                         }
                 }.ToArray();
             return View(tags);
         }
 
-        public ActionResult Wells()
+        //public ActionResult Wells()
+        //{
+        //    return View();
+        //}
+
+        public ActionResult Mapping()
         {
-            return View();
+            var maps = _client.GetMappings();
+            return View(maps);
         }
     }
 }

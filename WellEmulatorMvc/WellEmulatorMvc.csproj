@@ -253,6 +253,7 @@
     <Content Include="Views\Emulator\NewTag.cshtml" />
     <Content Include="Views\Emulator\Tags.cshtml" />
     <Content Include="Views\Emulator\Wells.cshtml" />
+    <Content Include="Views\Emulator\Mapping.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

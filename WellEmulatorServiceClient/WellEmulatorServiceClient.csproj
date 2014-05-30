@@ -66,6 +66,9 @@
     <None Include="Service References\ServiceReference\WellEmulatorService3.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\ServiceReference\WellEmulatorServiceClient.ServiceReference.MapItem.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\ServiceReference\WellEmulatorServiceClient.ServiceReference.Settings.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

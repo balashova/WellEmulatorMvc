@@ -59,14 +59,9 @@ namespace WellEmulatorService
             _wellEmulator.AddTag(tag);
         }
 
-        public void RemoveTag(Tag tag)
+        public void RemoveTag(int tagId)
         {
-            _wellEmulator.RemoveTag(tag);
-        }
-
-        public void RemoveTagByName(string tagName)
-        {
-            _wellEmulator.RemoveTagByName(tagName);
+            _wellEmulator.RemoveTag(tagId);
         }
 
         public Tag GetTag(int tagId)

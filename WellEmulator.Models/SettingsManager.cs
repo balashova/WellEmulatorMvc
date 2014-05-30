@@ -51,8 +51,9 @@ namespace WellEmulator.Models
         {
             _db.Tags.SqlQuery(string.Format("delete from WellEmulatorSettings.dbo.Tags " +
                                             "where Name = '{0}' and " +
-                                            "where WellName = '{1}'",
-                                            tag.Name, tag.WellName));
+                                            "where WellName = '{1}' and" +
+                                            "where Id = {2} ",
+                                            tag.Name, tag.WellName, tag.Id));
             _db.SaveChanges();
         }
 
@@ -79,7 +80,7 @@ namespace WellEmulator.Models
 
         public Tag GetTag(int tagId)
         {
-            return _db.Tags.Single(t => t.Id == tagId);
+            return _db.Tags.SingleOrDefault(t => t.Id == tagId);
         }
 
         public List<Tag> GetTags()
