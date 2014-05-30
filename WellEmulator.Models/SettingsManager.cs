@@ -50,9 +50,7 @@ namespace WellEmulator.Models
         public void RemoveTag(Tag tag)
         {
             _db.Tags.SqlQuery(string.Format("delete from WellEmulatorSettings.dbo.Tags " +
-                                            "where Name = '{0}' and " +
-                                            "where WellName = '{1}' and" +
-                                            "where Id = {2} ",
+                                            "where Name = '{0}' and WellName = '{1}' and Id = {2}; ",
                                             tag.Name, tag.WellName, tag.Id));
             _db.SaveChanges();
         }
@@ -66,9 +64,7 @@ namespace WellEmulator.Models
         public void RemoveMapItem(MapItem mapItem)
         {
             _db.Tags.SqlQuery(string.Format("delete from WellEmulatorSettings.dbo.Tags " +
-                                            "where HistorianTag = '{0}' and " +
-                                            "where PdgtmTag = '{1}' and " +
-                                            "where PdgtmWellName = '{2}';",
+                                            "where HistorianTag = '{0}' and PdgtmTag = '{1}' and PdgtmWellName = '{2}';",
                                             mapItem.HistorianTag, mapItem.PdgtmTag, mapItem.PdgtmWellName));
             _db.SaveChanges();
         }
