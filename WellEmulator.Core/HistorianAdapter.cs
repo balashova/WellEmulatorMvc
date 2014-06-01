@@ -77,9 +77,11 @@ namespace WellEmulator.Core
                 {
                     CommandText = string.Format("Insert into WINL6VE6TCINN4.Runtime.dbo.Tag " +
                                                 "(TagName,    IOServerKey, StorageNodeKey, TopicKey, AcquisitionType, " +
-                                                "StorageType, TagType,     Description,    Status,   CEVersion) Values " +
-                                                "('{0}.{1}',  2,           1,              2,        2,               " +
-                                                "3,           1,           '{0}.{1}',      0,        1)", tag.WellName, tag.Name) + "; " +
+                                                "StorageType, TagType,     Description,    Status,   CEVersion, " +
+                                                "AITag,       AIHistory) Values " +
+                                                "('{0}.{1}',  2,           1,              2,        2, " +
+                                                "3,           1,           '{0}.{1}',      0,        0, " +
+                                                "'false',     'false')", tag.WellName, tag.Name) + "; " +
 
                                   string.Format("Insert into WINL6VE6TCINN4.Runtime.dbo.AnalogTag " +
                                                 "(TagName,   EUKey, MinEU, MaxEU, MinRaw, MaxRaw, RawType, IntegerSize) Values " +
