@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,13 +10,13 @@ namespace WellEmulator.Models
 {
     public class SettingsManager
     {
-        private readonly SettingsDb _db;
+        private readonly string _connectionString;
 
         public SettingsManager()
         {
             try
             {
-                _db = new SettingsDb();
+                _connectionString = ConfigurationManager.ConnectionStrings["HistorianConnection"].ConnectionString;
             }
             catch (Exception ex)
             {
@@ -24,49 +26,140 @@ namespace WellEmulator.Models
 
         public void SaveSettings(Settings settings)
         {
-            if (_db.Settings.Any())
+            using (var connection = new SqlConnection(_connectionString))
             {
-                foreach (var setting in _db.Settings)
+                connection.Open();
+                using (var command = new SqlCommand(_connectionString, connection)
                 {
-                    _db.Settings.Remove(setting);
+                    CommandText = "truncate table WellEmulatorSettings.dbo.Settings"
+                })
+                {
+                    command.ExecuteNonQuery();
                 }
+
+                using (var command = new SqlCommand(_connectionString, connection)
+                {
+                    CommandText = string.Format("insert into WellEmulatorSettings.dbo.Settings " +
+                                  "(SamplingRate, ReportAutoSavePeriod, ValuesDelay, ReplicationPeriod) values " +
+                                  "('{0}', '{1}', '{2}', '{3}');",
+                                  settings.SamplingRate, settings.ReportAutoSavePeriod,
+                                  settings.ValuesDelay, settings.ReplicationPeriod)
+                })
+                {
+                    command.ExecuteNonQuery();
+                }
+                connection.Close();
             }
-            _db.Settings.Add(settings);
-            _db.SaveChanges();
         }
 
         public Settings GetSettings()
         {
-            var settings = _db.Settings.ToList();
-            return settings.Any() ? settings.Last() : null;
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                using (var command = new SqlCommand(_connectionString, connection)
+                {
+                    CommandText = "select s.SamplingRate, s.ReportAutoSavePeriod, s.ValuesDelay, s.ReplicationPeriod " +
+                                  "from WellEmulatorSettings.dbo.Settings s;"
+                })
+                {
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            return new Settings
+                            {
+                                SamplingRate = TimeSpan.Parse(reader["SamplingRate"].ToString()),
+                                ReportAutoSavePeriod = TimeSpan.Parse(reader["ReportAutoSavePeriod"].ToString()),
+                                ValuesDelay = TimeSpan.Parse(reader["ValuesDelay"].ToString()),
+                                ReplicationPeriod = TimeSpan.Parse(reader["ReplicationPeriod"].ToString()),
+                            };
+                        }
+                    }
+                }
+                connection.Close();
+            }
+            return null;
         }
 
         public void AddTag(Tag tag)
         {
-            _db.Tags.Add(tag);
-            _db.SaveChanges();
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                using (var command = new SqlCommand(_connectionString, connection)
+                {
+                    CommandText = string.Format("Insert into WellEmulatorSettings.dbo.Tags " +
+                                                "(Group, WellName, Object, Name, Value, MaxValue, MinValue, Delta) values" +
+                                                "('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}');",
+                                                tag.Group, tag.WellName, tag.Object, tag.Name,
+                                                tag.Value, tag.MaxValue, tag.MinValue, tag.Delta)
+                })
+                {
+                    command.ExecuteNonQuery();
+                }
+
+                connection.Close();
+            }
         }
 
         public void RemoveTag(Tag tag)
         {
-            _db.Tags.SqlQuery(string.Format("delete from WellEmulatorSettings.dbo.Tags " +
-                                            "where Name = '{0}' and WellName = '{1}' and Id = {2}; ",
-                                            tag.Name, tag.WellName, tag.Id));
-            _db.SaveChanges();
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                using (var command = new SqlCommand(_connectionString, connection)
+                {
+                    CommandText = string.Format("delete from WellEmulatorSettings.dbo.Tags " +
+                                                "where Id = '{0}'; ", tag.Id)
+                })
+                {
+                    command.ExecuteNonQuery();
+                }
+
+                connection.Close();
+            }
         }
 
         public void AddMapItem(MapItem mapItem)
         {
-            _db.MapItems.Add(mapItem);
-            _db.SaveChanges();
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                using (var command = new SqlCommand(_connectionString, connection)
+                {
+                    CommandText = string.Format("Insert into WellEmulatorSettings.dbo.Settings " +
+                                                "(HistorianTag, PdgtmTag, PdgtmWellName) values" +
+                                                "('{0}', '{1}', '{2}');",
+                                                mapItem.HistorianTag, mapItem.PdgtmTag, mapItem.PdgtmWellName)
+                })
+                {
+                    command.ExecuteNonQuery();
+                }
+
+                connection.Close();
+            }
         }
 
         public void RemoveMapItem(MapItem mapItem)
         {
-            _db.Tags.SqlQuery(string.Format("delete from WellEmulatorSettings.dbo.Tags " +
-                                            "where HistorianTag = '{0}' and PdgtmTag = '{1}' and PdgtmWellName = '{2}';",
-                                            mapItem.HistorianTag, mapItem.PdgtmTag, mapItem.PdgtmWellName));
-            _db.SaveChanges();
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                using (var command = new SqlCommand(_connectionString, connection)
+                {
+                    CommandText = string.Format("Insert into WellEmulatorSettings.dbo.MapItems " +
+                                                "(Group, WellName, Object, Name, Value, MaxValue, MinValue, Delta) values" +
+                                                "('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}');",
+                                                tag.Group, tag.WellName, tag.Object, tag.Name,
+                                                tag.Value, tag.MaxValue, tag.MinValue, tag.Delta)
+                })
+                {
+                    command.ExecuteNonQuery();
+                }
+
+                connection.Close();
+            }
         }
 
         public List<MapItem> GetMapping()
