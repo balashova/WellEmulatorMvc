@@ -182,7 +182,7 @@ namespace WellEmulatorService
         {
             try
             {
-                var tag = _emulator.GetTag(tagId);
+                var tag = _settingsManager.GetTag(tagId);
 
                 _emulator.RemoveTag(tag);
                 _historianAdapter.RemoveTag(tag);
