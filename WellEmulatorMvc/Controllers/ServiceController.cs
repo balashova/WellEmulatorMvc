@@ -123,36 +123,7 @@ namespace WellEmulatorMvc.Controllers
         [ActionName("gettags")]
         public IEnumerable<Tag> GetTags()
         {
-            //return _client.GetTags();
-
-            var tags = new List<Tag> // _client.GetTags();  TODO change on deploy!
-                {
-                    new Tag
-                        {
-                            Id = 3,
-                            Delta = 2,
-                            Name = "t3",
-                            MaxValue = 99,
-                            MinValue = 12,
-                            Group = "g1",
-                            WellName = "w1",
-                            Object = "o1",
-                            Value = 15
-                        },
-                    new Tag
-                        { 
-                            Id = 4,
-                            Delta = 33,
-                            Name = "t4",
-                            MaxValue = 66,
-                            MinValue = 1,
-                            Group = "g2",
-                            WellName = "w2",
-                            Object = "o2",
-                            Value = 44
-                        }
-                }.ToArray();
-            return tags;
+            return _client.GetTags();
         }
 
         [ActionName("removetag"), HttpGet]
@@ -160,7 +131,7 @@ namespace WellEmulatorMvc.Controllers
         {
             try
             {
-                //_client.RemoveTag(tagId);
+                _client.RemoveTag(tagId);
                 return "ok";
             }
             catch (Exception ex)
