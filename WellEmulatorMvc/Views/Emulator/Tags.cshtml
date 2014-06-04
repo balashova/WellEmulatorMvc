@@ -149,6 +149,7 @@
                 contentType: 'application/json; charset=utf-8',
                 success: function (result) {
                     if (result == "ok") {
+                        cleanFields();
                         updateTags();
                     } else {
                         alert("error");
@@ -186,6 +187,17 @@
                     alert(result.responseText);
                 }
             });
+        };
+
+        var cleanFields = function() {
+            $("input#group").val('');
+            $("input#well-name").val('');
+            $("input#group-object").val('');
+            $("input#tag-name").val('');
+            $("input#initial-value").val('');
+            $("input#max-value").val('');
+            $("input#min-value").val('');
+            $("input#delta-value").val('');
         };
 
         var setTag = function(tag) {

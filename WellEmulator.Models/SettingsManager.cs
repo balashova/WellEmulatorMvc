@@ -16,7 +16,7 @@ namespace WellEmulator.Models
         {
             try
             {
-                _connectionString = ConfigurationManager.ConnectionStrings["HistorianConnection"].ConnectionString;
+                _connectionString = ConfigurationManager.ConnectionStrings["SettingsDb"].ConnectionString;
             }
             catch (Exception ex)
             {
@@ -82,15 +82,25 @@ namespace WellEmulator.Models
             return null;
         }
 
+        private bool Exist(Tag tag)
+        {
+            var tagComparer = new TagComparer();
+            return GetTags().Contains(tag, tagComparer);
+        }
+
         public void AddTag(Tag tag)
         {
+            if (Exist(tag))
+            {
+                throw new Exception("Такой элемент уже содержится в базе данных");
+            }
             using (var connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
                 using (var command = new SqlCommand(_connectionString, connection)
                 {
                     CommandText = string.Format("Insert into WellEmulatorSettings.dbo.Tags " +
-                                                "(Group, WellName, Object, Name, Value, MaxValue, MinValue, Delta) values" +
+                                                "([Group], WellName, Object, Name, Value, MaxValue, MinValue, Delta) values " +
                                                 "('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}');",
                                                 tag.Group, tag.WellName, tag.Object, tag.Name,
                                                 tag.Value, tag.MaxValue, tag.MinValue, tag.Delta)
@@ -129,14 +139,13 @@ namespace WellEmulator.Models
                 using (var command = new SqlCommand(_connectionString, connection)
                 {
                     CommandText = string.Format("Insert into WellEmulatorSettings.dbo.Settings " +
-                                                "(HistorianTag, PdgtmTag, PdgtmWellName) values" +
+                                                "(HistorianTag, PdgtmTag, PdgtmWellName) values " +
                                                 "('{0}', '{1}', '{2}');",
                                                 mapItem.HistorianTag, mapItem.PdgtmTag, mapItem.PdgtmWellName)
                 })
                 {
                     command.ExecuteNonQuery();
                 }
-
                 connection.Close();
             }
         }
@@ -148,33 +157,117 @@ namespace WellEmulator.Models
                 connection.Open();
                 using (var command = new SqlCommand(_connectionString, connection)
                 {
-                    CommandText = string.Format("Insert into WellEmulatorSettings.dbo.MapItems " +
-                                                "(Group, WellName, Object, Name, Value, MaxValue, MinValue, Delta) values" +
-                                                "('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}');",
-                                                tag.Group, tag.WellName, tag.Object, tag.Name,
-                                                tag.Value, tag.MaxValue, tag.MinValue, tag.Delta)
+                    CommandText = string.Format("delete from WellEmulatorSettings.dbo.MapItems " +
+                                                "where Id = '{0}'; ", mapItem.Id)
                 })
                 {
                     command.ExecuteNonQuery();
                 }
-
                 connection.Close();
             }
         }
 
         public List<MapItem> GetMapping()
         {
-            return _db.MapItems.ToList();
+            var mappings = new List<MapItem>();
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                using (var command = new SqlCommand(_connectionString, connection)
+                {
+                    CommandText = "select m.Id, m.HistorianTag, m.PdgtmTag, m.PdgtmWellName " +
+                                  "from WellEmulatorSettings.dbo.MapItems m;"
+                })
+                {
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            mappings.Add(new MapItem
+                            {
+                                Id = Int32.Parse(reader["TagName"].ToString()),
+                                HistorianTag = reader["HistorianTag"].ToString(),
+                                PdgtmTag = reader["PdgtmTag"].ToString(),
+                                PdgtmWellName = reader["PdgtmWellName"].ToString()
+                            });
+                        }
+                    }
+                }
+                connection.Close();
+            }
+            return mappings;
         }
 
         public Tag GetTag(int tagId)
         {
-            return _db.Tags.SingleOrDefault(t => t.Id == tagId);
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                using (var command = new SqlCommand(_connectionString, connection)
+                {
+                    CommandText = string.Format("select t.Id, t.[Group], t.WellName, t.Object, t.Name, t.Value, t.MaxValue, t.MinValue, t.Delta " +
+                                  "from WellEmulatorSettings.dbo.Tags t " +
+                                  "where t.Id = '{0}';", tagId)
+                })
+                {
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            return new Tag
+                            {
+                                Id = Int32.Parse(reader["Id"].ToString()),
+                                Group = reader["Group"].ToString(),
+                                Object = reader["Object"].ToString(),
+                                Name = reader["Name"].ToString(),
+                                WellName = reader["WellName"].ToString(),
+                                Value = Int32.Parse(reader["Value"].ToString()),
+                                MaxValue = Int32.Parse(reader["MaxValue"].ToString()),
+                                MinValue = Int32.Parse(reader["MinValue"].ToString()),
+                                Delta = Int32.Parse(reader["Delta"].ToString()),
+                            };
+                        }
+                    }
+                }
+                connection.Close();
+            }
+            return null;
         }
 
         public List<Tag> GetTags()
         {
-            return _db.Tags.ToList();
+            var tags = new List<Tag>();
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                using (var command = new SqlCommand(_connectionString, connection)
+                {
+                    CommandText = "select t.Id, t.[Group], t.WellName, t.Object, t.Name, t.Value, t.MaxValue, t.MinValue, t.Delta " +
+                                  "from WellEmulatorSettings.dbo.Tags t;"
+                })
+                {
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            tags.Add(new Tag
+                            {
+                                Id = Int32.Parse(reader["Id"].ToString()),
+                                Group = reader["Group"].ToString(),
+                                Object = reader["Object"].ToString(),
+                                Name = reader["Name"].ToString(),
+                                WellName = reader["WellName"].ToString(),
+                                Value = Int32.Parse(reader["Value"].ToString()),
+                                MaxValue = Int32.Parse(reader["MaxValue"].ToString()),
+                                MinValue = Int32.Parse(reader["MinValue"].ToString()),
+                                Delta = Int32.Parse(reader["Delta"].ToString()),
+                            });
+                        }
+                    }
+                }
+                connection.Close();
+            }
+            return tags;
         }
     }
 }
