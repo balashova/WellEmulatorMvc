@@ -36,6 +36,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
@@ -52,6 +53,7 @@
     <Compile Include="SettingsDb.cs" />
     <Compile Include="SettingsManager.cs" />
     <Compile Include="Tag.cs" />
+    <Compile Include="TagComparer.cs" />
     <Compile Include="Well.cs" />
   </ItemGroup>
   <ItemGroup>
