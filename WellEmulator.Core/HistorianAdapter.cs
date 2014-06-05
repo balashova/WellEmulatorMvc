@@ -189,9 +189,9 @@ namespace WellEmulator.Core
         /// </summary>
         /// <param name="tags">"wellName.tagName"</param>
         /// <returns></returns>
-        public Dictionary<string, double> GetTagValues(List<string> tags)
+        public Dictionary<string, List<double>> GetTagValues(List<string> tags)
         {
-            var dictionary = new Dictionary<string, double>(tags.Count);
+            var dictionary = new Dictionary<string, List<double>>(tags.Count);
             using (var connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
@@ -210,8 +210,19 @@ namespace WellEmulator.Core
                         {
                             while (reader.Read())
                             {
-                                dictionary.Add(reader["TagName"].ToString(),
-                                               Double.Parse(reader["Value"].ToString()));
+                                var tagName = reader["TagName"].ToString();
+                                
+                                double value;
+                                Double.TryParse(reader["Value"].ToString(), out value);
+                                
+                                if (dictionary.ContainsKey(tagName))
+                                {
+                                    dictionary[tagName].Add(value);
+                                }
+                                else
+                                {
+                                    dictionary.Add(tagName, new List<double> { value });
+                                }
                             }
                         }
                     }
