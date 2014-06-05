@@ -159,7 +159,7 @@
 
 
         $("button#start-replication").click(function () {
-            $("#wait-dialog").modal("show");
+            showMessage();
             $.ajax({
                 type: "POST",
                 url: "/api/service/repon",
@@ -174,14 +174,12 @@
                 error: function (result) {
                     alert(result);
                 },
-                complete: function() {
-                    $("#wait-dialog").modal("hide");
-                }
+                complete: hideMessage()
             });
         });
 
         $("button#stop-replication").click(function () {
-            $("#wait-dialog").modal("show");
+            showMessage();
             $.ajax({
                 type: "POST",
                 url: "/api/service/repoff",
@@ -196,14 +194,12 @@
                 error: function (result) {
                     alert(result);
                 },
-                complete: function () {
-                    $("#wait-dialog").modal("hide");
-                }
+                complete: hideMessage()
             });
         });
 
         $("button#start-emulator").click(function () {
-            $("#wait-dialog").modal("show");
+            showMessage();
             $.ajax({
                 type: "POST",
                 url: "/api/service/start",
@@ -218,14 +214,12 @@
                 error: function (result) {
                     alert(result);
                 },
-                complete: function () {
-                    $("#wait-dialog").modal("hide");
-                }
+                complete: hideMessage()
             });
         });
 
         $("button#stop-emulator").click(function () {
-            $("#wait-dialog").modal("show");
+            showMessage();
             $.ajax({
                 type: "POST",
                 url: "/api/service/stop",
@@ -240,9 +234,7 @@
                 error: function (result) {
                     alert(result);
                 },
-                complete: function () {
-                    $("#wait-dialog").modal("hide");
-                }
+                complete: hideMessage()
             });
         });
 
@@ -258,7 +250,7 @@
                 ValuesDelay: valuesDelay,
                 ReplicationPeriod: replicationPeriod
             };
-            $("#wait-dialog").modal("show");
+            showMessage();
             $.ajax({
                 type: "POST",
                 url: "/api/service/apply",
@@ -275,9 +267,7 @@
                 error: function (result) {
                     alert(result);
                 },
-                complete: function () {
-                    $("#wait-dialog").modal("hide");
-                }
+                complete: hideMessage()
             });
         });
 

@@ -45,15 +45,6 @@ namespace WellEmulatorService
         Tag GetTag(int tagId);
 
         [OperationContract]
-        IEnumerable<string> GetTagList(string wellName);
-
-        [OperationContract]
-        IEnumerable<Tag> GetTags();
-
-        [OperationContract]
-        IEnumerable<Well> GetWellList();
-
-        [OperationContract]
         IEnumerable<string> GetWitsmlObjects(string standard);
 
         [OperationContract]
@@ -63,9 +54,33 @@ namespace WellEmulatorService
         void AddMapItem(MapItem mapItem);
 
         [OperationContract]
-        void RemoveMapItem(MapItem mapItem);
+        void RemoveMapItems(List<int> mapItems);
 
         [OperationContract]
         IEnumerable<MapItem> GetMappings();
+
+        [OperationContract]
+        IEnumerable<Tag> GetSettingsTags();
+
+        [OperationContract]
+        IEnumerable<string> GetAllHistTags();
+
+        [OperationContract]
+        IEnumerable<string> GetHistWells();
+
+        [OperationContract]
+        IEnumerable<string> GetHistTags(string wellName);
+
+        [OperationContract]
+        IEnumerable<string> GetPdgtmTags(string wellName);
+
+        [OperationContract]
+        IEnumerable<Well> GetPdgtmWells();
+
+        [OperationContract]
+        IEnumerable<string> GetNotMappedHistTags(string wellName);
+
+        [OperationContract]
+        IEnumerable<string> GetNotMappedPdgtmTags(string wellName);
     }
 }

@@ -24,7 +24,7 @@ namespace WellEmulatorMvc.Controllers
 
         public ActionResult NewTag()
         {
-            var wells = _client.GetWellList();
+            var wells = _client.GetPdgtmWells();
             var objects = _client.GetWitsmlObjects("WITSML");
             var tags = _client.GetWitsmlElements("WITSML", objects.First());
 
@@ -39,7 +39,7 @@ namespace WellEmulatorMvc.Controllers
 
         public ActionResult Tags()
         {
-            var tags = _client.GetTags();
+            var tags = _client.GetSettingsTags();
             return View(tags);
         }
 
@@ -50,8 +50,21 @@ namespace WellEmulatorMvc.Controllers
 
         public ActionResult Mapping()
         {
-            var maps = _client.GetMappings();
-            return View(maps);
+            var histWells = _client.GetHistWells();
+            var pdgtmWells = _client.GetPdgtmWells().Select(w => w.Name).ToList();
+            var histTags = _client.GetNotMappedHistTags(histWells.First());
+            var pdgtmTags = _client.GetNotMappedPdgtmTags(pdgtmWells.First());
+            var mapItems = _client.GetMappings();
+
+            var model = new MappingViewModel()
+                {
+                    HistTags = histTags,
+                    HistWells = histWells,
+                    PdgtmTags = pdgtmTags,
+                    PdgtmWells = pdgtmWells,
+                    MapItems = mapItems
+                };
+            return View(model);
         }
     }
 }

@@ -74,24 +74,6 @@
   <wsdl:message name="IWellEmulator_GetTag_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetTagResponse" />
   </wsdl:message>
-  <wsdl:message name="IWellEmulator_GetTagList_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetTagList" />
-  </wsdl:message>
-  <wsdl:message name="IWellEmulator_GetTagList_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetTagListResponse" />
-  </wsdl:message>
-  <wsdl:message name="IWellEmulator_GetTags_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetTags" />
-  </wsdl:message>
-  <wsdl:message name="IWellEmulator_GetTags_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetTagsResponse" />
-  </wsdl:message>
-  <wsdl:message name="IWellEmulator_GetWellList_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetWellList" />
-  </wsdl:message>
-  <wsdl:message name="IWellEmulator_GetWellList_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetWellListResponse" />
-  </wsdl:message>
   <wsdl:message name="IWellEmulator_GetWitsmlObjects_InputMessage">
     <wsdl:part name="parameters" element="tns:GetWitsmlObjects" />
   </wsdl:message>
@@ -110,17 +92,65 @@
   <wsdl:message name="IWellEmulator_AddMapItem_OutputMessage">
     <wsdl:part name="parameters" element="tns:AddMapItemResponse" />
   </wsdl:message>
-  <wsdl:message name="IWellEmulator_RemoveMapItem_InputMessage">
-    <wsdl:part name="parameters" element="tns:RemoveMapItem" />
+  <wsdl:message name="IWellEmulator_RemoveMapItems_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveMapItems" />
   </wsdl:message>
-  <wsdl:message name="IWellEmulator_RemoveMapItem_OutputMessage">
-    <wsdl:part name="parameters" element="tns:RemoveMapItemResponse" />
+  <wsdl:message name="IWellEmulator_RemoveMapItems_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveMapItemsResponse" />
   </wsdl:message>
   <wsdl:message name="IWellEmulator_GetMappings_InputMessage">
     <wsdl:part name="parameters" element="tns:GetMappings" />
   </wsdl:message>
   <wsdl:message name="IWellEmulator_GetMappings_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetMappingsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWellEmulator_GetSettingsTags_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSettingsTags" />
+  </wsdl:message>
+  <wsdl:message name="IWellEmulator_GetSettingsTags_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSettingsTagsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWellEmulator_GetAllHistTags_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllHistTags" />
+  </wsdl:message>
+  <wsdl:message name="IWellEmulator_GetAllHistTags_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllHistTagsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWellEmulator_GetHistWells_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetHistWells" />
+  </wsdl:message>
+  <wsdl:message name="IWellEmulator_GetHistWells_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetHistWellsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWellEmulator_GetHistTags_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetHistTags" />
+  </wsdl:message>
+  <wsdl:message name="IWellEmulator_GetHistTags_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetHistTagsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWellEmulator_GetPdgtmTags_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPdgtmTags" />
+  </wsdl:message>
+  <wsdl:message name="IWellEmulator_GetPdgtmTags_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPdgtmTagsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWellEmulator_GetPdgtmWells_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPdgtmWells" />
+  </wsdl:message>
+  <wsdl:message name="IWellEmulator_GetPdgtmWells_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPdgtmWellsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWellEmulator_GetNotMappedHistTags_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNotMappedHistTags" />
+  </wsdl:message>
+  <wsdl:message name="IWellEmulator_GetNotMappedHistTags_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNotMappedHistTagsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWellEmulator_GetNotMappedPdgtmTags_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNotMappedPdgtmTags" />
+  </wsdl:message>
+  <wsdl:message name="IWellEmulator_GetNotMappedPdgtmTags_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNotMappedPdgtmTagsResponse" />
   </wsdl:message>
   <wsdl:portType name="IWellEmulator">
     <wsdl:operation name="DisableReplication">
@@ -167,18 +197,6 @@
       <wsdl:input wsaw:Action="http://WellEmulator.com/IWellEmulator/GetTag" message="tns:IWellEmulator_GetTag_InputMessage" />
       <wsdl:output wsaw:Action="http://WellEmulator.com/IWellEmulator/GetTagResponse" message="tns:IWellEmulator_GetTag_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetTagList">
-      <wsdl:input wsaw:Action="http://WellEmulator.com/IWellEmulator/GetTagList" message="tns:IWellEmulator_GetTagList_InputMessage" />
-      <wsdl:output wsaw:Action="http://WellEmulator.com/IWellEmulator/GetTagListResponse" message="tns:IWellEmulator_GetTagList_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetTags">
-      <wsdl:input wsaw:Action="http://WellEmulator.com/IWellEmulator/GetTags" message="tns:IWellEmulator_GetTags_InputMessage" />
-      <wsdl:output wsaw:Action="http://WellEmulator.com/IWellEmulator/GetTagsResponse" message="tns:IWellEmulator_GetTags_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetWellList">
-      <wsdl:input wsaw:Action="http://WellEmulator.com/IWellEmulator/GetWellList" message="tns:IWellEmulator_GetWellList_InputMessage" />
-      <wsdl:output wsaw:Action="http://WellEmulator.com/IWellEmulator/GetWellListResponse" message="tns:IWellEmulator_GetWellList_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="GetWitsmlObjects">
       <wsdl:input wsaw:Action="http://WellEmulator.com/IWellEmulator/GetWitsmlObjects" message="tns:IWellEmulator_GetWitsmlObjects_InputMessage" />
       <wsdl:output wsaw:Action="http://WellEmulator.com/IWellEmulator/GetWitsmlObjectsResponse" message="tns:IWellEmulator_GetWitsmlObjects_OutputMessage" />
@@ -191,13 +209,45 @@
       <wsdl:input wsaw:Action="http://WellEmulator.com/IWellEmulator/AddMapItem" message="tns:IWellEmulator_AddMapItem_InputMessage" />
       <wsdl:output wsaw:Action="http://WellEmulator.com/IWellEmulator/AddMapItemResponse" message="tns:IWellEmulator_AddMapItem_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="RemoveMapItem">
-      <wsdl:input wsaw:Action="http://WellEmulator.com/IWellEmulator/RemoveMapItem" message="tns:IWellEmulator_RemoveMapItem_InputMessage" />
-      <wsdl:output wsaw:Action="http://WellEmulator.com/IWellEmulator/RemoveMapItemResponse" message="tns:IWellEmulator_RemoveMapItem_OutputMessage" />
+    <wsdl:operation name="RemoveMapItems">
+      <wsdl:input wsaw:Action="http://WellEmulator.com/IWellEmulator/RemoveMapItems" message="tns:IWellEmulator_RemoveMapItems_InputMessage" />
+      <wsdl:output wsaw:Action="http://WellEmulator.com/IWellEmulator/RemoveMapItemsResponse" message="tns:IWellEmulator_RemoveMapItems_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetMappings">
       <wsdl:input wsaw:Action="http://WellEmulator.com/IWellEmulator/GetMappings" message="tns:IWellEmulator_GetMappings_InputMessage" />
       <wsdl:output wsaw:Action="http://WellEmulator.com/IWellEmulator/GetMappingsResponse" message="tns:IWellEmulator_GetMappings_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSettingsTags">
+      <wsdl:input wsaw:Action="http://WellEmulator.com/IWellEmulator/GetSettingsTags" message="tns:IWellEmulator_GetSettingsTags_InputMessage" />
+      <wsdl:output wsaw:Action="http://WellEmulator.com/IWellEmulator/GetSettingsTagsResponse" message="tns:IWellEmulator_GetSettingsTags_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllHistTags">
+      <wsdl:input wsaw:Action="http://WellEmulator.com/IWellEmulator/GetAllHistTags" message="tns:IWellEmulator_GetAllHistTags_InputMessage" />
+      <wsdl:output wsaw:Action="http://WellEmulator.com/IWellEmulator/GetAllHistTagsResponse" message="tns:IWellEmulator_GetAllHistTags_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHistWells">
+      <wsdl:input wsaw:Action="http://WellEmulator.com/IWellEmulator/GetHistWells" message="tns:IWellEmulator_GetHistWells_InputMessage" />
+      <wsdl:output wsaw:Action="http://WellEmulator.com/IWellEmulator/GetHistWellsResponse" message="tns:IWellEmulator_GetHistWells_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHistTags">
+      <wsdl:input wsaw:Action="http://WellEmulator.com/IWellEmulator/GetHistTags" message="tns:IWellEmulator_GetHistTags_InputMessage" />
+      <wsdl:output wsaw:Action="http://WellEmulator.com/IWellEmulator/GetHistTagsResponse" message="tns:IWellEmulator_GetHistTags_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPdgtmTags">
+      <wsdl:input wsaw:Action="http://WellEmulator.com/IWellEmulator/GetPdgtmTags" message="tns:IWellEmulator_GetPdgtmTags_InputMessage" />
+      <wsdl:output wsaw:Action="http://WellEmulator.com/IWellEmulator/GetPdgtmTagsResponse" message="tns:IWellEmulator_GetPdgtmTags_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPdgtmWells">
+      <wsdl:input wsaw:Action="http://WellEmulator.com/IWellEmulator/GetPdgtmWells" message="tns:IWellEmulator_GetPdgtmWells_InputMessage" />
+      <wsdl:output wsaw:Action="http://WellEmulator.com/IWellEmulator/GetPdgtmWellsResponse" message="tns:IWellEmulator_GetPdgtmWells_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNotMappedHistTags">
+      <wsdl:input wsaw:Action="http://WellEmulator.com/IWellEmulator/GetNotMappedHistTags" message="tns:IWellEmulator_GetNotMappedHistTags_InputMessage" />
+      <wsdl:output wsaw:Action="http://WellEmulator.com/IWellEmulator/GetNotMappedHistTagsResponse" message="tns:IWellEmulator_GetNotMappedHistTags_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNotMappedPdgtmTags">
+      <wsdl:input wsaw:Action="http://WellEmulator.com/IWellEmulator/GetNotMappedPdgtmTags" message="tns:IWellEmulator_GetNotMappedPdgtmTags_InputMessage" />
+      <wsdl:output wsaw:Action="http://WellEmulator.com/IWellEmulator/GetNotMappedPdgtmTagsResponse" message="tns:IWellEmulator_GetNotMappedPdgtmTags_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
 </wsdl:definitions>

@@ -26,7 +26,7 @@ namespace WellEmulator.Core
             }
         }
 
-        public IEnumerable<string> GetTagList()
+        public IEnumerable<string> GetAllTags()
         {
             var tags = new List<string>();
             using (var connection = new SqlConnection(_connectionString))
@@ -35,7 +35,7 @@ namespace WellEmulator.Core
                 using (var command = new SqlCommand(_connectionString, connection)
                 {
                     CommandText = "select tag.TagName " +
-                                  "from WINL6VE6TCINN4.Runtime.dbo.Tag tag " +
+                                  "from Runtime.dbo.Tag tag " +
                                   "where tag.IOServerKey = 2"
                 })
                 {
@@ -52,12 +52,26 @@ namespace WellEmulator.Core
             return tags;
         }
 
+        public IEnumerable<string> GetTags(string wellName)
+        {
+            var allTags = GetAllTags();
+            var tags = new List<string>();
+            foreach (var tag in allTags)
+            {
+                var names = tag.Split('.');
+                var well = names.First();
+                var tagName = names.Last();
+                if (well.Equals(wellName)) tags.Add(tagName);
+            }
+            return tags;
+        }
+
         public Dictionary<string, List<string>> GetTagsGroupingByWell()
         {
             //return GetTagList().GroupBy(t => t.Split('.').First()).
             //                    ToDictionary(well => well.Key, well => well.Select(w => w.Split('.').Last()));
 
-            var tags = GetTagList();
+            var tags = GetAllTags();
             var dict = new Dictionary<string, List<string>>();
             foreach (var tag in tags)
             {
@@ -68,6 +82,18 @@ namespace WellEmulator.Core
             return dict;
         }
 
+        public IEnumerable<string> GetWells()
+        {
+            var tags = GetAllTags();
+            var wells = new List<string>();
+            foreach (var tag in tags)
+            {
+                var well = tag.Split('.').First();
+                if (!wells.Contains(well)) wells.Add(well);
+            }
+            return wells;
+        }
+
         public void AddTag(Tag tag)
         {
             using (var connection = new SqlConnection(_connectionString))
@@ -75,7 +101,7 @@ namespace WellEmulator.Core
                 connection.Open();
                 using (var command = new SqlCommand(_connectionString, connection)
                 {
-                    CommandText = string.Format("Insert into WINL6VE6TCINN4.Runtime.dbo.Tag " +
+                    CommandText = string.Format("Insert into Runtime.dbo.Tag " +
                                                 "(TagName,    IOServerKey, StorageNodeKey, TopicKey, AcquisitionType, " +
                                                 "StorageType, TagType,     Description,    Status,   CEVersion, " +
                                                 "AITag,       AIHistory) Values " +
@@ -83,7 +109,7 @@ namespace WellEmulator.Core
                                                 "3,           1,           '{0}.{1}',      0,        0, " +
                                                 "'false',     'false')", tag.WellName, tag.Name) + "; " +
 
-                                  string.Format("Insert into WINL6VE6TCINN4.Runtime.dbo.AnalogTag " +
+                                  string.Format("Insert into Runtime.dbo.AnalogTag " +
                                                 "(TagName,   EUKey, MinEU, MaxEU, MinRaw, MaxRaw, RawType, IntegerSize) Values " +
                                                 "('{0}.{1}', 44,    {2},   {3},   {2},    {3},    2,       0)",
                                                 tag.WellName, tag.Name, tag.MinValue, tag.MaxValue)
@@ -112,8 +138,8 @@ namespace WellEmulator.Core
                 connection.Open();
                 using (var command = new SqlCommand(_connectionString, connection)
                 {
-                    CommandText = string.Format("Delete from WINL6VE6TCINN4.Runtime.dbo.AnalogTag where TagName = '{0}'; " +
-                                                "Delete from WINL6VE6TCINN4.Runtime.dbo.Tag where TagName = '{0}'", tagName)
+                    CommandText = string.Format("Delete from Runtime.dbo.AnalogTag where TagName = '{0}'; " +
+                                                "Delete from Runtime.dbo.Tag where TagName = '{0}'", tagName)
                 })
                 {
                     command.ExecuteNonQuery();
@@ -135,7 +161,7 @@ namespace WellEmulator.Core
                 using (var command = new SqlCommand(_connectionString, connection)
                 {
                     CommandText = string.Format("select t.TagName, t.MinRaw, t.MaxRaw " +
-                                  "from WINL6VE6TCINN4.Runtime.dbo.AnalogTag t " +
+                                  "from Runtime.dbo.AnalogTag t " +
                                   "where t.TagName = '{0}'", tagName)
                 })
                 {
@@ -172,7 +198,7 @@ namespace WellEmulator.Core
                 using (var command = new SqlCommand(_connectionString, connection)
                 {
                     CommandText = string.Format("select h.TagName, h.Value " +
-                                                "from WINL6VE6TCINN4.Runtime.dbo.History h " +
+                                                "from Runtime.dbo.History h " +
                                                 "where h.TagName in ({0})",
                                                 tags.Aggregate(new StringBuilder(), (builder, tag) => builder.
                                                      Append((builder.Length == 0 ? "" : ", ") + "'" + tag + "'")))

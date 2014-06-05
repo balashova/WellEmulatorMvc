@@ -133,33 +133,6 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetTagList">
-      <soap12:operation soapAction="http://WellEmulator.com/IWellEmulator/GetTagList" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetTags">
-      <soap12:operation soapAction="http://WellEmulator.com/IWellEmulator/GetTags" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetWellList">
-      <soap12:operation soapAction="http://WellEmulator.com/IWellEmulator/GetWellList" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="GetWitsmlObjects">
       <soap12:operation soapAction="http://WellEmulator.com/IWellEmulator/GetWitsmlObjects" style="document" />
       <wsdl:input>
@@ -187,8 +160,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="RemoveMapItem">
-      <soap12:operation soapAction="http://WellEmulator.com/IWellEmulator/RemoveMapItem" style="document" />
+    <wsdl:operation name="RemoveMapItems">
+      <soap12:operation soapAction="http://WellEmulator.com/IWellEmulator/RemoveMapItems" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -198,6 +171,78 @@
     </wsdl:operation>
     <wsdl:operation name="GetMappings">
       <soap12:operation soapAction="http://WellEmulator.com/IWellEmulator/GetMappings" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSettingsTags">
+      <soap12:operation soapAction="http://WellEmulator.com/IWellEmulator/GetSettingsTags" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllHistTags">
+      <soap12:operation soapAction="http://WellEmulator.com/IWellEmulator/GetAllHistTags" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHistWells">
+      <soap12:operation soapAction="http://WellEmulator.com/IWellEmulator/GetHistWells" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHistTags">
+      <soap12:operation soapAction="http://WellEmulator.com/IWellEmulator/GetHistTags" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPdgtmTags">
+      <soap12:operation soapAction="http://WellEmulator.com/IWellEmulator/GetPdgtmTags" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPdgtmWells">
+      <soap12:operation soapAction="http://WellEmulator.com/IWellEmulator/GetPdgtmWells" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNotMappedHistTags">
+      <soap12:operation soapAction="http://WellEmulator.com/IWellEmulator/GetNotMappedHistTags" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNotMappedPdgtmTags">
+      <soap12:operation soapAction="http://WellEmulator.com/IWellEmulator/GetNotMappedPdgtmTags" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -307,33 +352,6 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetTagList">
-      <soap:operation soapAction="http://WellEmulator.com/IWellEmulator/GetTagList" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetTags">
-      <soap:operation soapAction="http://WellEmulator.com/IWellEmulator/GetTags" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetWellList">
-      <soap:operation soapAction="http://WellEmulator.com/IWellEmulator/GetWellList" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="GetWitsmlObjects">
       <soap:operation soapAction="http://WellEmulator.com/IWellEmulator/GetWitsmlObjects" style="document" />
       <wsdl:input>
@@ -361,8 +379,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="RemoveMapItem">
-      <soap:operation soapAction="http://WellEmulator.com/IWellEmulator/RemoveMapItem" style="document" />
+    <wsdl:operation name="RemoveMapItems">
+      <soap:operation soapAction="http://WellEmulator.com/IWellEmulator/RemoveMapItems" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -372,6 +390,78 @@
     </wsdl:operation>
     <wsdl:operation name="GetMappings">
       <soap:operation soapAction="http://WellEmulator.com/IWellEmulator/GetMappings" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSettingsTags">
+      <soap:operation soapAction="http://WellEmulator.com/IWellEmulator/GetSettingsTags" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllHistTags">
+      <soap:operation soapAction="http://WellEmulator.com/IWellEmulator/GetAllHistTags" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHistWells">
+      <soap:operation soapAction="http://WellEmulator.com/IWellEmulator/GetHistWells" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHistTags">
+      <soap:operation soapAction="http://WellEmulator.com/IWellEmulator/GetHistTags" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPdgtmTags">
+      <soap:operation soapAction="http://WellEmulator.com/IWellEmulator/GetPdgtmTags" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPdgtmWells">
+      <soap:operation soapAction="http://WellEmulator.com/IWellEmulator/GetPdgtmWells" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNotMappedHistTags">
+      <soap:operation soapAction="http://WellEmulator.com/IWellEmulator/GetNotMappedHistTags" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNotMappedPdgtmTags">
+      <soap:operation soapAction="http://WellEmulator.com/IWellEmulator/GetNotMappedPdgtmTags" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

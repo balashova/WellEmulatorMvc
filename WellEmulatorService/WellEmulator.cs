@@ -69,21 +69,6 @@ namespace WellEmulatorService
             return _wellEmulator.GetTag(tagId);
         }
 
-        public IEnumerable<string> GetTagList(string wellName)
-        {
-            return _wellEmulator.GetTagList(wellName);
-        }
-
-        public IEnumerable<Tag> GetTags()
-        {
-            return _wellEmulator.GetTags();
-        }
-
-        public IEnumerable<Well> GetWellList()
-        {
-            return _wellEmulator.GetWellList();
-        }
-
         public IEnumerable<string> GetWitsmlObjects(string standard)
         {
             return _wellEmulator.GetWitsmlObjects(standard);
@@ -99,14 +84,54 @@ namespace WellEmulatorService
             _wellEmulator.AddMapItem(mapItem);
         }
 
-        public void RemoveMapItem(MapItem mapItem)
+        public void RemoveMapItems(List<int> mapItems)
         {
-            _wellEmulator.RemoveMapItem(mapItem);
+            _wellEmulator.RemoveMapItems(mapItems);
         }
 
         public IEnumerable<MapItem> GetMappings()
         {
             return _wellEmulator.GetMappings();
+        }
+
+        public IEnumerable<Tag> GetSettingsTags()
+        {
+            return _wellEmulator.GetSettingsTags();
+        }
+
+        public IEnumerable<string> GetAllHistTags()
+        {
+            return _wellEmulator.GetAllHistTags();
+        }
+
+        public IEnumerable<string> GetHistWells()
+        {
+            return _wellEmulator.GetHistWells();
+        }
+
+        public IEnumerable<string> GetHistTags(string wellName)
+        {
+            return _wellEmulator.GetHistTags(wellName);
+        }
+
+        public IEnumerable<string> GetPdgtmTags(string wellName)
+        {
+            return _wellEmulator.GetPdgtmTags(wellName);
+        }
+
+        public IEnumerable<Well> GetPdgtmWells()
+        {
+            return _wellEmulator.GetPdgtmWells();
+        }
+
+        public IEnumerable<string> GetNotMappedHistTags(string wellName)
+        {
+            return _wellEmulator.GetNotMappedHistTags(wellName);
+        }
+
+        public IEnumerable<string> GetNotMappedPdgtmTags(string wellName)
+        {
+            return _wellEmulator.GetNotMappedPdgtmTags(wellName);
         }
     }
 }

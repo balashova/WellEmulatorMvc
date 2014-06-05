@@ -40,10 +40,6 @@
             padding: 10px 200px;
             font-size: 1.2em;
         }
-
-        .need-validation {
-            
-        }
     </style>
 }
 
@@ -119,7 +115,7 @@
 
 
         var updateObjects = function (group) {
-            $("#wait-dialog").modal("show");
+            showMessage();
             $.ajax({
                 data: { groupName: group },
                 url: "/api/service/getobjs",
@@ -141,14 +137,12 @@
                 error: function(result) {
                     alert(result.responseText);
                 },
-                complete: function() {
-                    $("#wait-dialog").modal("hide");
-                }
+                complete: hideMessage()
             });
         };
 
         var updateTags = function (group, object) {
-            $("#wait-dialog").modal("show");
+            showMessage();
             $.ajax({
                 data: { groupName: group, objectName: object },
                 url: "/api/service/getels",
@@ -168,9 +162,7 @@
                 error: function(result) {
                     alert(result.responseText);
                 },
-                complete: function() {
-                    $("#wait-dialog").modal("hide");
-                }
+                complete: hideMessage()
             });
         };
 
@@ -198,78 +190,26 @@
             $("input#delta-value").val(delta);
         };
 
-
-        $(".need-validation").focusin(function() {
-            $(this).removeClass("field-error");
-        });
-
-        var validateEditorFields = function() {
-            var allOkay = true;
-            $(".need-validation").each(function() {
-                var element = $(this);
-
-                var addClass = function() {
-                    element.addClass("field-error");
-                };
-
-                var removeClass = function() {
-                    element.removeClass("field-error");
-                };
-
-                var checkFields = function(el) {
-                    if (!el.val()) {
-                        if (el.hasClass("field-error")) {
-                            removeClass();
-                            setTimeout(addClass, 200);
-                            setTimeout(removeClass, 300);
-                            setTimeout(addClass, 400);
-                        } else {
-                            addClass();
-                            setTimeout(removeClass, 100);
-                            setTimeout(addClass, 200);
-                        }
-                        allOkay = false;
-                    }
-                };
-
-                var findFields = function(el) {
-                    var elementName = el.tagName.toLowerCase();
-                    if (elementName == "select" || elementName == "input") {
-                        checkFields($(el));
-                    } /*else { //рекурсивный поиск дочерних элементов
-                        element.find("input, select").each(function () {
-                            findFields(this);
-                        });
-                    }*/
-                };
-
-                findFields(this);
-            });
-            return allOkay;
-        };
-
         $("button#add-new-tag").click(function() {
-            if (!validateEditorFields()) return;
-            $("#wait-dialog").modal("show");
+            if (!validateFields()) return;
+            showMessage();
             $.ajax({
                 type: "POST",
                 data: JSON.stringify(createTag()),
-                url: "/api/service/newtag", // TODO check
+                url: "/api/service/newtag",
                 dataType: 'json',
                 contentType: 'application/json; charset=utf-8',
                 success: function(result) {
                     if (result == "ok") {
-
+                        // TODO some feed back
                     } else {
-                        alert(result);
+                        showMessage(result);
                     }
                 },
                 error: function(result) {
                     alert(result.responseText);
                 },
-                complete: function() {
-                    $("#wait-dialog").modal("hide");
-                }
+                complete: hideMessage()
             });
         });
 

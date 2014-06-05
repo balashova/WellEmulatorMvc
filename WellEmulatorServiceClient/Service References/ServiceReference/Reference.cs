@@ -329,6 +329,115 @@ namespace WellEmulatorServiceClient.ServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="MapItem", Namespace="http://schemas.datacontract.org/2004/07/WellEmulator.Models")]
+    [System.SerializableAttribute()]
+    public partial class MapItem : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string HistorianTagField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string HistorianWellNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PdgtmTagField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PdgtmWellNameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string HistorianTag {
+            get {
+                return this.HistorianTagField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.HistorianTagField, value) != true)) {
+                    this.HistorianTagField = value;
+                    this.RaisePropertyChanged("HistorianTag");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string HistorianWellName {
+            get {
+                return this.HistorianWellNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.HistorianWellNameField, value) != true)) {
+                    this.HistorianWellNameField = value;
+                    this.RaisePropertyChanged("HistorianWellName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PdgtmTag {
+            get {
+                return this.PdgtmTagField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PdgtmTagField, value) != true)) {
+                    this.PdgtmTagField = value;
+                    this.RaisePropertyChanged("PdgtmTag");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PdgtmWellName {
+            get {
+                return this.PdgtmWellNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PdgtmWellNameField, value) != true)) {
+                    this.PdgtmWellNameField = value;
+                    this.RaisePropertyChanged("PdgtmWellName");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Well", Namespace="http://schemas.datacontract.org/2004/07/WellEmulator.Models")]
     [System.SerializableAttribute()]
     public partial class Well : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -374,99 +483,6 @@ namespace WellEmulatorServiceClient.ServiceReference {
                 if ((object.ReferenceEquals(this.NameField, value) != true)) {
                     this.NameField = value;
                     this.RaisePropertyChanged("Name");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="MapItem", Namespace="http://schemas.datacontract.org/2004/07/WellEmulator.Models")]
-    [System.SerializableAttribute()]
-    public partial class MapItem : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string HistorianTagField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string PdgtmTagField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string PdgtmWellNameField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string HistorianTag {
-            get {
-                return this.HistorianTagField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.HistorianTagField, value) != true)) {
-                    this.HistorianTagField = value;
-                    this.RaisePropertyChanged("HistorianTag");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Id {
-            get {
-                return this.IdField;
-            }
-            set {
-                if ((this.IdField.Equals(value) != true)) {
-                    this.IdField = value;
-                    this.RaisePropertyChanged("Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string PdgtmTag {
-            get {
-                return this.PdgtmTagField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PdgtmTagField, value) != true)) {
-                    this.PdgtmTagField = value;
-                    this.RaisePropertyChanged("PdgtmTag");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string PdgtmWellName {
-            get {
-                return this.PdgtmWellNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PdgtmWellNameField, value) != true)) {
-                    this.PdgtmWellNameField = value;
-                    this.RaisePropertyChanged("PdgtmWellName");
                 }
             }
         }
@@ -551,24 +567,6 @@ namespace WellEmulatorServiceClient.ServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/GetTag", ReplyAction="http://WellEmulator.com/IWellEmulator/GetTagResponse")]
         System.Threading.Tasks.Task<WellEmulatorServiceClient.ServiceReference.Tag> GetTagAsync(int tagId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/GetTagList", ReplyAction="http://WellEmulator.com/IWellEmulator/GetTagListResponse")]
-        string[] GetTagList(string wellName);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/GetTagList", ReplyAction="http://WellEmulator.com/IWellEmulator/GetTagListResponse")]
-        System.Threading.Tasks.Task<string[]> GetTagListAsync(string wellName);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/GetTags", ReplyAction="http://WellEmulator.com/IWellEmulator/GetTagsResponse")]
-        WellEmulatorServiceClient.ServiceReference.Tag[] GetTags();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/GetTags", ReplyAction="http://WellEmulator.com/IWellEmulator/GetTagsResponse")]
-        System.Threading.Tasks.Task<WellEmulatorServiceClient.ServiceReference.Tag[]> GetTagsAsync();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/GetWellList", ReplyAction="http://WellEmulator.com/IWellEmulator/GetWellListResponse")]
-        WellEmulatorServiceClient.ServiceReference.Well[] GetWellList();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/GetWellList", ReplyAction="http://WellEmulator.com/IWellEmulator/GetWellListResponse")]
-        System.Threading.Tasks.Task<WellEmulatorServiceClient.ServiceReference.Well[]> GetWellListAsync();
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/GetWitsmlObjects", ReplyAction="http://WellEmulator.com/IWellEmulator/GetWitsmlObjectsResponse")]
         string[] GetWitsmlObjects(string standard);
         
@@ -587,17 +585,65 @@ namespace WellEmulatorServiceClient.ServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/AddMapItem", ReplyAction="http://WellEmulator.com/IWellEmulator/AddMapItemResponse")]
         System.Threading.Tasks.Task AddMapItemAsync(WellEmulatorServiceClient.ServiceReference.MapItem mapItem);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/RemoveMapItem", ReplyAction="http://WellEmulator.com/IWellEmulator/RemoveMapItemResponse")]
-        void RemoveMapItem(WellEmulatorServiceClient.ServiceReference.MapItem mapItem);
+        [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/RemoveMapItems", ReplyAction="http://WellEmulator.com/IWellEmulator/RemoveMapItemsResponse")]
+        void RemoveMapItems(int[] mapItems);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/RemoveMapItem", ReplyAction="http://WellEmulator.com/IWellEmulator/RemoveMapItemResponse")]
-        System.Threading.Tasks.Task RemoveMapItemAsync(WellEmulatorServiceClient.ServiceReference.MapItem mapItem);
+        [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/RemoveMapItems", ReplyAction="http://WellEmulator.com/IWellEmulator/RemoveMapItemsResponse")]
+        System.Threading.Tasks.Task RemoveMapItemsAsync(int[] mapItems);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/GetMappings", ReplyAction="http://WellEmulator.com/IWellEmulator/GetMappingsResponse")]
         WellEmulatorServiceClient.ServiceReference.MapItem[] GetMappings();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/GetMappings", ReplyAction="http://WellEmulator.com/IWellEmulator/GetMappingsResponse")]
         System.Threading.Tasks.Task<WellEmulatorServiceClient.ServiceReference.MapItem[]> GetMappingsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/GetSettingsTags", ReplyAction="http://WellEmulator.com/IWellEmulator/GetSettingsTagsResponse")]
+        WellEmulatorServiceClient.ServiceReference.Tag[] GetSettingsTags();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/GetSettingsTags", ReplyAction="http://WellEmulator.com/IWellEmulator/GetSettingsTagsResponse")]
+        System.Threading.Tasks.Task<WellEmulatorServiceClient.ServiceReference.Tag[]> GetSettingsTagsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/GetAllHistTags", ReplyAction="http://WellEmulator.com/IWellEmulator/GetAllHistTagsResponse")]
+        string[] GetAllHistTags();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/GetAllHistTags", ReplyAction="http://WellEmulator.com/IWellEmulator/GetAllHistTagsResponse")]
+        System.Threading.Tasks.Task<string[]> GetAllHistTagsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/GetHistWells", ReplyAction="http://WellEmulator.com/IWellEmulator/GetHistWellsResponse")]
+        string[] GetHistWells();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/GetHistWells", ReplyAction="http://WellEmulator.com/IWellEmulator/GetHistWellsResponse")]
+        System.Threading.Tasks.Task<string[]> GetHistWellsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/GetHistTags", ReplyAction="http://WellEmulator.com/IWellEmulator/GetHistTagsResponse")]
+        string[] GetHistTags(string wellName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/GetHistTags", ReplyAction="http://WellEmulator.com/IWellEmulator/GetHistTagsResponse")]
+        System.Threading.Tasks.Task<string[]> GetHistTagsAsync(string wellName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/GetPdgtmTags", ReplyAction="http://WellEmulator.com/IWellEmulator/GetPdgtmTagsResponse")]
+        string[] GetPdgtmTags(string wellName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/GetPdgtmTags", ReplyAction="http://WellEmulator.com/IWellEmulator/GetPdgtmTagsResponse")]
+        System.Threading.Tasks.Task<string[]> GetPdgtmTagsAsync(string wellName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/GetPdgtmWells", ReplyAction="http://WellEmulator.com/IWellEmulator/GetPdgtmWellsResponse")]
+        WellEmulatorServiceClient.ServiceReference.Well[] GetPdgtmWells();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/GetPdgtmWells", ReplyAction="http://WellEmulator.com/IWellEmulator/GetPdgtmWellsResponse")]
+        System.Threading.Tasks.Task<WellEmulatorServiceClient.ServiceReference.Well[]> GetPdgtmWellsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/GetNotMappedHistTags", ReplyAction="http://WellEmulator.com/IWellEmulator/GetNotMappedHistTagsResponse")]
+        string[] GetNotMappedHistTags(string wellName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/GetNotMappedHistTags", ReplyAction="http://WellEmulator.com/IWellEmulator/GetNotMappedHistTagsResponse")]
+        System.Threading.Tasks.Task<string[]> GetNotMappedHistTagsAsync(string wellName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/GetNotMappedPdgtmTags", ReplyAction="http://WellEmulator.com/IWellEmulator/GetNotMappedPdgtmTagsResponse")]
+        string[] GetNotMappedPdgtmTags(string wellName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/GetNotMappedPdgtmTags", ReplyAction="http://WellEmulator.com/IWellEmulator/GetNotMappedPdgtmTagsResponse")]
+        System.Threading.Tasks.Task<string[]> GetNotMappedPdgtmTagsAsync(string wellName);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -715,30 +761,6 @@ namespace WellEmulatorServiceClient.ServiceReference {
             return base.Channel.GetTagAsync(tagId);
         }
         
-        public string[] GetTagList(string wellName) {
-            return base.Channel.GetTagList(wellName);
-        }
-        
-        public System.Threading.Tasks.Task<string[]> GetTagListAsync(string wellName) {
-            return base.Channel.GetTagListAsync(wellName);
-        }
-        
-        public WellEmulatorServiceClient.ServiceReference.Tag[] GetTags() {
-            return base.Channel.GetTags();
-        }
-        
-        public System.Threading.Tasks.Task<WellEmulatorServiceClient.ServiceReference.Tag[]> GetTagsAsync() {
-            return base.Channel.GetTagsAsync();
-        }
-        
-        public WellEmulatorServiceClient.ServiceReference.Well[] GetWellList() {
-            return base.Channel.GetWellList();
-        }
-        
-        public System.Threading.Tasks.Task<WellEmulatorServiceClient.ServiceReference.Well[]> GetWellListAsync() {
-            return base.Channel.GetWellListAsync();
-        }
-        
         public string[] GetWitsmlObjects(string standard) {
             return base.Channel.GetWitsmlObjects(standard);
         }
@@ -763,12 +785,12 @@ namespace WellEmulatorServiceClient.ServiceReference {
             return base.Channel.AddMapItemAsync(mapItem);
         }
         
-        public void RemoveMapItem(WellEmulatorServiceClient.ServiceReference.MapItem mapItem) {
-            base.Channel.RemoveMapItem(mapItem);
+        public void RemoveMapItems(int[] mapItems) {
+            base.Channel.RemoveMapItems(mapItems);
         }
         
-        public System.Threading.Tasks.Task RemoveMapItemAsync(WellEmulatorServiceClient.ServiceReference.MapItem mapItem) {
-            return base.Channel.RemoveMapItemAsync(mapItem);
+        public System.Threading.Tasks.Task RemoveMapItemsAsync(int[] mapItems) {
+            return base.Channel.RemoveMapItemsAsync(mapItems);
         }
         
         public WellEmulatorServiceClient.ServiceReference.MapItem[] GetMappings() {
@@ -777,6 +799,70 @@ namespace WellEmulatorServiceClient.ServiceReference {
         
         public System.Threading.Tasks.Task<WellEmulatorServiceClient.ServiceReference.MapItem[]> GetMappingsAsync() {
             return base.Channel.GetMappingsAsync();
+        }
+        
+        public WellEmulatorServiceClient.ServiceReference.Tag[] GetSettingsTags() {
+            return base.Channel.GetSettingsTags();
+        }
+        
+        public System.Threading.Tasks.Task<WellEmulatorServiceClient.ServiceReference.Tag[]> GetSettingsTagsAsync() {
+            return base.Channel.GetSettingsTagsAsync();
+        }
+        
+        public string[] GetAllHistTags() {
+            return base.Channel.GetAllHistTags();
+        }
+        
+        public System.Threading.Tasks.Task<string[]> GetAllHistTagsAsync() {
+            return base.Channel.GetAllHistTagsAsync();
+        }
+        
+        public string[] GetHistWells() {
+            return base.Channel.GetHistWells();
+        }
+        
+        public System.Threading.Tasks.Task<string[]> GetHistWellsAsync() {
+            return base.Channel.GetHistWellsAsync();
+        }
+        
+        public string[] GetHistTags(string wellName) {
+            return base.Channel.GetHistTags(wellName);
+        }
+        
+        public System.Threading.Tasks.Task<string[]> GetHistTagsAsync(string wellName) {
+            return base.Channel.GetHistTagsAsync(wellName);
+        }
+        
+        public string[] GetPdgtmTags(string wellName) {
+            return base.Channel.GetPdgtmTags(wellName);
+        }
+        
+        public System.Threading.Tasks.Task<string[]> GetPdgtmTagsAsync(string wellName) {
+            return base.Channel.GetPdgtmTagsAsync(wellName);
+        }
+        
+        public WellEmulatorServiceClient.ServiceReference.Well[] GetPdgtmWells() {
+            return base.Channel.GetPdgtmWells();
+        }
+        
+        public System.Threading.Tasks.Task<WellEmulatorServiceClient.ServiceReference.Well[]> GetPdgtmWellsAsync() {
+            return base.Channel.GetPdgtmWellsAsync();
+        }
+        
+        public string[] GetNotMappedHistTags(string wellName) {
+            return base.Channel.GetNotMappedHistTags(wellName);
+        }
+        
+        public System.Threading.Tasks.Task<string[]> GetNotMappedHistTagsAsync(string wellName) {
+            return base.Channel.GetNotMappedHistTagsAsync(wellName);
+        }
+        
+        public string[] GetNotMappedPdgtmTags(string wellName) {
+            return base.Channel.GetNotMappedPdgtmTags(wellName);
+        }
+        
+        public System.Threading.Tasks.Task<string[]> GetNotMappedPdgtmTagsAsync(string wellName) {
+            return base.Channel.GetNotMappedPdgtmTagsAsync(wellName);
         }
     }
 }

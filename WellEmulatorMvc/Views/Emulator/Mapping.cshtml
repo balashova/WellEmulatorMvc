@@ -1,4 +1,4 @@
-﻿@model WellEmulatorServiceClient.ServiceReference.MapItem[]
+﻿@model WellEmulatorMvc.Models.MappingViewModel
 @{
     ViewBag.Title = "Сопоставление";
     ViewBag.SubTitle = "тегов";
@@ -6,16 +6,279 @@
 
 @section Styles {
     <style>
-        
+        select.wells {
+            margin: 10px 0;
+        }
+
+        select.form-control {
+            font-size: 1.0em;
+        }
+
+        .well-header {
+            text-align: center;
+            padding: 10px;
+            margin: 5px 0;
+            font-weight: bold;
+            color: #999999;
+        }
+
+        .tag-header {
+            text-align: center;
+            padding: 10px;
+            margin: 20px 20px 5px ;
+            font-weight: bold;
+            color: #999999;
+            border-top: 1px solid #eeeeee;
+        }
+
+        .button-container {
+            padding: 20px 0;
+            text-align: right;
+        }
+
+        button {
+           padding-right: 100px;
+           padding-left: 100px;
+        }
+
+        #associated-tags-container {
+           border-top: 1px solid #eeeeee;
+           margin-top: 20px;
+        }
     </style>
 }
 
-
-
+<div >
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="well-header">
+                <span>Скважины Historian-сервера</span>
+            </div>
+            <select class="form-control wells need-validation" id="historian-wells">
+                @foreach (var well in Model.HistWells)
+                {
+                    <option>@well</option>
+                }
+            </select>
+            <div class="tag-header">
+                <span>Неассоциированные теги</span>
+            </div>
+            <select size="15" class="form-control need-validation" id="historian-tags">
+                @foreach (var tag in Model.HistTags)
+                {
+                    <option>@tag</option>
+                }
+            </select>
+        </div>
+            
+        <div class="col-lg-6">
+            <div class="well-header">
+                <span>Скважины базы данных ПДГТМ</span>
+            </div>
+            <select class="form-control wells need-validation" id="pdgtm-wells">
+                @foreach (var well in Model.PdgtmWells)
+                {
+                    <option>@well</option>
+                }
+            </select>
+            <div class="tag-header">
+                <span>Неассоциированные теги</span>
+            </div>
+            <select size="15" class="form-control need-validation" id="pdgtm-tags">
+                @foreach (var tag in Model.PdgtmTags)
+                {
+                    <option>@tag</option>
+                }
+            </select>
+            <div class="button-container">
+                <button id="add-map" class="btn btn-lg btn-info">Создать</button>
+            </div>
+        </div>
+    </div>
+    
+    <div id="associated-tags-container">
+        <div class="well-header">
+            <span>Имеющиеся ассоциации</span>
+        </div>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>[Historian скважина].[Historian тег]</th>
+                    <th>[ПДГТМ скважина].[ПДГТМ тег]</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var map in Model.MapItems)
+                {
+                    <tr data-map-id="@map.Id">
+                        <td>@map.HistorianWellName.@map.HistorianTag</td>
+                        <td>@map.PdgtmWellName.@map.PdgtmTag</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class="button-container">
+            <button id="remove-map" class="btn btn-lg btn-info">Удалить</button>
+        </div>
+    </div>
+</div>
 
 
 @section Scripts {
     <script>
+        $("#remove-map").click(function() {
+            var mapsId = [];
+            $(".danger").each(function() {
+                mapsId.push($(this).data("map-id"));
+            });
+            showMessage();
+            
+            $.ajax({
+                type: "POST",
+                url: "/api/service/removemaps",
+                data: JSON.stringify(mapsId),
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                success: function (result) {
+                    if (result == "ok") {
+                        updateMapItems();
+                    } else {
+                        showMessage(result);
+                    }
+                },
+                error: function (result) {
+                    alert(result.responseText);
+                },
+                complete: hideMessage()
+            });
+        });
+
+        var updateMapItems = function() {
+            $.ajax({
+                url: "/api/service/getmappings",
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                success: function (result) {
+                    if (result) {
+                        $("tbody").html(function () {
+                            var html = "";
+                            for (var i = 0; i < result.length; i++) {
+                                html += '<tr data-map-id="' + result[i].Id + '">' +
+                                        '<td>' + result[i].HistorianWellName + '.' + result[i].HistorianTag + '</td>' +
+                                        '<td>' + result[i].PdgtmWellName + '.' + result[i].PdgtmTag + '</td></tr>';
+                            }
+                            return html;
+                        });
+                        registerListeners();
+                        $("#pdgtm-wells, #historian-wells").change();
+                    } else {
+                        showMessage("Произошла неизвестная ошибка, сообщите разработчику.");
+                    }
+                },
+                error: function (result) {
+                    alert(result.responseText);
+                }
+            });
+        };
+
+        var registerListeners = function registerListeners() {
+            $("tr").off('click');
+
+            $("tr").click(function() {
+                $(this).toggleClass("danger");
+            });
+        };
+        registerListeners();
+
+        $("select#historian-wells").change(function () {
+            showMessage();
+            var wellName = $("select#historian-wells :selected").val();
+            $.ajax({
+                url: "/api/service/gethisttags",
+                data: { wellName: wellName },
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                success: function (result) {
+                    if (result) {
+                        $("select#historian-tags").html(function() {
+                            var html = "";
+                            for (var i = 0; i < result.length; i++) {
+                                html += '<option>' + result[i] + '</option>';
+                            }
+                            return html;
+                        });
+                    } else {
+                        showMessage("Произошла неизвестная ошибка, сообщите разработчику.");
+                    }
+                },
+                error: function (result) {
+                    alert(result.responseText);
+                },
+                complete: hideMessage()
+            });
+        });
         
+        $("select#pdgtm-wells").change(function () {
+            showMessage();
+            var wellName = $("select#pdgtm-wells :selected").val();
+            $.ajax({
+                url: "/api/service/getpdgtmtags",
+                data: { wellName: wellName },
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                success: function (result) {
+                    if (result) {
+                        $("select#pdgtm-tags").html(function () {
+                            var html = "";
+                            for (var i = 0; i < result.length; i++) {
+                                html += '<option>' + result[i] + '</option>';
+                            }
+                            return html;
+                        });
+                    } else {
+                        showMessage("Произошла неизвестная ошибка, сообщите разработчику.");
+                    }
+                },
+                error: function (result) {
+                    alert(result.responseText);
+                },
+                complete: hideMessage()
+            });
+        });
+
+        $("button#add-map").click(function() {
+            if (!validateFields()) return;
+            showMessage();
+            $.ajax({
+                type: "POST",
+                data: JSON.stringify(createMapItem()),
+                url: "/api/service/addmap",
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                success: function (result) {
+                    if (result == "ok") {
+                        // TODO some feed back'
+                        $("#pdgtm-wells, #historian-wells").change();
+                        updateMapItems();
+                    } else {
+                        showMessage(result);
+                    }
+                },
+                error: function (result) {
+                    alert(result.responseText);
+                },
+                complete: hideMessage()
+            });
+        });
+
+        var createMapItem = function() {
+            var mapItem = {                
+                HistorianWellName: $("select#historian-wells").val(),
+                PdgtmWellName : $("select#pdgtm-wells").val(),
+                PdgtmTag :$("select#pdgtm-tags").val(),
+                HistorianTag : $("select#historian-tags").val()
+            };
+            return mapItem;
+        };
     </script>
 }

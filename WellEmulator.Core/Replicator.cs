@@ -50,13 +50,11 @@ namespace WellEmulator.Core
             }
         }
 
-        public void RemoveMapping(MapItem mapItem)
+        public void RemoveMapping(List<int> mapItems)
         {
             lock (_mappings)
             {
-                _mappings.Add(_mappings.Single(m => m.HistorianTag.Equals(mapItem.HistorianTag) &&
-                                                    m.PdgtmTag.Equals(mapItem.PdgtmTag) &&
-                                                    m.PdgtmWellName.Equals(mapItem.PdgtmWellName)));
+                _mappings.RemoveAll(m => mapItems.Contains(m.Id));
             }
         }
 
@@ -95,7 +93,7 @@ namespace WellEmulator.Core
             lock (_mappings)
             {
                 var mappings = _mappings;
-                var tags = _historianAdapter.GetTagValues(mappings.Select(m => string.Format("{0}.{1}", m.PdgtmWellName, m.HistorianTag)).ToList());
+                var tags = _historianAdapter.GetTagValues(mappings.Select(m => string.Format("{0}.{1}", m.HistorianWellName, m.HistorianTag)).ToList());
 
                 foreach (var well in mappings.GroupBy(m => m.PdgtmWellName))
                 {

@@ -8,6 +8,12 @@ using System.Threading.Tasks;
 
 namespace WellEmulator.Models
 {
+    public enum Db
+    {
+        Historian,
+        Pdgtm
+    };
+
     public class SettingsManager
     {
         private readonly string _connectionString;
@@ -138,10 +144,10 @@ namespace WellEmulator.Models
                 connection.Open();
                 using (var command = new SqlCommand(_connectionString, connection)
                 {
-                    CommandText = string.Format("Insert into WellEmulatorSettings.dbo.Settings " +
-                                                "(HistorianTag, PdgtmTag, PdgtmWellName) values " +
-                                                "('{0}', '{1}', '{2}');",
-                                                mapItem.HistorianTag, mapItem.PdgtmTag, mapItem.PdgtmWellName)
+                    CommandText = string.Format("Insert into WellEmulatorSettings.dbo.MapItems " +
+                                                "(HistorianTag, PdgtmTag, PdgtmWellName, HistorianWellName) Values " +
+                                                "('{0}', '{1}', '{2}', '{3}') ",
+                                                mapItem.HistorianTag, mapItem.PdgtmTag, mapItem.PdgtmWellName, mapItem.HistorianWellName)
                 })
                 {
                     command.ExecuteNonQuery();
@@ -150,7 +156,7 @@ namespace WellEmulator.Models
             }
         }
 
-        public void RemoveMapItem(MapItem mapItem)
+        public void RemoveMapItems(IEnumerable<int> mapIds)
         {
             using (var connection = new SqlConnection(_connectionString))
             {
@@ -158,7 +164,9 @@ namespace WellEmulator.Models
                 using (var command = new SqlCommand(_connectionString, connection)
                 {
                     CommandText = string.Format("delete from WellEmulatorSettings.dbo.MapItems " +
-                                                "where Id = '{0}'; ", mapItem.Id)
+                                                "where Id IN({0}); ",
+                                                mapIds.Aggregate(new StringBuilder(), (builder, map) => builder
+                                                      .Append((builder.Length == 0 ? "" : ", ") + map)))
                 })
                 {
                     command.ExecuteNonQuery();
@@ -167,7 +175,7 @@ namespace WellEmulator.Models
             }
         }
 
-        public List<MapItem> GetMapping()
+        public List<MapItem> GetMappings()
         {
             var mappings = new List<MapItem>();
             using (var connection = new SqlConnection(_connectionString))
@@ -175,7 +183,7 @@ namespace WellEmulator.Models
                 connection.Open();
                 using (var command = new SqlCommand(_connectionString, connection)
                 {
-                    CommandText = "select m.Id, m.HistorianTag, m.PdgtmTag, m.PdgtmWellName " +
+                    CommandText = "select m.Id, m.HistorianTag, m.PdgtmTag, m.PdgtmWellName, m.HistorianWellName " +
                                   "from WellEmulatorSettings.dbo.MapItems m;"
                 })
                 {
@@ -185,10 +193,44 @@ namespace WellEmulator.Models
                         {
                             mappings.Add(new MapItem
                             {
-                                Id = Int32.Parse(reader["TagName"].ToString()),
+                                Id = Int32.Parse(reader["Id"].ToString()),
                                 HistorianTag = reader["HistorianTag"].ToString(),
                                 PdgtmTag = reader["PdgtmTag"].ToString(),
-                                PdgtmWellName = reader["PdgtmWellName"].ToString()
+                                PdgtmWellName = reader["PdgtmWellName"].ToString(),
+                                HistorianWellName = reader["HistorianWellName"].ToString()
+                            });
+                        }
+                    }
+                }
+                connection.Close();
+            }
+            return mappings;
+        }
+
+        public IEnumerable<MapItem> GetMappings(string wellName, Db db)
+        {
+            var mappings = new List<MapItem>();
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                using (var command = new SqlCommand(_connectionString, connection)
+                {
+                    CommandText = string.Format("select m.Id, m.HistorianTag, m.PdgtmTag, m.PdgtmWellName, m.HistorianWellName " +
+                                  "from WellEmulatorSettings.dbo.MapItems m " +
+                                  "where m.{1} = '{0}'; ", wellName, db == Db.Pdgtm ? "PdgtmWellName" : "HistorianWellName")
+                })
+                {
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            mappings.Add(new MapItem
+                            {
+                                Id = Int32.Parse(reader["Id"].ToString()),
+                                HistorianTag = reader["HistorianTag"].ToString(),
+                                PdgtmTag = reader["PdgtmTag"].ToString(),
+                                PdgtmWellName = reader["PdgtmWellName"].ToString(),
+                                HistorianWellName = reader["HistorianWellName"].ToString()
                             });
                         }
                     }

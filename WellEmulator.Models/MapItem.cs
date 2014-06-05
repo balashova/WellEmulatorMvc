@@ -21,5 +21,8 @@ namespace WellEmulator.Models
 
         [DataMember]
         public string PdgtmWellName { get; set; }
+
+        [DataMember]
+        public string HistorianWellName { get; set; }
     }
 }

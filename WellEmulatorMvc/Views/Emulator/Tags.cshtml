@@ -111,10 +111,10 @@
         });
 
         var getTag = function() {
-            $("#wait-dialog").modal("show");
+            showMessage();
             var tagId = $("select#tag-list :selected").data("tag-id");
             $.ajax({
-                url: "/api/service/gettag", // TODO check
+                url: "/api/service/gettag",
                 data: { tagId: tagId },
                 dataType: 'json',
                 contentType: 'application/json; charset=utf-8',
@@ -128,22 +128,21 @@
                 error: function(result) {
                     alert(result.responseText);
                 },
-                complete: function() {
-                    $("#wait-dialog").modal("hide");
-                }
+                complete: hideMessage()
             });
         };
 
-        $("button#remove-tag").click(function() {
+        $("button#remove-tag").click(function () {
+            showMessage();
             removeTag();
+            hideMessage();
         });
 
         var removeTag = function () {
-            $("#wait-dialog").modal("show");
             var tagId = $("select#tag-list :selected").data("tag-id");
             console.log({ tagId: tagId });
             $.ajax({
-                url: "/api/service/removetag", // TODO check
+                url: "/api/service/removetag",
                 data: { tagId: tagId },
                 dataType: 'json',
                 contentType: 'application/json; charset=utf-8',
@@ -157,9 +156,6 @@
                 },
                 error: function (result) {
                     alert(result.responseText);
-                },
-                complete: function () {
-                    $("#wait-dialog").modal("hide");
                 }
             });
         };
@@ -175,7 +171,7 @@
                         $("select#tag-list").html(function () {
                             var html = "";
                             for (var i = 0; i < result.length; i++) {
-                                html += '<option data-tag-id"' + result[i].Id + '">' + result[i].Name + '</option>';
+                                html += '<option data-tag-id="' + result[i].Id + '">' + result[i].Name + '</option>';
                             }
                             return html;
                         });

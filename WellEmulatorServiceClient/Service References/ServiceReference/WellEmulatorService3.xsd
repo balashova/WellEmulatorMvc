@@ -128,44 +128,6 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetTagList">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="wellName" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetTagListResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetTagListResult" nillable="true" type="q5:ArrayOfstring" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetTags">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetTagsResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/WellEmulator.Models" minOccurs="0" name="GetTagsResult" nillable="true" type="q6:ArrayOfTag" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetWellList">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetWellListResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/WellEmulator.Models" minOccurs="0" name="GetWellListResult" nillable="true" type="q7:ArrayOfWell" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
   <xs:element name="GetWitsmlObjects">
     <xs:complexType>
       <xs:sequence>
@@ -176,7 +138,7 @@
   <xs:element name="GetWitsmlObjectsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetWitsmlObjectsResult" nillable="true" type="q8:ArrayOfstring" />
+        <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetWitsmlObjectsResult" nillable="true" type="q5:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -191,14 +153,14 @@
   <xs:element name="GetWitsmlElementsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetWitsmlElementsResult" nillable="true" type="q9:ArrayOfstring" />
+        <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetWitsmlElementsResult" nillable="true" type="q6:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddMapItem">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/WellEmulator.Models" minOccurs="0" name="mapItem" nillable="true" type="q10:MapItem" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/WellEmulator.Models" minOccurs="0" name="mapItem" nillable="true" type="q7:MapItem" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -207,14 +169,14 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="RemoveMapItem">
+  <xs:element name="RemoveMapItems">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/WellEmulator.Models" minOccurs="0" name="mapItem" nillable="true" type="q11:MapItem" />
+        <xs:element xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="mapItems" nillable="true" type="q8:ArrayOfint" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="RemoveMapItemResponse">
+  <xs:element name="RemoveMapItemsResponse">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
@@ -227,7 +189,111 @@
   <xs:element name="GetMappingsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/WellEmulator.Models" minOccurs="0" name="GetMappingsResult" nillable="true" type="q12:ArrayOfMapItem" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/WellEmulator.Models" minOccurs="0" name="GetMappingsResult" nillable="true" type="q9:ArrayOfMapItem" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSettingsTags">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSettingsTagsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/WellEmulator.Models" minOccurs="0" name="GetSettingsTagsResult" nillable="true" type="q10:ArrayOfTag" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllHistTags">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllHistTagsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetAllHistTagsResult" nillable="true" type="q11:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetHistWells">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetHistWellsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetHistWellsResult" nillable="true" type="q12:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetHistTags">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="wellName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetHistTagsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetHistTagsResult" nillable="true" type="q13:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPdgtmTags">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="wellName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPdgtmTagsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetPdgtmTagsResult" nillable="true" type="q14:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPdgtmWells">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPdgtmWellsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/WellEmulator.Models" minOccurs="0" name="GetPdgtmWellsResult" nillable="true" type="q15:ArrayOfWell" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetNotMappedHistTags">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="wellName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetNotMappedHistTagsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetNotMappedHistTagsResult" nillable="true" type="q16:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetNotMappedPdgtmTags">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="wellName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetNotMappedPdgtmTagsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetNotMappedPdgtmTagsResult" nillable="true" type="q17:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

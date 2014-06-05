@@ -27,6 +27,22 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Tag" nillable="true" type="tns:Tag" />
+  <xs:complexType name="MapItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="HistorianTag" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HistorianWellName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="PdgtmTag" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PdgtmWellName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MapItem" nillable="true" type="tns:MapItem" />
+  <xs:complexType name="ArrayOfMapItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MapItem" nillable="true" type="tns:MapItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMapItem" nillable="true" type="tns:ArrayOfMapItem" />
   <xs:complexType name="ArrayOfTag">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Tag" nillable="true" type="tns:Tag" />
@@ -46,19 +62,4 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Well" nillable="true" type="tns:Well" />
-  <xs:complexType name="MapItem">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="HistorianTag" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Id" type="xs:int" />
-      <xs:element minOccurs="0" name="PdgtmTag" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="PdgtmWellName" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="MapItem" nillable="true" type="tns:MapItem" />
-  <xs:complexType name="ArrayOfMapItem">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="MapItem" nillable="true" type="tns:MapItem" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfMapItem" nillable="true" type="tns:ArrayOfMapItem" />
 </xs:schema>

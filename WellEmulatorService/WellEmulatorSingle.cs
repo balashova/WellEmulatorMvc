@@ -61,7 +61,7 @@ namespace WellEmulatorService
                 if (settings != null) SetSettings(settings);
 
                 _emulator.Tags = _settingsManager.GetTags();
-                _replicator.Mappings = _settingsManager.GetMapping();
+                _replicator.Mappings = _settingsManager.GetMappings();
             }
             catch (Exception ex)
             {
@@ -174,7 +174,7 @@ namespace WellEmulatorService
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message + "\n" + ex.StackTrace, ex);
+                throw new Exception(ex.Message, ex);
             }
         }
 
@@ -199,28 +199,6 @@ namespace WellEmulatorService
             try
             {
                 return _settingsManager.GetTag(tagId);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message + "\n" + ex.StackTrace, ex);
-            }
-        }
-
-        public IEnumerable<Tag> GetTags()
-        {
-            return _settingsManager.GetTags();
-        }
-
-        public IEnumerable<string> GetTagList(string wellName)
-        {
-            return _emulator.TagNames;
-        }
-
-        public IEnumerable<Well> GetWellList()
-        {
-            try
-            {
-                return _pdgtmDbAdapter.GetWells();
             }
             catch (Exception ex)
             {
@@ -256,8 +234,8 @@ namespace WellEmulatorService
         {
             try
             {
-                _replicator.AddMapping(mapItem);
                 _settingsManager.AddMapItem(mapItem);
+                _replicator.AddMapping(mapItem);
             }
             catch (Exception ex)
             {
@@ -265,12 +243,12 @@ namespace WellEmulatorService
             }
         }
 
-        public void RemoveMapItem(MapItem mapItem)
+        public void RemoveMapItems(List<int> mapItems)
         {
             try
             {
-                _replicator.RemoveMapping(mapItem);
-                _settingsManager.RemoveMapItem(mapItem);
+                _settingsManager.RemoveMapItems(mapItems);
+                _replicator.RemoveMapping(mapItems);
             }
             catch (Exception ex)
             {
@@ -282,7 +260,58 @@ namespace WellEmulatorService
         {
             try
             {
-                return _settingsManager.GetMapping();
+                return _settingsManager.GetMappings();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message + "\n" + ex.StackTrace, ex);
+            }
+        }
+
+        public IEnumerable<Tag> GetSettingsTags()
+        {
+            return _settingsManager.GetTags();
+        }
+
+        public IEnumerable<string> GetAllHistTags()
+        {
+            return _historianAdapter.GetAllTags();
+        }
+
+        public IEnumerable<string> GetHistWells()
+        {
+            return _historianAdapter.GetWells();
+        }
+
+        public IEnumerable<string> GetHistTags(string wellName)
+        {
+            return _historianAdapter.GetTags(wellName);
+        }
+
+        public IEnumerable<string> GetPdgtmTags(string wellName)
+        {
+            return _pdgtmDbAdapter.GetTags(wellName);
+        }
+
+        public IEnumerable<string> GetNotMappedHistTags(string wellName)
+        {
+            var allTags = _historianAdapter.GetTags(wellName);
+            var mappings = _settingsManager.GetMappings(wellName, Db.Historian).Select(m => m.HistorianTag);
+            return allTags.Where(t => !mappings.Contains(t));
+        }
+
+        public IEnumerable<string> GetNotMappedPdgtmTags(string wellName)
+        {
+            var allTags = _pdgtmDbAdapter.GetTags(wellName);
+            var mappings = _settingsManager.GetMappings(wellName, Db.Pdgtm).Select(m => m.PdgtmTag);
+            return allTags.Where(t => !mappings.Contains(t));
+        }
+
+        public IEnumerable<Well> GetPdgtmWells()
+        {
+            try
+            {
+                return _pdgtmDbAdapter.GetWells();
             }
             catch (Exception ex)
             {

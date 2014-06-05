@@ -50,7 +50,6 @@
     <Compile Include="MapItem.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SettingsDb.cs" />
     <Compile Include="SettingsManager.cs" />
     <Compile Include="Tag.cs" />
     <Compile Include="TagComparer.cs" />

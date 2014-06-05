@@ -29,10 +29,10 @@ namespace WellEmulator.Core
 
         public int GetWellId(string wellName)
         {
-            using (var connection = new SqlConnection(this._connectionString))
+            using (var connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
-                using (var command = new SqlCommand(this._connectionString, connection)
+                using (var command = new SqlCommand(_connectionString, connection)
                     {
                         CommandText =
                             string.Format("select w.idWell from PDGTM.dbo.Well w where w.nameWell = '{0}'", wellName)
@@ -70,6 +70,11 @@ namespace WellEmulator.Core
                 connection.Close();
             }
             return wells;
+        }
+
+        public IEnumerable<string> GetTags(string wellName)
+        {
+            return new[] { "oilRate", "gasRate", "waterRate" };
         }
 
         public void InsertValues(int wellId, double oilRate, double gasRate, double waterRate)

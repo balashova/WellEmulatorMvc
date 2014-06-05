@@ -33,6 +33,9 @@
                                     <li class="@("Теги".Equals(ViewBag.Title) ? "active": "")">
                                         <a href="@Url.Action("Tags", "Emulator")">Список тегов</a>
                                     </li>
+                                    <li class="@("Сопоставление".Equals(ViewBag.Title) ? "active": "")">
+                                        <a href="@Url.Action("Mapping", "Emulator")">Репликация</a>
+                                    </li>
                                 </ul>
                                 @*<ul class="nav navbar-nav navbar-right">
                                     <li>
@@ -72,13 +75,13 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title">Запрос выполняется</h4>
+                        <h4 class="modal-title">Запрос выполняется...</h4>
                     </div>
                     <div class="modal-body">
-                        <span>Пожалуйста подождите...</span>
+                        <span id="modal-body">Пожалуйста подождите...</span>
                     </div>
                     <div class="modal-footer">
-                        
+                        <button type="button" id="modal-ok-button" class="btn btn-primary" data-dismiss="modal">Ок</button>
                     </div>
                 </div>
                 <!-- /.modal-content -->
@@ -89,16 +92,7 @@
 
         @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/bootstrap")
+        @Scripts.Render("~/bundles/script")
         @RenderSection("Scripts", required: false)
-        
-        
-        <script>
-            //$(document).ready(function () {
-            //    $(".navbar-nav > li:has(a)").click(function () {
-            //        $(".navbar-nav > li.active").removeClass("active");
-            //        $(this).addClass("active");
-            //    });
-            //});
-        </script>
     </body>
 </html>

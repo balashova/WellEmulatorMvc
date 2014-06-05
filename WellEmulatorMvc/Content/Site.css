@@ -116,6 +116,15 @@ input:read-only {
     cursor: default !important;
 }
 
+button#modal-ok-button {
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.need-validation {
+            
+}
+
 /* Styles for About.cshtml
 -----------------------------------------------------------*/
 .content-about {
