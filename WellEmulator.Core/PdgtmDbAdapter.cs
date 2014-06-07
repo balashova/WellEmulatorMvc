@@ -126,7 +126,10 @@ namespace WellEmulator.Core
                     CommandText = string.Format("insert into PDGTM.dbo.ProductionTestResults" +
                                                 "(idProductionTest, oilRate, gasRate, waterRate) values (" +
                                                 "{0}, {1}, {2}, {3} ); ",
-                                                lastId, oilRate, gasRate, waterRate)
+                                                lastId.ToString("F1", CultureInfo.InvariantCulture),
+                                                oilRate.ToString("F1", CultureInfo.InvariantCulture),
+                                                gasRate.ToString("F1", CultureInfo.InvariantCulture),
+                                                waterRate.ToString("F1", CultureInfo.InvariantCulture))
                 })
                 {
                     command.ExecuteNonQuery();
