@@ -105,11 +105,7 @@ namespace WellEmulator.Core
                     var gasRate = tags[string.Format("{0}.{1}", mapGasRate.HistorianWellName, mapGasRate.HistorianTag)];
                     var waterRate = tags[string.Format("{0}.{1}", mapWaterRate.HistorianWellName, mapWaterRate.HistorianTag)];
 
-                    var count = Math.Min(waterRate.Count, Math.Min(oilRate.Count, gasRate.Count));
-                    for (int i = 0; i < count; i++)
-                    {
-                        _pdgtmDbAdapter.InsertValues(_pdgtmDbAdapter.GetWellId(well.Key), oilRate[i], gasRate[i], waterRate[i]);
-                    }
+                    _pdgtmDbAdapter.InsertValues(_pdgtmDbAdapter.GetWellId(well.Key), oilRate.Last(), gasRate.Last(), waterRate.Last());
                 }
             }
         }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml.Linq;
@@ -10,7 +11,7 @@ namespace WellEmulatorService.Parsers
     {
         public static IEnumerable<string> GetWitsmlObjects(string standard)
         {
-            var directory = new DirectoryInfo(string.Format(@"Standards\{0}", standard ?? "WITSML"));
+            var directory = new DirectoryInfo(string.Format(@"{1}\Standards\{0}", standard ?? "WITSML", AppDomain.CurrentDomain.BaseDirectory));
 
             var objects = new Dictionary<string, IEnumerable<Element>>();
 
@@ -33,12 +34,12 @@ namespace WellEmulatorService.Parsers
             FileInfo file;
             if (@object == null)
             {
-                var dir = new DirectoryInfo(string.Format(@"Standards\{0}", standard ?? "WITSML"));
+                var dir = new DirectoryInfo(string.Format(@"{1}\Standards\{0}", standard ?? "WITSML", AppDomain.CurrentDomain.BaseDirectory));
                 file = dir.GetFiles().First();
             }
             else
             {
-                file = new FileInfo(string.Format(@"Standards\{0}\{1}.xsd", standard ?? "WITSML", @object));
+                file = new FileInfo(string.Format(@"{2}\Standards\{0}\{1}.xsd", standard ?? "WITSML", @object, AppDomain.CurrentDomain.BaseDirectory));
             }
             var document = XDocument.Load(file.FullName);
             var elements = new List<Element>();

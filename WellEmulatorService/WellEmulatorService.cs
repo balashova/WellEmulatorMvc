@@ -9,12 +9,14 @@ using System.Text;
 using System.Threading.Tasks;
 
 using System.ServiceModel;
+using NLog;
 
 namespace WellEmulatorService
 {
     public partial class WellEmulatorService : ServiceBase
     {
         private ServiceHost _serviceHost;
+        private readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
         public WellEmulatorService()
         {
@@ -23,14 +25,24 @@ namespace WellEmulatorService
 
         protected override void OnStart(string[] args)
         {
-            if (_serviceHost != null)
+            try
             {
-                _serviceHost.Close();
-                _serviceHost = null;
-            }
 
-            _serviceHost = new ServiceHost(typeof(WellEmulator));
-            _serviceHost.Open();
+
+                if (_serviceHost != null)
+                {
+                    _serviceHost.Close();
+                    _serviceHost = null;
+                }
+
+                _serviceHost = new ServiceHost(typeof (WellEmulator));
+                _serviceHost.Open();
+            }
+            catch (Exception ex)
+            {
+                _logger.FatalException("root fatal", ex);
+                throw;
+            }
         }
 
         protected override void OnStop()

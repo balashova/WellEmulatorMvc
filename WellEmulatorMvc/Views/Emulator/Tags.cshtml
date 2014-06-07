@@ -55,7 +55,7 @@
     <select size="23" class="form-control" id="tag-list">
         @foreach (var tag in Model)
         {
-            <option data-tag-id="@tag.Id">@tag.Name</option>
+            <option data-tag-id="@tag.Id">@tag.WellName.@tag.Name</option>
         }
     </select>
     
@@ -110,7 +110,6 @@
         });
 
         var getTag = function() {
-            showMessage();
             var tagId = $("select#tag-list :selected").data("tag-id");
             $.ajax({
                 url: "/api/service/gettag",
@@ -126,8 +125,7 @@
                 },
                 error: function(result) {
                     alert(result.responseText);
-                },
-                complete: hideMessage()
+                }
             });
         };
 
@@ -170,7 +168,7 @@
                         $("select#tag-list").html(function () {
                             var html = "";
                             for (var i = 0; i < result.length; i++) {
-                                html += '<option data-tag-id="' + result[i].Id + '">' + result[i].Name + '</option>';
+                                html += '<option data-tag-id="' + result[i].Id + '">' + result[i].WellName + '.' + result[i].Name + '</option>';
                             }
                             return html;
                         });

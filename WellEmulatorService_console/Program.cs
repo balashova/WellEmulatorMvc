@@ -4,6 +4,7 @@ using System.Linq;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
+using NLog;
 using WellEmulatorService;
 
 namespace WellEmulatorService_console
@@ -12,15 +13,26 @@ namespace WellEmulatorService_console
     {
         static void Main(string[] args)
         {
-            using (var serviceHost = new ServiceHost(typeof(WellEmulator)))
+            Logger _logger = LogManager.GetCurrentClassLogger();
+            try
             {
-                // Open the host and start listening for incoming messages.
-                var instance = WellEmulatorSingle.Instance;
-                serviceHost.Open();
-                Console.WriteLine("The service is ready.");
-                Console.WriteLine("Press the Enter key to terminate service.");
-                Console.ReadLine();
+                _logger.Debug("starting...");
+                using (var serviceHost = new ServiceHost(typeof(WellEmulator)))
+                {
+                    // Open the host and start listening for incoming messages.
+                    var instance = WellEmulatorSingle.Instance;
+                    serviceHost.Open();
+                    Console.WriteLine("The service is ready.");
+                    Console.WriteLine("Press the Enter key to terminate service.");
+                    Console.ReadLine();
+                }
             }
+            catch (Exception ex)
+            {
+                _logger.FatalException("root fatal", ex);
+                throw;
+            }
+            
         }
     }
 }
