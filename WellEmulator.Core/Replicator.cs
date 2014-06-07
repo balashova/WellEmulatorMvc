@@ -97,9 +97,13 @@ namespace WellEmulator.Core
 
                 foreach (var well in mappings.GroupBy(m => m.PdgtmWellName))
                 {
-                    var oilRate = tags[well.Single(m => m.PdgtmTag.Equals("oilRate")).HistorianTag];
-                    var gasRate = tags[well.Single(m => m.PdgtmTag.Equals("gasRate")).HistorianTag];
-                    var waterRate = tags[well.Single(m => m.PdgtmTag.Equals("waterRate")).HistorianTag];
+                    var mapOilRate = well.Single(m => m.PdgtmTag.Equals("oilRate"));
+                    var mapGasRate = well.Single(m => m.PdgtmTag.Equals("gasRate"));
+                    var mapWaterRate = well.Single(m => m.PdgtmTag.Equals("waterRate"));
+
+                    var oilRate = tags[string.Format("{0}.{1}", mapOilRate.HistorianWellName, mapOilRate.HistorianTag)];
+                    var gasRate = tags[string.Format("{0}.{1}", mapGasRate.HistorianWellName, mapGasRate.HistorianTag)];
+                    var waterRate = tags[string.Format("{0}.{1}", mapWaterRate.HistorianWellName, mapWaterRate.HistorianTag)];
 
                     var count = Math.Min(waterRate.Count, Math.Min(oilRate.Count, gasRate.Count));
                     for (int i = 0; i < count; i++)
