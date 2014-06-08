@@ -13,11 +13,11 @@ namespace WellEmulatorService_console
     {
         static void Main(string[] args)
         {
-            Logger _logger = LogManager.GetCurrentClassLogger();
+            Logger logger = LogManager.GetCurrentClassLogger();
             try
             {
-                _logger.Debug("starting...");
-                using (var serviceHost = new ServiceHost(typeof(WellEmulator)))
+                logger.Debug("starting...");
+                using (var serviceHost = new ServiceHost(typeof (WellEmulator)))
                 {
                     // Open the host and start listening for incoming messages.
                     var instance = WellEmulatorSingle.Instance;
@@ -27,12 +27,16 @@ namespace WellEmulatorService_console
                     Console.ReadLine();
                 }
             }
+            catch (CommunicationObjectFaultedException)
+            {
+                Console.WriteLine("Please restart with administrator rights");
+                Console.ReadLine();
+            }
             catch (Exception ex)
             {
-                _logger.FatalException("root fatal", ex);
+                logger.FatalException("root fatal", ex);
                 throw;
-            }
-            
+            }            
         }
     }
 }

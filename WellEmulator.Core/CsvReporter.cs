@@ -9,7 +9,7 @@ using WellEmulator.Models;
 
 namespace WellEmulator.Core
 {
-    class CsvReporter
+    public class CsvReporter : IReporter
     {
         private readonly DirectoryInfo _directoryInfo;
         private readonly List<CsvStruct> _csvStructs = new List<CsvStruct>(1000);
@@ -64,12 +64,12 @@ namespace WellEmulator.Core
                 }
             }
         }
-    }
 
-    struct CsvStruct
-    {
-        internal double Value { get; set; }
-        internal DateTime TimeStamp { get; set; }
-        internal string Name { get; set; }
+        private struct CsvStruct
+        {
+            internal double Value { get; set; }
+            internal DateTime TimeStamp { get; set; }
+            internal string Name { get; set; }
+        }
     }
 }

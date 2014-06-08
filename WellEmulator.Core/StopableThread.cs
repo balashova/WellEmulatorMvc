@@ -12,7 +12,7 @@ namespace WellEmulator.Core
         public bool Stopped { get; private set; }
         private readonly Thread _thread;
         private readonly TimeSpan _delay;
-        private bool _isInitially = true;
+        private bool _isFirstIteration = true;
         private bool _allowStop = true;
 
         public StopableThread(TimeSpan delay, ThreadStart threadStart)
@@ -22,13 +22,13 @@ namespace WellEmulator.Core
                 {
                     while (!Stopped)
                     {
-                        if (!_isInitially)
+                        if (!_isFirstIteration)
                         {
                             _allowStop = false;
                             threadStart();
                             _allowStop = true;
                         }
-                        else _isInitially = false;
+                        else _isFirstIteration = false;
                         Thread.Sleep(_delay);
                     }
                 }) { IsBackground = true };

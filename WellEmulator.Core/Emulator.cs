@@ -76,14 +76,14 @@ namespace WellEmulator.Core
         private bool _isRunning;
         private StopableThread _emulationThread;
         private StopableThread _autoSaveThread;
-        private readonly CsvReporter _reporter;
+        private readonly IReporter _reporter;
 
         public Emulator()
         {
             var path = ConfigurationManager.AppSettings.Get("ReportUpload");
             var directory = new DirectoryInfo(path ?? @"C:\Historian\Data\DataImport\FastLoad");
             if (!directory.Exists) directory.Create();
-            _reporter = new CsvReporter(directory);
+            _reporter = new DbReporter(); //new CsvReporter(directory);
         }
 
         public void AddTag(Tag tag)

@@ -1,17 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 using System.Data.SqlClient;
+using NLog;
 using WellEmulator.Models;
 
 namespace WellEmulator.Core
 {
     public class HistorianAdapter
     {
+        private readonly Logger _logger = LogManager.GetCurrentClassLogger();
         private readonly string _connectionString;
 
         public HistorianAdapter()
@@ -22,6 +25,7 @@ namespace WellEmulator.Core
             }
             catch (Exception ex)
             {
+                _logger.FatalException("Connection initialization failed.", ex);
                 throw new HistorianConnectionStringException(ex);
             }
         }
@@ -31,23 +35,35 @@ namespace WellEmulator.Core
             var tags = new List<string>();
             using (var connection = new SqlConnection(_connectionString))
             {
-                connection.Open();
-                using (var command = new SqlCommand(_connectionString, connection)
+                try
                 {
-                    CommandText = "select tag.TagName " +
-                                  "from Runtime.dbo.Tag tag " +
-                                  "where tag.IOServerKey = 2"
-                })
-                {
-                    using (var reader = command.ExecuteReader())
+                    connection.Open();
+                    using (var command = new SqlCommand(_connectionString, connection)
                     {
-                        while (reader.Read())
+                        CommandText = "select tag.TagName " +
+                                      "from Runtime.dbo.Tag tag "
+                    })
+                    {
+
+                        using (var reader = command.ExecuteReader())
                         {
-                            tags.Add(reader["TagName"].ToString());
+                            while (reader.Read())
+                            {
+                                tags.Add(reader["TagName"].ToString());
+                            }
                         }
+
                     }
                 }
-                connection.Close();
+                catch (Exception ex)
+                {
+                    _logger.FatalException("sql command execution failed", ex);
+                    throw;
+                }
+                finally
+                {
+                    connection.Close();
+                }
             }
             return tags;
         }
@@ -55,22 +71,18 @@ namespace WellEmulator.Core
         public IEnumerable<string> GetTags(string wellName)
         {
             var allTags = GetAllTags();
-            var tags = new List<string>();
-            foreach (var tag in allTags)
-            {
-                var names = tag.Split('.');
-                var well = names.First();
-                var tagName = names.Last();
-                if (well.Equals(wellName)) tags.Add(tagName);
-            }
+            var tags = from tag in allTags
+                select tag.Split('.')
+                into names
+                let well = names.First()
+                let tagName = names.Last()
+                where well.Equals(wellName)
+                select tagName;
             return tags;
         }
 
         public Dictionary<string, List<string>> GetTagsGroupingByWell()
         {
-            //return GetTagList().GroupBy(t => t.Split('.').First()).
-            //                    ToDictionary(well => well.Key, well => well.Select(w => w.Split('.').Last()));
-
             var tags = GetAllTags();
             var dict = new Dictionary<string, List<string>>();
             foreach (var tag in tags)
@@ -98,27 +110,27 @@ namespace WellEmulator.Core
         {
             using (var connection = new SqlConnection(_connectionString))
             {
-                connection.Open();
-                using (var command = new SqlCommand(_connectionString, connection)
+                try
                 {
-                    CommandText = string.Format("Insert into Runtime.dbo.Tag " +
-                                                "(TagName,    IOServerKey, StorageNodeKey, TopicKey, AcquisitionType, " +
-                                                "StorageType, TagType,     Description,    Status,   CEVersion, " +
-                                                "AITag,       AIHistory) Values " +
-                                                "('{0}.{1}',  2,           1,              2,        2, " +
-                                                "3,           1,           '{0}.{1}',      0,        0, " +
-                                                "'false',     'false')", tag.WellName, tag.Name) + "; " +
-
-                                  string.Format("Insert into Runtime.dbo.AnalogTag " +
-                                                "(TagName,   EUKey, MinEU, MaxEU, MinRaw, MaxRaw, RawType, IntegerSize) Values " +
-                                                "('{0}.{1}', 44,    {2},   {3},   {2},    {3},    2,       0)",
-                                                tag.WellName, tag.Name, tag.MinValue, tag.MaxValue)
-                })
-                {
-                    command.ExecuteNonQuery();
+                    connection.Open();
+                    using (var command = new SqlCommand(_connectionString, connection)
+                    {
+                        CommandText = string.Format("Insert into Runtime.dbo.Tag " +
+                                                    "(TagName) Values ('{0}.{1}');", tag.WellName, tag.Name)
+                    })
+                    {
+                        command.ExecuteNonQuery();
+                    }
                 }
-
-                connection.Close();
+                catch (Exception ex)
+                {
+                    _logger.FatalException("sql command execution failed", ex);
+                    throw;
+                }
+                finally
+                {
+                    connection.Close();
+                }
             }
         }
 
@@ -135,53 +147,28 @@ namespace WellEmulator.Core
         {
             using (var connection = new SqlConnection(_connectionString))
             {
-                connection.Open();
-                using (var command = new SqlCommand(_connectionString, connection)
+                try
                 {
-                    CommandText = string.Format("Delete from Runtime.dbo.AnalogTag where TagName = '{0}'; " +
-                                                "Delete from Runtime.dbo.Tag where TagName = '{0}'", tagName)
-                })
-                {
-                    command.ExecuteNonQuery();
-                }
-                connection.Close();
-            }
-        }
-
-        /// <summary>
-        /// Имя тега в формате "wellName.tagName".
-        /// </summary>
-        /// <param name="tagName">"wellName.tagName"</param>
-        /// <returns></returns>
-        public Tag GetTag(string tagName)
-        {
-            using (var connection = new SqlConnection(_connectionString))
-            {
-                connection.Open();
-                using (var command = new SqlCommand(_connectionString, connection)
-                {
-                    CommandText = string.Format("select t.TagName, t.MinRaw, t.MaxRaw " +
-                                  "from Runtime.dbo.AnalogTag t " +
-                                  "where t.TagName = '{0}'", tagName)
-                })
-                {
-                    using (var reader = command.ExecuteReader())
+                    connection.Open();
+                    using (var command = new SqlCommand(_connectionString, connection)
                     {
-                        while (reader.Read())
-                        {
-                            return new Tag
-                            {
-                                Name = reader["TagName"].ToString().Split('.').Last(),
-                                WellName = reader["TagName"].ToString().Split('.').First(),
-                                MaxValue = Double.Parse(reader["MaxRaw"].ToString()),
-                                MinValue = Double.Parse(reader["MinRaw"].ToString()),
-                            };
-                        }
+                        CommandText = string.Format("Delete from Runtime.dbo.Tag where TagName = '{0}'; " +
+                                                    "Delete from Runtime.dbo.History where TagName = '{0}'", tagName)
+                    })
+                    {
+                        command.ExecuteNonQuery();
                     }
                 }
-                connection.Close();
+                catch (Exception ex)
+                {
+                    _logger.FatalException("sql command execution failed", ex);
+                    throw;
+                }
+                finally
+                {
+                    connection.Close();
+                }
             }
-            return null;
         }
 
         /// <summary>
@@ -189,51 +176,90 @@ namespace WellEmulator.Core
         /// </summary>
         /// <param name="tags">"wellName.tagName"</param>
         /// <returns></returns>
-        public Dictionary<string, List<double>> GetTagValues(List<string> tags)
+        public Dictionary<string, double> GetTagValues(List<string> tags)
         {
-            var dictionary = new Dictionary<string, List<double>>(tags.Count);
+            var dictionary = new Dictionary<string, double>(tags.Count);
             using (var connection = new SqlConnection(_connectionString))
             {
-                connection.Open();
-                using (var command = new SqlCommand(_connectionString, connection)
+                try
                 {
-                    CommandText = string.Format("select h.TagName, h.Value " +
-                                                "from Runtime.dbo.History h " +
-                                                "where h.TagName in ({0})",
-                                                tags.Aggregate(new StringBuilder(), (builder, tag) => builder.
-                                                     Append((builder.Length == 0 ? "" : ", ") + "'" + tag + "'")))
-                })
-                {
-                    try
+                    connection.Open();
+                    using (var command = new SqlCommand(_connectionString, connection)
+                    {
+                        CommandText = string.Format("select h.TagName, h.Value " +
+                                                    "from Runtime.dbo.History h " +
+                                                    "where h.Id in (select max(Id) " +
+                                                    "from Runtime.dbo.History where TagName in ({0}) " +
+                                                    "group by TagName ); ",
+                            tags.Aggregate(new StringBuilder(), (builder, tag) => builder.
+                                Append((builder.Length == 0 ? "" : ", ") + "'" + tag + "'")))
+                    })
                     {
                         using (var reader = command.ExecuteReader())
                         {
                             while (reader.Read())
                             {
                                 var tagName = reader["TagName"].ToString();
-                                
-                                double value;
-                                Double.TryParse(reader["Value"].ToString(), out value);
-                                
-                                if (dictionary.ContainsKey(tagName))
-                                {
-                                    dictionary[tagName].Add(value);
-                                }
-                                else
-                                {
-                                    dictionary.Add(tagName, new List<double> { value });
-                                }
+                                var value = Double.Parse(reader["Value"].ToString());
+
+                                dictionary.Add(tagName, value);
                             }
                         }
                     }
-                    catch (SqlException ex)
-                    {
-                        throw new HistorianServerNotRunningException(ex);
-                    }
                 }
-                connection.Close();
+                catch (SqlException ex)
+                {
+                    _logger.FatalException(tags.Aggregate(new StringBuilder(), (builder, tag) => builder.
+                                Append((builder.Length == 0 ? "" : ", ") + "'" + tag + "'")).ToString(), ex);
+                    throw new HistorianServerNotRunningException(ex);
+                }
+                finally
+                {
+                    connection.Close();
+                }
             }
             return dictionary;
+        }
+
+        public void InsertTagValues(Dictionary<string, List<double>> tagsValues)
+        {
+            if(tagsValues == null || !tagsValues.Any()) return;
+
+            var com = new StringBuilder("insert into Runtime.dbo.History (TagName, Value) Values ");
+            var isFirstRow = true;
+            foreach (var tag in tagsValues)
+            {
+                foreach (var value in tag.Value)
+                {
+                    if (!isFirstRow) com.Append(",");
+                    else isFirstRow = false;
+                    com.Append(" ('" + tag.Key + "', '" + value.ToString("F1", CultureInfo.InvariantCulture) + "') ");
+                }
+            }
+
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    using (var command = new SqlCommand(_connectionString, connection)
+                    {
+                        CommandText = com.ToString()
+                    })
+                    {
+                        command.ExecuteNonQuery();
+                    }
+                }
+                catch (SqlException ex)
+                {
+                    _logger.FatalException(com.ToString(), ex);
+                    throw new HistorianServerNotRunningException(ex);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
         }
     }
 }

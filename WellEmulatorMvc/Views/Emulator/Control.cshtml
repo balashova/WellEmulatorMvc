@@ -261,7 +261,8 @@
                     if (result == "ok") {
                         $("button#apply-settings").attr("disabled", "disabled");
                     } else {
-                        alert(result);
+                        alert("Error. See console.");
+                        console.log(result);
                     }
                 },
                 error: function (result) {

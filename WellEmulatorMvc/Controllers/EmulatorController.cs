@@ -52,8 +52,8 @@ namespace WellEmulatorMvc.Controllers
         {
             var histWells = _client.GetHistWells();
             var pdgtmWells = _client.GetPdgtmWells().Select(w => w.Name).ToList();
-            var histTags = _client.GetNotMappedHistTags(histWells.First());
-            var pdgtmTags = _client.GetNotMappedPdgtmTags(pdgtmWells.First());
+            var histTags = _client.GetNotMappedHistTags(histWells.FirstOrDefault());
+            var pdgtmTags = _client.GetNotMappedPdgtmTags(pdgtmWells.FirstOrDefault());
             var mapItems = _client.GetMappings();
 
             var model = new MappingViewModel()

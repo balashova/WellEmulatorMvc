@@ -140,18 +140,6 @@ namespace WellEmulatorMvc.Controllers
             }
         }
 
-        //[ActionName("getpdgtmwells")]
-        //public IEnumerable<string> GetPdgtmWells()
-        //{
-        //    return _client.GetPdgtmWells().Select(w => w.Name);
-        //}
-
-        //[ActionName("gethistwells")]
-        //public IEnumerable<string> GetHistorianWells()
-        //{
-        //    return _client.GetHistWells();
-        //}
-
         [ActionName("gethisttags")]
         public IEnumerable<string> GetHistTags(string wellName)
         {

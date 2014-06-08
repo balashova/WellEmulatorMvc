@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NLog;
 using WellEmulator.Models;
 
 namespace WellEmulator.Core
 {
     public class Replicator
     {
+        private readonly Logger _logger = LogManager.GetCurrentClassLogger();
+
         public bool IsRunning
         {
             get { return _isRunning; }
@@ -90,23 +93,55 @@ namespace WellEmulator.Core
 
         private void Replicate()
         {
-            lock (_mappings)
+            try
             {
-                var mappings = _mappings;
-                var tags = _historianAdapter.GetTagValues(mappings.Select(m => string.Format("{0}.{1}", m.HistorianWellName, m.HistorianTag)).ToList());
+                if (!_mappings.Any()) return;
 
-                foreach (var well in mappings.GroupBy(m => m.PdgtmWellName))
+                lock (_mappings)
                 {
-                    var mapOilRate = well.Single(m => m.PdgtmTag.Equals("oilRate"));
-                    var mapGasRate = well.Single(m => m.PdgtmTag.Equals("gasRate"));
-                    var mapWaterRate = well.Single(m => m.PdgtmTag.Equals("waterRate"));
+                    var mappings = _mappings;
+                    var tags =
+                        _historianAdapter.GetTagValues(
+                            mappings.Select(m => string.Format("{0}.{1}", m.HistorianWellName, m.HistorianTag)).ToList());
 
-                    var oilRate = tags[string.Format("{0}.{1}", mapOilRate.HistorianWellName, mapOilRate.HistorianTag)];
-                    var gasRate = tags[string.Format("{0}.{1}", mapGasRate.HistorianWellName, mapGasRate.HistorianTag)];
-                    var waterRate = tags[string.Format("{0}.{1}", mapWaterRate.HistorianWellName, mapWaterRate.HistorianTag)];
+                    foreach (var well in mappings.GroupBy(m => m.PdgtmWellName))
+                    {
+                        var mapOilRate = well.SingleOrDefault(m => m.PdgtmTag.Equals("oilRate"));
+                        var mapGasRate = well.SingleOrDefault(m => m.PdgtmTag.Equals("gasRate"));
+                        var mapWaterRate = well.SingleOrDefault(m => m.PdgtmTag.Equals("waterRate"));
 
-                    _pdgtmDbAdapter.InsertValues(_pdgtmDbAdapter.GetWellId(well.Key), oilRate.Last(), gasRate.Last(), waterRate.Last());
+                        double oilRate = 0;
+                        if (mapOilRate != null)
+                        {
+                            tags.TryGetValue(
+                                string.Format("{0}.{1}", mapOilRate.HistorianWellName, mapOilRate.HistorianTag),
+                                out oilRate);
+                        }
+
+                        double gasRate = 0;
+                        if (mapGasRate != null)
+                        {
+                            tags.TryGetValue(
+                                string.Format("{0}.{1}", mapGasRate.HistorianWellName, mapGasRate.HistorianTag),
+                                out gasRate);
+                        }
+
+                        double waterRate = 0;
+                        if (mapWaterRate != null)
+                        {
+                            tags.TryGetValue(
+                                string.Format("{0}.{1}", mapWaterRate.HistorianWellName, mapWaterRate.HistorianTag),
+                                out waterRate);
+                        }
+
+                        _pdgtmDbAdapter.InsertValues(_pdgtmDbAdapter.GetWellId(well.Key), oilRate, gasRate, waterRate);
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                _logger.FatalException("replication failed", ex);
+                throw;
             }
         }
     }

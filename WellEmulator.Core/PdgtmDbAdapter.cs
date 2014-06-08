@@ -6,6 +6,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NLog;
 using WellEmulator.Core.Annotations;
 using WellEmulator.Models;
 
@@ -13,6 +14,7 @@ namespace WellEmulator.Core
 {
     public class PdgtmDbAdapter
     {
+        private readonly Logger _logger = LogManager.GetCurrentClassLogger();
         private readonly string _connectionString;
 
         public PdgtmDbAdapter()
@@ -23,6 +25,7 @@ namespace WellEmulator.Core
             }
             catch (Exception ex)
             {
+                _logger.FatalException("Connection initialization failed.", ex);
                 throw new PDGTMConnectionStringException(ex);
             }
         }
@@ -31,14 +34,26 @@ namespace WellEmulator.Core
         {
             using (var connection = new SqlConnection(_connectionString))
             {
-                connection.Open();
-                using (var command = new SqlCommand(_connectionString, connection)
+                try
+                {
+                    connection.Open();
+                    using (var command = new SqlCommand(_connectionString, connection)
                     {
                         CommandText =
-                            string.Format("select w.idWell from PDGTM.dbo.Well w where w.nameWell = '{0}'", wellName)
+                            string.Format("select w.id from PDGTM.dbo.Well w where w.name = '{0}'", wellName)
                     })
+                    {
+                        return Convert.ToInt32(command.ExecuteScalar());
+                    }
+                }
+                catch (Exception ex)
                 {
-                    return Convert.ToInt32(command.ExecuteScalar());
+                    _logger.FatalException("sql command execution failed", ex);
+                    throw;
+                }
+                finally
+                {
+                    connection.Close();
                 }
             }
         }
@@ -48,26 +63,37 @@ namespace WellEmulator.Core
             var wells = new List<Well>();
             using (var connection = new SqlConnection(_connectionString))
             {
-                connection.Open();
-                using (var command = new SqlCommand(_connectionString, connection)
+                try
                 {
-                    CommandText = "select w.idWell, w.nameWell " +
-                                  "from PDGTM.dbo.Well w"
-                })
-                {
-                    using (var reader = command.ExecuteReader())
+                    connection.Open();
+                    using (var command = new SqlCommand(_connectionString, connection)
                     {
-                        while (reader.Read())
+                        CommandText = "select w.id, w.name " +
+                                      "from PDGTM.dbo.Well w"
+                    })
+                    {
+                        using (var reader = command.ExecuteReader())
                         {
-                            wells.Add(new Well
+                            while (reader.Read())
                             {
-                                Name = reader["nameWell"].ToString(),
-                                Id = Int32.Parse(reader["idWell"].ToString())
-                            });
+                                wells.Add(new Well
+                                {
+                                    Name = reader["Name"].ToString(),
+                                    Id = Int32.Parse(reader["Id"].ToString())
+                                });
+                            }
                         }
                     }
                 }
-                connection.Close();
+                catch (Exception ex)
+                {
+                    _logger.FatalException("sql command execution failed", ex);
+                    throw;
+                }
+                finally
+                {
+                    connection.Close();
+                }
             }
             return wells;
         }
@@ -79,63 +105,36 @@ namespace WellEmulator.Core
 
         public void InsertValues(int wellId, double oilRate, double gasRate, double waterRate)
         {
+            var commandText = string.Format("insert into PDGTM.dbo.[Values] " +
+                                            "(wellId, oilRate, gasRate, waterRate) values " +
+                                            "({0}, {1}, {2}, {3}); ",
+                                            wellId,
+                                            oilRate.ToString("F1", CultureInfo.InvariantCulture),
+                                            gasRate.ToString("F1", CultureInfo.InvariantCulture),
+                                            waterRate.ToString("F1", CultureInfo.InvariantCulture));
+
             using (var connection = new SqlConnection(_connectionString))
             {
-                connection.Open();
-
-                using (var command = new SqlCommand(_connectionString, connection)
+                try
                 {
-                    CommandText = string.Format("insert into PDGTM.dbo.WellTest" +
-                                                "(idWell, name,          testDate) values (" +
-                                                "{0},     'Тест от {1}', '{2}'); ", wellId,
-                                                DateTime.Now.Date,
-                                                DateTime.Now)
-                })
-                {
-                    command.ExecuteNonQuery();
+                    connection.Open();
+                    using (var command = new SqlCommand(_connectionString, connection)
+                    {
+                        CommandText = commandText
+                    })
+                    {
+                        command.ExecuteNonQuery();
+                    }
                 }
-
-                int lastId;
-
-                using (var command = new SqlCommand(_connectionString, connection)
+                catch (Exception ex)
                 {
-                    CommandText = "SELECT @@IDENTITY AS 'Identity';"
-                })
-                {
-                    lastId = Convert.ToInt32(command.ExecuteScalar());
+                    _logger.FatalException(commandText, ex);
+                    throw;
                 }
-
-                using (var command = new SqlCommand(_connectionString, connection)
+                finally
                 {
-                    CommandText = string.Format("insert into PDGTM.dbo.ProductionTest (idWellTest) values ({0})", lastId)
-                })
-                {
-                    command.ExecuteNonQuery();
+                    connection.Close();
                 }
-
-                using (var command = new SqlCommand(_connectionString, connection)
-                {
-                    CommandText = "SELECT @@IDENTITY AS 'Identity';"
-                })
-                {
-                    lastId = Convert.ToInt32(command.ExecuteScalar());
-                }
-
-                using (var command = new SqlCommand(_connectionString, connection)
-                {
-                    CommandText = string.Format("insert into PDGTM.dbo.ProductionTestResults" +
-                                                "(idProductionTest, oilRate, gasRate, waterRate) values (" +
-                                                "{0}, {1}, {2}, {3} ); ",
-                                                lastId.ToString("F1", CultureInfo.InvariantCulture),
-                                                oilRate.ToString("F1", CultureInfo.InvariantCulture),
-                                                gasRate.ToString("F1", CultureInfo.InvariantCulture),
-                                                waterRate.ToString("F1", CultureInfo.InvariantCulture))
-                })
-                {
-                    command.ExecuteNonQuery();
-                }
-
-                connection.Close();
             }
         }
     }

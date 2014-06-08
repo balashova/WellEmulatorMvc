@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NLog;
 
 namespace WellEmulator.Models
 {
@@ -16,6 +17,7 @@ namespace WellEmulator.Models
 
     public class SettingsManager
     {
+        private readonly Logger _logger = LogManager.GetCurrentClassLogger();
         private readonly string _connectionString;
 
         public SettingsManager()
@@ -26,7 +28,8 @@ namespace WellEmulator.Models
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message + "\n" + ex.StackTrace, ex);
+                _logger.FatalException("Connection initialization failed.", ex);
+                throw;
             }
         }
 
@@ -34,27 +37,38 @@ namespace WellEmulator.Models
         {
             using (var connection = new SqlConnection(_connectionString))
             {
-                connection.Open();
-                using (var command = new SqlCommand(_connectionString, connection)
+                try
                 {
-                    CommandText = "truncate table WellEmulatorSettings.dbo.Settings"
-                })
-                {
-                    command.ExecuteNonQuery();
-                }
+                    connection.Open();
+                    using (var command = new SqlCommand(_connectionString, connection)
+                    {
+                        CommandText = "truncate table WellEmulatorSettings.dbo.Settings"
+                    })
+                    {
+                        command.ExecuteNonQuery();
+                    }
 
-                using (var command = new SqlCommand(_connectionString, connection)
-                {
-                    CommandText = string.Format("insert into WellEmulatorSettings.dbo.Settings " +
-                                  "(SamplingRate, ReportAutoSavePeriod, ValuesDelay, ReplicationPeriod) values " +
-                                  "('{0}', '{1}', '{2}', '{3}');",
-                                  settings.SamplingRate, settings.ReportAutoSavePeriod,
-                                  settings.ValuesDelay, settings.ReplicationPeriod)
-                })
-                {
-                    command.ExecuteNonQuery();
+                    using (var command = new SqlCommand(_connectionString, connection)
+                    {
+                        CommandText = string.Format("insert into WellEmulatorSettings.dbo.Settings " +
+                                                    "(SamplingRate, ReportAutoSavePeriod, ValuesDelay, ReplicationPeriod) values " +
+                                                    "('{0}', '{1}', '{2}', '{3}');",
+                            settings.SamplingRate.Ticks, settings.ReportAutoSavePeriod.Ticks,
+                            settings.ValuesDelay.Ticks, settings.ReplicationPeriod.Ticks)
+                    })
+                    {
+                        command.ExecuteNonQuery();
+                    }
                 }
-                connection.Close();
+                catch (Exception ex)
+                {
+                    _logger.FatalException("sql command execution failed", ex);
+                    throw;
+                }
+                finally
+                {
+                    connection.Close();
+                }
             }
         }
 
@@ -62,28 +76,42 @@ namespace WellEmulator.Models
         {
             using (var connection = new SqlConnection(_connectionString))
             {
-                connection.Open();
-                using (var command = new SqlCommand(_connectionString, connection)
+                try
                 {
-                    CommandText = "select s.SamplingRate, s.ReportAutoSavePeriod, s.ValuesDelay, s.ReplicationPeriod " +
-                                  "from WellEmulatorSettings.dbo.Settings s;"
-                })
-                {
-                    using (var reader = command.ExecuteReader())
+                    connection.Open();
+                    using (var command = new SqlCommand(_connectionString, connection)
                     {
-                        while (reader.Read())
+                        CommandText =
+                            "select s.SamplingRate, s.ReportAutoSavePeriod, s.ValuesDelay, s.ReplicationPeriod " +
+                            "from WellEmulatorSettings.dbo.Settings s;"
+                    })
+                    {
+                        using (var reader = command.ExecuteReader())
                         {
-                            return new Settings
+                            while (reader.Read())
                             {
-                                SamplingRate = TimeSpan.Parse(reader["SamplingRate"].ToString()),
-                                ReportAutoSavePeriod = TimeSpan.Parse(reader["ReportAutoSavePeriod"].ToString()),
-                                ValuesDelay = TimeSpan.Parse(reader["ValuesDelay"].ToString()),
-                                ReplicationPeriod = TimeSpan.Parse(reader["ReplicationPeriod"].ToString()),
-                            };
+                                return new Settings
+                                {
+                                    SamplingRate = TimeSpan.FromTicks(Int64.Parse(reader["SamplingRate"].ToString())),
+                                    ReportAutoSavePeriod =
+                                        TimeSpan.FromTicks(Int64.Parse(reader["ReportAutoSavePeriod"].ToString())),
+                                    ValuesDelay = TimeSpan.FromTicks(Int64.Parse(reader["ValuesDelay"].ToString())),
+                                    ReplicationPeriod =
+                                        TimeSpan.FromTicks(Int64.Parse(reader["ReplicationPeriod"].ToString()))
+                                };
+                            }
                         }
                     }
                 }
-                connection.Close();
+                catch (Exception ex)
+                {
+                    _logger.FatalException("sql command execution failed", ex);
+                    throw;
+                }
+                finally
+                {
+                    connection.Close();
+                }
             }
             return null;
         }
@@ -102,20 +130,30 @@ namespace WellEmulator.Models
             }
             using (var connection = new SqlConnection(_connectionString))
             {
-                connection.Open();
-                using (var command = new SqlCommand(_connectionString, connection)
+                try
                 {
-                    CommandText = string.Format("Insert into WellEmulatorSettings.dbo.Tags " +
-                                                "([Group], WellName, Object, Name, Value, MaxValue, MinValue, Delta) values " +
-                                                "('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}');",
-                                                tag.Group, tag.WellName, tag.Object, tag.Name,
-                                                tag.Value, tag.MaxValue, tag.MinValue, tag.Delta)
-                })
-                {
-                    command.ExecuteNonQuery();
+                    connection.Open();
+                    using (var command = new SqlCommand(_connectionString, connection)
+                    {
+                        CommandText = string.Format("Insert into WellEmulatorSettings.dbo.Tags " +
+                                                    "([Group], WellName, Object, Name, Value, MaxValue, MinValue, Delta) values " +
+                                                    "('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}');",
+                            tag.Group, tag.WellName, tag.Object, tag.Name,
+                            tag.Value, tag.MaxValue, tag.MinValue, tag.Delta)
+                    })
+                    {
+                        command.ExecuteNonQuery();
+                    }
                 }
-
-                connection.Close();
+                catch (Exception ex)
+                {
+                    _logger.FatalException("sql command execution failed", ex);
+                    throw;
+                }
+                finally
+                {
+                    connection.Close();
+                }
             }
         }
 
@@ -123,17 +161,27 @@ namespace WellEmulator.Models
         {
             using (var connection = new SqlConnection(_connectionString))
             {
-                connection.Open();
-                using (var command = new SqlCommand(_connectionString, connection)
+                try
                 {
-                    CommandText = string.Format("delete from WellEmulatorSettings.dbo.Tags " +
-                                                "where Id = '{0}'; ", tag.Id)
-                })
-                {
-                    command.ExecuteNonQuery();
+                    connection.Open();
+                    using (var command = new SqlCommand(_connectionString, connection)
+                    {
+                        CommandText = string.Format("delete from WellEmulatorSettings.dbo.Tags " +
+                                                    "where Id = '{0}'; ", tag.Id)
+                    })
+                    {
+                        command.ExecuteNonQuery();
+                    }
                 }
-
-                connection.Close();
+                catch (Exception ex)
+                {
+                    _logger.FatalException("Removing tag from settings db failed", ex);
+                    throw;
+                }
+                finally
+                {
+                    connection.Close();
+                }
             }
         }
 
@@ -141,18 +189,29 @@ namespace WellEmulator.Models
         {
             using (var connection = new SqlConnection(_connectionString))
             {
-                connection.Open();
-                using (var command = new SqlCommand(_connectionString, connection)
+                try
                 {
-                    CommandText = string.Format("Insert into WellEmulatorSettings.dbo.MapItems " +
-                                                "(HistorianTag, PdgtmTag, PdgtmWellName, HistorianWellName) Values " +
-                                                "('{0}', '{1}', '{2}', '{3}') ",
-                                                mapItem.HistorianTag, mapItem.PdgtmTag, mapItem.PdgtmWellName, mapItem.HistorianWellName)
-                })
-                {
-                    command.ExecuteNonQuery();
+                    connection.Open();
+                    using (var command = new SqlCommand(_connectionString, connection)
+                    {
+                        CommandText = string.Format("Insert into WellEmulatorSettings.dbo.MapItems " +
+                                                    "(HistorianTag, PdgtmTag, PdgtmWellName, HistorianWellName) Values " +
+                                                    "('{0}', '{1}', '{2}', '{3}') ",
+                            mapItem.HistorianTag, mapItem.PdgtmTag, mapItem.PdgtmWellName, mapItem.HistorianWellName)
+                    })
+                    {
+                        command.ExecuteNonQuery();
+                    }
                 }
-                connection.Close();
+                catch (Exception ex)
+                {
+                    _logger.FatalException("sql command execution failed", ex);
+                    throw;
+                }
+                finally
+                {
+                    connection.Close();
+                }
             }
         }
 
@@ -160,18 +219,29 @@ namespace WellEmulator.Models
         {
             using (var connection = new SqlConnection(_connectionString))
             {
-                connection.Open();
-                using (var command = new SqlCommand(_connectionString, connection)
+                try
                 {
-                    CommandText = string.Format("delete from WellEmulatorSettings.dbo.MapItems " +
-                                                "where Id IN({0}); ",
-                                                mapIds.Aggregate(new StringBuilder(), (builder, map) => builder
-                                                      .Append((builder.Length == 0 ? "" : ", ") + map)))
-                })
-                {
-                    command.ExecuteNonQuery();
+                    connection.Open();
+                    using (var command = new SqlCommand(_connectionString, connection)
+                    {
+                        CommandText = string.Format("delete from WellEmulatorSettings.dbo.MapItems " +
+                                                    "where Id IN({0}); ",
+                            mapIds.Aggregate(new StringBuilder(), (builder, map) => builder
+                                .Append((builder.Length == 0 ? "" : ", ") + map)))
+                    })
+                    {
+                        command.ExecuteNonQuery();
+                    }
                 }
-                connection.Close();
+                catch (Exception ex)
+                {
+                    _logger.FatalException("sql command execution failed", ex);
+                    throw;
+                }
+                finally
+                {
+                    connection.Close();
+                }
             }
         }
 
@@ -180,29 +250,40 @@ namespace WellEmulator.Models
             var mappings = new List<MapItem>();
             using (var connection = new SqlConnection(_connectionString))
             {
-                connection.Open();
-                using (var command = new SqlCommand(_connectionString, connection)
+                try
                 {
-                    CommandText = "select m.Id, m.HistorianTag, m.PdgtmTag, m.PdgtmWellName, m.HistorianWellName " +
-                                  "from WellEmulatorSettings.dbo.MapItems m;"
-                })
-                {
-                    using (var reader = command.ExecuteReader())
+                    connection.Open();
+                    using (var command = new SqlCommand(_connectionString, connection)
                     {
-                        while (reader.Read())
+                        CommandText = "select m.Id, m.HistorianTag, m.PdgtmTag, m.PdgtmWellName, m.HistorianWellName " +
+                                      "from WellEmulatorSettings.dbo.MapItems m;"
+                    })
+                    {
+                        using (var reader = command.ExecuteReader())
                         {
-                            mappings.Add(new MapItem
+                            while (reader.Read())
                             {
-                                Id = Int32.Parse(reader["Id"].ToString()),
-                                HistorianTag = reader["HistorianTag"].ToString(),
-                                PdgtmTag = reader["PdgtmTag"].ToString(),
-                                PdgtmWellName = reader["PdgtmWellName"].ToString(),
-                                HistorianWellName = reader["HistorianWellName"].ToString()
-                            });
+                                mappings.Add(new MapItem
+                                {
+                                    Id = Int32.Parse(reader["Id"].ToString()),
+                                    HistorianTag = reader["HistorianTag"].ToString(),
+                                    PdgtmTag = reader["PdgtmTag"].ToString(),
+                                    PdgtmWellName = reader["PdgtmWellName"].ToString(),
+                                    HistorianWellName = reader["HistorianWellName"].ToString()
+                                });
+                            }
                         }
                     }
                 }
-                connection.Close();
+                catch (Exception ex)
+                {
+                    _logger.FatalException("sql command execution failed", ex);
+                    throw;
+                }
+                finally
+                {
+                    connection.Close();
+                }
             }
             return mappings;
         }
@@ -212,30 +293,44 @@ namespace WellEmulator.Models
             var mappings = new List<MapItem>();
             using (var connection = new SqlConnection(_connectionString))
             {
-                connection.Open();
-                using (var command = new SqlCommand(_connectionString, connection)
+                try
                 {
-                    CommandText = string.Format("select m.Id, m.HistorianTag, m.PdgtmTag, m.PdgtmWellName, m.HistorianWellName " +
-                                  "from WellEmulatorSettings.dbo.MapItems m " +
-                                  "where m.{1} = '{0}'; ", wellName, db == Db.Pdgtm ? "PdgtmWellName" : "HistorianWellName")
-                })
-                {
-                    using (var reader = command.ExecuteReader())
+                    connection.Open();
+                    using (var command = new SqlCommand(_connectionString, connection)
                     {
-                        while (reader.Read())
+                        CommandText =
+                            string.Format(
+                                "select m.Id, m.HistorianTag, m.PdgtmTag, m.PdgtmWellName, m.HistorianWellName " +
+                                "from WellEmulatorSettings.dbo.MapItems m " +
+                                "where m.{1} = '{0}'; ", wellName,
+                                db == Db.Pdgtm ? "PdgtmWellName" : "HistorianWellName")
+                    })
+                    {
+                        using (var reader = command.ExecuteReader())
                         {
-                            mappings.Add(new MapItem
+                            while (reader.Read())
                             {
-                                Id = Int32.Parse(reader["Id"].ToString()),
-                                HistorianTag = reader["HistorianTag"].ToString(),
-                                PdgtmTag = reader["PdgtmTag"].ToString(),
-                                PdgtmWellName = reader["PdgtmWellName"].ToString(),
-                                HistorianWellName = reader["HistorianWellName"].ToString()
-                            });
+                                mappings.Add(new MapItem
+                                {
+                                    Id = Int32.Parse(reader["Id"].ToString()),
+                                    HistorianTag = reader["HistorianTag"].ToString(),
+                                    PdgtmTag = reader["PdgtmTag"].ToString(),
+                                    PdgtmWellName = reader["PdgtmWellName"].ToString(),
+                                    HistorianWellName = reader["HistorianWellName"].ToString()
+                                });
+                            }
                         }
                     }
                 }
-                connection.Close();
+                catch (Exception ex)
+                {
+                    _logger.FatalException("sql command execution failed", ex);
+                    throw;
+                }
+                finally
+                {
+                    connection.Close();
+                }
             }
             return mappings;
         }
@@ -244,34 +339,47 @@ namespace WellEmulator.Models
         {
             using (var connection = new SqlConnection(_connectionString))
             {
-                connection.Open();
-                using (var command = new SqlCommand(_connectionString, connection)
+                try
                 {
-                    CommandText = string.Format("select t.Id, t.[Group], t.WellName, t.Object, t.Name, t.Value, t.MaxValue, t.MinValue, t.Delta " +
-                                  "from WellEmulatorSettings.dbo.Tags t " +
-                                  "where t.Id = '{0}';", tagId)
-                })
-                {
-                    using (var reader = command.ExecuteReader())
+                    connection.Open();
+                    using (var command = new SqlCommand(_connectionString, connection)
                     {
-                        while (reader.Read())
+                        CommandText =
+                            string.Format(
+                                "select t.Id, t.[Group], t.WellName, t.Object, t.Name, t.Value, t.MaxValue, t.MinValue, t.Delta " +
+                                "from WellEmulatorSettings.dbo.Tags t " +
+                                "where t.Id = '{0}';", tagId)
+                    })
+                    {
+                        using (var reader = command.ExecuteReader())
                         {
-                            return new Tag
+                            while (reader.Read())
                             {
-                                Id = Int32.Parse(reader["Id"].ToString()),
-                                Group = reader["Group"].ToString(),
-                                Object = reader["Object"].ToString(),
-                                Name = reader["Name"].ToString(),
-                                WellName = reader["WellName"].ToString(),
-                                Value = Int32.Parse(reader["Value"].ToString()),
-                                MaxValue = Int32.Parse(reader["MaxValue"].ToString()),
-                                MinValue = Int32.Parse(reader["MinValue"].ToString()),
-                                Delta = Int32.Parse(reader["Delta"].ToString()),
-                            };
+                                return new Tag
+                                {
+                                    Id = Int32.Parse(reader["Id"].ToString()),
+                                    Group = reader["Group"].ToString(),
+                                    Object = reader["Object"].ToString(),
+                                    Name = reader["Name"].ToString(),
+                                    WellName = reader["WellName"].ToString(),
+                                    Value = Int32.Parse(reader["Value"].ToString()),
+                                    MaxValue = Int32.Parse(reader["MaxValue"].ToString()),
+                                    MinValue = Int32.Parse(reader["MinValue"].ToString()),
+                                    Delta = Int32.Parse(reader["Delta"].ToString()),
+                                };
+                            }
                         }
                     }
                 }
-                connection.Close();
+                catch (Exception ex)
+                {
+                    _logger.FatalException("sql command execution failed", ex);
+                    throw;
+                }
+                finally
+                {
+                    connection.Close();
+                }
             }
             return null;
         }
@@ -281,33 +389,45 @@ namespace WellEmulator.Models
             var tags = new List<Tag>();
             using (var connection = new SqlConnection(_connectionString))
             {
-                connection.Open();
-                using (var command = new SqlCommand(_connectionString, connection)
+                try
                 {
-                    CommandText = "select t.Id, t.[Group], t.WellName, t.Object, t.Name, t.Value, t.MaxValue, t.MinValue, t.Delta " +
-                                  "from WellEmulatorSettings.dbo.Tags t;"
-                })
-                {
-                    using (var reader = command.ExecuteReader())
+                    connection.Open();
+                    using (var command = new SqlCommand(_connectionString, connection)
                     {
-                        while (reader.Read())
+                        CommandText =
+                            "select t.Id, t.[Group], t.WellName, t.Object, t.Name, t.Value, t.MaxValue, t.MinValue, t.Delta " +
+                            "from WellEmulatorSettings.dbo.Tags t;"
+                    })
+                    {
+                        using (var reader = command.ExecuteReader())
                         {
-                            tags.Add(new Tag
+                            while (reader.Read())
                             {
-                                Id = Int32.Parse(reader["Id"].ToString()),
-                                Group = reader["Group"].ToString(),
-                                Object = reader["Object"].ToString(),
-                                Name = reader["Name"].ToString(),
-                                WellName = reader["WellName"].ToString(),
-                                Value = Int32.Parse(reader["Value"].ToString()),
-                                MaxValue = Int32.Parse(reader["MaxValue"].ToString()),
-                                MinValue = Int32.Parse(reader["MinValue"].ToString()),
-                                Delta = Int32.Parse(reader["Delta"].ToString()),
-                            });
+                                tags.Add(new Tag
+                                {
+                                    Id = Int32.Parse(reader["Id"].ToString()),
+                                    Group = reader["Group"].ToString(),
+                                    Object = reader["Object"].ToString(),
+                                    Name = reader["Name"].ToString(),
+                                    WellName = reader["WellName"].ToString(),
+                                    Value = Double.Parse(reader["Value"].ToString()),
+                                    MaxValue = Double.Parse(reader["MaxValue"].ToString()),
+                                    MinValue = Double.Parse(reader["MinValue"].ToString()),
+                                    Delta = Double.Parse(reader["Delta"].ToString()),
+                                });
+                            }
                         }
                     }
                 }
-                connection.Close();
+                catch (Exception ex)
+                {
+                    _logger.FatalException("sql command execution failed", ex);
+                    throw;
+                }
+                finally
+                {
+                    connection.Close();
+                }
             }
             return tags;
         }
