@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.30110.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WellEmulatorMvc", "WellEmulatorMvc\WellEmulatorMvc.csproj", "{73CA281C-68A2-48BD-88DB-F3613E9EB03D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WellEmulator.Mvc", "WellEmulator.Mvc\WellEmulator.Mvc.csproj", "{73CA281C-68A2-48BD-88DB-F3613E9EB03D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WellEmulator.Models", "WellEmulator.Models\WellEmulator.Models.csproj", "{1B5D2BE4-F200-4D91-B869-98CCEFFD5747}"
 EndProject
@@ -11,13 +11,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WellEmulator.Core", "WellEm
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApplication", "TestApplication\TestApplication.csproj", "{F530CE32-1BB2-48D4-83B0-466BBFC51AAA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WellEmulatorService", "WellEmulatorService\WellEmulatorService.csproj", "{7A1FF0A7-9A89-49D1-AE0B-6D7B6309EEDF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WellEmulator.Service", "WellEmulator.Service\WellEmulator.Service.csproj", "{7A1FF0A7-9A89-49D1-AE0B-6D7B6309EEDF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WellEmulatorService_console", "WellEmulatorService_console\WellEmulatorService_console.csproj", "{1C5CA0CB-E0A0-42FB-BD2D-CB5071387800}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WellEmulator.Service.Host.Console", "WellEmulator.Service.Host.Console\WellEmulator.Service.Host.Console.csproj", "{1C5CA0CB-E0A0-42FB-BD2D-CB5071387800}"
 EndProject
-Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "WellEmulatorServiceSetup", "WellEmulatorServiceSetup\WellEmulatorServiceSetup.wixproj", "{39F23985-023C-472E-A1D1-9D5908C14358}"
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "WellEmulator.Service.Setup", "WellEmulator.Service.Setup\WellEmulator.Service.Setup.wixproj", "{39F23985-023C-472E-A1D1-9D5908C14358}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WellEmulatorServiceClient", "WellEmulatorServiceClient\WellEmulatorServiceClient.csproj", "{54D2C4A6-37DA-425D-84AA-F93D33B1FE1C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WellEmulator.Service.Client", "WellEmulator.Service.Client\WellEmulator.Service.Client.csproj", "{54D2C4A6-37DA-425D-84AA-F93D33B1FE1C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{BC5F1849-B7B8-4D45-923E-64158CCD8FE0}"
 	ProjectSection(SolutionItems) = preProject
