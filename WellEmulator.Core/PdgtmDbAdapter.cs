@@ -48,7 +48,7 @@ namespace WellEmulator.Core
                 }
                 catch (Exception ex)
                 {
-                    _logger.FatalException("sql command execution failed", ex);
+                    _logger.FatalException(_connectionString, ex);
                     throw;
                 }
                 finally
@@ -61,19 +61,27 @@ namespace WellEmulator.Core
         public IEnumerable<Well> GetWells()
         {
             var wells = new List<Well>();
-            using (var connection = new SqlConnection(_connectionString))
+            //using ()
             {
+                var connection = new SqlConnection(_connectionString);
                 try
                 {
+
                     connection.Open();
-                    using (var command = new SqlCommand(_connectionString, connection)
+                    //using (var command = new SqlCommand(_connectionString, connection)
+                    //{
+                    //    CommandText = "select w.id, w.name " +
+                    //                  "from PDGTM.dbo.Well w"
+                    //})
+                    var command = new SqlCommand(_connectionString, connection)
                     {
                         CommandText = "select w.id, w.name " +
                                       "from PDGTM.dbo.Well w"
-                    })
+                    };
                     {
-                        using (var reader = command.ExecuteReader())
+                        //using ()
                         {
+                            var reader = command.ExecuteReader();
                             while (reader.Read())
                             {
                                 wells.Add(new Well
@@ -87,7 +95,7 @@ namespace WellEmulator.Core
                 }
                 catch (Exception ex)
                 {
-                    _logger.FatalException("sql command execution failed", ex);
+                    _logger.FatalException(_connectionString, ex);
                     throw;
                 }
                 finally

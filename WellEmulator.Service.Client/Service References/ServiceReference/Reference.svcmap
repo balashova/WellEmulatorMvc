@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="9ddc9bb5-4822-4f76-bfd7-f4537ad10643" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:9439/WellEmulatorService" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="WellEmulatorService.wsdl" MetadataType="Wsdl" ID="8a4f7c9f-f96b-4ceb-ab7c-98eabae456dc" SourceId="1" SourceUrl="http://localhost:9439/WellEmulatorService?wsdl=wsdl0" />
+    <MetadataFile FileName="WellEmulatorService.xsd" MetadataType="Schema" ID="fb5d1650-35da-4f80-b371-79747c9a34ed" SourceId="1" SourceUrl="http://localhost:9439/WellEmulatorService?xsd=xsd3" />
+    <MetadataFile FileName="WellEmulatorService.disco" MetadataType="Disco" ID="ae50c32c-2293-4e48-834b-185564d15849" SourceId="1" SourceUrl="http://localhost:9439/WellEmulatorService?disco" />
+    <MetadataFile FileName="WellEmulator.wsdl" MetadataType="Wsdl" ID="7d56d9fe-856b-468d-8e73-845ff80afbd4" SourceId="1" SourceUrl="http://localhost:9439/WellEmulatorService?wsdl" />
+    <MetadataFile FileName="WellEmulatorService1.xsd" MetadataType="Schema" ID="ff55f137-0b25-4541-a5b3-e7b2992f47e3" SourceId="1" SourceUrl="http://localhost:9439/WellEmulatorService?xsd=xsd2" />
+    <MetadataFile FileName="WellEmulatorService2.xsd" MetadataType="Schema" ID="0d3a185f-9f02-47f1-b84a-576520d44aa2" SourceId="1" SourceUrl="http://localhost:9439/WellEmulatorService?xsd=xsd1" />
+    <MetadataFile FileName="WellEmulatorService3.xsd" MetadataType="Schema" ID="76d03f5b-3449-4f28-bda0-349381c97fc4" SourceId="1" SourceUrl="http://localhost:9439/WellEmulatorService?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

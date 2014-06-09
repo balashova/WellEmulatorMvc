@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/WellEmulator.Models" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/WellEmulator.Models" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:9439/WellEmulatorService?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="Settings">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IsReplicate" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsRunning" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReplicationPeriod" type="ser:duration" />
+      <xs:element minOccurs="0" name="ReportAutoSavePeriod" type="ser:duration" />
+      <xs:element minOccurs="0" name="SamplingRate" type="ser:duration" />
+      <xs:element minOccurs="0" name="ValuesDelay" type="ser:duration" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Settings" nillable="true" type="tns:Settings" />
+  <xs:complexType name="Tag">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Delta" type="xs:double" />
+      <xs:element minOccurs="0" name="Group" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="MaxValue" type="xs:double" />
+      <xs:element minOccurs="0" name="MinValue" type="xs:double" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Object" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Value" type="xs:double" />
+      <xs:element minOccurs="0" name="WellName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Tag" nillable="true" type="tns:Tag" />
+  <xs:complexType name="MapItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="HistorianTag" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HistorianWellName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="PdgtmTag" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PdgtmWellName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MapItem" nillable="true" type="tns:MapItem" />
+  <xs:complexType name="ArrayOfMapItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MapItem" nillable="true" type="tns:MapItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMapItem" nillable="true" type="tns:ArrayOfMapItem" />
+  <xs:complexType name="ArrayOfTag">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Tag" nillable="true" type="tns:Tag" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTag" nillable="true" type="tns:ArrayOfTag" />
+  <xs:complexType name="ArrayOfWell">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Well" nillable="true" type="tns:Well" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfWell" nillable="true" type="tns:ArrayOfWell" />
+  <xs:complexType name="Well">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Well" nillable="true" type="tns:Well" />
+</xs:schema>

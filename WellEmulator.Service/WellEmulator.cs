@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
+using NLog;
 using WellEmulator.Core;
 using WellEmulator.Models;
 using WellEmulator.Service.Parsers;
@@ -10,6 +12,7 @@ namespace WellEmulator.Service
     public class WellEmulator: IWellEmulator
     {
         private static readonly object SyncRoot = new object();
+        private readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
         private static Emulator _emulator;
         private static Replicator _replicator;
@@ -21,24 +24,26 @@ namespace WellEmulator.Service
 
         public WellEmulator()
         {
-            if (_initialized) return;
-            lock (SyncRoot)
+            try
             {
                 if (_initialized) return;
-                _initialized = true;
-                try
+                lock (SyncRoot)
                 {
+                    if (_initialized) return;
+                    _initialized = true;
+
                     _emulator = new Emulator();
                     _replicator = new Replicator();
                     _pdgtmDbAdapter = new PdgtmDbAdapter();
                     _historianAdapter = new HistorianAdapter();
                     _settingsManager = new SettingsManager();
+
+                    LoadSettings();
                 }
-                catch (Exception ex)
-                {
-                    throw new Exception(ex.Message + "\n" + ex.StackTrace, ex);
-                }
-                LoadSettings();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Load failed", ex);
             }
         }
 

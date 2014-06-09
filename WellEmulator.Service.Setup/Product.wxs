@@ -1,45 +1,89 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-	<Product Id="*" Name="WellEmulatorService" Language="1033" Version="1.0.0.0" Manufacturer="Andrey Cherkashin" UpgradeCode="48dc066c-97cc-4512-8fa3-52bbe195e075">
-		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+  <Product Id="*"
+           Name="Well Emulator Service"
+           Language="1033"
+           Version="!(bind.FileVersion.WellEmulator.Service.exe)"
+           Manufacturer="Andrey(R)(TM) Cherkashin(R)(TM)"
+           UpgradeCode="48DC066C-97CC-4512-8FA3-52BBE195E075">
+    
+    <Package InstallerVersion="200"
+             Compressed="yes"
+             InstallScope="perMachine"
+             Manufacturer="TPU"
+             InstallPrivileges="elevated"/>
+    
+    <MediaTemplate EmbedCab="yes" />
+    
+    <Feature Id="Service" Title="WellEmulatorService" Level="1">
+      <ComponentGroupRef Id="ProductComponents" />
+      <ComponentRef Id="LogDirCmp" />
+      <ComponentGroupRef Id="StandardsFileGroup"/>
+    </Feature>
+    
+    <Upgrade Id="48DC066C-97CC-4512-8FA3-52BBE195E075">
+      <UpgradeVersion OnlyDetect="yes" Minimum="0.0.0.0" Property="NEWERVERSIONDETECTED" IncludeMinimum="no" />
+      <UpgradeVersion OnlyDetect="no" Maximum="0.65534.65534.65534" Property="OLDERVERSIONBEINGUPGRADED" IncludeMaximum="no" />
+    </Upgrade>
 
-		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
-		<MediaTemplate />
+    <InstallExecuteSequence>
+      <RemoveExistingProducts After="InstallInitialize" />
+    </InstallExecuteSequence>
+  </Product>
 
-		<Feature Id="ProductFeature" Title="WellEmulatorService" Level="1">
-			<ComponentGroupRef Id="ProductComponents" />
-		</Feature>
-	</Product>
+  <Fragment>
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLFOLDER" Name="WellEmulatorService">
+          <Directory Id="LogFolder" Name="logs" />
+        </Directory>
+      </Directory>
+    </Directory>
+  </Fragment>
 
-	<Fragment>
-		<Directory Id="TARGETDIR" Name="SourceDir">
-			<Directory Id="ProgramFilesFolder">
-				<Directory Id="INSTALLFOLDER" Name="WellEmulatorService" />
-			</Directory>
-		</Directory>
-	</Fragment>
-
-	<Fragment>
-		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">			
-			<Component Id="ProductComponent">
-				<!--<File Id="Insert dll name" Name="Insert dll name again" Source="Insert path to dll" Vital="yes" KeyPath="no" DiskId="1"/>-->
-				<File Id="WellEmulator.Service.exe" Name="WellEmulatorService.exe" Source="$(var.WellEmulator.Service.TargetPath)" Vital="yes" KeyPath="yes" DiskId="1"/>
-				<ServiceInstall
-					Id="ServiceInstaller"
-					Type="ownProcess"
-					Vital="yes"
-					Name="WellEmulatorService"
-					DisplayName="Well Emulator Service"
-					Description="Well Emulator"
-					Start="auto"
-					Account="LocalSystem"
-					ErrorControl="ignore"
-					Interactive="no"
+  <Fragment>
+    <DirectoryRef Id="LogFolder">
+      <Component Id="LogDirCmp" Guid="5F71E196-13B6-4333-9989-17C2EB582619" KeyPath="yes">
+        <CreateFolder />
+        <RemoveFile Id="LogFolder" Name="*.log" On="uninstall" />
+      </Component>
+    </DirectoryRef>
+    <ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+      <Component Id="ProductComponent" Guid="{237AFC11-4CFE-400A-B4E2-2D34845D6B68}">
+        <File Source="$(var.WellEmulator.Service.TargetPath)" Vital="yes" KeyPath="yes"/>
+        <ServiceInstall
+            Id="WellEmulator.Service.exe.Install"
+            Type="ownProcess"
+            Vital="yes"
+            Name="WellEmulatorService"
+            DisplayName="Well Emulator Service"
+            Description="Test Well Emulator Service"
+            Start="auto"
+            Interactive="no"
+            Account="LocalSystem"
+            ErrorControl="critical"
               >
-				</ServiceInstall>
-				<ServiceControl Id="StartService" Start="install" Stop="both" Remove="uninstall" Name="WellEmulatorService" Wait="yes" />
-			</Component>
+        </ServiceInstall>
+        <ServiceControl Id="WellEmulator.Service.exe.Control"
+                        Start="install"
+                        Stop="both"
+                        Remove="uninstall"
+                        Name="WellEmulatorService"
+                        Wait="no" />
+      </Component>
+      <Component Id="FilesComponent" Guid="{633F2B6C-3F88-4164-B3D3-6936C1F11D3D}" KeyPath="yes">
+        <File Source="$(var.WellEmulator.Service.TargetDir)WellEmulator.Service.exe.config"/>
+        <File Source="$(var.WellEmulator.Service.TargetDir)WellEmulator.Core.dll"/>
+        <File Source="$(var.WellEmulator.Service.TargetDir)WellEmulator.Models.dll"/>
+        <File Source="$(var.WellEmulator.Service.TargetDir)Nlog.dll"/>
+        <File Source="$(var.WellEmulator.Service.TargetDir)Nlog.config"/>
+        <File Source="$(var.WellEmulator.Service.TargetDir)EntityFramework.dll"/>
+        <File Source="$(var.WellEmulator.Service.TargetDir)App.config"/>
 
-		</ComponentGroup>
-	</Fragment>
+        <File Source="$(var.WellEmulator.Service.TargetDir)WellEmulator.Service.pdb"/>
+        <File Source="$(var.WellEmulator.Service.TargetDir)WellEmulator.Core.pdb"/>
+        <File Source="$(var.WellEmulator.Service.TargetDir)WellEmulator.Models.pdb"/>
+      </Component>
+    </ComponentGroup>
+  </Fragment>
 </Wix>

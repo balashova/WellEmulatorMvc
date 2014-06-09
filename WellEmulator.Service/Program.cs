@@ -1,4 +1,8 @@
-﻿using System.ServiceProcess;
+﻿using System;
+using System.Configuration.Install;
+using System.Reflection;
+using System.ServiceProcess;
+using NLog;
 
 namespace WellEmulator.Service
 {
@@ -9,12 +13,22 @@ namespace WellEmulator.Service
         /// </summary>
         static void Main()
         {
-            ServiceBase[] ServicesToRun;
-            ServicesToRun = new ServiceBase[] 
-            { 
-                new WellEmulatorService() 
-            };
-            ServiceBase.Run(ServicesToRun);
+            Logger logger = LogManager.GetCurrentClassLogger();
+            logger.Trace("Starting...");
+            try
+            {
+                ServiceBase[] ServicesToRun;
+                ServicesToRun = new ServiceBase[]
+                {
+                    new WellEmulatorService()
+                };
+                ServiceBase.Run(ServicesToRun);
+            }
+            catch (Exception ex)
+            {
+                logger.FatalException("Service was not started.", ex);
+                throw;
+            }
         }
     }
 }

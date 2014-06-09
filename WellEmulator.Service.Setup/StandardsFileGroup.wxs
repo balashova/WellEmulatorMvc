@@ -1,0 +1,1891 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <DirectoryRef Id="INSTALLFOLDER">
+      <Directory Id="dir0EF4549FDEF6631369C4A3F375E69501" Name="Standards">
+        <Directory Id="dir73478463CC1E26CA00FE5E983B9E9994" Name="PRODML">
+          <Component Id="cmp8A899B72BF9F30D38B3E26F802FA0855" Guid="{AE582F17-02E1-4A5B-BA86-5502FEF3134D}">
+            <File Id="fil6007735EBA377F7AF31C883ACDB6A58C" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\attgrp_objectUid.xsd" />
+          </Component>
+          <Component Id="cmp357355D31FDFF4FDC197BAC4B0B63A2B" Guid="{D4EE89C0-5F62-4DF8-A890-D8993DCEC6D6}">
+            <File Id="fil19DF03EECB0CB1C8324B0193B106AE0B" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\attgrp_uid.xsd" />
+          </Component>
+          <Component Id="cmpCA595C28944AC1AF44484B7D58280194" Guid="{8C344713-87E9-4E4F-BC53-DC6270D833A2}">
+            <File Id="fil20868876688B0AF1A6D80F691C847EC7" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_businessAssociate.xsd" />
+          </Component>
+          <Component Id="cmpD179AF5F66DF653C2B8DECD3B575E129" Guid="{CF248186-56FA-4568-8A7E-4656643607D3}">
+            <File Id="fil1B151FD67219E6E3CE5CF2297498085F" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_commonData.xsd" />
+          </Component>
+          <Component Id="cmpC836C2D3463EFCBD6855945824581AEB" Guid="{BA136655-B320-4215-AC28-BBFC7138D385}">
+            <File Id="fil566BEC3D6B95E7AFF198ED0A4C219F2F" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_connectedNode.xsd" />
+          </Component>
+          <Component Id="cmp9C17CF3C64FDBD0C3B74E72988DD8299" Guid="{784F8E32-5DE7-4EFD-81DA-78F24072FBDA}">
+            <File Id="fil8F729DA203CD3E0992DC24902257B2D0" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_curveData.xsd" />
+          </Component>
+          <Component Id="cmp33BB6A444F45FA5EA0F484BD0A343E64" Guid="{09E0A003-6E5A-40F0-9142-B772809757AB}">
+            <File Id="fil0955434E5C4CB0BF4B9936C11DE3E092" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_curveDefinition.xsd" />
+          </Component>
+          <Component Id="cmpF18724E8F1CB823080DFE81051CC2F40" Guid="{10F8CE8D-3A97-4015-BD0D-E859EC9EBED2}">
+            <File Id="filE2B888F617A2F8A3EDE7FE405CAD26B4" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_customData.xsd" />
+          </Component>
+          <Component Id="cmpFE044D18306033513591B1DA3D0610EB" Guid="{69FC6E0E-7849-4977-B58B-44F5F7DB75F5}">
+            <File Id="fil575599F36D372BE3305531C34803D515" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_datedComment.xsd" />
+          </Component>
+          <Component Id="cmp6FCC764A52CF7F517B79A07D16456541" Guid="{6074E2C8-7109-4D79-A204-569E92233A61}">
+            <File Id="filEEDF85BDED441532EBCA64B85532C7D0" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_densityValue.xsd" />
+          </Component>
+          <Component Id="cmpB7428F651D308290DAA79B0E9C07BC1F" Guid="{68C551E7-640F-47A1-99CE-7F3D12AB87D5}">
+            <File Id="fil5D192A07F3ECA80298B1C8542D4DA50E" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_documentAudit.xsd" />
+          </Component>
+          <Component Id="cmp884B538AD356588653C5B4D3577929E0" Guid="{CF2D5526-31C2-45B7-8092-74A05D49FF8E}">
+            <File Id="fil22E253296C3D4B20899ECA312763458B" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_documentEvent.xsd" />
+          </Component>
+          <Component Id="cmp9C713AD4FFCDEB14941F56037B6D5993" Guid="{974674D9-10DD-49FD-BEC7-2AB156D751E7}">
+            <File Id="fil08195F011275A87FAC54973472BC908A" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_documentFileCreation.xsd" />
+          </Component>
+          <Component Id="cmp39FCFEAAAC41FC2A72CE5C6EA85DFFBC" Guid="{F7BF5876-5DD0-4D6D-B7AF-39C6693A78DB}">
+            <File Id="filA69CFEDB1FD46AEB0775EA8D01C81EB1" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_documentInfo.xsd" />
+          </Component>
+          <Component Id="cmpAE66AC8B6C260A436E69104303A6A915" Guid="{11440847-22B3-4F55-90D9-6D318F82D13C}">
+            <File Id="fil493CD60B9F49D82554F6C18EBBB24E5F" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_documentInfoQueryParam.xsd" />
+          </Component>
+          <Component Id="cmp507D422A3760D548908A5B286D2F965C" Guid="{3719A20C-A255-4479-8903-538179D8613B}">
+            <File Id="filABCE719AFE742C01C81F485B402DA7F4" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_documentSecurityInfo.xsd" />
+          </Component>
+          <Component Id="cmpEAA10CDB712A9462B83E5AAA53CCB021" Guid="{31A61F45-DD7E-4D87-86D7-69FB870B8702}">
+            <File Id="filCAC1E904B6AACCEF06AC67CA2554D342" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_dtsBoxInformation.xsd" />
+          </Component>
+          <Component Id="cmp0BDBFD2EE9108C2A873A6BA7D04FFFEE" Guid="{78348B06-822D-4AD2-AFBF-2F71672C68C7}">
+            <File Id="filF8B103DAB88933BE3172F1E12247A055" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_dtsCalibration.xsd" />
+          </Component>
+          <Component Id="cmp7BCBDECB20679E266E8005BC9A830B0D" Guid="{AF63649B-8040-4D24-8C51-599786D6BB75}">
+            <File Id="fil5C13CF3DD3E3332462CE9413BF2551DE" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_dtsErrorReport.xsd" />
+          </Component>
+          <Component Id="cmp81B701A93DD45CB90AF92039714BAF19" Guid="{A0EC833E-ACC7-4F11-854D-735C7BB95CA8}">
+            <File Id="fil0E8731F76ABDC0DEDC64CCEAF13263D6" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_dtsFiber.xsd" />
+          </Component>
+          <Component Id="cmpB4ADCF65A00D09E2C0BFF4C26CA7A6D8" Guid="{AB83A71E-8D37-483B-AC6B-5D883ECD466A}">
+            <File Id="fil4AC87D9B1958DBBCF68F969537F7BDE8" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_dtsFiberEndPoint.xsd" />
+          </Component>
+          <Component Id="cmp076B6E2D85FCA8D49811619857ADE7E7" Guid="{ADCF4E9F-E46E-4DA9-944F-71A652285626}">
+            <File Id="filEEC0FE6493215CEDDB649468BEDF0EA2" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_dtsFiberInformation.xsd" />
+          </Component>
+          <Component Id="cmp184CC9C9C27ED7F0C9D18A8DFB2CC696" Guid="{83EF1B37-A5E5-4704-952E-252BAFDB2BCF}">
+            <File Id="fil8CAA9C4D61D81EEA90EC214DDC75C82E" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_dtsFiberInstalledPoints.xsd" />
+          </Component>
+          <Component Id="cmpBBFF4FE693E4B9CB1C3EDFDD66001642" Guid="{C9953F3D-FDE8-42D2-A28E-56CC73A4A8E5}">
+            <File Id="fil5F75544A9B143FD5224594CBC1C6F4BB" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_dtsInstrumentBox.xsd" />
+          </Component>
+          <Component Id="cmp7B4677DBCD07FFC1A72E9F38D97330D1" Guid="{63F4D100-771D-4111-9F99-F53E6ED8323A}">
+            <File Id="filBD18F0B99B8EC4275493701D918923BA" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_dtsInstrumentBoxCalibration.xsd" />
+          </Component>
+          <Component Id="cmpC2E15DCAF83C0611EA3892D1A0461CED" Guid="{CDB96A9A-D6E5-400D-8CC1-67B28BC70956}">
+            <File Id="fil8D279BA22CACA79105DF5AF0C0DCCC11" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_dtsOneWayLoss.xsd" />
+          </Component>
+          <Component Id="cmpCEA70469B1BE202D6E6D434E207A8130" Guid="{963713CD-B2A7-4DBC-9E48-C3557FE04C98}">
+            <File Id="fil8525FA3FA56F8B39F73DCDD85FE99B60" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_dtsOtdr.xsd" />
+          </Component>
+          <Component Id="cmp4F7BB817ADF07843F55310CCB8D6A1B3" Guid="{3E68B564-2596-47DD-8127-943AC6FCE323}">
+            <File Id="fil7B0C475433D2985908FE7C9CC3A8757A" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_dtsProcessedWellLog.xsd" />
+          </Component>
+          <Component Id="cmp7EDB0BF6B70C503BF8D28A60E64A6319" Guid="{7D6539EB-61A4-4973-BB29-934EC6F566AB}">
+            <File Id="fil33D325DBD63EA614DFFEE191C3097456" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_dtsPumpActivity.xsd" />
+          </Component>
+          <Component Id="cmpC5805CC5DD0796EB026997267FA2F9AD" Guid="{91BE0A64-94A7-4B15-9799-0BB27B360258}">
+            <File Id="fil3AC7C5D17EBEC7D4ABFF4BFEABF53982" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_dtsPumpLogRow.xsd" />
+          </Component>
+          <Component Id="cmpF97DB5B0350B43D0B7FA5316004428F2" Guid="{DC2EF664-FE42-421A-8868-E1FEC2688811}">
+            <File Id="filCD7D825F5EA87096FF0F2A415ABA8C9F" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_dtsPumpLogTable.xsd" />
+          </Component>
+          <Component Id="cmp934826BE3F64BAACCCD16480B062BA2B" Guid="{C71352F7-4CA7-421A-8039-5F83F3726321}">
+            <File Id="fil7844AC0442130BBC8C21197E952CB6B5" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_dtsRefractiveIndex.xsd" />
+          </Component>
+          <Component Id="cmp84FCA4EAEDAFA8EDE3CE2C469860E9EC" Guid="{6B8C51E8-1886-4CE9-860E-C6E4EC02631C}">
+            <File Id="fil56C68F20EF7121F5E8EC1967D7359371" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_dtsSingleInstalledPoint.xsd" />
+          </Component>
+          <Component Id="cmp727E349EBA19B91761EE228118979189" Guid="{B01943F5-1C06-41A8-AF6A-EA797B4D0D78}">
+            <File Id="fil2B9EB2A3291D44CF929DC94E53C91037" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_extensionAny.xsd" />
+          </Component>
+          <Component Id="cmp3DA1B5EBB5CE55FF5147610C308C3A32" Guid="{D28BDF43-839A-4F2D-8D1F-70EA6F95C3FA}">
+            <File Id="filFBFEEE872F3774242F88FA80B64E5434" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_extensionNameValue.xsd" />
+          </Component>
+          <Component Id="cmp7441543F13FD9972DB88CDB17B08D344" Guid="{EB7DA440-C0CA-4551-99EF-2368890CEB32}">
+            <File Id="filBF6584D05B3932881774135EB0EB1338" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_flowRateValue.xsd" />
+          </Component>
+          <Component Id="cmp1BF4789B998757876606D6000820F6FC" Guid="{8D714AC2-5377-4ACA-8142-7126BC9909FB}">
+            <File Id="fil6A6E023D4FDC68ED6D7D636F2D3C1EEA" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_fluidResultCceTestStep.xsd" />
+          </Component>
+          <Component Id="cmp427F32B243BADBEF7F80EB4D689007F7" Guid="{B9C43FF0-9AD8-4009-A974-315421E0E51B}">
+            <File Id="fil86F24C2EC8158C7C0B4E8499410493DA" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_fluidResultCompositeComposition.xsd" />
+          </Component>
+          <Component Id="cmp1FEF7C93CFC8E10B93A89BE63D79BB3A" Guid="{1503BF12-E8CC-496E-8497-9B332D680212}">
+            <File Id="fil3D0E169CC8C4918C0154ACFE712AA11A" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_fluidResultComposition.xsd" />
+          </Component>
+          <Component Id="cmpE6B177FA370CB1444BB806CD61919A5C" Guid="{62429341-F817-4904-A91F-A50F465253D5}">
+            <File Id="fil184E90644F39ADA3AA768BC98B9B2DD8" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_fluidResultConstantCompositionExpansionTest.xsd" />
+          </Component>
+          <Component Id="cmpFFC8EF08FFCFCDEF1147ED4EB53563F7" Guid="{CF8AE88C-6BF5-4075-A587-83C4A1BAC075}">
+            <File Id="filC28FA8FB281943F389BE982C529F87C0" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_fluidResultConstantVolumeDepletionTest.xsd" />
+          </Component>
+          <Component Id="cmp2574468C3E7B6FEAD6A161B52544749A" Guid="{A00218BB-5D0F-4521-8EA5-CBD73C0A00A0}">
+            <File Id="fil051FD59DFBAA54DDE35AB43C2E5918CA" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_fluidResultContaminant.xsd" />
+          </Component>
+          <Component Id="cmp4992E247B47A45C19458606061B18BD2" Guid="{7F070DAB-0256-4116-99C7-4C4D0057E73D}">
+            <File Id="filC37268C6BAB0A0B6D3DE5A226F33FBBA" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_fluidResultCvdTestStep.xsd" />
+          </Component>
+          <Component Id="cmpB5E37EE5240A4A168C0B981D3209B92B" Guid="{3E5656CF-9119-4E06-A211-182E4B350CD5}">
+            <File Id="fil965757555E83A436B49687DA01CC9521" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_fluidResultDataQuality.xsd" />
+          </Component>
+          <Component Id="cmp1BE7413F62A9219774F06F3481C49524" Guid="{8444568E-557F-4398-8A1E-C2442F14E2CC}">
+            <File Id="fil6246A9E493C0C769291673EE3BA6FD2F" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_fluidResultDifferentialLiberationTest.xsd" />
+          </Component>
+          <Component Id="cmp42101D55C8C6C492E28772A82ABD7D09" Guid="{18573A96-7408-4C60-86D2-BE7398908B0F}">
+            <File Id="fil1E5173C593E136DB40845ECCEA7080D9" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_fluidResultDifferentialLiberationTestStep.xsd" />
+          </Component>
+          <Component Id="cmp6284ABCEF7AB42B133183A1F2D199DE3" Guid="{7830C8C5-3DA3-495E-A8D1-87B0816F0011}">
+            <File Id="filD8E5D577A4416E1FD68E83A53446E8E1" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_fluidResultJCurveTest.xsd" />
+          </Component>
+          <Component Id="cmp3E36C875DA211A30EF7E7003F8483316" Guid="{A1D57C97-B12B-4E84-92BA-D71E978A52A8}">
+            <File Id="fil82024530A0D2F4CFEE1F44D21BDB3CA8" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_fluidResultJCurveTestStep.xsd" />
+          </Component>
+          <Component Id="cmp11080CC738C4053096E55656FCF74248" Guid="{7C806C18-39FB-4DEB-B5DF-024B49B30847}">
+            <File Id="filF663BF201101D05F9024D6CAB56CD3D5" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_fluidResultPhaseComposition.xsd" />
+          </Component>
+          <Component Id="cmp1B0F99F4EA9DFBD98CBB2E5CC45261AF" Guid="{3358117C-610E-479B-B77F-7FBA5AFD718B}">
+            <File Id="filC25ABE5F59C85D1FBE38005479234062" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_fluidResultSaturationTest.xsd" />
+          </Component>
+          <Component Id="cmp2F7805DD2F5D54010FA801E8692D8917" Guid="{AE490DFD-22F4-4718-8F87-14E1F00C2E55}">
+            <File Id="filE8CAFEE820E91FF7B0088C61E4C041CD" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_fluidResultSaturationTestStep.xsd" />
+          </Component>
+          <Component Id="cmpCB272B7438D5F22FDD137C95BCF68919" Guid="{430C8D38-3132-4CF1-8E20-158F6D24BFCA}">
+            <File Id="fil81399C5E7124CC820753408A85D25AD6" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_fluidResultSeparatorTest.xsd" />
+          </Component>
+          <Component Id="cmp53D61250ECBB8D3EC4DA7731C0BD8897" Guid="{F527EC41-E93E-4ED3-9870-4A2397206772}">
+            <File Id="filB860361CF527F720938B11B4F5DB878D" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_fluidResultSeparatorTestStep.xsd" />
+          </Component>
+          <Component Id="cmp9906283736ABCBDFB67B85C4741B3A94" Guid="{1BF5B931-547D-4140-88A6-EE2B0EF2CC7F}">
+            <File Id="fil07C3D06616492A10A599E00ADF753DF5" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_fluidResultStockTank.xsd" />
+          </Component>
+          <Component Id="cmp8962F9A480352933D1409F50FB59EAAB" Guid="{0CCA8996-3410-43CB-A514-B4556B5581FA}">
+            <File Id="filD97A992B65BB129CA98C6B51BD0ED2D8" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_fluidResultTransportPropertiesTest.xsd" />
+          </Component>
+          <Component Id="cmpF843AABC694C058D73379CA5E044F8F6" Guid="{DB940E46-B189-4638-B51A-EE1489DD40D6}">
+            <File Id="filE89DE4B872EC384A762B89F7A542ADEC" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_fluidResultTransportTestStep.xsd" />
+          </Component>
+          <Component Id="cmpCE8C395437D2177C322AC9D25209585D" Guid="{445B3797-C79C-4EC3-BDDE-AA01CB410445}">
+            <File Id="fil0B62A336003944B94FB6CA5A024FFC86" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_fluidResultVolumeReference.xsd" />
+          </Component>
+          <Component Id="cmp0CFDF6174F831A8D5D0D9A464583AE06" Guid="{FEADC3EE-7EE1-487E-9485-FE955B34E445}">
+            <File Id="fil1583535C24B1D1DD801BE577301E38BD" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_generalAddress.xsd" />
+          </Component>
+          <Component Id="cmp38B7C49CB66171B3B485B24061C2E0DF" Guid="{25750164-956E-46EE-B24C-84F66EDA96D1}">
+            <File Id="fil03CC3E89EC9375E6B87059B6A486C2A1" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_geographicContext.xsd" />
+          </Component>
+          <Component Id="cmp8B4D89C255FC85FD5BC9A8E9E1B8C324" Guid="{731D5E7F-4E3B-4DB0-830E-CF1343E383DD}">
+            <File Id="fil382AA84A65FEF8EC364F8541D13CD1E8" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_location.xsd" />
+          </Component>
+          <Component Id="cmpC6A375A33FED54B944D3B0EC5AB6F893" Guid="{54F9E631-8408-4556-BC95-D0189AA2E8EC}">
+            <File Id="fil9ECD57D7FEC8E3578CD9AF1AF637386D" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_nameTag.xsd" />
+          </Component>
+          <Component Id="cmp0EA448F4E1A9D02140EEF2E62B6D5EC4" Guid="{AAC28CCE-6A88-4208-835B-C4B266E288B9}">
+            <File Id="fil85C2D0B915FF8D7EE5D7B56564D4E260" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_northSeaOffshore.xsd" />
+          </Component>
+          <Component Id="cmp3F6A1ED43AED13838D7B0C3020ADC6C6" Guid="{9A27460B-8C5C-4112-88BB-19FD10059252}">
+            <File Id="filF320B75B71261FC71FAB0967664ABB19" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_offshoreLocation.xsd" />
+          </Component>
+          <Component Id="cmp4ABA32351FAE3F9EFB00BDE83EC9B928" Guid="{B6898642-D17B-4234-9A19-E76EA186AA26}">
+            <File Id="fil334030E4C08F46332DF7237DD459CDE7" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_personName.xsd" />
+          </Component>
+          <Component Id="cmp214E398E93A9988B3DEE62BF7ECB7F53" Guid="{39817CB3-5FA9-4172-88B9-5EB5EE96D014}">
+            <File Id="fil843F9BF0E9C8B28FDC46C423075B7100" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_productFlowChangeLog.xsd" />
+          </Component>
+          <Component Id="cmp4B9F1A75DF06BA4B1C3B59BA76AB1076" Guid="{A1942FCB-9839-4C16-9991-277B1A0C9E2B}">
+            <File Id="filF2198640BEEB8D6A09677A346C630D36" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_productFlowExpectedPortProperty.xsd" />
+          </Component>
+          <Component Id="cmp2B8BDCC012C31FFEA3FF84633E4C4021" Guid="{89DB4578-4E77-4600-B194-04238A2C0557}">
+            <File Id="filC798FEF479D767F655C553297E0512B5" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_productFlowExpectedUnitProperty.xsd" />
+          </Component>
+          <Component Id="cmpA341DFBB31C5D7FD785692C83BA23DB4" Guid="{88BAF6E0-0FA1-41B6-90C6-288D3357B5D8}">
+            <File Id="filDA6693FCBC6DB12591F785E6A25081F6" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_productFlowExternalReference.xsd" />
+          </Component>
+          <Component Id="cmpA02DF0C5AED5CFC7492CCD2F60E975E9" Guid="{436F7CF8-6577-46AA-99C4-B7D9711A88EA}">
+            <File Id="fil542EB5B718BD30A92BA8DB4982761993" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_productFlowlExternalPort.xsd" />
+          </Component>
+          <Component Id="cmpF0341FD4DF1D92A93D6BF439546893E8" Guid="{7565F93E-315C-4540-9C76-3CE2C4376960}">
+            <File Id="fil85A14D4E888757C97E76529A0BF7499A" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_productFlowNetwork.xsd" />
+          </Component>
+          <Component Id="cmp2CAFB90EA9C310BE9F5B9F0764EB4429" Guid="{89C1D141-A04A-44FE-8FED-E23FFEA36E3D}">
+            <File Id="fil187365AD3DAC5AEA08563504DFEDA6BB" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_productFlowNetworkPlan.xsd" />
+          </Component>
+          <Component Id="cmp3BCD0B08E6B93CFFE4AFF9905F37217E" Guid="{D8738A1A-D117-4636-B871-2B76F6073F71}">
+            <File Id="filDEA47CF5A5EDEAC6842B69870ACFB12E" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_productFlowPort.xsd" />
+          </Component>
+          <Component Id="cmp8F477FD1A347D2D7C91694E22B501CB7" Guid="{E1910460-D304-4C3F-9C93-10E3FA785425}">
+            <File Id="fil01B52B839C4864DFCEB5A2719D944A7A" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_productFlowQualifierExpected.xsd" />
+          </Component>
+          <Component Id="cmpA096D76FE5DB86B8AE7C614D1E61DEA2" Guid="{446CEB7D-5B19-4904-A9D4-5966D670FB2B}">
+            <File Id="filF982E4265EF9BD417AEC8180BA8FED10" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_productFlowUnit.xsd" />
+          </Component>
+          <Component Id="cmpDB5BE33C4F6203478DA99993B621342A" Guid="{D147CA84-E78E-4D0E-9A3B-84305352D9FE}">
+            <File Id="fil02D9E00D2F045A9BBCDDA92EB4BA355E" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_productionOperationActivity.xsd" />
+          </Component>
+          <Component Id="cmpB111808952DB2EA93AA92EF7BDD404A3" Guid="{375EFBF6-0E4F-4424-B096-88551FEBA952}">
+            <File Id="fil8DA72F4202FC419D31364810D7602CEA" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_productionOperationAlarm.xsd" />
+          </Component>
+          <Component Id="cmpA4C666CB7F3256011DFA81B7EA05D59D" Guid="{3BA5DCCE-8929-4436-9AB4-3BC6E8B1FFD9}">
+            <File Id="filCF51AB59AA8FCEDAAA45D91E5A151EBF" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_productionOperationCargoShipOperation.xsd" />
+          </Component>
+          <Component Id="cmpDF437CF4F461E18DF1D17BD7812318D7" Guid="{ED8C2938-AFA8-40D9-91E5-F3AB630A020D}">
+            <File Id="filFC33197CF516B41B022BF342ABF22134" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_productionOperationHSE.xsd" />
+          </Component>
+          <Component Id="cmp382C19E80F971E89227FE2A2C8D824AE" Guid="{AFA569DE-21BC-4623-8D96-00E0CD2F372A}">
+            <File Id="fil9219D4941175F119D410CA915E5C3BFF" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_productionOperationInstallationReport.xsd" />
+          </Component>
+          <Component Id="cmpE6E46A165438CC4E5203EF01172C31E6" Guid="{0D0F5486-3730-49D6-810D-80B345E2DAE2}">
+            <File Id="filE450613650346A484DDD5247D9515F1B" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_productionOperationLostProduction.xsd" />
+          </Component>
+          <Component Id="cmpF37B76C25A3B28D0F8C0F0E624E50343" Guid="{1DC42AB6-8F2B-4225-912E-C6819043BD29}">
+            <File Id="fil0F2A4A74FBB22E341F8CC8AAF2CE57C7" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_productionOperationMarineOperation.xsd" />
+          </Component>
+          <Component Id="cmp49C8FC1796A9D3F79902694D8527D08E" Guid="{95C7FCB4-91E7-4BA2-B22A-EDA1704DED6D}">
+            <File Id="filF23FF142F1CC363836FDDD5065E9B324" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_productionOperationOperationalComment.xsd" />
+          </Component>
+          <Component Id="cmpFF3274CDDCA12172041203162D5C7469" Guid="{F45F3BF9-8E29-4CAF-8E66-B4129E3C0E5A}">
+            <File Id="fil5F4B7364F697E857754149D477D40CC8" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_productionOperationSafety.xsd" />
+          </Component>
+          <Component Id="cmpBD5CA2CA7F2DE57B43A60063D6B563BF" Guid="{EF0280DA-E1AF-4202-8307-1F95A9B40770}">
+            <File Id="filCCE5AE6269360EAAB625EAE228B43FC1" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_productionOperationShutdown.xsd" />
+          </Component>
+          <Component Id="cmpA17463138EF2AD11157B34BEEE5063A7" Guid="{0838009D-45F0-41BC-9E0F-ADA8645D0545}">
+            <File Id="fil276AF97FBC579DEC411979684985F3D6" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_productionOperationThirdPartyProcessing.xsd" />
+          </Component>
+          <Component Id="cmpA1F935E56026EE61594A021D0B930D6F" Guid="{3430CB5C-EF32-4CAB-9988-471836B6E0D4}">
+            <File Id="filB47E4E5C2DB8BD1E7AD51D4C101AE222" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_productionOperationWaterCleaningQuality.xsd" />
+          </Component>
+          <Component Id="cmp9E849E0280B25253405BCCA3BDF38EED" Guid="{D3DA23C0-0324-4D7E-B49C-A45904D8F117}">
+            <File Id="filD1309B527C71F18D56B5828BA7D55D0A" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_productionOperationWeather.xsd" />
+          </Component>
+          <Component Id="cmp71495A7163A79C780779AD64BA0A4B9F" Guid="{CF216C33-85F3-481E-BD1D-4ACAF82C5AC4}">
+            <File Id="fil8C5AB163511C5D4EB2F87D20FCEA22D2" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_productVolumeAlert.xsd" />
+          </Component>
+          <Component Id="cmp167651D389A161D0693F9D96773B5836" Guid="{E00E334E-03E5-459B-A36C-E9A6A65BF273}">
+            <File Id="filE669CD9992D1538769E0A02F5FF05844" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_productVolumeBalanceDetail.xsd" />
+          </Component>
+          <Component Id="cmpD868EB5ECCD792DADC4E5717E8F40918" Guid="{7A5F0FEB-C5FC-41F0-9151-7745223A5436}">
+            <File Id="fil0D0BAF5605BB5221F517E5E4D9493908" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_productVolumeBalanceEvent.xsd" />
+          </Component>
+          <Component Id="cmpC4EF1C6D395CD0AFDBEA9336B58BC7F4" Guid="{557F1D35-89F9-46BC-828D-4CAF0AFC0F29}">
+            <File Id="fil5CFA5BAF731D676F6C2A9CB6C9B413EC" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_productVolumeBalanceSet.xsd" />
+          </Component>
+          <Component Id="cmp5E683E1D7FB3C76246F7DAFB90FDDC29" Guid="{2111840C-EDE6-4F0F-8226-0B637FC65272}">
+            <File Id="fil2BC725FAA5E888DC1BA40D03776F7AD3" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_productVolumeBusinessAccountInfo.xsd" />
+          </Component>
+          <Component Id="cmp2CEAFBAEA8832804495513E81808D4C1" Guid="{35AD4DF2-1213-4572-A96C-1A1080AA7284}">
+            <File Id="fil26C535E2D47EE726BD5D95D4C33FD8C1" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_productVolumeBusinessOwnershipShare.xsd" />
+          </Component>
+          <Component Id="cmp376EC3BA960C4A9441E3CAB8F362FC9A" Guid="{9B875C14-AEF4-479A-8302-5BA5E40A7ABB}">
+            <File Id="filF7CFD6EED4CDBD0AECCBD49CDB83E7F9" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_productVolumeBusinessSubUnit.xsd" />
+          </Component>
+          <Component Id="cmp78444D62A993A35B6EB5A02937F7C5E7" Guid="{DD8AD7A0-26BC-4197-8CF4-82AB1DD0C70D}">
+            <File Id="fil5CD76B7B8E14A83E4B3A766934A886AC" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_productVolumeBusinessUnit.xsd" />
+          </Component>
+          <Component Id="cmpB4C7F9742FE0F35B1BE42C0EAFD77C70" Guid="{5051FE65-A8B4-44C6-B97F-53FC6E237AD3}">
+            <File Id="filB88D0408FF2EAEE6305540A6D84E3034" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_productVolumeComponentContent.xsd" />
+          </Component>
+          <Component Id="cmpAB68AFB88A7B4CB4E0F50A0DF6B71E68" Guid="{F7EB9216-1EB8-4625-86DA-305DA34DB03C}">
+            <File Id="filE2D3F701127B504A03093080F8FA8903" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_productVolumeDestination.xsd" />
+          </Component>
+          <Component Id="cmp2AD722F0D0CC5B7EFB6FD6F68B24793B" Guid="{EE5604E9-286A-40B0-BCD1-942907137C53}">
+            <File Id="fil33410E13E1994691C1F9530F719EB044" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_productVolumeFacility.xsd" />
+          </Component>
+          <Component Id="cmpC2B216D2A34A767F8F05F3BAD7213354" Guid="{63EDF4BC-58AB-4FA7-B363-1ECB0706435E}">
+            <File Id="fil41661916B8AFF293379BFF1AB4834955" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_productVolumeFlow.xsd" />
+          </Component>
+          <Component Id="cmpFC3F4EF434E8FC52D7AC3D549F55612F" Guid="{B352E4E6-20AA-4604-A2DF-D0E6A86982ED}">
+            <File Id="fil9CE7126DF00D79ECF7B7E56AEB0F44DE" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_productVolumeParameterSet.xsd" />
+          </Component>
+          <Component Id="cmp6DDAF6EFACC65A3998C07E96F06AC406" Guid="{14304F3D-7BDA-4DB9-9A0A-D33CE8BD276B}">
+            <File Id="fil6FCBA9EE0DBD17D3B72CD7CCB0F37FF0" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_productVolumeParameterValue.xsd" />
+          </Component>
+          <Component Id="cmpFED6FD6B4EE45CBF6A2751A9B2C169BF" Guid="{4D571420-FC8A-4E15-A166-720CA91D98EB}">
+            <File Id="fil58346782C9D68C872825ECEC33FA438B" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_productVolumePeriod.xsd" />
+          </Component>
+          <Component Id="cmp81E079944D67EA78A40B214986FBCE4F" Guid="{42A4DA5F-F367-4A4D-ADC7-F5383114C477}">
+            <File Id="filF2C9E51815832A81C2F049A869E6DB7E" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_productVolumePortDifference.xsd" />
+          </Component>
+          <Component Id="cmp41A5C519AD5ED4599598E5893419C80E" Guid="{AEF47604-38FD-4232-B35D-4EB7626CDA84}">
+            <File Id="filD8D6EA87C34660B407D96831BF9B53F5" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_productVolumeProduct.xsd" />
+          </Component>
+          <Component Id="cmp7CBFCF7BC075696E8FA0755F4E2FDA5B" Guid="{0363EEF7-2491-4593-BEEF-9140B2B4FE11}">
+            <File Id="fil396B13447B35C95ED89E15E03D2D02F8" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_productVolumeRelatedFacility.xsd" />
+          </Component>
+          <Component Id="cmp079B1E4606F43CE17C1FD525B8E32245" Guid="{D8B86069-2DB0-4DCD-9744-230A1EA978F9}">
+            <File Id="fil48C0639790271BA496D8848B98FA9F8F" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_refProductFlow.xsd" />
+          </Component>
+          <Component Id="cmpA3EF1EFBDC6B1675A6FC19457680D66C" Guid="{6B007B41-4482-4214-B54C-E2BEFF646CF0}">
+            <File Id="filC3EFAE92EC725CC0A0C6FB1228115E2B" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_refWellWellbore.xsd" />
+          </Component>
+          <Component Id="cmp5DF8D86112804DF71EBB99C7F1DE4E10" Guid="{CA1AB0A1-8761-48EE-9FBF-4B9DD3C96E8F}">
+            <File Id="filF15CEBF385FA1F44F27D494367255997" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_refWellWellboreRig.xsd" />
+          </Component>
+          <Component Id="cmpBE9BB5DA87DCCE3BE2D06B9B5B8CA315" Guid="{5EC32198-BD79-4038-82C6-1FE9335EC005}">
+            <File Id="filCC09D718F5F387C4FB0E11441E1E0525" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_relativeCoordinate.xsd" />
+          </Component>
+          <Component Id="cmpB4B44AE784E0A6777E2F84B04DDA005A" Guid="{46B8AF8B-F595-4EAF-882A-8F16CC66E9D5}">
+            <File Id="fil06E0BDB5E2702FB12ECFB8EF5687E04B" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_timeSeriesThreshold.xsd" />
+          </Component>
+          <Component Id="cmp327A4E7A81CAD114F511FE9908850A38" Guid="{CA47A212-1CEA-49CB-9FD7-036904AD4C65}">
+            <File Id="filAA87DF56634C174010ED0EF2F4449850" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_volumeValue.xsd" />
+          </Component>
+          <Component Id="cmp1D3EF387A4BD7862BA4B3883C6CB6241" Guid="{0218C0F0-92BA-4613-85FE-C97E7EE567DD}">
+            <File Id="filE55AA4FFC2DFEFC9A6B030F64E4DF48E" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_wellContext.xsd" />
+          </Component>
+          <Component Id="cmp5310D3560879697744192A3F5085A6A4" Guid="{A6E7E165-FD22-4E54-B08E-3DE5DA714549}">
+            <File Id="filC0B65A34BF2FADB316CC3B30294133CF" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_wellDatum.xsd" />
+          </Component>
+          <Component Id="cmp3845D205494A9C0F2DCAD19A09485422" Guid="{36686232-60A6-4BB1-A887-28F798AD7D91}">
+            <File Id="fil6CD1422D76B1A0D960111CD46AEB9DFA" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_wellTestBottomholeData.xsd" />
+          </Component>
+          <Component Id="cmpB9687A143735EC79EEF06B13B66DF32E" Guid="{8E540CB6-D172-477D-BB49-E5FC83145159}">
+            <File Id="fil393CED414876E819B3417A0E6B5391E4" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_wellTestCumulative.xsd" />
+          </Component>
+          <Component Id="cmpCC179C6A231C43C378D08DB19B06159C" Guid="{F1293807-D9E9-4B5B-AF1F-4469BDDC2400}">
+            <File Id="filBC2286F90948F5E38621DE3AB8D2AFBE" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_wellTestElectricSubmersiblePumpData.xsd" />
+          </Component>
+          <Component Id="cmp094BD5A0AEEED5E300280043F2043EC6" Guid="{183E87EF-D406-4DB2-AD47-7B99ACCADCD8}">
+            <File Id="filD47B2A8F03ACB5B0D1FC6A725DA73C0F" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_wellTestFluidLevelTest.xsd" />
+          </Component>
+          <Component Id="cmp8892D60F93CFE305A91893D4346C5966" Guid="{5D52E20E-8582-44C1-B4D4-863D5189F73D}">
+            <File Id="fil62BC7DCA61B5B0BE3ED2DD48FE1E27F7" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_wellTestFluidRate.xsd" />
+          </Component>
+          <Component Id="cmp0EBB539D251D070F9AB46AC9E4D51AB6" Guid="{CBC87C38-2A3C-496E-9AA8-6D4C62D061CC}">
+            <File Id="fil1FDBF9034B6E5FA6E367C006250AFF4C" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_wellTestInjectionTestData.xsd" />
+          </Component>
+          <Component Id="cmpC51AD33D55914DF11AED4DA5BE30CF33" Guid="{A62CBD38-F5C6-4D71-9FAE-984F61BD655C}">
+            <File Id="fil09837786AFF6D686D1B893A9FAD91516" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_wellTestInjectionTestResults.xsd" />
+          </Component>
+          <Component Id="cmpD840BCED92A4AC5AC69FC328B3F779BC" Guid="{D31CF764-BC8C-4E6F-895D-5662872676A7}">
+            <File Id="fil1EDA72C8656853B3B69BA7A15A1B8202" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_wellTestInterval.xsd" />
+          </Component>
+          <Component Id="cmp6E732E658BE044E5DE97E746D113A30A" Guid="{072273B6-FB00-4E8F-9553-F28EE05304D2}">
+            <File Id="filB1CE828406FA8962936ED33DF96E02BF" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_wellTestPointData.xsd" />
+          </Component>
+          <Component Id="cmp7372A4A6C7DD9ECE025627C30297A27B" Guid="{D57B8AC5-4FA4-46B6-ACD1-22A3991D3F5A}">
+            <File Id="fil9DDD918AB0367E4AF4790AB1ED50250E" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_wellTestProductionTestData.xsd" />
+          </Component>
+          <Component Id="cmp41F346C79F05864711A57D7AB0E340E1" Guid="{9DA772B4-ACC0-47D2-99FF-7E09D19AABD0}">
+            <File Id="filD83F07326C88F59A31712896AB77524C" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_wellTestProductionTestResults.xsd" />
+          </Component>
+          <Component Id="cmp57FBE5A79BC9B83C8AD9FAF1D126C89A" Guid="{AB948099-9571-4FD2-B304-0928C78C308D}">
+            <File Id="fil43B2A27DAE56D81706F2759A9EB4C0ED" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_wellTestSeparatorData.xsd" />
+          </Component>
+          <Component Id="cmp50D70FCF662E1A09B2F39AD05DEE92CC" Guid="{B6874626-80F2-46AA-9496-95ED1D4B2ADE}">
+            <File Id="fil3F7DB4BBEC73BE9661AAF61B0B205D1A" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_wellTestTestVolume.xsd" />
+          </Component>
+          <Component Id="cmp084AD9DB9DF050A8F7EC64E5199003CB" Guid="{B96A9CB6-1E6F-4BCD-8102-DD52B0A6E7D0}">
+            <File Id="fil8E4305276EF2A9BA5B10C07D7E634BB4" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_wellTestValidationOperation.xsd" />
+          </Component>
+          <Component Id="cmpB2F5D2E6F2E4E9F17DD2AE96C1D2193E" Guid="{FF7BDCA1-1A2E-417A-A620-574C951AA0E7}">
+            <File Id="fil33F313619AB0CB5DF54F03FE6B8315D3" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_wellTestWellheadData.xsd" />
+          </Component>
+          <Component Id="cmpB0C0E1E292AAAC6B0AAF71CF3B914F44" Guid="{2C2BA58C-A9D2-4C69-9875-73B361FDABA3}">
+            <File Id="fil12AE37E088662E9B412C25C426293D4B" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_wftCurveSection.xsd" />
+          </Component>
+          <Component Id="cmpE418C1C54EC55B45A80192C833FBD42F" Guid="{B020048A-5207-4D0E-B850-C17543B673C3}">
+            <File Id="fil43A278429089E4A0C9437B123887E5F9" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_wftEvent.xsd" />
+          </Component>
+          <Component Id="cmp08445BACEA56A586953A4DC687C81FD0" Guid="{26FCABCF-A8FC-40BE-9F38-EB7B30AC0C88}">
+            <File Id="fil039FE7862807E338D8A4BEE95BA06D2F" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_wftInOutParameter.xsd" />
+          </Component>
+          <Component Id="cmp06698941FDE03EB4649D31DD7EE45192" Guid="{9915D362-9E1F-4AE5-A7CA-66229ADCB783}">
+            <File Id="filBF144D07B8A23F5060B198A84C116F8C" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_wftResultRef.xsd" />
+          </Component>
+          <Component Id="cmp9414F6EE2CA88F0E1A99EAFE7EFADFCF" Guid="{6C316AE4-338B-4E64-BAFC-08BF4D4B2378}">
+            <File Id="filCA552C18E92510098C0BE8B922A272E6" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_wftSampleAcquisition.xsd" />
+          </Component>
+          <Component Id="cmp8D88BC0BBDDF89A7CA3B902D5AAFE949" Guid="{370058F1-880D-473E-AEBE-A6511C4E0EAB}">
+            <File Id="filEA6EDE9F7A8DA32B6D2E6867D607AECF" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_wftStation.xsd" />
+          </Component>
+          <Component Id="cmp8204CD7F05455644C6C266C1A003A2E6" Guid="{86E1EE6F-A39D-41FE-AAC4-9467B75FAE4C}">
+            <File Id="fil3EE20AF681B761CEC1F2A140781B514D" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_wftTest.xsd" />
+          </Component>
+          <Component Id="cmpAE720D35419A167BBBE7E8CD4D33FC0C" Guid="{13737A93-05A8-4207-93E6-4B85430971CE}">
+            <File Id="fil1479CD41C6998D1294573E6EBB0840D4" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_wftTestData.xsd" />
+          </Component>
+          <Component Id="cmpEFC9256105535172502F9CAB3F96A381" Guid="{9A66CD1F-1B70-41A4-A1C8-AC198DD087EE}">
+            <File Id="fil342CD8F92057173B80B495242BB6D64A" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\cs_wftTestResult.xsd" />
+          </Component>
+          <Component Id="cmp2942B60755F01BCC1E0B201F376FEE78" Guid="{591AF08B-A7F7-4730-A866-131086DC3FF0}">
+            <File Id="fil2E601749515B0D58553D0A0F45625941" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\ges_dtsFiber.xsd" />
+          </Component>
+          <Component Id="cmpDA06486F6E0BE3FC4FF7EFC285A1DA31" Guid="{E8D73DEB-F61E-4998-A031-7E40A1F3511D}">
+            <File Id="fil4483A0BAB36E95CBC70BA5A7F3559104" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\ges_dtsInstrumentBox.xsd" />
+          </Component>
+          <Component Id="cmp04F229E64D40097DDD9EFB7CCB42BB6A" Guid="{794953C5-6680-42A2-AA34-96E5382AB76A}">
+            <File Id="fil0599675DE54F441600C0BBF86ADA2487" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\grp_commonPropertiesProductVolume.xsd" />
+          </Component>
+          <Component Id="cmp472F42906FC3F24888EDBA7DAAE45465" Guid="{60DE1634-3783-486F-A34B-28A0B663787D}">
+            <File Id="fil4F141B129ACFB755B46D83F147E94DF3" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\grp_dtsInstalledSystem.xsd" />
+          </Component>
+          <Component Id="cmp694D9DA9446A112851A1BC261F2FB18C" Guid="{F63AC53C-5AF8-4724-8593-1118BA4F8CFA}">
+            <File Id="fil28D5B14C945DA70C8DD349E48B75E5B1" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\grp_dtsMeasurement.xsd" />
+          </Component>
+          <Component Id="cmpB981F59B1045C29ABA26D30DAC4B85D2" Guid="{125476F7-C199-4AA2-AAF6-B846861E0E38}">
+            <File Id="fil4FE91F57EA237F4D3CB271EDBDE12764" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\grp_fluidAnalysis.xsd" />
+          </Component>
+          <Component Id="cmp9CF03F2BF972FAF0374289006AC95968" Guid="{CFB4DCE1-E710-4F50-BF9B-8AA92C73B824}">
+            <File Id="fil33DB6B9F56B82B552E2DF7EEB649EA2B" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\grp_fluidAnalysisResult.xsd" />
+          </Component>
+          <Component Id="cmpF07F074B848F5272876DC525D1B7B9C7" Guid="{E09853CD-9542-4947-BCDD-7A974D0196DF}">
+            <File Id="fil2B29D9FD8F6D71C8E298253552C0D88A" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\grp_fluidResultCommonTestGroup.xsd" />
+          </Component>
+          <Component Id="cmp71B368DB00E6B4B71A25522FDF63B483" Guid="{62C144CD-4DB2-4554-AE0D-19813F56ECC1}">
+            <File Id="fil1685DFEAE76BF350076EB583CE3CCE17" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\grp_fluidSample.xsd" />
+          </Component>
+          <Component Id="cmpE2AE26045BD04ADAAE8BFD0257DFD2B9" Guid="{D4EC1809-0D6F-4833-BFB9-70376D6CE0F2}">
+            <File Id="filA708D7AF3B36C8C98048197CE64DDA41" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\grp_productFlowModel.xsd" />
+          </Component>
+          <Component Id="cmp24193DC7E4B35922DF21921C15989437" Guid="{2F7735E7-BC6B-4877-9CEF-6C476DAFE4F7}">
+            <File Id="fil5050773EE57A579582230BBD5E9E9E2F" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\grp_productionOperation.xsd" />
+          </Component>
+          <Component Id="cmpD5EB786B998684F7C56E3A032BE06776" Guid="{382521D2-35F6-455A-9664-C77F9787B826}">
+            <File Id="fil123E3FD76D00E5421E3D41779B1CAF5A" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\grp_productVolume.xsd" />
+          </Component>
+          <Component Id="cmp182EF2A476901BF0C28AD1F69913AF7F" Guid="{B819A1CB-3825-4A89-9445-6160E4DBE116}">
+            <File Id="fil0781DEF8EFF5CD0966AC170477467629" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\grp_timeSeriesData.xsd" />
+          </Component>
+          <Component Id="cmpAE4DF6821ECB751AFC56EADD5F6DF1EB" Guid="{13D17A5A-A8DB-426B-A42D-942A517A5A1B}">
+            <File Id="fil116DE7A7AFF4B78C97B2CB0A8F71CF78" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\grp_timeSeriesStatistic.xsd" />
+          </Component>
+          <Component Id="cmpAE82A44975BDB1BC9069ADEC68FD6F1E" Guid="{B4DF7875-5E88-44C8-B580-06C055735B24}">
+            <File Id="fil06E7947845CF687FE9B90154F9FBFCC8" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\grp_wellTest.xsd" />
+          </Component>
+          <Component Id="cmpC0310C68A0110FF529DDCE73C9CD9B03" Guid="{8850E02B-DABF-4FD5-88DD-4CE3B3800629}">
+            <File Id="fil264613DAD9E651D25D07C723D9CF5D3D" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\grp_wftRun.xsd" />
+          </Component>
+          <Component Id="cmpF5410A5801554ACC0BC0BB34513B9407" Guid="{1E33F200-E614-4D9F-B86C-4D46D6842A13}">
+            <File Id="filED9F3B6D1F3D9AF6CE809BE9D9586626" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\obj_dtsInstalledSystem.xsd" />
+          </Component>
+          <Component Id="cmp24E1722364B34EB41A903BECE182CF91" Guid="{F7605DF3-EBC7-4DD9-9A2C-A004E8A48472}">
+            <File Id="fil91D84DFB0FB11610E4FFDD552B3721A5" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\obj_dtsMeasurement.xsd" />
+          </Component>
+          <Component Id="cmpF95CBC3F11FCBCE94817EE0E5E30CC6B" Guid="{AC7686C6-6B69-4BF1-AA5E-1AA13DAE104B}">
+            <File Id="fil40DCBAC8394540E541655E68ABF511D8" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\obj_fluidAnalysis.xsd" />
+          </Component>
+          <Component Id="cmp91BE6441E5A1160F86873C951BC2A2DC" Guid="{2AD62057-FD43-4374-90F3-8565B95593BC}">
+            <File Id="fil342311E8EEC1C6FCCFBCA8837098572C" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\obj_fluidAnalysisResult.xsd" />
+          </Component>
+          <Component Id="cmpEF265EAE2795C056ED453ED5BDC2767C" Guid="{18E4F4BB-B03C-4A2A-8B69-726B48688E4C}">
+            <File Id="fil4B56F3B2475BF794B2DB6563E2A10F15" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\obj_fluidSample.xsd" />
+          </Component>
+          <Component Id="cmp8699E6BFACBF44E5568552C135B91C6A" Guid="{ADD07FF9-5DC9-4DA3-891B-DA49FE19F1D5}">
+            <File Id="fil30F7A577E59E9FA57D48E3C54FB55B70" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\obj_productFlowModel.xsd" />
+          </Component>
+          <Component Id="cmp29039CB027D4D232282808424E1065C2" Guid="{2A60ECFF-A066-4353-9254-9E6856E5191E}">
+            <File Id="fil86F7169E8A41BCC116BD902F318CA31B" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\obj_productionOperation.xsd" />
+          </Component>
+          <Component Id="cmp077847BE11EF2AE5C94B6EBEB13005ED" Guid="{72FA58E0-0E5A-4DFF-938C-8921750D537A}">
+            <File Id="fil5CD550EA7F1D160A660C86D3E152CCE0" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\obj_productVolume.xsd" />
+          </Component>
+          <Component Id="cmp38933E48A7EB28F76F0105E082D37721" Guid="{0E2505C8-C00B-4EDD-9BF0-771FF87791C7}">
+            <File Id="fil66201C868D5DA29FD0E661ADAA0816DA" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\obj_report.xsd" />
+          </Component>
+          <Component Id="cmpC08D1509201D3673450F2BF4D2971B3D" Guid="{C57E61BA-D306-4471-BD1E-A02EBE6C7D62}">
+            <File Id="fil0F8EF47E317388B58B3B59EF50B8F13F" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\obj_timeSeriesData.xsd" />
+          </Component>
+          <Component Id="cmp0FE19F43C2D32925BFB419C4922D6F15" Guid="{79F12CF6-638A-4364-8A39-8A14523DC243}">
+            <File Id="fil0E077D7EBAD8D794D6660BA1DFAD9105" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\obj_timeSeriesStatistic.xsd" />
+          </Component>
+          <Component Id="cmp7FA95CEBD788D4BBC84DD3AE6D828882" Guid="{BD55FBBA-C6AD-4A6A-8A72-7A89328BFEF9}">
+            <File Id="fil286B6C8F4E0EDF262549071DFCF9228A" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\obj_wellTest.xsd" />
+          </Component>
+          <Component Id="cmp73551FA538E2E170E4BAB259E89D86C3" Guid="{47231534-1530-4CE0-BBD2-2ED10DC3DBF3}">
+            <File Id="filF0A10A946E0641DD85AC6B4C8371772E" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\obj_wftRun.xsd" />
+          </Component>
+          <Component Id="cmp7FC67C43E33A549B32038DA1A8565B2B" Guid="{FBDEA6C0-E3F5-49EA-9BC3-752E3319F8C0}">
+            <File Id="filFD81684EBFE9ECB773350289DE646362" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\sub_objectMemberProdml.xsd" />
+          </Component>
+          <Component Id="cmpCE8998C788A4F15C45CFEE3F77807FE5" Guid="{B352CE78-01C3-49E8-B6F6-98688680190C}">
+            <File Id="filD57C9E9339ABFA8C6E89A1D6D15CCBCB" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\typ_baseType.xsd" />
+          </Component>
+          <Component Id="cmpF7584703903A6EDC1B91412D0A40D0C2" Guid="{150091FD-F375-454A-896C-B9CDFEC52337}">
+            <File Id="fil0CC42294508873B2AF24470486116DE7" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\typ_baseTypeProdml.xsd" />
+          </Component>
+          <Component Id="cmpC1B067B372C3294D98D13B08301A2FF6" Guid="{DE355D7C-F287-435F-8BEA-D237D16A591F}">
+            <File Id="fil34B1E9CE5C2CF07EBDE313A88FF1B735" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\typ_catalog.xsd" />
+          </Component>
+          <Component Id="cmp4AB36701989BA68C60697DF8ADF2D281" Guid="{F6386130-B1F1-4FE0-BEDD-E1D1FE0C2A54}">
+            <File Id="filF4281CBC65AE8F4673B906A7BE4E92AA" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\typ_catalogProdml.xsd" />
+          </Component>
+          <Component Id="cmp6B3DD1972E44121D5E0C6E38395618DF" Guid="{78BD0BC8-EB7A-44A3-8BF4-541B55535A9E}">
+            <File Id="fil1B7E442497DA9ACB453E2BD24EB5BA58" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\typ_dataTypes.xsd" />
+          </Component>
+          <Component Id="cmp40CB505088F0BD7C345EC8CD8CF03F2B" Guid="{69562631-F1A2-4A23-A834-E5F76E1D84D1}">
+            <File Id="filBFA16FB70C611AB3B1F528A7CF69E980" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\typ_dataTypesProdml.xsd" />
+          </Component>
+          <Component Id="cmp0B5B1E0F006FF5DEDF90A2FD877ACB47" Guid="{746436BB-17FD-402C-8905-BD696B694DE5}">
+            <File Id="filB7E67AA7A368B3D8A67D7625398722F7" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\typ_measureType.xsd" />
+          </Component>
+          <Component Id="cmp2C0496BA778C4376B09BE0411A3AD5CE" Guid="{EB10A763-91C7-4D17-A6AC-F7BF05DE8671}">
+            <File Id="fil7D9D014218216187B3D2B71621318503" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\typ_measureTypeProdml.xsd" />
+          </Component>
+          <Component Id="cmp7D9473EBEA77E2D3A2F2D4CA70D7A618" Guid="{3DB263D5-EFA5-4FA6-ACF4-EF4CB5DF7A41}">
+            <File Id="fil3C41D6A3D40D6E2A3833BFA72C803824" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\typ_quantityClass.xsd" />
+          </Component>
+          <Component Id="cmpD34DE2C23187D86BF75C68161598C437" Guid="{63588CA0-A62B-4B08-B9DA-7022C3BB9CEB}">
+            <File Id="filA8F83D45B4B249C5C654B9BC21DBE0DF" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\PRODML\typ_quantityClassProdml.xsd" />
+          </Component>
+        </Directory>
+        <Directory Id="dirD6055EE4C08B2B3FE055CC5594388D2A" Name="RESQML">
+          <Component Id="cmp5A15C1E7A21F9CFC0ABA530C2E8EEF17" Guid="{0BC28D18-BDAA-4FDF-8E66-43E1EBD6C7D1}">
+            <File Id="filAF302D3C39FA996A20E1B734673BCBAD" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\attgrp_objectUid.xsd" />
+          </Component>
+          <Component Id="cmp23BADA27B11B1331780231B7E816961E" Guid="{4473F3FF-A99B-45FA-AA68-59DA717B6687}">
+            <File Id="fil795B7F71ECD9DA1DD18D0A4A77E58DE0" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\attgrp_uid.xsd" />
+          </Component>
+          <Component Id="cmp6775BE19EBD582B3551DBAAFCC090AE9" Guid="{BEE7CD52-AD3F-4C42-910B-423ED7E416B2}">
+            <File Id="filB5015B65879B20215FE0B69817495130" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\attgrp_uidGlobal.xsd" />
+          </Component>
+          <Component Id="cmp34125E03A8BBF43685298C547B4EA77A" Guid="{2A8FE8BD-2D49-4BDB-B764-9082D4DBBC83}">
+            <File Id="fil8F7816033F011ABDCAE8DF345E138E6D" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_customData.xsd" />
+          </Component>
+          <Component Id="cmp21786D93B9666C0E3A0831739AB1F2D0" Guid="{546170CA-8A56-4D23-A3C5-ED73E608A4E2}">
+            <File Id="fil1CA1DB6AA6C341F21140D3D201900533" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_documentAudit.xsd" />
+          </Component>
+          <Component Id="cmpDD1AB2930B1ADD35C65B3689B9E3C366" Guid="{8CE394B5-238A-4854-A619-97ED99427560}">
+            <File Id="filE1C4DC3A29F3AB13BAA16F968C46DA72" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_documentEvent.xsd" />
+          </Component>
+          <Component Id="cmpE2675795547EF5C4C7E765655B867E3B" Guid="{D7E92A81-81E0-4E3F-BEDC-A1653E240D1B}">
+            <File Id="fil917DBDA0F33A94C4B420CDF4EE2EED3F" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_documentFileCreation.xsd" />
+          </Component>
+          <Component Id="cmpBE81EAF2D99443A7C961E6ACDEC4C0C6" Guid="{D7B6013D-5EC1-48AE-9EB9-7386A0B5CAE9}">
+            <File Id="fil37006881DE079C5E2301C6FF9EF485D8" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_documentInfo.xsd" />
+          </Component>
+          <Component Id="cmpC7FE37C7D31B6EA0481EDB651B99B3C0" Guid="{387D498B-7FA3-4CC1-8B5D-450E97B38A24}">
+            <File Id="fil57C4DE6AD0FB3A2FBEEFAD236C0D7A39" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_documentSecurityInfo.xsd" />
+          </Component>
+          <Component Id="cmp980EDDB77FCC7832DBEA8EE660221708" Guid="{C56BB5CF-EDF8-4EBA-AA83-ED67ABDF5DFA}">
+            <File Id="fil6256C8F1190BEBF02C18F866FA7F3B4E" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_extensionAny.xsd" />
+          </Component>
+          <Component Id="cmp332813713A8764BA8DD8ED226B7D63CB" Guid="{397F79A6-82C4-4CD5-9B42-F918CAE7F471}">
+            <File Id="fil20157F13E9FD65A2E427A27A2E464B5A" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_extensionNameValue.xsd" />
+          </Component>
+          <Component Id="cmp00A44C50A254247704B22949737CB3C4" Guid="{938D009D-5C0A-43F0-9A50-A4D41A97B41F}">
+            <File Id="filD2514747020B49155EE986AE7A4D161A" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlAbstractFeatureInterpretation.xsd" />
+          </Component>
+          <Component Id="cmp1D80C0632CD8AE8F8651E6503CBFDAAA" Guid="{2484B19F-3FA9-4789-B29F-B34CF15248E4}">
+            <File Id="filB0DAF1CE4B782BA65F31ACABCB36E199" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlAbstractFeatureRepresentation.xsd" />
+          </Component>
+          <Component Id="cmp28813E9A611AF99FBEC3DD7D7E047A90" Guid="{F2AB0B8D-2ADB-4855-BC86-C056E05B9DB7}">
+            <File Id="fil45D3484023057D7797C5E50B761B55CE" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlAbstractGeologicFeature.xsd" />
+          </Component>
+          <Component Id="cmp3475FFDAEAC5AF74E2B6B5D3F50E5DC9" Guid="{087FA318-714E-4031-AD38-66FEA17F8A70}">
+            <File Id="fil79DDF8653E42175B881C43181018D6BF" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlAbstractIJKGrid.xsd" />
+          </Component>
+          <Component Id="cmp550179516F9CAE98190869E7172A7402" Guid="{DD90BA99-06D6-448C-8473-01563327F1F5}">
+            <File Id="filA441913388AA0441CCFF08D0D9EF9708" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlAbstractPropertyValues.xsd" />
+          </Component>
+          <Component Id="cmp278ABC96B812B57C04C3CA2B4120F759" Guid="{4D1AC538-4EEC-4A08-8A4A-60CFFD48F922}">
+            <File Id="fil4A4B059F928EF3B9755D5460BEF672BD" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlAbstractValues.xsd" />
+          </Component>
+          <Component Id="cmp13EAA07EA24464FF5E06D67FCFD8AE7E" Guid="{CB091906-D225-4E70-8397-2D695DB2DEA1}">
+            <File Id="fil76C66D27A2CF9980563764B232302205" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlAreaOfInterest.xsd" />
+          </Component>
+          <Component Id="cmp6A4680BE10FC7AC15211F64389B7FE4C" Guid="{74C2DEE9-CD3A-46D0-BCC6-20C9738D7901}">
+            <File Id="filD94D085E859BE423069DE6DB42B94935" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlBinGrid.xsd" />
+          </Component>
+          <Component Id="cmpC68A4AA6F73EE2F317E2FD6BFAC0AE08" Guid="{D33F1D84-F952-461B-8B7B-972622014F56}">
+            <File Id="fil2E543F0127015ACE0F7FE40ADECD2140" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlBlockedWellboreSet.xsd" />
+          </Component>
+          <Component Id="cmp79914DC525673733B6054B1EF85C64A1" Guid="{2091EAAC-557B-41E1-B538-64208823252F}">
+            <File Id="fil6DB1CEF397F357B94C5D500A1BB18C8E" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlCategoricalPropertyValues.xsd" />
+          </Component>
+          <Component Id="cmpE4061B64AA15734DEC93785F25CF0273" Guid="{E86E90E7-B282-4A9C-A600-13DE598CBA49}">
+            <File Id="filF08999E2176A26163AFD8D062B079240" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlCellDivisionWeight.xsd" />
+          </Component>
+          <Component Id="cmp68C046CD499F89B5E41DED6147321F8A" Guid="{D08CAB7C-6939-44A3-904D-491CBA5DF16A}">
+            <File Id="fil95FCD1F284778C58CADE410D85F7DD23" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlCellIndex.xsd" />
+          </Component>
+          <Component Id="cmp6206389E8D99DF223ED2D669DB103092" Guid="{0D4E8FCB-3001-46B7-ADFE-AB80CD4D8A3A}">
+            <File Id="filFF3166AA1E45CA23B56375357266039F" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlContinuousPropertyValues.xsd" />
+          </Component>
+          <Component Id="cmp58BAB37B2D9CF55748AB660E525AE8AA" Guid="{EE3630FE-A247-4268-A2AF-AD1FB37BA5AF}">
+            <File Id="filCCFBAF9302B737BB1E74F5A88EA415ED" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlContinuousValues.xsd" />
+          </Component>
+          <Component Id="cmp13E9DA7DC3FACC272EB3FC909569F84D" Guid="{BBB8DC7D-2C09-492C-9489-09C09375B715}">
+            <File Id="fil7778F6895618712953A8B083A1325D42" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlDiscretePropertyValues.xsd" />
+          </Component>
+          <Component Id="cmpC5E1914CF92DADF4D19A60E241EAA996" Guid="{F7A98E03-F110-4CF2-BA8E-F0F1B4859B35}">
+            <File Id="filEE1DCE3DF85D2AB8BC86CC72C2B54902" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlDiscreteValues.xsd" />
+          </Component>
+          <Component Id="cmp9980353E42BA902568E0734DF32D9829" Guid="{20D23E93-379B-4545-A12F-C13FC8B54C19}">
+            <File Id="fil029256C66F8DF7419C973C976058138A" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlExplicitCornerPointGridRepresentation.xsd" />
+          </Component>
+          <Component Id="cmp8371FAD90FE391122DF8BBD83D4F5779" Guid="{72CA98BA-30AD-4162-8DCF-F4209E703D1C}">
+            <File Id="filC68AAB737C9F6D908D8723007B6D6291" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlExplicitNodeSet.xsd" />
+          </Component>
+          <Component Id="cmpD7D4637A4BCA2AC877C4B435BBDDDB1E" Guid="{EFD55433-B424-4210-961F-25DE90B63677}">
+            <File Id="filD7CC9F02F756C4113C1283F27ADB657F" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlExtensionNameValue.xsd" />
+          </Component>
+          <Component Id="cmpA7B13DAFF93C5ECF256DC8CB9A3F18AA" Guid="{842B7191-1059-4636-9365-AFE1B4FCE603}">
+            <File Id="fil474246DD814F6B2C800735F5AC4BA8A4" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlFault.xsd" />
+          </Component>
+          <Component Id="cmp02A1202DF1AD229F4386CF2181283182" Guid="{7D8922EF-BA76-4C61-88DB-A090312A023B}">
+            <File Id="fil8E04FF90CAC01D2B9275DACA062F83E7" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlFaultInterpretation.xsd" />
+          </Component>
+          <Component Id="cmp703BBA5CEC2901AC8DD9F7B736EDEA85" Guid="{F529FF91-557C-4A2A-AF2E-28969BE26A74}">
+            <File Id="fil1B4DCEEFAE585472D488F2C47B9E1AE3" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlGlobal1dCRS.xsd" />
+          </Component>
+          <Component Id="cmp4629217D23B6D3471536DD4D8F58B9CF" Guid="{ED667B4D-004F-46F8-BF1D-8076229021BE}">
+            <File Id="filF66B6AE5A99ABA984701A0095C160BE5" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlGlobal2dCRS.xsd" />
+          </Component>
+          <Component Id="cmpDB2111F2C36CC09DCC178D7C4C0EA551" Guid="{B11E90AC-EDFC-4903-89C8-11B01E7D8782}">
+            <File Id="fil61EFEAAB3DFA136C3AB5894A9C46D749" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlGlobalTimeCRS.xsd" />
+          </Component>
+          <Component Id="cmp3FDCE931C8D455E221EA0E2B7AC8EAB0" Guid="{6626991B-2B0C-437A-AC7C-7692D3FF0947}">
+            <File Id="fil2CD7EEEB48DFADD181750ABBA63E1F92" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlGrid2dPatch.xsd" />
+          </Component>
+          <Component Id="cmp4A95CE627DB4024672394E89A48C816C" Guid="{0A583896-44FE-4B26-BA5A-AA74B79121DF}">
+            <File Id="fil1225B5AA109F216C5092C626A1D67880" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlGrid2dRepresentation.xsd" />
+          </Component>
+          <Component Id="cmp1CEEB21EA160B30FC1B705E59BB9AAB7" Guid="{ABD92ED4-2E2A-4BDA-B827-B4970860156A}">
+            <File Id="fil95F0B8B4FE624447373617B974A87970" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlGriddedVolumeSet.xsd" />
+          </Component>
+          <Component Id="cmp5D4E495C09AB5BBA234D0328D4E67E45" Guid="{3F9D7496-4D78-40A9-B6E0-DED25365B9AC}">
+            <File Id="filE56DD65E35CA1BBF900CC4503DA4582A" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlGridIJKCell.xsd" />
+          </Component>
+          <Component Id="cmp1CCFC07B30A03DB8507143F2A1DAE76B" Guid="{F2B2EE1C-3B23-4DE0-9E72-3611987CC6E1}">
+            <File Id="fil8C4B035EBAAD9B917605BDEBCD1B085E" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlGridIJKCellFacePair.xsd" />
+          </Component>
+          <Component Id="cmpD019DB1AF65F70B70996C1B8CA128B8C" Guid="{014C7661-B6CC-4A78-8910-6F53459EF9CB}">
+            <File Id="fil094DBFEF1396F6F6AAA2103BBBBCA0A9" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlGridSet.xsd" />
+          </Component>
+          <Component Id="cmpA4B7906AD0CE7E1D0395B01B378D8395" Guid="{D1994EFF-84BC-41F9-9ADA-7C163CA2A782}">
+            <File Id="filA61EEC48AB009927BF430040B3D9356D" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlHdfGroup.xsd" />
+          </Component>
+          <Component Id="cmp1C1FD46941F7B29EE485BB842E4BB007" Guid="{6360A4DF-BFAE-4652-B72C-0B50673F056A}">
+            <File Id="fil2A036BF639BA97849DB34878EA443BDA" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlHorizon.xsd" />
+          </Component>
+          <Component Id="cmpE5AE5381279467D1119D9E9AF976A37C" Guid="{A1B8BC2E-3639-44E9-8E28-A3466128FB52}">
+            <File Id="fil3AB53A6E5B6F380B109C9B6741A70706" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlHorizonInterpretation.xsd" />
+          </Component>
+          <Component Id="cmp76ADAD9CBB83F31402FDFCE5CBC8D20B" Guid="{E87291AB-506A-47EB-833C-EB43E3E8518F}">
+            <File Id="fil61CE9DA5A4C1CD775900AEFC46008960" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlHybridGridRepresentation.xsd" />
+          </Component>
+          <Component Id="cmp2996C62FE65373145065C1590B9C5E35" Guid="{03216BC6-E773-4273-B6D1-98CBE4367567}">
+            <File Id="fil48208D7BB8C9DA112953EA725317CD07" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlIJKBlockedWellbore.xsd" />
+          </Component>
+          <Component Id="cmp0B2630DDA94A605822FFE3BBC278DAA1" Guid="{0282506C-54AC-48A9-A983-336335122ED7}">
+            <File Id="fil0AC369D9896A0F7B26E86A869A6A247C" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlIJKGridRefinement.xsd" />
+          </Component>
+          <Component Id="cmp64D69EDBF3A99AD1B42DC6C6D9E90DEE" Guid="{CF6D7255-FA5C-4474-B646-D444EAE78555}">
+            <File Id="filDDF169E81B161ED55A5AB340868116DD" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlIJKNonStandardAdjacency.xsd" />
+          </Component>
+          <Component Id="cmp9B963D07877EA9E87740912AB84B9B17" Guid="{B38D4117-8B8F-45A3-BA94-4E9E4E186039}">
+            <File Id="filE341A5EACF37D6F1E13DF851B3C7341E" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlInterfaceFeatureSet.xsd" />
+          </Component>
+          <Component Id="cmpB3D1585DA5918B7A8E3F998D00C9544C" Guid="{12524080-24DA-4EEA-BBF2-AA9C4058E4DE}">
+            <File Id="fil72753D7E35375579D8C63BDB664A0CB8" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlLocal3dCRS.xsd" />
+          </Component>
+          <Component Id="cmp8EC46B515A39CE18E4D7688D703642C1" Guid="{53E1F84C-AA77-4ABA-B575-7F3E4409309A}">
+            <File Id="fil2D6144349D3384A41A8C106FFE039673" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlLocalIJKGrid.xsd" />
+          </Component>
+          <Component Id="cmp9B3BFC72D18D2EC9E91A4EFB440906FE" Guid="{81EF692A-BA1D-4D35-BCF6-3419C5A5DB6D}">
+            <File Id="fil614FE4033BED73F0179ABB5D18CBF807" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlNonStandardAdjacencySet.xsd" />
+          </Component>
+          <Component Id="cmp544F56EDBF60D62E3411C9D7B5AFBB63" Guid="{E9D8F507-442E-4433-87D7-09274702FE3A}">
+            <File Id="fil2D831AB36AD2079F0E878A3590CF4B48" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlParentBlockedWellbore.xsd" />
+          </Component>
+          <Component Id="cmp02A7D7ED1FAAAF30DE4F69619B64DC6A" Guid="{36BE17EA-7C3F-4D89-A032-235CA658F72E}">
+            <File Id="fil7C0DE77D4EEA7DDB1F7079D370BC0651" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlPillarSetPatch.xsd" />
+          </Component>
+          <Component Id="cmpD18570BEFCFB786F319573089063C3A3" Guid="{9897FF8C-C1D2-4A5B-8C7F-DEBEB270EF37}">
+            <File Id="fil0BEC2F8B1E5EF4F95C8F489D2EF07EFB" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlPillarSetRepresentation.xsd" />
+          </Component>
+          <Component Id="cmp7E6989640A45E28D1EABCB366B4E0371" Guid="{20220778-22BB-48ED-AA7A-5DF542B97214}">
+            <File Id="fil555576E555E233A14C1A8E492CD25964" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlPoint3dSet.xsd" />
+          </Component>
+          <Component Id="cmp9EB059B5C7F9D57507743B9CF12E40E6" Guid="{B3EEF0F4-6680-4D4B-8A53-A9C331056071}">
+            <File Id="fil4B95ECD4424A949E7ABD077D59408481" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlPointSetPatch.xsd" />
+          </Component>
+          <Component Id="cmp62E39B2A90FAC926B24E0E0B071BAE26" Guid="{0C4F5F24-4F5B-4A70-837D-3712A6B1A73B}">
+            <File Id="filA36C118FF73D78E65A2FE49C3D459204" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlPointSetRepresentation.xsd" />
+          </Component>
+          <Component Id="cmp731B3C69190F4FC6422A62F4DA0DD8EA" Guid="{6F86855E-EF0B-4B9B-9F15-735D9483929E}">
+            <File Id="filEDBFF6006231688BF07DAE18CFBA3EC4" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlPropertyGroup.xsd" />
+          </Component>
+          <Component Id="cmpA0872C61D026038D1BAC1DFBD85E35D8" Guid="{11F88E71-500E-48A8-8851-7A3430ACB954}">
+            <File Id="fil35A7926AA1CA97A2B95B2B226676B631" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlPropertyGroupSet.xsd" />
+          </Component>
+          <Component Id="cmpFCBEE6678341F6383EAA69A1B4640B18" Guid="{9A343A8D-B968-4A08-B508-51CE0C9F25FE}">
+            <File Id="filB06E8F8D8444C4DA0573C794B747DE05" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlPropertyKind.xsd" />
+          </Component>
+          <Component Id="cmpB78DBF5C1811DDD17ADDDC8E0271F230" Guid="{7BA54E5F-FB75-4A32-9BA8-33CDBD141872}">
+            <File Id="fil49847CBF33C70F8A247F7D09003C967B" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlPropertyKindSet.xsd" />
+          </Component>
+          <Component Id="cmp9C8D1BD9F2CB267159B8F42E718D93FB" Guid="{A0FC6AD8-ED3A-4CC1-AAC3-CB931DC63835}">
+            <File Id="filB2A5D90A4EE07088715C6130BB5A4CA6" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlPropertySet.xsd" />
+          </Component>
+          <Component Id="cmp2C52A59E0EFA2CCA2B2712E620A773FD" Guid="{03F0750B-CCFF-4585-8BB2-BD095F05F2DB}">
+            <File Id="fil1873B7CC8A15258B1423EE3A8E2B20CD" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlRefTimeStep.xsd" />
+          </Component>
+          <Component Id="cmp54319624FC1AEDC61BAD8AC22FC99192" Guid="{B5923B8B-F7F5-4955-A9C3-C325C412033B}">
+            <File Id="filF09D87ACCD05F17033737D920306F4A4" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlRootIJKGrid.xsd" />
+          </Component>
+          <Component Id="cmp18D255F28C4753F9F43B140FF711FCE0" Guid="{18EF14B9-5A5E-431E-B382-4E510E5D92DF}">
+            <File Id="filB6C3215D5F0DE998104A5857B52B6F16" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlSpatialReferenceSet.xsd" />
+          </Component>
+          <Component Id="cmp3E449EE1F266B4384AAFEF5F2A17412E" Guid="{88BBA437-E59F-4143-B205-C72BF99C89CD}">
+            <File Id="filAC64C241A59627CE62BB8A3184EFDFBE" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlSplitEdgeSet.xsd" />
+          </Component>
+          <Component Id="cmp268236D070C3548355C85BADC2CFBB4D" Guid="{E90E4FDD-9416-490D-A2C2-03BAFC9613B4}">
+            <File Id="filE262801CE7D28C586ACCB0884EFA4167" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlSplitLineReference.xsd" />
+          </Component>
+          <Component Id="cmpFAB1845740458E67E3815699E5870FF6" Guid="{DD8314DB-FF45-4D59-A640-DBA90B970CB1}">
+            <File Id="fil5B8450FF5F32DE5997BC646818C045C2" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlSplitNodeReference.xsd" />
+          </Component>
+          <Component Id="cmp16A64B566861250C9DA01E74121A411C" Guid="{A50FAFD0-9796-48A7-9907-98BFF17F42A1}">
+            <File Id="filBEB25488337D05D5279869234877BBC8" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlSplitNodeSet.xsd" />
+          </Component>
+          <Component Id="cmp8919D865B5ACC3AC9C649A1A594E6F33" Guid="{B45B10FE-B381-44E1-8093-4C38ADD9EADA}">
+            <File Id="filDB151C69228D797346FE7144A476F744" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlStringLookup.xsd" />
+          </Component>
+          <Component Id="cmp9C9660592DFF2420F902D422114A1B3B" Guid="{F59A02E8-7373-453C-A75A-85B845CA807C}">
+            <File Id="filB772B2DA34C65E617BDF6E0AA9FC2963" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlTimeStepList.xsd" />
+          </Component>
+          <Component Id="cmpAFD90A01D7F4C8B1EC832EE082424C13" Guid="{3B065E03-3EF9-4302-9376-7F0B69BDD456}">
+            <File Id="fil9B316FD471023B07944568020CEE9D42" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlTriangleSet.xsd" />
+          </Component>
+          <Component Id="cmpDAC7DE971FFDABE54004B932E2117654" Guid="{491A1BA2-2100-4F73-8EAB-CA3DCBA37E79}">
+            <File Id="filEAEF34F1DA24BA7D8CE21E203F545DDA" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlTriangulatedPatch.xsd" />
+          </Component>
+          <Component Id="cmp9E5E8A1BC934C477C452E7A5068DD2CC" Guid="{CA4E16FE-676E-40C4-A529-DFF94005A13A}">
+            <File Id="filFBF100A9F072E3AE61343720E5D873F2" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlTriangulatedRepresentation.xsd" />
+          </Component>
+          <Component Id="cmpCDF4C75F0E7EC81835DEBF6EF905FE54" Guid="{FA38A195-0C7D-4FB3-9DCA-F9E901647F9D}">
+            <File Id="filC004DE467E7C7F8B531A4450DC058C93" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlWellMarker.xsd" />
+          </Component>
+          <Component Id="cmp8F67F428C6F07585DA9D4C19E4EC217C" Guid="{47752F69-5254-4174-9EF0-9FDEB0A2CF03}">
+            <File Id="filA1EB132F29FB9E0C6422414F297E2B23" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlWellMarkerPatch.xsd" />
+          </Component>
+          <Component Id="cmp46B7952E999A548552ED91CBEA386CC3" Guid="{2C4D7A7F-D563-4979-87EB-81182486251A}">
+            <File Id="fil93642EB3C7431D750AEA7DCD57ED8A6A" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlWellMarkerRepresentation.xsd" />
+          </Component>
+          <Component Id="cmp8869546EE4080BB9D88E1ED4F86EF8A1" Guid="{838ECC20-7910-45A5-87AA-B8DF9B095E13}">
+            <File Id="fil602356EF6F342F2C4300E19209B499D8" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\cs_resqmlWellMarkerSet.xsd" />
+          </Component>
+          <Component Id="cmpB7A02A4F6A469F61D64598EC7914BE7D" Guid="{5ADAAA07-E16A-4562-991D-936BD9DCB9F8}">
+            <File Id="filDED0167BBA7EB1EB7AEEFD5E425D1EE8" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\ges_resqmlDocument.xsd" />
+          </Component>
+          <Component Id="cmpE6A77061617E6EA5FC8EEF2561CD210E" Guid="{FFD57C1C-57D9-41A9-AD74-8618D897F3B2}">
+            <File Id="fil70DF3362A5F6C4C41DF0D1CD3E68313C" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\grp_resqmlDocument.xsd" />
+          </Component>
+          <Component Id="cmpE5643D41D029ED90E5F20BE92A88AB81" Guid="{AB001379-0148-4C75-8238-6FF76D8BCBF8}">
+            <File Id="fil2EBFB5A6485D7112FED009890872263E" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\grp_resqmlTraceabilityDublinCore.xsd" />
+          </Component>
+          <Component Id="cmp28D2E29228695A328B5060FB86A960B3" Guid="{FE4DF22B-962C-42C4-AA75-C5500398CDD2}">
+            <File Id="fil698C5D151CC92322AC7183EEA83A9880" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\obj_resqmlDocument.xsd" />
+          </Component>
+          <Component Id="cmp2EB86BD043B40018CABAD1A20FEFDE88" Guid="{A7FF969F-B383-49BE-B2DE-D8F589E85564}">
+            <File Id="filAA885B8B128B63C4115F88CEC4D974DB" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\typ_baseType.xsd" />
+          </Component>
+          <Component Id="cmp1880E5CB9C34353E870399719CF3A46F" Guid="{2129D74F-D03C-4B21-AFF5-FB5696E53F25}">
+            <File Id="filD809BCB8588C16206E38DECD2EA5DB88" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\typ_baseTypeResqml.xsd" />
+          </Component>
+          <Component Id="cmp5277DFDE6BF030FF3A16B8047B3255E1" Guid="{EEF8836A-5FEE-4673-B97F-096CC59D6D2D}">
+            <File Id="fil7D8F2391D78F645989171F8AB96B0676" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\typ_catalog.xsd" />
+          </Component>
+          <Component Id="cmpAECAA7386063B132DA6AA7D13D5BF2E9" Guid="{CFCE7AF2-2DC4-449C-AA07-20FD5C4447CF}">
+            <File Id="filD2FDC2186A17AF061E9CAEA9C76006E1" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\typ_catalogResqml.xsd" />
+          </Component>
+          <Component Id="cmp8165E48E06EB9F8B92F7D099E15AFE50" Guid="{B35DF022-2F2B-4795-B211-A8F045195B03}">
+            <File Id="fil18E580A072466F49E82B7F4A71D6841D" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\typ_dataTypes.xsd" />
+          </Component>
+          <Component Id="cmp653FC19291CECDEACEF2CEB0E7E57CEB" Guid="{69DD6555-137B-450F-A6C0-8EE55143C6ED}">
+            <File Id="fil6544AB177D1634E6C9FAA02D45896C67" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\typ_dataTypesResqml.xsd" />
+          </Component>
+          <Component Id="cmpEE87E5BA252B8B444AEBCD1C85469BAA" Guid="{A960325D-DC63-4E7A-AD56-ED5E07714916}">
+            <File Id="filA86825A12493C8A8C1B4677A7CF9E813" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\typ_measureType.xsd" />
+          </Component>
+          <Component Id="cmp7F6B6E9C32CAD1104171D811FDA73169" Guid="{FC4554F2-877B-4FFE-BD4C-D6B71C8EB981}">
+            <File Id="fil8AA2C42C6408D5CAC6CFA7BF48805FAA" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\RESQML\typ_quantityClass.xsd" />
+          </Component>
+        </Directory>
+        <Directory Id="dirF8608F669D2E75FC12CED42416422382" Name="WITSML">
+          <Component Id="cmpCC75BC20BA8D756AD3EFE00EB217AB4B" Guid="{C057767A-BED7-42D2-8800-61237C70AC2A}">
+            <File Id="fil9763D3771CB0ABFC698769904D411B7C" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\attgrp_objectUid.xsd" />
+          </Component>
+          <Component Id="cmpBF68AB00CE3E602189A13900736C043C" Guid="{59B055C1-17D1-4FFF-A081-0EB95D5F8C1A}">
+            <File Id="fil5953B41177FBFA542D0C24A62B25A118" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\attgrp_uid.xsd" />
+          </Component>
+          <Component Id="cmpF4646B244710D96C69A722A0C2ACAA86" Guid="{43BE24C4-C1CE-4A26-A7D4-EC00490969D4}">
+            <File Id="fil91ACD939C147588935CFE07F60A44D42" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_activity.xsd" />
+          </Component>
+          <Component Id="cmp1AB6AC349786D5C90845BBAA3E74DA63" Guid="{9DF19BD0-05FA-4F90-8D4F-E62D389102C7}">
+            <File Id="filBFEDDAA953196EDB9F3568269C791CE8" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_alias.xsd" />
+          </Component>
+          <Component Id="cmp6E45A07AA501E4A089B2106EDAE26463" Guid="{4064D42E-3AF9-4C5B-A6DF-D2196EA8D73D}">
+            <File Id="fil40BB5FCED8382CF4229A1A2CC3F5831D" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_axisDefinition.xsd" />
+          </Component>
+          <Component Id="cmp411D7593DAAA2B9335A9F4D6FB067B60" Guid="{22E9E5F2-76AA-438C-9C53-6D0A50BA09CB}">
+            <File Id="filAD5AC534636775DDB9946622CF52DB55" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_bend.xsd" />
+          </Component>
+          <Component Id="cmp320759B9F0703C4BAB4955579F9F43AD" Guid="{9A3D6F8B-DF3C-4D4B-9235-3CF9CA079FA6}">
+            <File Id="filEB2BC4A1E5EB628FF1F60DE2CB948E60" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_bitRecord.xsd" />
+          </Component>
+          <Component Id="cmp6BF34843760655872EAC09D61591A4A5" Guid="{6376B6B9-1DF4-4560-B48F-303F14B72343}">
+            <File Id="fil338C5D6E7FC1B855E32F8AD0E943D235" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_bop.xsd" />
+          </Component>
+          <Component Id="cmp1F4BDB6C1C0F2AED680EE82BAD9AFEC7" Guid="{2566DA7F-98F4-4F7F-B9F3-B9544DA35375}">
+            <File Id="fil6635F798DA15D1DBA09CFCE66F178D5A" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_bopComponent.xsd" />
+          </Component>
+          <Component Id="cmpE5943C9B6D22F3379BFB42714D3D3F8F" Guid="{43CD2CAC-AFF4-4433-A946-7840E54A66F5}">
+            <File Id="filB948DA29BEBEA71D3CBCBF9E5E235A49" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_cementAdditive.xsd" />
+          </Component>
+          <Component Id="cmp0AEAC78D6ADD2131705B3AF33D7B2591" Guid="{1BA24934-6ADB-4921-B788-D4A2AC845020}">
+            <File Id="fil0E4305B38E6C8813AB9F10B313AC601B" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_cementingFluid.xsd" />
+          </Component>
+          <Component Id="cmp77351F9E9A91A3E2FF841485E1F2E71E" Guid="{950BA77D-7B54-4680-B9A3-A438275962A2}">
+            <File Id="filCB0F4CEF7A5D805584B866FC6BE948B2" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_cementPumpSchedule.xsd" />
+          </Component>
+          <Component Id="cmp71011D1291F7198DC80BFF5D3A7FF4A1" Guid="{D0E3153C-4281-4AAE-9648-F314FF6ADCCA}">
+            <File Id="filDE41C837AE8E72D25222ECA1CA01EC60" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_cementStage.xsd" />
+          </Component>
+          <Component Id="cmp7144D5E6854CA740637DAF7522ABF007" Guid="{678E5358-8862-4DFD-AC55-E4717F3A43CF}">
+            <File Id="filA58163B5F1C55496E960FC95AE9A540B" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_cementTest.xsd" />
+          </Component>
+          <Component Id="cmp2105B07D3569D83393CB43A2E2F1487E" Guid="{B9134934-300D-44A9-B5A6-0B1E824EC2D9}">
+            <File Id="fil67B8FDF2F32C2118B14BD82882EF3C41" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_centrifuge.xsd" />
+          </Component>
+          <Component Id="cmp5DE114F50330618CF64E10DF7B958696" Guid="{C7E2ABF5-BD0C-41B3-9206-986391FD93FE}">
+            <File Id="fil41AE932A30806C16E429E347DF892446" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_changeHistory.xsd" />
+          </Component>
+          <Component Id="cmpDADE7592BBFA36F400E41610D25BE937" Guid="{2FE19D85-05F4-41F6-9597-9E8DF387540F}">
+            <File Id="filE2FC7565F233526C5B7D90605E79E389" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_chromatograph.xsd" />
+          </Component>
+          <Component Id="cmp5F967CAB82D39FFC8A958AA275D68B47" Guid="{289BFD10-A523-4470-AD02-48FE4F05C9C7}">
+            <File Id="filFDB1AA26FBE787B83ACD56A9A4A8B1C7" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_commonData.xsd" />
+          </Component>
+          <Component Id="cmpA0CA9058737AB9860D46BF6B0902E1E4" Guid="{0761E780-6405-46F2-9B37-C6C3BC97DFD7}">
+            <File Id="filE9799F056D20F9F6C9289F8E08C2BCF9" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_commonTime.xsd" />
+          </Component>
+          <Component Id="cmp734760FA7D07657C8C2C5DF48E6932F4" Guid="{1B4B9053-0CE9-4CAC-B21F-1C5F1296C1EB}">
+            <File Id="fil771C9A6D4F5982B0F6C82CCE0C139E2F" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_connection.xsd" />
+          </Component>
+          <Component Id="cmp107BB90F0C1E49AA17B431DC778FDD6E" Guid="{F46776B1-5B65-4DF3-A529-3BC46EAC31C5}">
+            <File Id="filCA0BBAFDF8C403A89A79677132E2C5A3" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_customData.xsd" />
+          </Component>
+          <Component Id="cmp63120895645FED896300490525226F6A" Guid="{E171E91A-0EEB-4837-8DF9-1EB0A389FA82}">
+            <File Id="fil4A11E5F311994EBB4144A8F0FF3FBAE6" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_dayCost.xsd" />
+          </Component>
+          <Component Id="cmp6D85C5C5BFE666C5CC35BFF41E574531" Guid="{6A15D25F-13EA-47AB-83C5-02A75DB329CE}">
+            <File Id="fil0A453689B11157A36496F60BEB30B8F2" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_degasser.xsd" />
+          </Component>
+          <Component Id="cmp57726C561D89009A899E056E139C8741" Guid="{857243CB-3663-4326-944F-D5F5AF68633F}">
+            <File Id="filE468FA528A54300F8BDBDA09652D9159" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_documentAudit.xsd" />
+          </Component>
+          <Component Id="cmp672912322EA74C8F53DDB82542CEF497" Guid="{5D892618-F266-4FC5-8A6D-D754D2A9FF04}">
+            <File Id="fil6142467EC90A5BDB8FD64A3C2546E79C" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_documentEvent.xsd" />
+          </Component>
+          <Component Id="cmp6125B396FD30370A3B71DEA049FF5942" Guid="{BC5AA1CC-F041-43A3-9E86-BA0EBE67AAED}">
+            <File Id="fil2C2DCE615D5D1D55CE9A7FAB9F260F07" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_documentFileCreation.xsd" />
+          </Component>
+          <Component Id="cmp32ADD20B6149F1F345AF6F9100A6DFE9" Guid="{18EBF34D-1284-43AB-AE28-922DE7AA9CDB}">
+            <File Id="fil6B6B150D8D0C1082F08DBFBAF277CF3F" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_documentInfo.xsd" />
+          </Component>
+          <Component Id="cmpD5904585CD062B8F1FE1C450E7991821" Guid="{59A255DA-E8FF-44DE-BC70-6D9660A42BA8}">
+            <File Id="fil328AEB7D21518ED4071C8109E0DF2E79" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_documentSecurityInfo.xsd" />
+          </Component>
+          <Component Id="cmp75B33DFEAB8F43D582283F080F701FB6" Guid="{04140EA7-550E-4578-8C49-F7BD5D7366FF}">
+            <File Id="fil2D5CF8E0484D37DC9A5CF30136D13849" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_drillingParams.xsd" />
+          </Component>
+          <Component Id="cmp2F609196886F2FC6F32445EA12DE81C6" Guid="{A1788744-4653-4680-A367-587E71B46A26}">
+            <File Id="filFEAC805CAE8B7E10BEFEAB3377C1A6BB" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_drillReportControlIncidentInfo.xsd" />
+          </Component>
+          <Component Id="cmp49EDB18AE81B6C34B95D6FDECDEAC645" Guid="{578962E6-F67D-49EA-8CBA-772B6E559BEB}">
+            <File Id="fil8A34373BFFFBF987291355D909A0C865" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_drillReportCoreInfo.xsd" />
+          </Component>
+          <Component Id="cmpFB34286E5E4228142AFE111A709537FF" Guid="{C92B80E1-6495-4379-9CB9-20DACC8836C4}">
+            <File Id="fil1D9EC477ADED166B0238C24A13C3EC4B" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_drillReportEquipFailureInfo.xsd" />
+          </Component>
+          <Component Id="cmp0A3083A5DC36A951830003BC60516CA9" Guid="{665EE1AB-5CC7-4D97-A2C5-F959AE18B325}">
+            <File Id="fil3A6C06CC2584EE0A0C501E7B6FA6A1E8" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_drillReportFormTestInfo.xsd" />
+          </Component>
+          <Component Id="cmp8366CB33286DCB216E21ED82C50CBE21" Guid="{65CC6376-EACF-4E0C-8882-BF28A87AABC8}">
+            <File Id="fil9EB458CD6ECF9D7F19B4E3D6E02435F1" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_drillReportGasReadingInfo.xsd" />
+          </Component>
+          <Component Id="cmpF217A74BB23F1536517AB78E5D307086" Guid="{EB67ABB8-E7E3-4027-87B1-234A9CED616D}">
+            <File Id="filF1957CE367C8E517D518970A5F361FDA" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_drillReportLithShowInfo.xsd" />
+          </Component>
+          <Component Id="cmp7B66F70DD4FE6381616B627301762599" Guid="{40D13A2B-CE7E-4287-AFB1-C5E43D6AC4BD}">
+            <File Id="fil3D1541C543F867B11E2C2FF54E9BE5FE" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_drillReportLogInfo.xsd" />
+          </Component>
+          <Component Id="cmp2474EAFEE7B1D7A5BB3F6712A29BF2C3" Guid="{400AACD0-37A5-498B-876A-006D78B1C48A}">
+            <File Id="filBFD3AEF5414C91AA6580B89E088B3502" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_drillReportPerfInfo.xsd" />
+          </Component>
+          <Component Id="cmp2F4A3DA512B80F82980C161195141146" Guid="{42892527-B1F4-454B-8381-445D39E9D4AD}">
+            <File Id="fil291BFF267B9F3C7DF88E31754D2AE7AD" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_drillReportPorePressure.xsd" />
+          </Component>
+          <Component Id="cmpFBD7A0A5A87804A907B251876229C433" Guid="{36984128-1FFE-4E20-9DD3-45F42420272E}">
+            <File Id="filEBAD96E283D8C428A6A0F9090265B5EF" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_drillReportStatusInfo.xsd" />
+          </Component>
+          <Component Id="cmp8CC207958EA31A6AD8475A96A7AAB150" Guid="{87A31585-271F-4C1E-814B-023FDABE0EFF}">
+            <File Id="filB94CB6D58C75755DF3E6A5D930FFAB9A" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_drillReportStratInfo.xsd" />
+          </Component>
+          <Component Id="cmp245874EC05F8D212EE39D97C4E93D6FB" Guid="{F1B8D25A-AEE8-4A43-BAEA-B866C9D43F77}">
+            <File Id="fil8D8263C63591DF4F37AD1164BF8D7AD4" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_drillReportSurveyStation.xsd" />
+          </Component>
+          <Component Id="cmpECB9A399E477A3D48A641880803A6F4E" Guid="{7ACC0600-6D5D-4449-AB26-A9CA5BA5A365}">
+            <File Id="fil0E866A9BC1AA0BE167BD61DA7DB6B337" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_drillReportWellboreInfo.xsd" />
+          </Component>
+          <Component Id="cmpC9785CEB569F528D99C74856DD6A17F8" Guid="{A51A6D29-44F1-4D47-A4B6-EE381C82EE47}">
+            <File Id="fil35124DA6EE793656809FB3D5C4D5A847" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_drillReportWellTestInfo.xsd" />
+          </Component>
+          <Component Id="cmpC21B662AAA13E44949F705EB384457F4" Guid="{03B352D5-F9BA-4BC2-AA67-B6CB79D4D3A6}">
+            <File Id="fil04B903BD383F91DF6A482D204DA1233E" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_extensionAny.xsd" />
+          </Component>
+          <Component Id="cmp1E0621B2439064B365AF1AC1A262C206" Guid="{2E71132B-3156-41FB-830D-FA33C58D26F4}">
+            <File Id="fil9C522F8686F8F74CFC1A50D0BF8F0E81" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_extensionNameValue.xsd" />
+          </Component>
+          <Component Id="cmp5060EF3DDF6FFD27B530C4DA752384E5" Guid="{3944ABF0-48A9-4060-9452-52155D9FCB27}">
+            <File Id="fil969FCAD6D1671B83845A702FA48806E9" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_fluid.xsd" />
+          </Component>
+          <Component Id="cmp0F7F29D15DB3003B451E3AE9E0132043" Guid="{AC536714-8258-4E09-9305-908BA6D41032}">
+            <File Id="fil913BC1FC5D13E9B5B2D6DA5B33228CDA" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_geodeticModel.xsd" />
+          </Component>
+          <Component Id="cmp1DAB32B4DB90F124959AB7CBE8507827" Guid="{D977B693-00B3-4A3B-B3D8-6BBD3575DA90}">
+            <File Id="filA44D2F6CD795160D6F3595F0DF240347" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_geologyInterval.xsd" />
+          </Component>
+          <Component Id="cmpB0C2B5441391BCD5F7E145905EF4FE56" Guid="{6CA000E0-8772-4600-AB87-61A5C7250842}">
+            <File Id="fil4AD3C5DB4206C4D85F6692293DF4FD86" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_holeOpener.xsd" />
+          </Component>
+          <Component Id="cmp53E793A714EE0321D26846724B511D76" Guid="{594E4F02-D2EB-4833-9E73-7D35C4485E4B}">
+            <File Id="fil010A242B06DC1FAC8563A11ECC137D4E" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_hse.xsd" />
+          </Component>
+          <Component Id="cmpDA81837E30503C48C7B890604FD72A75" Guid="{A1A3CE52-1F3E-486E-B295-58AA82046028}">
+            <File Id="filB68890E3F7B1184225021158FCF76E8E" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_hydrocyclone.xsd" />
+          </Component>
+          <Component Id="cmpEDF76A9256A3778ED83B530685EF49D0" Guid="{673826EE-464D-454F-AEEA-CF6E59687817}">
+            <File Id="filB52D6CA0A14BA8AD07E7B63F8C1F7874" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_incident.xsd" />
+          </Component>
+          <Component Id="cmp0BC25C483022D3123DF75AEE550BD09A" Guid="{72EE009D-0DB0-4254-B8B7-EE21A0CABFB7}">
+            <File Id="fil27D82A6DB36C8D9A342CCAA41FB3B52B" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_inventory.xsd" />
+          </Component>
+          <Component Id="cmpC2243393462A6E6E7257E9F1C626EF60" Guid="{A29EF477-248E-4FB6-90BB-E7DEB970986D}">
+            <File Id="filCD607F497D5DD92DED34DAF327640306" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_iscwsaAuthorizationData.xsd" />
+          </Component>
+          <Component Id="cmpA5C2DBAC7B112CE8F6DAECAD748F34F5" Guid="{9940A064-F490-4D3C-93AB-DD468DABD54C}">
+            <File Id="filBC6E85B5D1EF75BFE8C80FDAD1EAA3ED" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_iscwsaErrorCoefficient.xsd" />
+          </Component>
+          <Component Id="cmpF9820E2FA0671B077C0C2BEC6A705A05" Guid="{7EB309A3-7679-4F00-93D7-E4DB5C332C3E}">
+            <File Id="fil57236A545A3A54C6FEE55976D2795EFB" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_iscwsaErrorTerm.xsd" />
+          </Component>
+          <Component Id="cmp72F10A098DCC583F7253103B6FA2F1B8" Guid="{537444EB-A512-4DED-8844-74F39DC6C27F}">
+            <File Id="filD5769AE4D7A07F05E66623726A9415D2" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_iscwsaErrorTermValue.xsd" />
+          </Component>
+          <Component Id="cmpFF0A208387F05F77E4959CD60FBBD32A" Guid="{D3902842-E04C-41DE-944F-6A76BC3783D6}">
+            <File Id="fil6DC27D640ACB1904B2E7C2A72736E921" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_iscwsaModelParameters.xsd" />
+          </Component>
+          <Component Id="cmp11EC65E793A2E6D405BF51622EB8C65A" Guid="{A4E4264F-A32F-4F23-9680-2C1ED1264992}">
+            <File Id="fil238046D666C23A4E39B447990D201475" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_iscwsaNameAndDescription.xsd" />
+          </Component>
+          <Component Id="cmpF1D6323B1FB9152FB95A69E2A26BA7AF" Guid="{C8D4C70F-3366-4492-827F-67997F3E1DCC}">
+            <File Id="fil3BAAB5C01D63FFC2B222124917490D90" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_iscwsaNomenclature.xsd" />
+          </Component>
+          <Component Id="cmpF10E17F6DBE2B54001B780476C431F88" Guid="{C2B719C7-D03B-4513-AD5E-F4BE3B8A8E3A}">
+            <File Id="fil015F9B5B5D013D1EB4421CF5B7A47885" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_iscwsaNomenclatureConstant.xsd" />
+          </Component>
+          <Component Id="cmpEA8FDFAF7703570A957C3620642BCCD4" Guid="{9A668593-0230-42A1-BD84-31D0BA9C5EFD}">
+            <File Id="fil3D1059B94F8F834553F55DA4F3EF5CD2" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_iscwsaSurveyToolOperatingCondition.xsd" />
+          </Component>
+          <Component Id="cmp4CF16755207345A985A21CFBCD7054C1" Guid="{DFF9AF0E-9FE2-4860-B900-018E8296A36C}">
+            <File Id="fil4C13F913EF848914CA1CDE4F53F78801" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_iscwsaSurveyToolOperatingInterval.xsd" />
+          </Component>
+          <Component Id="cmp2398E830ED71C15228A793FB12E1D0EB" Guid="{2029319C-12CB-4482-B964-A4D1CCB90EE9}">
+            <File Id="fil3FC71BD45A5D0F805D938AB03CE7E024" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_jar.xsd" />
+          </Component>
+          <Component Id="cmpBCA5C45D8EAA3360ECD7BC5BB9A034A9" Guid="{3A2062C8-C35C-4364-BA58-052B14ECD3C0}">
+            <File Id="filF1FC46FF502413C3CDAAC5181052FA19" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_lithology.xsd" />
+          </Component>
+          <Component Id="cmpB683045302FA91F9D6C15370D6A836B3" Guid="{1AF45E33-7502-4B64-89FB-90619B965B4C}">
+            <File Id="fil73DCEABFF721F051D95FBBCF4C5AE447" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_localCRS.xsd" />
+          </Component>
+          <Component Id="cmp9A567FE710B55C11DB3C117E44C95E21" Guid="{AAFADFAE-4002-4039-A390-D7D2E58123EF}">
+            <File Id="filFF26BB4BD1693CB8CC6FB97BEA846ECC" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_location.xsd" />
+          </Component>
+          <Component Id="cmp4214804BF4018EC3D50BD80746B6CE22" Guid="{EE0045D1-743B-4D4B-8007-3ADE8842E72F}">
+            <File Id="filF6DA0D1A98D042FFC41CFC9701522FA6" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_logCurveInfo.xsd" />
+          </Component>
+          <Component Id="cmpAC3A5867AA79F983740AA721AC494FFF" Guid="{15E61A36-7C4B-485C-90F8-368E81BBAD1A}">
+            <File Id="fil6895F093C3F3707E50A770EF1044AF02" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_logData.xsd" />
+          </Component>
+          <Component Id="cmp3B19FF4FCFC8801E2FD100EF831FBFCB" Guid="{4032A340-0C5E-4403-BD20-0484A4E48680}">
+            <File Id="fil84E7807EC49303734C9414D9F2FAE46B" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_memberObject.xsd" />
+          </Component>
+          <Component Id="cmp353D1072026399D609D1605910B2EF8B" Guid="{A407648D-E8BB-44B7-953D-1BF980010486}">
+            <File Id="fil758E9F503749DDD5B57FD1A41A857010" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_motor.xsd" />
+          </Component>
+          <Component Id="cmp2A128711CA3FCE183C4CC56565B7C0F8" Guid="{D4EDB060-10F6-46F5-A0E1-9AE5BC796E91}">
+            <File Id="fil46D46570DD5D448301780B13A0C664FC" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_mudGas.xsd" />
+          </Component>
+          <Component Id="cmp997FFECB5D2882CD8715F4A693A5A1A1" Guid="{E74F7BFD-EB9F-404A-A392-A77C3ACDF950}">
+            <File Id="filACFB23D5B0034841B0995375900609C5" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_mudLogParameter.xsd" />
+          </Component>
+          <Component Id="cmp91B7048F69B95D6B9BDDC9309C26AF0C" Guid="{BE6FE079-54C1-4AA5-BA22-B3E8DFEA8A03}">
+            <File Id="filCC4D12C366A00E2C8DE436E8CF671263" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_mudLosses.xsd" />
+          </Component>
+          <Component Id="cmpE0CD69BD81D7DC94F2193D2864DBB9AF" Guid="{E1AF2D26-F8F7-40C1-AD8A-AC6C38ADE620}">
+            <File Id="fil10DBD16B73C77C0A69943FF02BF7E220" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_mudVolume.xsd" />
+          </Component>
+          <Component Id="cmpBD5B0FBD7E16BFBE1F9C52CF8E703B02" Guid="{71A3AE61-9891-4CAB-853B-B7CFBE0BA18E}">
+            <File Id="filEA987A304BA7C5D933F976268266CEA0" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_mwdTool.xsd" />
+          </Component>
+          <Component Id="cmpD7F8897959F7B3EF1BF83124E23F2893" Guid="{A7ED6A54-941D-4738-B213-1EBEC82CA176}">
+            <File Id="fil809697289D07FC1AE380C8F4A6417D87" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_nameTag.xsd" />
+          </Component>
+          <Component Id="cmpE6391A478540F3D22DD3B11C55BB8147" Guid="{E6AD0847-2927-432D-AB80-45AE995060EC}">
+            <File Id="fil4B681651253D373243FBB585FB6B409F" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_nozzle.xsd" />
+          </Component>
+          <Component Id="cmp55C0C2282F7965CE762573EB12B39394" Guid="{F46C2B22-2E37-4566-AA59-32DF6EE5AE1C}">
+            <File Id="fil61D0A9BCB1D5AB6D23CC6A63A1865931" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_personnel.xsd" />
+          </Component>
+          <Component Id="cmp97CEC8904CFBD16C4BBDC2ADD6691163" Guid="{ACA325EE-EC64-4B50-8493-534B5C193CAD}">
+            <File Id="fil216531F7F8BBD1CF55F80E9D8CF37A76" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_pit.xsd" />
+          </Component>
+          <Component Id="cmp9D5D4682704095A96C470CEB0D3774DD" Guid="{21DB6377-770F-4206-92D4-230C4736BC3C}">
+            <File Id="fil2B18FD7B8C2E35ABE54748A032108A16" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_pitVolume.xsd" />
+          </Component>
+          <Component Id="cmp612C64709B116D34E8347292FC65D9C4" Guid="{BAF8AA12-4905-4F02-AB7A-10FFC17BEC86}">
+            <File Id="fil02B36FB4006C5B49DF49E16DB65F91F2" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_projectionx.xsd" />
+          </Component>
+          <Component Id="cmp6A27B24A904758DEEE50A8EFA73F2226" Guid="{5F3D31F4-A5F9-4A74-AF46-D0363C833659}">
+            <File Id="filAAB064A23BD9B9B9E6849788A3195250" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_publicLandSurveySystem.xsd" />
+          </Component>
+          <Component Id="cmpA56C4F2257F253BBC71BFD2DE4843DCC" Guid="{07F4847E-AD7E-4C0C-9C85-1A69B243DF67}">
+            <File Id="fil63703993C65727A5D5AB84799F5CD538" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_pump.xsd" />
+          </Component>
+          <Component Id="cmp2863CB76A11F7F1A3E9E8B32F61CFBFD" Guid="{59927896-8E33-49E0-818F-96AD9CAFC47B}">
+            <File Id="filD631E46624B5A75B3BD3828EE9E745F4" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_pumpOp.xsd" />
+          </Component>
+          <Component Id="cmp86E28A4AD6BBAAA5525134FDE2B5581E" Guid="{E9AC7AF0-A498-4663-9466-460AA6FA1D3C}">
+            <File Id="filCD4D6593399A405136E3094E99B255E9" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_qualifier.xsd" />
+          </Component>
+          <Component Id="cmp99A4B04169FA1FA625B2A168AB7B6A80" Guid="{CBB2BD73-610D-4AD0-8BFD-E44FF0732B2B}">
+            <File Id="fil9682000974961EBDFF3107DDBF2C402B" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_referencePoint.xsd" />
+          </Component>
+          <Component Id="cmp3AB2AD9A571D7A43F3769DC2A7988F08" Guid="{EA4F213F-6981-4F34-95B4-2B0D9074BA38}">
+            <File Id="fil44F96DB04991505EAFD626AD5A6B6F1C" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_refWellboreTrajectory.xsd" />
+          </Component>
+          <Component Id="cmp4CD6D71143635069EA8C661501E48AC6" Guid="{AE7A1572-1467-41F9-87BD-D6F178155B2C}">
+            <File Id="filA3C6E8D2A75290CDED4F724CB1B0911A" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_refWellboreTrajectoryStation.xsd" />
+          </Component>
+          <Component Id="cmpA206192A2F01E798613F1E227E73DCC2" Guid="{AC92FDAD-A057-4B8F-984F-D175F8B261A2}">
+            <File Id="fil0A7DAC0D2E5D19F0B532566D9961FE3E" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_refWellWellbore.xsd" />
+          </Component>
+          <Component Id="cmp550F6577B04C730F38209C2D039DB626" Guid="{087482BE-A884-4196-937B-30A64EAC4BE6}">
+            <File Id="fil02484351DC37CEC4CFAF28022C1DD9EC" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_refWellWellboreRig.xsd" />
+          </Component>
+          <Component Id="cmp96BC4E8B73AF04B845C4992F1C540A7C" Guid="{21012BF0-E2B0-4504-9102-DD3975D6D704}">
+            <File Id="fil1C796AEA96E432362536B9DC878EAF4B" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_rheometer.xsd" />
+          </Component>
+          <Component Id="cmp7D95B93A656B93F6DD6E2E54BE311431" Guid="{E642A9AF-E914-41AD-B9BF-7329523CF3D7}">
+            <File Id="fil0FB5F4B3D9207CDA270A1E5A05659783" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_rigResponse.xsd" />
+          </Component>
+          <Component Id="cmp27F1F1F56B1F5DE86AC6AA547414EAB0" Guid="{D74EF17B-4B30-4761-A744-4DE100F74622}">
+            <File Id="fil15658B24ABAF74BAC972881FD12DDF60" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_rotarySteerableTool.xsd" />
+          </Component>
+          <Component Id="cmp2ABFE06B1FF139ABA12F05FE358BE052" Guid="{DE7CD4AF-66FC-4228-B42A-76B86EC06B06}">
+            <File Id="filAC24D409E1E17D3423E9B4154C31833C" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_scr.xsd" />
+          </Component>
+          <Component Id="cmp96BE5813353E47DB75D135B2FCEFD8CA" Guid="{25FFE928-1506-427F-8B2F-6CF2410188B2}">
+            <File Id="fil2F44AF1746AED80992FDC6B02DF0A446" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_sensor.xsd" />
+          </Component>
+          <Component Id="cmp2721827DF196FD6F9922598598373CA0" Guid="{E3FED9A1-57B9-4C92-94A7-DAC351A5135C}">
+            <File Id="filF5508CE8AAAF4914F01DC33D55749BED" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_shaker.xsd" />
+          </Component>
+          <Component Id="cmpD116D9CCEA394468574CC01131CDC8CE" Guid="{8AC5D5C2-77A7-4F7D-A162-601918B18997}">
+            <File Id="fil436A90AD1D6B8CDC3E40CECFA8B3EA63" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_shakerOp.xsd" />
+          </Component>
+          <Component Id="cmp315307B5F39024E7D93D44BC89745C1D" Guid="{12209108-386D-4D95-8EB8-B81EE06A9BF7}">
+            <File Id="filE71C175C27D3CC49B4F0EB5BDB9301B0" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_shakerScreen.xsd" />
+          </Component>
+          <Component Id="cmp71ACBAE1AEEA918164495D75E17C474E" Guid="{C87FC6A9-C31B-49F3-8237-69945A428F12}">
+            <File Id="fil4D4AA0CF76035659D31633AE23ECBF6D" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_show.xsd" />
+          </Component>
+          <Component Id="cmpE8C029DAD49AEF87EB5B650405439601" Guid="{5DCEAF9A-027B-46B0-871C-CE681374B87F}">
+            <File Id="fil1FEE25DB5B0F1AF9653E5A5C41F0398A" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_stabilizer.xsd" />
+          </Component>
+          <Component Id="cmp01FB8606D8A7E75B38C7C22A3CD9284C" Guid="{E9A5029D-9FCE-4A4B-861B-6D71854807C6}">
+            <File Id="fil3FCC237346B8ECECB49DCF36411C036C" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_standardGeodeticCRS.xsd" />
+          </Component>
+          <Component Id="cmp3A653484E31335F13A59DE7F09DDDBBA" Guid="{BF3C4CB8-5097-4E3A-90D2-91C4896630C6}">
+            <File Id="filDF2CCE221B90CEB5EA108F434D6BC1D5" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_standardProjectedCRS.xsd" />
+          </Component>
+          <Component Id="cmpDE5A7AD28A48282287165EE0E1DB675B" Guid="{DA4BDB78-15DC-4DEE-91AE-67282DC0E620}">
+            <File Id="fil0481AF10A011A8D20D970132EB1C859F" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_standardVerticalCRS.xsd" />
+          </Component>
+          <Component Id="cmpA15E5B2EFDF27C702FEEC01D70AF121C" Guid="{838D5E8A-788D-4006-994E-88DF928B4546}">
+            <File Id="filBCF075A53835BE4B42DCB17D39D5D33B" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_stimAdditive.xsd" />
+          </Component>
+          <Component Id="cmpDC9367F55C35E6473957C998A7DF526D" Guid="{AFA97222-C28F-4230-AAFD-050BB2301DDE}">
+            <File Id="fil0D79B3BC6430E12CB807DB4DF32D0AFF" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_stimEvent.xsd" />
+          </Component>
+          <Component Id="cmp6C4DE9C3EF57018E86DA94F18FBF3670" Guid="{EFAEF8B7-8EF9-45AA-AE79-BFD30D51771B}">
+            <File Id="fil51216E63A483DFC58271AA7C73C9D4AD" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_stimFetTest.xsd" />
+          </Component>
+          <Component Id="cmp5376BA47D308C72F73EED783336DC5D6" Guid="{E9B01392-5F20-46D2-8AF9-742FBBA64577}">
+            <File Id="fil88BF932B5631D557A462016E7754B3AA" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_stimFlowPath.xsd" />
+          </Component>
+          <Component Id="cmp8BE39AE03AC3229FF9BB300937154DB5" Guid="{851A1137-8F5C-4260-8F82-86B55EF9724D}">
+            <File Id="fil58F73E5D04C095FFE08339490E0EAE2A" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_stimFluid.xsd" />
+          </Component>
+          <Component Id="cmpF6D086FB6C4876E7DA2DB6CF314DABB8" Guid="{86EE57A7-CB4B-4740-953C-65772D658289}">
+            <File Id="fil2C7B304BA094AD284C54E821CA4A8562" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_stimJobInterval.xsd" />
+          </Component>
+          <Component Id="cmp0D4707D7C7F3BEDB80A7C46740AF81D6" Guid="{56202141-6725-4B58-989D-C9BF14C437CB}">
+            <File Id="filE9950367A2737BA0A237965A160815B3" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_stimJobStage.xsd" />
+          </Component>
+          <Component Id="cmp4D8F3D84769E903C8BCE62B4B69ED791" Guid="{142F1D2A-4F54-4946-B998-55A4428645F7}">
+            <File Id="fil7D2961752941868215107A9FE0AAB000" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_stimPdatSession.xsd" />
+          </Component>
+          <Component Id="cmp61767862B698242E8A888EDF7FAC4014" Guid="{C4D3E8AC-F1CF-42A4-B459-5C797FF1EDAA}">
+            <File Id="fil0B3C17B3A93E9AFC88B2518697222856" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_stimPerforationSet.xsd" />
+          </Component>
+          <Component Id="cmp12B533F175A5515868CE3D649C31DE4C" Guid="{6EBD0754-6926-483C-BBC4-088B53E5C0F4}">
+            <File Id="filA11D2488E9F5592B01983DE64A466CF3" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_stimPressureFlowRate.xsd" />
+          </Component>
+          <Component Id="cmpD808069835B1EBC224AB4FE408BCC2E9" Guid="{22D8A782-E891-4953-A2C8-E65D301F09D1}">
+            <File Id="filD8E19ECCE71106CAD3D4A01129AF0EC5" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_stimProppant.xsd" />
+          </Component>
+          <Component Id="cmp8370851256ADB8844FA5C89E8AA06B25" Guid="{8974342C-6AC0-4359-B835-2C9C3BD120D0}">
+            <File Id="fil8F4EA18F138644B8DD5E25429FC28DD0" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_stimProppantUsage.xsd" />
+          </Component>
+          <Component Id="cmp876FFF8F05CEA8EC2E3266D9BD7B6932" Guid="{DB648D3A-BADB-4296-8368-8DB9BF3F4F96}">
+            <File Id="filA155343075E46A9AD248B54814199B5A" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_stimPumpFlowBackTest.xsd" />
+          </Component>
+          <Component Id="cmpAA5B8901D03DFBEF5B8136C6A5B73AE9" Guid="{510E06DF-BE1B-4613-AC71-095C093AF253}">
+            <File Id="fil6F1C5410904C3CC49E26F13B28944FF1" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_stimReservoirInterval.xsd" />
+          </Component>
+          <Component Id="cmpC34BB091FF298556A458F27E629B9546" Guid="{12D3EA8E-8D5F-496B-BB64-30D2A3C07C26}">
+            <File Id="fil440C3A056CF771C5F9B086240CC9D120" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_stimShutInPressure.xsd" />
+          </Component>
+          <Component Id="cmp577F6800FBD0DD6AF94A122A89884498" Guid="{75D0EB32-578E-4C71-9FE5-0D484E09F725}">
+            <File Id="fil4DC1DABC12956E09ADD8055362794495" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_stimStepDownTest.xsd" />
+          </Component>
+          <Component Id="cmp3B6F89DD6A7E03FD4CD322037372BDA3" Guid="{14310ABE-9C0F-4320-AACA-75DCFA2E6696}">
+            <File Id="fil698B9DE0A01D2DFE75C51EFD18A098B0" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_stimStepTest.xsd" />
+          </Component>
+          <Component Id="cmpF27B7ABFC2933A0943F9A7430F23F3F6" Guid="{89B8FC4A-E8F2-4947-802B-55DEFEAF43B9}">
+            <File Id="filB3935F44EE8813EFCE228850DF83EBDF" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_stimTestStep.xsd" />
+          </Component>
+          <Component Id="cmp55ED96C9C29F1DF33647D0758FA2B56E" Guid="{F9FEF792-69EE-4D06-AC72-47813C35973C}">
+            <File Id="filABD1249CEF50908CA2B2A7EEEBBEF2F3" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_stimTubular.xsd" />
+          </Component>
+          <Component Id="cmpC8CDE9FEBFB997BCC7F1FCCAE5AEEE2B" Guid="{C43C837F-77E4-48E1-82A5-BB269406C83C}">
+            <File Id="fil961BB0727D655E6117EE06EA34C75329" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_stnTrajCorUsed.xsd" />
+          </Component>
+          <Component Id="cmpD5CC1CF98039F976C486C0552A25C3F6" Guid="{59989B71-7FE5-4B3E-8826-FC4B0E11A994}">
+            <File Id="filEF6DEEAA1C19FAF43C138BFA1FF405EC" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_stnTrajMatrixCov.xsd" />
+          </Component>
+          <Component Id="cmp6172E95DB9565846B585884CCF6CDC61" Guid="{D6484BEC-8A10-402C-8ACE-4238B10412DA}">
+            <File Id="filEDC5B474ABEA04E537C3EFC336C7526B" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_stnTrajRawData.xsd" />
+          </Component>
+          <Component Id="cmpA41E55D1DE35D577028AA2C843E4310D" Guid="{1BCA162A-CDD5-4792-B8FA-E68C9A8D8006}">
+            <File Id="fil05BC87381DA8A6FA3EA4591A61EFFBAA" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_stnTrajValid.xsd" />
+          </Component>
+          <Component Id="cmpBB975F4AB85CC2789B35F43EA3E4A085" Guid="{102A540A-310B-49CD-82A6-5659EBDD2502}">
+            <File Id="fil75598216758B260FAC611CA44DE37268" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_supportCraft.xsd" />
+          </Component>
+          <Component Id="cmp59262305808097C88734D150F3DE0356" Guid="{89FAE8A9-E2DD-4DEC-A2E8-9D1BDA082CD3}">
+            <File Id="filA311DBC09252E75546F36F02AD02D288" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_surfaceEquipment.xsd" />
+          </Component>
+          <Component Id="cmpBB05D0B08F0B91A006B645FE7C412C88" Guid="{3587A48B-2936-4C13-B0ED-78A349E5CEE6}">
+            <File Id="fil80E6B45B04450CC267BEB8CE8DE2BEF6" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_surveySection.xsd" />
+          </Component>
+          <Component Id="cmp39C2D1B7DCB16869B5B83EA5CB7BC170" Guid="{8869E750-A511-45F6-97F2-99D150973905}">
+            <File Id="filB9A1217054A9DE764D2E679164218BE4" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_swcSample.xsd" />
+          </Component>
+          <Component Id="cmpCD57D05400EC143F3D2F6D28D815C3DB" Guid="{F4CB8823-8D2C-4759-8E7A-868E67CA68DE}">
+            <File Id="filD69FAB2FE48700E69CB2B720587A249E" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_targetSection.xsd" />
+          </Component>
+          <Component Id="cmp793F76F06BEF6649022CA0B649A79C71" Guid="{0C2DC2B3-184C-413E-AFF4-7CF4E79363D6}">
+            <File Id="filD70BBEDFEB3DC0F77D196FD459368300" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_trajectoryStation.xsd" />
+          </Component>
+          <Component Id="cmp5DDB4B020E40C8202470E9BFDC8CB0BE" Guid="{B1C8F85E-82E7-45B5-9537-0AE133D31246}">
+            <File Id="fil27F59EAD272FB1470E78939148BC4450" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_tubularComponent.xsd" />
+          </Component>
+          <Component Id="cmpE5C9D66D6213EC2DE942F5CC900AA0EC" Guid="{A2281F74-A873-4D22-AF5F-A9FA5B982AB1}">
+            <File Id="fil14777D0D0D9D7E8BD442567D35A23BCC" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_wbGeometry.xsd" />
+          </Component>
+          <Component Id="cmp4F9509BB66524E0D93C3A5812111DA33" Guid="{0858731B-0753-4D85-9C14-6423CC40F033}">
+            <File Id="filACD846C34B9066840400D6B36613E837" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_wbGeometrySection.xsd" />
+          </Component>
+          <Component Id="cmp8B8776D3106260025403C27B2E2503F9" Guid="{938BFB6D-E8AB-4EE1-8AB9-DCA1A31F498E}">
+            <File Id="fil58F6B46EB481535D7FC5201731BE8048" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_weather.xsd" />
+          </Component>
+          <Component Id="cmpDECA9779DA54B4849F5F9AB954BCF08D" Guid="{C9F88AE3-6888-4038-B3A5-AFF3BEB373B6}">
+            <File Id="fil58CF06C2BA6F4565395760556EC746E7" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_wellAlias.xsd" />
+          </Component>
+          <Component Id="cmp6A2F56244DD20CD5B237211B13294409" Guid="{CF36B3B2-55D1-4CA5-920D-95F1D5B5D6CD}">
+            <File Id="fil38A6A1FDCD45DA00C3727E0A961BA89C" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_wellCRS.xsd" />
+          </Component>
+          <Component Id="cmp0DE865B38750F8E340B077CA79C182FE" Guid="{EF46B9C0-16CE-4758-ACD5-10BEA96F74A1}">
+            <File Id="fil9272218A0662E6FE9BC2FDBCB275089B" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\cs_wellDatum.xsd" />
+          </Component>
+          <Component Id="cmpFA1A08E914D767B83176652B6D815B1D" Guid="{942F6DE4-0811-46FD-B4CA-04D37D10EA7B}">
+            <File Id="filB7543041394815E422FF0D154A2D845A" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\grp_attachment.xsd" />
+          </Component>
+          <Component Id="cmp34FAF184683BF1203C2FC5321599309A" Guid="{20D80348-E200-4703-BF3D-FF7F11C354A2}">
+            <File Id="filC8053F4A06B5F2D1D211A99BAEA827CD" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\grp_bhaRun.xsd" />
+          </Component>
+          <Component Id="cmpBA1DD738FC715946DBB9A0A153854A8F" Guid="{8F29D94A-7633-49DF-AC90-422EFAD52899}">
+            <File Id="fil3B2EEAC9FFCA339364BF244AA6A9F310" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\grp_cementJob.xsd" />
+          </Component>
+          <Component Id="cmp8588F6D99A4240F4F5A14BB9FBD26459" Guid="{E26B1FFA-F167-453B-B6F8-91041276986B}">
+            <File Id="fil01F1A5E810A8C598245E47D0A40C8574" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\grp_changeLog.xsd" />
+          </Component>
+          <Component Id="cmpA749DB95ED5F44F9769DCD1D4DA214DD" Guid="{7C2A0EC3-A203-424C-B46F-74F73E5AAD92}">
+            <File Id="fil3E3BF80A5515083ECF3352545F71C8EE" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\grp_convCore.xsd" />
+          </Component>
+          <Component Id="cmpAFBE16765982C08237FB649678DA45B3" Guid="{D894385B-FC4B-43AC-AA7B-9B5120822431}">
+            <File Id="fil0545AC4B8E0AA25FE23B14F207A77FF6" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\grp_coordinateReferenceSystem.xsd" />
+          </Component>
+          <Component Id="cmp36BB316930CD78F56785A0E2F20017B0" Guid="{AD11B711-93DF-44AA-B6C4-7ABBD2DD7162}">
+            <File Id="fil36A332AC116ADCC61C6220B85413EB16" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\grp_drillReport.xsd" />
+          </Component>
+          <Component Id="cmpA49D3884CABB11DE7ADB5ACB24A926D7" Guid="{11899BF9-6958-4903-991C-B71AD34AD55D}">
+            <File Id="fil0DC2D4406E37DA231FDA8FC426785B77" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\grp_fluidsReport.xsd" />
+          </Component>
+          <Component Id="cmp2C94E478B8535FF09F62703E6CC7D5AF" Guid="{F4D015F8-8029-41E3-BA93-18C95E04D258}">
+            <File Id="fil5CEBEF0DC61AED2846AE84F4C07F8B2C" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\grp_formationMarker.xsd" />
+          </Component>
+          <Component Id="cmp9D67AB6DA79EDAA47F15C66EFE448F60" Guid="{79E91352-F4B3-441E-8272-8CF10BB7A31C}">
+            <File Id="filD24C7AD7E74F0EDAAD8B98B62C2F15B7" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\grp_log.xsd" />
+          </Component>
+          <Component Id="cmp806C663FEAD55F32E17434ABF77AC648" Guid="{EA74C794-BECA-44FD-A010-580CC731497A}">
+            <File Id="filEB1188982FE89DD6D184CDC48E10CCEB" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\grp_message.xsd" />
+          </Component>
+          <Component Id="cmp7EC99B0A735A51AC35B3EFC8036E9DFD" Guid="{61C7AF70-7804-4FF9-A23E-C733EC3F0C9A}">
+            <File Id="fil0BCCD35E6B05D2CCA1E93EE52AA1ED64" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\grp_mudLog.xsd" />
+          </Component>
+          <Component Id="cmp47005F314CBFB6D85C21FD89EC528B25" Guid="{F26B380B-1FD4-4D7E-9B15-C5309FF235F7}">
+            <File Id="fil9B08284EF54BE843DA2075167F11CBBF" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\grp_objectGroup.xsd" />
+          </Component>
+          <Component Id="cmp5817148959E6DF8E048078548C5C3705" Guid="{1C73A706-046D-408A-BB82-8594E6587406}">
+            <File Id="filED467B548E1B048902C724C28A3428A7" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\grp_opsReport.xsd" />
+          </Component>
+          <Component Id="cmp0E6A3EBCFC58D5E1479C01E625EA2AF0" Guid="{FC120C44-6E3F-4FCF-B8A3-5C37FF487FCB}">
+            <File Id="fil79E95CCEEA7A05927E2C0E56D48071A2" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\grp_rig.xsd" />
+          </Component>
+          <Component Id="cmp8303EF8EFC771A96634299C9F2329568" Guid="{75916557-4F67-4228-89CE-2B5B686874C5}">
+            <File Id="filD7E2863DB459FF94054FED643738D3D6" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\grp_risk.xsd" />
+          </Component>
+          <Component Id="cmp9B479B01185E760384A7C1A0C9CF70D3" Guid="{13031F4A-B6A5-4E16-BFBC-A6C4BF8D429A}">
+            <File Id="fil5D32FEC070E3BF54BEDBB7258A0458B8" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\grp_sidewallCore.xsd" />
+          </Component>
+          <Component Id="cmpD4909C56BD9181DC8D6C05CD5363C587" Guid="{8A809F79-A2A1-4D77-BE82-7C1ACE7BF9D8}">
+            <File Id="filA5B17DE63646CCDA653A86E9B0D22C5C" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\grp_stimJob.xsd" />
+          </Component>
+          <Component Id="cmp98B88EFF79B04CFDACED07A315C79CE3" Guid="{12FDF395-83CF-4D45-8B19-354087AF50DA}">
+            <File Id="filC03B1E9E8AABF4594E2CC87F60A80522" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\grp_surveyProgram.xsd" />
+          </Component>
+          <Component Id="cmpEEAA4A8F33F8653D88915D8E50758933" Guid="{5155D93E-37F4-4417-809A-1AFA127AF891}">
+            <File Id="fil88B48DFB5755C909D0D88F361BC3E46F" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\grp_target.xsd" />
+          </Component>
+          <Component Id="cmp3BA536A768592F0F16B4D3A6F2A875DF" Guid="{93931C12-6C3F-4543-8C75-207391146E3A}">
+            <File Id="fil04D16CE3F97832865688284175456E9C" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\grp_toolErrorModel.xsd" />
+          </Component>
+          <Component Id="cmp956E9FC3252EE4776A4FA29B7EFB3E3B" Guid="{698664D0-B8B4-49DA-A864-8F4D559F989D}">
+            <File Id="filEFEBC837D131C4308C8584068075F252" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\grp_toolErrorTermSet.xsd" />
+          </Component>
+          <Component Id="cmp3D515BDC9E2571323818C81143AAAB9E" Guid="{916EFC4B-993D-45B6-B978-9A4A221EC049}">
+            <File Id="fil571C62AEA36891ED5B82FD80886DEEE7" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\grp_trajectory.xsd" />
+          </Component>
+          <Component Id="cmpAB8199331C14FDECD86D7667C0E59D61" Guid="{1E19F577-4322-470A-875E-D388300D03E4}">
+            <File Id="fil8A30B42ECF751FC90CB185E6BCBA687F" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\grp_tubular.xsd" />
+          </Component>
+          <Component Id="cmpB5F238FF01D0EEA47D7FE6D3E2425EE1" Guid="{C764C03C-56DC-42C7-9D0E-15677590F14F}">
+            <File Id="filF0CDB83A156C6F316E4BD9E935ED90B9" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\grp_wbGeometry.xsd" />
+          </Component>
+          <Component Id="cmp2AD6AD870D7C8F047516A634E9E1CCF3" Guid="{54EFCEFD-C972-4AC9-B28A-D957E1BE15BA}">
+            <File Id="filF25937F0AA40693ECA9FB20D754C668C" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\grp_well.xsd" />
+          </Component>
+          <Component Id="cmp66C4373039A63783D8F51A44B930440A" Guid="{B5493952-4ECB-40E1-ABE7-6EAB6A5847FA}">
+            <File Id="fil38CDC73687F1F1B3C5A610D0715000A6" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\grp_wellbore.xsd" />
+          </Component>
+          <Component Id="cmp82FC9A895AD049A60CB2FAB98EDBEFC5" Guid="{520C0930-A56C-4AEF-BA06-D71597484C79}">
+            <File Id="fil8CDFF4E022043D7A9674568043F5B928" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\obj_attachment.xsd" />
+          </Component>
+          <Component Id="cmp4FB91B36B10231CA99E168B9DACA6824" Guid="{8C40DFAC-A8B4-4AF1-96D2-C8422377849B}">
+            <File Id="fil911489405F2EB72FDFB9C5902E6E29E2" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\obj_bhaRun.xsd" />
+          </Component>
+          <Component Id="cmpA2741CD91F36C2E4C1AE6AF30B51FFA4" Guid="{CEF8389B-B56E-4118-A4F5-EEA89EF53676}">
+            <File Id="filE0234C190396293676C244F68A4ECE6A" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\obj_cementJob.xsd" />
+          </Component>
+          <Component Id="cmp0043366536723EFAE728D5BF6057D4D0" Guid="{B05BBDD0-5B20-4D4B-A669-34A76527A7D5}">
+            <File Id="fil52BF8271A35D70E01ABE5E9A977F1957" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\obj_changeLog.xsd" />
+          </Component>
+          <Component Id="cmp01DFC20D6308442D1A2BBC7473D83563" Guid="{59269EDD-7AC2-4AC7-99BF-6CE777997E7E}">
+            <File Id="filC258FBBE9AEED8C14FDD9EE7889A1E88" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\obj_convCore.xsd" />
+          </Component>
+          <Component Id="cmp4B247564391110137E500887268E842C" Guid="{59B04430-09AF-4EDA-86AF-F90213786FF0}">
+            <File Id="fil9144A4BC3835BB04F55E4B51E801FBEF" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\obj_coordinateReferenceSystem.xsd" />
+          </Component>
+          <Component Id="cmpEA689EFE801FFAEFD61CB57144AA16A1" Guid="{66F2A95C-A0B5-4395-9FD3-A4BB6DF17336}">
+            <File Id="fil5F3D42BE2B08413E4881013C0CB74CA8" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\obj_drillReport.xsd" />
+          </Component>
+          <Component Id="cmp1BDA5CA14E9BCDC391FC6D16F0D1785B" Guid="{F3D11C97-76F7-4A72-97C3-5F53BFAF5533}">
+            <File Id="filFBF93DC7E7079FF7CD09CDB78C778A3B" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\obj_fluidsReport.xsd" />
+          </Component>
+          <Component Id="cmp496ED277C2C7E7ABAFDD68D567E9F8E0" Guid="{44BB87C7-833D-44D9-A758-0B523C1D50DE}">
+            <File Id="fil206A6342DB674890FB157C03CDAF33CA" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\obj_formationMarker.xsd" />
+          </Component>
+          <Component Id="cmpAB171F8B8868848C3D288F6EE0B8769B" Guid="{DF9DF038-4785-43C3-8804-9577B6EA40DE}">
+            <File Id="fil95AC821D6C0FB5C54AB99ACFC5E3A037" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\obj_log.xsd" />
+          </Component>
+          <Component Id="cmp0BAC6BF68049F16C19D9477D8B1D2FE3" Guid="{E592F193-3A17-4C4B-AB44-88A60B7FF39A}">
+            <File Id="filF8D645BFE2EEA2B393DD7A432B48F9A8" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\obj_message.xsd" />
+          </Component>
+          <Component Id="cmp61AEC90D4EBD24FEC57B88A7EEEFA046" Guid="{75035C9D-4357-4393-8583-91AEBC667388}">
+            <File Id="filE755650F92E84A9339B280F514C72C0B" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\obj_mudLog.xsd" />
+          </Component>
+          <Component Id="cmpF0AF88FA90E0E05DA8DD07AAF444EA40" Guid="{69355969-33B6-4AB9-BA1B-AA173C818D9A}">
+            <File Id="filF1F5EDE4BE0C2A91F6E37AB43D5730A6" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\obj_objectGroup.xsd" />
+          </Component>
+          <Component Id="cmpEA247E20EC4A409A399165811A8F877D" Guid="{6C7C04C3-484C-4545-820F-20F8EA39ACE8}">
+            <File Id="fil3E5EC9BF7494BC405DBB3D03E854832A" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\obj_opsReport.xsd" />
+          </Component>
+          <Component Id="cmp5FA1AEC13C15D0348F5E0120C622A7C4" Guid="{F3FC165B-3D4D-44DB-B483-3ABB8CEABA2F}">
+            <File Id="fil32F66D6C87402C294E0C1E6ACCA35E2C" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\obj_rig.xsd" />
+          </Component>
+          <Component Id="cmp940CC60555655C1639499989B991DE7E" Guid="{FF1E8039-30CD-450A-86BE-069E9CB061DF}">
+            <File Id="filB72B7A230D52DD4FA3DA89D7C87458B6" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\obj_risk.xsd" />
+          </Component>
+          <Component Id="cmp46B431A966FCCDAC848DC8A08836E9D7" Guid="{4D6D0F0C-E222-4E23-97CC-509BA431DFFD}">
+            <File Id="filC3987C17A9708AAE36264CFB1711D44D" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\obj_sidewallCore.xsd" />
+          </Component>
+          <Component Id="cmp7843614B2345E4F7FCCBD0978BAA23F7" Guid="{D23B5A2F-3FBB-45AE-B311-06C572E11CCA}">
+            <File Id="fil98133E55BBA16DB6DE21E62E9DC3F261" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\obj_stimJob.xsd" />
+          </Component>
+          <Component Id="cmpC4CC55C33C8B40730FAE979095ECA605" Guid="{82CB12FB-9756-4B15-BA57-59338AC523BC}">
+            <File Id="filF49E437786ABA39D7C5A13DC5FDDFFF3" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\obj_surveyProgram.xsd" />
+          </Component>
+          <Component Id="cmp456F408B32AB145CE59A96B27477292A" Guid="{695D5D10-7755-4BAE-A135-621330BEE057}">
+            <File Id="fil74C106FB8D6503921C27C06A6D4CAE31" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\obj_target.xsd" />
+          </Component>
+          <Component Id="cmp8B2B2D43C62C9AD05812A8DAD37C4174" Guid="{19593E3D-2DCA-4FB0-BAA3-15BAEB95E57F}">
+            <File Id="filA2EE7ED13A17225D00C7EC8256181830" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\obj_toolErrorModel.xsd" />
+          </Component>
+          <Component Id="cmp1438BDA4DB63FA1046801189DBF0D053" Guid="{BB707A97-C2E9-496D-9C88-3D7A8D2A7876}">
+            <File Id="fil55B99A8574B22D1757E2028381CA960F" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\obj_toolErrorTermSet.xsd" />
+          </Component>
+          <Component Id="cmpFAFA666C19E39E6D50E599A1AC220880" Guid="{0155D1F0-52BC-4E02-B34E-2870B36D27AD}">
+            <File Id="fil2C9160DA1FE371A938456412B9934E19" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\obj_trajectory.xsd" />
+          </Component>
+          <Component Id="cmp493D050AEFF336A4DC57E5279F2FF2DA" Guid="{E4E7397C-4BE9-4371-96E7-E33BDA446B36}">
+            <File Id="fil56F5D55F410A747009901546EE55EFC5" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\obj_tubular.xsd" />
+          </Component>
+          <Component Id="cmp3D4FCCF450A206913F0B3ADACCB9B64E" Guid="{3B7FDE24-8DC9-4400-8D30-8D5D7DC973C7}">
+            <File Id="fil1FA48F51CA3B1DEFBBD5DC8762ECEE5B" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\obj_wbGeometry.xsd" />
+          </Component>
+          <Component Id="cmp275AFDF0EFAC0645DCAED8941E86B062" Guid="{ECF36A80-8B33-45BC-8172-8E7ABF9951AE}">
+            <File Id="fil82E6FF3160DA8A28BA2FA4259AF8273F" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\obj_well.xsd" />
+          </Component>
+          <Component Id="cmp279C27CB5167CA737480763CDC6DEBC5" Guid="{626FB869-AA03-4C18-8C03-588FDD7A38D8}">
+            <File Id="fil0196E195CDA1B4C055EE8035A667BE35" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\obj_wellbore.xsd" />
+          </Component>
+          <Component Id="cmpDBA050FBF9CFFCED39E4AF6BF6316E8D" Guid="{8AF22B8E-FF5B-400E-B005-F9123B43C068}">
+            <File Id="fil56666B56FDA710FAF58B23449EE5AED4" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\sub_objectMemberWitsml.xsd" />
+          </Component>
+          <Component Id="cmp0B7F5947F81FCD8943781161EF841EB5" Guid="{CC836911-4D08-42DA-BED2-1754CC6225CC}">
+            <File Id="fil10D2EE4ECFEE067D3E25D93D91804FEF" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\typ_baseType.xsd" />
+          </Component>
+          <Component Id="cmp1A39807EBB666EF19826673C2AF11CCE" Guid="{3570CBC7-1E32-448D-9D44-1DF419DDB4ED}">
+            <File Id="fil9CE84D9E5EC4AE87BCAB6F3C5D5F9790" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\typ_catalog.xsd" />
+          </Component>
+          <Component Id="cmp148F83E0B7AF17E160E4FACAA58B407C" Guid="{A00C517E-65EA-4B20-A827-4D2AD3A51E24}">
+            <File Id="filB0E28354831A448C39AB93376BF78569" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\typ_dataTypes.xsd" />
+          </Component>
+          <Component Id="cmp0B792896D549E2D755EB27817B1120A8" Guid="{639A2879-60E7-4A76-AD02-BCAFDE068973}">
+            <File Id="fil028BE4B845C0D81FE46BEDCBC5EE9E81" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\typ_measureType.xsd" />
+          </Component>
+          <Component Id="cmpD74777733653948036D019AA1BA55CC4" Guid="{AC83BCC5-F557-4326-9F08-020DF3379A76}">
+            <File Id="fil81920CA9CDBA378614001DDFA2EE3930" KeyPath="yes" Source="$(var.WellEmulator.Service.TargetDir)Standards\WITSML\typ_quantityClass.xsd" />
+          </Component>
+        </Directory>
+      </Directory>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <ComponentGroup Id="StandardsFileGroup">
+      <ComponentRef Id="cmp8A899B72BF9F30D38B3E26F802FA0855" />
+      <ComponentRef Id="cmp357355D31FDFF4FDC197BAC4B0B63A2B" />
+      <ComponentRef Id="cmpCA595C28944AC1AF44484B7D58280194" />
+      <ComponentRef Id="cmpD179AF5F66DF653C2B8DECD3B575E129" />
+      <ComponentRef Id="cmpC836C2D3463EFCBD6855945824581AEB" />
+      <ComponentRef Id="cmp9C17CF3C64FDBD0C3B74E72988DD8299" />
+      <ComponentRef Id="cmp33BB6A444F45FA5EA0F484BD0A343E64" />
+      <ComponentRef Id="cmpF18724E8F1CB823080DFE81051CC2F40" />
+      <ComponentRef Id="cmpFE044D18306033513591B1DA3D0610EB" />
+      <ComponentRef Id="cmp6FCC764A52CF7F517B79A07D16456541" />
+      <ComponentRef Id="cmpB7428F651D308290DAA79B0E9C07BC1F" />
+      <ComponentRef Id="cmp884B538AD356588653C5B4D3577929E0" />
+      <ComponentRef Id="cmp9C713AD4FFCDEB14941F56037B6D5993" />
+      <ComponentRef Id="cmp39FCFEAAAC41FC2A72CE5C6EA85DFFBC" />
+      <ComponentRef Id="cmpAE66AC8B6C260A436E69104303A6A915" />
+      <ComponentRef Id="cmp507D422A3760D548908A5B286D2F965C" />
+      <ComponentRef Id="cmpEAA10CDB712A9462B83E5AAA53CCB021" />
+      <ComponentRef Id="cmp0BDBFD2EE9108C2A873A6BA7D04FFFEE" />
+      <ComponentRef Id="cmp7BCBDECB20679E266E8005BC9A830B0D" />
+      <ComponentRef Id="cmp81B701A93DD45CB90AF92039714BAF19" />
+      <ComponentRef Id="cmpB4ADCF65A00D09E2C0BFF4C26CA7A6D8" />
+      <ComponentRef Id="cmp076B6E2D85FCA8D49811619857ADE7E7" />
+      <ComponentRef Id="cmp184CC9C9C27ED7F0C9D18A8DFB2CC696" />
+      <ComponentRef Id="cmpBBFF4FE693E4B9CB1C3EDFDD66001642" />
+      <ComponentRef Id="cmp7B4677DBCD07FFC1A72E9F38D97330D1" />
+      <ComponentRef Id="cmpC2E15DCAF83C0611EA3892D1A0461CED" />
+      <ComponentRef Id="cmpCEA70469B1BE202D6E6D434E207A8130" />
+      <ComponentRef Id="cmp4F7BB817ADF07843F55310CCB8D6A1B3" />
+      <ComponentRef Id="cmp7EDB0BF6B70C503BF8D28A60E64A6319" />
+      <ComponentRef Id="cmpC5805CC5DD0796EB026997267FA2F9AD" />
+      <ComponentRef Id="cmpF97DB5B0350B43D0B7FA5316004428F2" />
+      <ComponentRef Id="cmp934826BE3F64BAACCCD16480B062BA2B" />
+      <ComponentRef Id="cmp84FCA4EAEDAFA8EDE3CE2C469860E9EC" />
+      <ComponentRef Id="cmp727E349EBA19B91761EE228118979189" />
+      <ComponentRef Id="cmp3DA1B5EBB5CE55FF5147610C308C3A32" />
+      <ComponentRef Id="cmp7441543F13FD9972DB88CDB17B08D344" />
+      <ComponentRef Id="cmp1BF4789B998757876606D6000820F6FC" />
+      <ComponentRef Id="cmp427F32B243BADBEF7F80EB4D689007F7" />
+      <ComponentRef Id="cmp1FEF7C93CFC8E10B93A89BE63D79BB3A" />
+      <ComponentRef Id="cmpE6B177FA370CB1444BB806CD61919A5C" />
+      <ComponentRef Id="cmpFFC8EF08FFCFCDEF1147ED4EB53563F7" />
+      <ComponentRef Id="cmp2574468C3E7B6FEAD6A161B52544749A" />
+      <ComponentRef Id="cmp4992E247B47A45C19458606061B18BD2" />
+      <ComponentRef Id="cmpB5E37EE5240A4A168C0B981D3209B92B" />
+      <ComponentRef Id="cmp1BE7413F62A9219774F06F3481C49524" />
+      <ComponentRef Id="cmp42101D55C8C6C492E28772A82ABD7D09" />
+      <ComponentRef Id="cmp6284ABCEF7AB42B133183A1F2D199DE3" />
+      <ComponentRef Id="cmp3E36C875DA211A30EF7E7003F8483316" />
+      <ComponentRef Id="cmp11080CC738C4053096E55656FCF74248" />
+      <ComponentRef Id="cmp1B0F99F4EA9DFBD98CBB2E5CC45261AF" />
+      <ComponentRef Id="cmp2F7805DD2F5D54010FA801E8692D8917" />
+      <ComponentRef Id="cmpCB272B7438D5F22FDD137C95BCF68919" />
+      <ComponentRef Id="cmp53D61250ECBB8D3EC4DA7731C0BD8897" />
+      <ComponentRef Id="cmp9906283736ABCBDFB67B85C4741B3A94" />
+      <ComponentRef Id="cmp8962F9A480352933D1409F50FB59EAAB" />
+      <ComponentRef Id="cmpF843AABC694C058D73379CA5E044F8F6" />
+      <ComponentRef Id="cmpCE8C395437D2177C322AC9D25209585D" />
+      <ComponentRef Id="cmp0CFDF6174F831A8D5D0D9A464583AE06" />
+      <ComponentRef Id="cmp38B7C49CB66171B3B485B24061C2E0DF" />
+      <ComponentRef Id="cmp8B4D89C255FC85FD5BC9A8E9E1B8C324" />
+      <ComponentRef Id="cmpC6A375A33FED54B944D3B0EC5AB6F893" />
+      <ComponentRef Id="cmp0EA448F4E1A9D02140EEF2E62B6D5EC4" />
+      <ComponentRef Id="cmp3F6A1ED43AED13838D7B0C3020ADC6C6" />
+      <ComponentRef Id="cmp4ABA32351FAE3F9EFB00BDE83EC9B928" />
+      <ComponentRef Id="cmp214E398E93A9988B3DEE62BF7ECB7F53" />
+      <ComponentRef Id="cmp4B9F1A75DF06BA4B1C3B59BA76AB1076" />
+      <ComponentRef Id="cmp2B8BDCC012C31FFEA3FF84633E4C4021" />
+      <ComponentRef Id="cmpA341DFBB31C5D7FD785692C83BA23DB4" />
+      <ComponentRef Id="cmpA02DF0C5AED5CFC7492CCD2F60E975E9" />
+      <ComponentRef Id="cmpF0341FD4DF1D92A93D6BF439546893E8" />
+      <ComponentRef Id="cmp2CAFB90EA9C310BE9F5B9F0764EB4429" />
+      <ComponentRef Id="cmp3BCD0B08E6B93CFFE4AFF9905F37217E" />
+      <ComponentRef Id="cmp8F477FD1A347D2D7C91694E22B501CB7" />
+      <ComponentRef Id="cmpA096D76FE5DB86B8AE7C614D1E61DEA2" />
+      <ComponentRef Id="cmpDB5BE33C4F6203478DA99993B621342A" />
+      <ComponentRef Id="cmpB111808952DB2EA93AA92EF7BDD404A3" />
+      <ComponentRef Id="cmpA4C666CB7F3256011DFA81B7EA05D59D" />
+      <ComponentRef Id="cmpDF437CF4F461E18DF1D17BD7812318D7" />
+      <ComponentRef Id="cmp382C19E80F971E89227FE2A2C8D824AE" />
+      <ComponentRef Id="cmpE6E46A165438CC4E5203EF01172C31E6" />
+      <ComponentRef Id="cmpF37B76C25A3B28D0F8C0F0E624E50343" />
+      <ComponentRef Id="cmp49C8FC1796A9D3F79902694D8527D08E" />
+      <ComponentRef Id="cmpFF3274CDDCA12172041203162D5C7469" />
+      <ComponentRef Id="cmpBD5CA2CA7F2DE57B43A60063D6B563BF" />
+      <ComponentRef Id="cmpA17463138EF2AD11157B34BEEE5063A7" />
+      <ComponentRef Id="cmpA1F935E56026EE61594A021D0B930D6F" />
+      <ComponentRef Id="cmp9E849E0280B25253405BCCA3BDF38EED" />
+      <ComponentRef Id="cmp71495A7163A79C780779AD64BA0A4B9F" />
+      <ComponentRef Id="cmp167651D389A161D0693F9D96773B5836" />
+      <ComponentRef Id="cmpD868EB5ECCD792DADC4E5717E8F40918" />
+      <ComponentRef Id="cmpC4EF1C6D395CD0AFDBEA9336B58BC7F4" />
+      <ComponentRef Id="cmp5E683E1D7FB3C76246F7DAFB90FDDC29" />
+      <ComponentRef Id="cmp2CEAFBAEA8832804495513E81808D4C1" />
+      <ComponentRef Id="cmp376EC3BA960C4A9441E3CAB8F362FC9A" />
+      <ComponentRef Id="cmp78444D62A993A35B6EB5A02937F7C5E7" />
+      <ComponentRef Id="cmpB4C7F9742FE0F35B1BE42C0EAFD77C70" />
+      <ComponentRef Id="cmpAB68AFB88A7B4CB4E0F50A0DF6B71E68" />
+      <ComponentRef Id="cmp2AD722F0D0CC5B7EFB6FD6F68B24793B" />
+      <ComponentRef Id="cmpC2B216D2A34A767F8F05F3BAD7213354" />
+      <ComponentRef Id="cmpFC3F4EF434E8FC52D7AC3D549F55612F" />
+      <ComponentRef Id="cmp6DDAF6EFACC65A3998C07E96F06AC406" />
+      <ComponentRef Id="cmpFED6FD6B4EE45CBF6A2751A9B2C169BF" />
+      <ComponentRef Id="cmp81E079944D67EA78A40B214986FBCE4F" />
+      <ComponentRef Id="cmp41A5C519AD5ED4599598E5893419C80E" />
+      <ComponentRef Id="cmp7CBFCF7BC075696E8FA0755F4E2FDA5B" />
+      <ComponentRef Id="cmp079B1E4606F43CE17C1FD525B8E32245" />
+      <ComponentRef Id="cmpA3EF1EFBDC6B1675A6FC19457680D66C" />
+      <ComponentRef Id="cmp5DF8D86112804DF71EBB99C7F1DE4E10" />
+      <ComponentRef Id="cmpBE9BB5DA87DCCE3BE2D06B9B5B8CA315" />
+      <ComponentRef Id="cmpB4B44AE784E0A6777E2F84B04DDA005A" />
+      <ComponentRef Id="cmp327A4E7A81CAD114F511FE9908850A38" />
+      <ComponentRef Id="cmp1D3EF387A4BD7862BA4B3883C6CB6241" />
+      <ComponentRef Id="cmp5310D3560879697744192A3F5085A6A4" />
+      <ComponentRef Id="cmp3845D205494A9C0F2DCAD19A09485422" />
+      <ComponentRef Id="cmpB9687A143735EC79EEF06B13B66DF32E" />
+      <ComponentRef Id="cmpCC179C6A231C43C378D08DB19B06159C" />
+      <ComponentRef Id="cmp094BD5A0AEEED5E300280043F2043EC6" />
+      <ComponentRef Id="cmp8892D60F93CFE305A91893D4346C5966" />
+      <ComponentRef Id="cmp0EBB539D251D070F9AB46AC9E4D51AB6" />
+      <ComponentRef Id="cmpC51AD33D55914DF11AED4DA5BE30CF33" />
+      <ComponentRef Id="cmpD840BCED92A4AC5AC69FC328B3F779BC" />
+      <ComponentRef Id="cmp6E732E658BE044E5DE97E746D113A30A" />
+      <ComponentRef Id="cmp7372A4A6C7DD9ECE025627C30297A27B" />
+      <ComponentRef Id="cmp41F346C79F05864711A57D7AB0E340E1" />
+      <ComponentRef Id="cmp57FBE5A79BC9B83C8AD9FAF1D126C89A" />
+      <ComponentRef Id="cmp50D70FCF662E1A09B2F39AD05DEE92CC" />
+      <ComponentRef Id="cmp084AD9DB9DF050A8F7EC64E5199003CB" />
+      <ComponentRef Id="cmpB2F5D2E6F2E4E9F17DD2AE96C1D2193E" />
+      <ComponentRef Id="cmpB0C0E1E292AAAC6B0AAF71CF3B914F44" />
+      <ComponentRef Id="cmpE418C1C54EC55B45A80192C833FBD42F" />
+      <ComponentRef Id="cmp08445BACEA56A586953A4DC687C81FD0" />
+      <ComponentRef Id="cmp06698941FDE03EB4649D31DD7EE45192" />
+      <ComponentRef Id="cmp9414F6EE2CA88F0E1A99EAFE7EFADFCF" />
+      <ComponentRef Id="cmp8D88BC0BBDDF89A7CA3B902D5AAFE949" />
+      <ComponentRef Id="cmp8204CD7F05455644C6C266C1A003A2E6" />
+      <ComponentRef Id="cmpAE720D35419A167BBBE7E8CD4D33FC0C" />
+      <ComponentRef Id="cmpEFC9256105535172502F9CAB3F96A381" />
+      <ComponentRef Id="cmp2942B60755F01BCC1E0B201F376FEE78" />
+      <ComponentRef Id="cmpDA06486F6E0BE3FC4FF7EFC285A1DA31" />
+      <ComponentRef Id="cmp04F229E64D40097DDD9EFB7CCB42BB6A" />
+      <ComponentRef Id="cmp472F42906FC3F24888EDBA7DAAE45465" />
+      <ComponentRef Id="cmp694D9DA9446A112851A1BC261F2FB18C" />
+      <ComponentRef Id="cmpB981F59B1045C29ABA26D30DAC4B85D2" />
+      <ComponentRef Id="cmp9CF03F2BF972FAF0374289006AC95968" />
+      <ComponentRef Id="cmpF07F074B848F5272876DC525D1B7B9C7" />
+      <ComponentRef Id="cmp71B368DB00E6B4B71A25522FDF63B483" />
+      <ComponentRef Id="cmpE2AE26045BD04ADAAE8BFD0257DFD2B9" />
+      <ComponentRef Id="cmp24193DC7E4B35922DF21921C15989437" />
+      <ComponentRef Id="cmpD5EB786B998684F7C56E3A032BE06776" />
+      <ComponentRef Id="cmp182EF2A476901BF0C28AD1F69913AF7F" />
+      <ComponentRef Id="cmpAE4DF6821ECB751AFC56EADD5F6DF1EB" />
+      <ComponentRef Id="cmpAE82A44975BDB1BC9069ADEC68FD6F1E" />
+      <ComponentRef Id="cmpC0310C68A0110FF529DDCE73C9CD9B03" />
+      <ComponentRef Id="cmpF5410A5801554ACC0BC0BB34513B9407" />
+      <ComponentRef Id="cmp24E1722364B34EB41A903BECE182CF91" />
+      <ComponentRef Id="cmpF95CBC3F11FCBCE94817EE0E5E30CC6B" />
+      <ComponentRef Id="cmp91BE6441E5A1160F86873C951BC2A2DC" />
+      <ComponentRef Id="cmpEF265EAE2795C056ED453ED5BDC2767C" />
+      <ComponentRef Id="cmp8699E6BFACBF44E5568552C135B91C6A" />
+      <ComponentRef Id="cmp29039CB027D4D232282808424E1065C2" />
+      <ComponentRef Id="cmp077847BE11EF2AE5C94B6EBEB13005ED" />
+      <ComponentRef Id="cmp38933E48A7EB28F76F0105E082D37721" />
+      <ComponentRef Id="cmpC08D1509201D3673450F2BF4D2971B3D" />
+      <ComponentRef Id="cmp0FE19F43C2D32925BFB419C4922D6F15" />
+      <ComponentRef Id="cmp7FA95CEBD788D4BBC84DD3AE6D828882" />
+      <ComponentRef Id="cmp73551FA538E2E170E4BAB259E89D86C3" />
+      <ComponentRef Id="cmp7FC67C43E33A549B32038DA1A8565B2B" />
+      <ComponentRef Id="cmpCE8998C788A4F15C45CFEE3F77807FE5" />
+      <ComponentRef Id="cmpF7584703903A6EDC1B91412D0A40D0C2" />
+      <ComponentRef Id="cmpC1B067B372C3294D98D13B08301A2FF6" />
+      <ComponentRef Id="cmp4AB36701989BA68C60697DF8ADF2D281" />
+      <ComponentRef Id="cmp6B3DD1972E44121D5E0C6E38395618DF" />
+      <ComponentRef Id="cmp40CB505088F0BD7C345EC8CD8CF03F2B" />
+      <ComponentRef Id="cmp0B5B1E0F006FF5DEDF90A2FD877ACB47" />
+      <ComponentRef Id="cmp2C0496BA778C4376B09BE0411A3AD5CE" />
+      <ComponentRef Id="cmp7D9473EBEA77E2D3A2F2D4CA70D7A618" />
+      <ComponentRef Id="cmpD34DE2C23187D86BF75C68161598C437" />
+      <ComponentRef Id="cmp5A15C1E7A21F9CFC0ABA530C2E8EEF17" />
+      <ComponentRef Id="cmp23BADA27B11B1331780231B7E816961E" />
+      <ComponentRef Id="cmp6775BE19EBD582B3551DBAAFCC090AE9" />
+      <ComponentRef Id="cmp34125E03A8BBF43685298C547B4EA77A" />
+      <ComponentRef Id="cmp21786D93B9666C0E3A0831739AB1F2D0" />
+      <ComponentRef Id="cmpDD1AB2930B1ADD35C65B3689B9E3C366" />
+      <ComponentRef Id="cmpE2675795547EF5C4C7E765655B867E3B" />
+      <ComponentRef Id="cmpBE81EAF2D99443A7C961E6ACDEC4C0C6" />
+      <ComponentRef Id="cmpC7FE37C7D31B6EA0481EDB651B99B3C0" />
+      <ComponentRef Id="cmp980EDDB77FCC7832DBEA8EE660221708" />
+      <ComponentRef Id="cmp332813713A8764BA8DD8ED226B7D63CB" />
+      <ComponentRef Id="cmp00A44C50A254247704B22949737CB3C4" />
+      <ComponentRef Id="cmp1D80C0632CD8AE8F8651E6503CBFDAAA" />
+      <ComponentRef Id="cmp28813E9A611AF99FBEC3DD7D7E047A90" />
+      <ComponentRef Id="cmp3475FFDAEAC5AF74E2B6B5D3F50E5DC9" />
+      <ComponentRef Id="cmp550179516F9CAE98190869E7172A7402" />
+      <ComponentRef Id="cmp278ABC96B812B57C04C3CA2B4120F759" />
+      <ComponentRef Id="cmp13EAA07EA24464FF5E06D67FCFD8AE7E" />
+      <ComponentRef Id="cmp6A4680BE10FC7AC15211F64389B7FE4C" />
+      <ComponentRef Id="cmpC68A4AA6F73EE2F317E2FD6BFAC0AE08" />
+      <ComponentRef Id="cmp79914DC525673733B6054B1EF85C64A1" />
+      <ComponentRef Id="cmpE4061B64AA15734DEC93785F25CF0273" />
+      <ComponentRef Id="cmp68C046CD499F89B5E41DED6147321F8A" />
+      <ComponentRef Id="cmp6206389E8D99DF223ED2D669DB103092" />
+      <ComponentRef Id="cmp58BAB37B2D9CF55748AB660E525AE8AA" />
+      <ComponentRef Id="cmp13E9DA7DC3FACC272EB3FC909569F84D" />
+      <ComponentRef Id="cmpC5E1914CF92DADF4D19A60E241EAA996" />
+      <ComponentRef Id="cmp9980353E42BA902568E0734DF32D9829" />
+      <ComponentRef Id="cmp8371FAD90FE391122DF8BBD83D4F5779" />
+      <ComponentRef Id="cmpD7D4637A4BCA2AC877C4B435BBDDDB1E" />
+      <ComponentRef Id="cmpA7B13DAFF93C5ECF256DC8CB9A3F18AA" />
+      <ComponentRef Id="cmp02A1202DF1AD229F4386CF2181283182" />
+      <ComponentRef Id="cmp703BBA5CEC2901AC8DD9F7B736EDEA85" />
+      <ComponentRef Id="cmp4629217D23B6D3471536DD4D8F58B9CF" />
+      <ComponentRef Id="cmpDB2111F2C36CC09DCC178D7C4C0EA551" />
+      <ComponentRef Id="cmp3FDCE931C8D455E221EA0E2B7AC8EAB0" />
+      <ComponentRef Id="cmp4A95CE627DB4024672394E89A48C816C" />
+      <ComponentRef Id="cmp1CEEB21EA160B30FC1B705E59BB9AAB7" />
+      <ComponentRef Id="cmp5D4E495C09AB5BBA234D0328D4E67E45" />
+      <ComponentRef Id="cmp1CCFC07B30A03DB8507143F2A1DAE76B" />
+      <ComponentRef Id="cmpD019DB1AF65F70B70996C1B8CA128B8C" />
+      <ComponentRef Id="cmpA4B7906AD0CE7E1D0395B01B378D8395" />
+      <ComponentRef Id="cmp1C1FD46941F7B29EE485BB842E4BB007" />
+      <ComponentRef Id="cmpE5AE5381279467D1119D9E9AF976A37C" />
+      <ComponentRef Id="cmp76ADAD9CBB83F31402FDFCE5CBC8D20B" />
+      <ComponentRef Id="cmp2996C62FE65373145065C1590B9C5E35" />
+      <ComponentRef Id="cmp0B2630DDA94A605822FFE3BBC278DAA1" />
+      <ComponentRef Id="cmp64D69EDBF3A99AD1B42DC6C6D9E90DEE" />
+      <ComponentRef Id="cmp9B963D07877EA9E87740912AB84B9B17" />
+      <ComponentRef Id="cmpB3D1585DA5918B7A8E3F998D00C9544C" />
+      <ComponentRef Id="cmp8EC46B515A39CE18E4D7688D703642C1" />
+      <ComponentRef Id="cmp9B3BFC72D18D2EC9E91A4EFB440906FE" />
+      <ComponentRef Id="cmp544F56EDBF60D62E3411C9D7B5AFBB63" />
+      <ComponentRef Id="cmp02A7D7ED1FAAAF30DE4F69619B64DC6A" />
+      <ComponentRef Id="cmpD18570BEFCFB786F319573089063C3A3" />
+      <ComponentRef Id="cmp7E6989640A45E28D1EABCB366B4E0371" />
+      <ComponentRef Id="cmp9EB059B5C7F9D57507743B9CF12E40E6" />
+      <ComponentRef Id="cmp62E39B2A90FAC926B24E0E0B071BAE26" />
+      <ComponentRef Id="cmp731B3C69190F4FC6422A62F4DA0DD8EA" />
+      <ComponentRef Id="cmpA0872C61D026038D1BAC1DFBD85E35D8" />
+      <ComponentRef Id="cmpFCBEE6678341F6383EAA69A1B4640B18" />
+      <ComponentRef Id="cmpB78DBF5C1811DDD17ADDDC8E0271F230" />
+      <ComponentRef Id="cmp9C8D1BD9F2CB267159B8F42E718D93FB" />
+      <ComponentRef Id="cmp2C52A59E0EFA2CCA2B2712E620A773FD" />
+      <ComponentRef Id="cmp54319624FC1AEDC61BAD8AC22FC99192" />
+      <ComponentRef Id="cmp18D255F28C4753F9F43B140FF711FCE0" />
+      <ComponentRef Id="cmp3E449EE1F266B4384AAFEF5F2A17412E" />
+      <ComponentRef Id="cmp268236D070C3548355C85BADC2CFBB4D" />
+      <ComponentRef Id="cmpFAB1845740458E67E3815699E5870FF6" />
+      <ComponentRef Id="cmp16A64B566861250C9DA01E74121A411C" />
+      <ComponentRef Id="cmp8919D865B5ACC3AC9C649A1A594E6F33" />
+      <ComponentRef Id="cmp9C9660592DFF2420F902D422114A1B3B" />
+      <ComponentRef Id="cmpAFD90A01D7F4C8B1EC832EE082424C13" />
+      <ComponentRef Id="cmpDAC7DE971FFDABE54004B932E2117654" />
+      <ComponentRef Id="cmp9E5E8A1BC934C477C452E7A5068DD2CC" />
+      <ComponentRef Id="cmpCDF4C75F0E7EC81835DEBF6EF905FE54" />
+      <ComponentRef Id="cmp8F67F428C6F07585DA9D4C19E4EC217C" />
+      <ComponentRef Id="cmp46B7952E999A548552ED91CBEA386CC3" />
+      <ComponentRef Id="cmp8869546EE4080BB9D88E1ED4F86EF8A1" />
+      <ComponentRef Id="cmpB7A02A4F6A469F61D64598EC7914BE7D" />
+      <ComponentRef Id="cmpE6A77061617E6EA5FC8EEF2561CD210E" />
+      <ComponentRef Id="cmpE5643D41D029ED90E5F20BE92A88AB81" />
+      <ComponentRef Id="cmp28D2E29228695A328B5060FB86A960B3" />
+      <ComponentRef Id="cmp2EB86BD043B40018CABAD1A20FEFDE88" />
+      <ComponentRef Id="cmp1880E5CB9C34353E870399719CF3A46F" />
+      <ComponentRef Id="cmp5277DFDE6BF030FF3A16B8047B3255E1" />
+      <ComponentRef Id="cmpAECAA7386063B132DA6AA7D13D5BF2E9" />
+      <ComponentRef Id="cmp8165E48E06EB9F8B92F7D099E15AFE50" />
+      <ComponentRef Id="cmp653FC19291CECDEACEF2CEB0E7E57CEB" />
+      <ComponentRef Id="cmpEE87E5BA252B8B444AEBCD1C85469BAA" />
+      <ComponentRef Id="cmp7F6B6E9C32CAD1104171D811FDA73169" />
+      <ComponentRef Id="cmpCC75BC20BA8D756AD3EFE00EB217AB4B" />
+      <ComponentRef Id="cmpBF68AB00CE3E602189A13900736C043C" />
+      <ComponentRef Id="cmpF4646B244710D96C69A722A0C2ACAA86" />
+      <ComponentRef Id="cmp1AB6AC349786D5C90845BBAA3E74DA63" />
+      <ComponentRef Id="cmp6E45A07AA501E4A089B2106EDAE26463" />
+      <ComponentRef Id="cmp411D7593DAAA2B9335A9F4D6FB067B60" />
+      <ComponentRef Id="cmp320759B9F0703C4BAB4955579F9F43AD" />
+      <ComponentRef Id="cmp6BF34843760655872EAC09D61591A4A5" />
+      <ComponentRef Id="cmp1F4BDB6C1C0F2AED680EE82BAD9AFEC7" />
+      <ComponentRef Id="cmpE5943C9B6D22F3379BFB42714D3D3F8F" />
+      <ComponentRef Id="cmp0AEAC78D6ADD2131705B3AF33D7B2591" />
+      <ComponentRef Id="cmp77351F9E9A91A3E2FF841485E1F2E71E" />
+      <ComponentRef Id="cmp71011D1291F7198DC80BFF5D3A7FF4A1" />
+      <ComponentRef Id="cmp7144D5E6854CA740637DAF7522ABF007" />
+      <ComponentRef Id="cmp2105B07D3569D83393CB43A2E2F1487E" />
+      <ComponentRef Id="cmp5DE114F50330618CF64E10DF7B958696" />
+      <ComponentRef Id="cmpDADE7592BBFA36F400E41610D25BE937" />
+      <ComponentRef Id="cmp5F967CAB82D39FFC8A958AA275D68B47" />
+      <ComponentRef Id="cmpA0CA9058737AB9860D46BF6B0902E1E4" />
+      <ComponentRef Id="cmp734760FA7D07657C8C2C5DF48E6932F4" />
+      <ComponentRef Id="cmp107BB90F0C1E49AA17B431DC778FDD6E" />
+      <ComponentRef Id="cmp63120895645FED896300490525226F6A" />
+      <ComponentRef Id="cmp6D85C5C5BFE666C5CC35BFF41E574531" />
+      <ComponentRef Id="cmp57726C561D89009A899E056E139C8741" />
+      <ComponentRef Id="cmp672912322EA74C8F53DDB82542CEF497" />
+      <ComponentRef Id="cmp6125B396FD30370A3B71DEA049FF5942" />
+      <ComponentRef Id="cmp32ADD20B6149F1F345AF6F9100A6DFE9" />
+      <ComponentRef Id="cmpD5904585CD062B8F1FE1C450E7991821" />
+      <ComponentRef Id="cmp75B33DFEAB8F43D582283F080F701FB6" />
+      <ComponentRef Id="cmp2F609196886F2FC6F32445EA12DE81C6" />
+      <ComponentRef Id="cmp49EDB18AE81B6C34B95D6FDECDEAC645" />
+      <ComponentRef Id="cmpFB34286E5E4228142AFE111A709537FF" />
+      <ComponentRef Id="cmp0A3083A5DC36A951830003BC60516CA9" />
+      <ComponentRef Id="cmp8366CB33286DCB216E21ED82C50CBE21" />
+      <ComponentRef Id="cmpF217A74BB23F1536517AB78E5D307086" />
+      <ComponentRef Id="cmp7B66F70DD4FE6381616B627301762599" />
+      <ComponentRef Id="cmp2474EAFEE7B1D7A5BB3F6712A29BF2C3" />
+      <ComponentRef Id="cmp2F4A3DA512B80F82980C161195141146" />
+      <ComponentRef Id="cmpFBD7A0A5A87804A907B251876229C433" />
+      <ComponentRef Id="cmp8CC207958EA31A6AD8475A96A7AAB150" />
+      <ComponentRef Id="cmp245874EC05F8D212EE39D97C4E93D6FB" />
+      <ComponentRef Id="cmpECB9A399E477A3D48A641880803A6F4E" />
+      <ComponentRef Id="cmpC9785CEB569F528D99C74856DD6A17F8" />
+      <ComponentRef Id="cmpC21B662AAA13E44949F705EB384457F4" />
+      <ComponentRef Id="cmp1E0621B2439064B365AF1AC1A262C206" />
+      <ComponentRef Id="cmp5060EF3DDF6FFD27B530C4DA752384E5" />
+      <ComponentRef Id="cmp0F7F29D15DB3003B451E3AE9E0132043" />
+      <ComponentRef Id="cmp1DAB32B4DB90F124959AB7CBE8507827" />
+      <ComponentRef Id="cmpB0C2B5441391BCD5F7E145905EF4FE56" />
+      <ComponentRef Id="cmp53E793A714EE0321D26846724B511D76" />
+      <ComponentRef Id="cmpDA81837E30503C48C7B890604FD72A75" />
+      <ComponentRef Id="cmpEDF76A9256A3778ED83B530685EF49D0" />
+      <ComponentRef Id="cmp0BC25C483022D3123DF75AEE550BD09A" />
+      <ComponentRef Id="cmpC2243393462A6E6E7257E9F1C626EF60" />
+      <ComponentRef Id="cmpA5C2DBAC7B112CE8F6DAECAD748F34F5" />
+      <ComponentRef Id="cmpF9820E2FA0671B077C0C2BEC6A705A05" />
+      <ComponentRef Id="cmp72F10A098DCC583F7253103B6FA2F1B8" />
+      <ComponentRef Id="cmpFF0A208387F05F77E4959CD60FBBD32A" />
+      <ComponentRef Id="cmp11EC65E793A2E6D405BF51622EB8C65A" />
+      <ComponentRef Id="cmpF1D6323B1FB9152FB95A69E2A26BA7AF" />
+      <ComponentRef Id="cmpF10E17F6DBE2B54001B780476C431F88" />
+      <ComponentRef Id="cmpEA8FDFAF7703570A957C3620642BCCD4" />
+      <ComponentRef Id="cmp4CF16755207345A985A21CFBCD7054C1" />
+      <ComponentRef Id="cmp2398E830ED71C15228A793FB12E1D0EB" />
+      <ComponentRef Id="cmpBCA5C45D8EAA3360ECD7BC5BB9A034A9" />
+      <ComponentRef Id="cmpB683045302FA91F9D6C15370D6A836B3" />
+      <ComponentRef Id="cmp9A567FE710B55C11DB3C117E44C95E21" />
+      <ComponentRef Id="cmp4214804BF4018EC3D50BD80746B6CE22" />
+      <ComponentRef Id="cmpAC3A5867AA79F983740AA721AC494FFF" />
+      <ComponentRef Id="cmp3B19FF4FCFC8801E2FD100EF831FBFCB" />
+      <ComponentRef Id="cmp353D1072026399D609D1605910B2EF8B" />
+      <ComponentRef Id="cmp2A128711CA3FCE183C4CC56565B7C0F8" />
+      <ComponentRef Id="cmp997FFECB5D2882CD8715F4A693A5A1A1" />
+      <ComponentRef Id="cmp91B7048F69B95D6B9BDDC9309C26AF0C" />
+      <ComponentRef Id="cmpE0CD69BD81D7DC94F2193D2864DBB9AF" />
+      <ComponentRef Id="cmpBD5B0FBD7E16BFBE1F9C52CF8E703B02" />
+      <ComponentRef Id="cmpD7F8897959F7B3EF1BF83124E23F2893" />
+      <ComponentRef Id="cmpE6391A478540F3D22DD3B11C55BB8147" />
+      <ComponentRef Id="cmp55C0C2282F7965CE762573EB12B39394" />
+      <ComponentRef Id="cmp97CEC8904CFBD16C4BBDC2ADD6691163" />
+      <ComponentRef Id="cmp9D5D4682704095A96C470CEB0D3774DD" />
+      <ComponentRef Id="cmp612C64709B116D34E8347292FC65D9C4" />
+      <ComponentRef Id="cmp6A27B24A904758DEEE50A8EFA73F2226" />
+      <ComponentRef Id="cmpA56C4F2257F253BBC71BFD2DE4843DCC" />
+      <ComponentRef Id="cmp2863CB76A11F7F1A3E9E8B32F61CFBFD" />
+      <ComponentRef Id="cmp86E28A4AD6BBAAA5525134FDE2B5581E" />
+      <ComponentRef Id="cmp99A4B04169FA1FA625B2A168AB7B6A80" />
+      <ComponentRef Id="cmp3AB2AD9A571D7A43F3769DC2A7988F08" />
+      <ComponentRef Id="cmp4CD6D71143635069EA8C661501E48AC6" />
+      <ComponentRef Id="cmpA206192A2F01E798613F1E227E73DCC2" />
+      <ComponentRef Id="cmp550F6577B04C730F38209C2D039DB626" />
+      <ComponentRef Id="cmp96BC4E8B73AF04B845C4992F1C540A7C" />
+      <ComponentRef Id="cmp7D95B93A656B93F6DD6E2E54BE311431" />
+      <ComponentRef Id="cmp27F1F1F56B1F5DE86AC6AA547414EAB0" />
+      <ComponentRef Id="cmp2ABFE06B1FF139ABA12F05FE358BE052" />
+      <ComponentRef Id="cmp96BE5813353E47DB75D135B2FCEFD8CA" />
+      <ComponentRef Id="cmp2721827DF196FD6F9922598598373CA0" />
+      <ComponentRef Id="cmpD116D9CCEA394468574CC01131CDC8CE" />
+      <ComponentRef Id="cmp315307B5F39024E7D93D44BC89745C1D" />
+      <ComponentRef Id="cmp71ACBAE1AEEA918164495D75E17C474E" />
+      <ComponentRef Id="cmpE8C029DAD49AEF87EB5B650405439601" />
+      <ComponentRef Id="cmp01FB8606D8A7E75B38C7C22A3CD9284C" />
+      <ComponentRef Id="cmp3A653484E31335F13A59DE7F09DDDBBA" />
+      <ComponentRef Id="cmpDE5A7AD28A48282287165EE0E1DB675B" />
+      <ComponentRef Id="cmpA15E5B2EFDF27C702FEEC01D70AF121C" />
+      <ComponentRef Id="cmpDC9367F55C35E6473957C998A7DF526D" />
+      <ComponentRef Id="cmp6C4DE9C3EF57018E86DA94F18FBF3670" />
+      <ComponentRef Id="cmp5376BA47D308C72F73EED783336DC5D6" />
+      <ComponentRef Id="cmp8BE39AE03AC3229FF9BB300937154DB5" />
+      <ComponentRef Id="cmpF6D086FB6C4876E7DA2DB6CF314DABB8" />
+      <ComponentRef Id="cmp0D4707D7C7F3BEDB80A7C46740AF81D6" />
+      <ComponentRef Id="cmp4D8F3D84769E903C8BCE62B4B69ED791" />
+      <ComponentRef Id="cmp61767862B698242E8A888EDF7FAC4014" />
+      <ComponentRef Id="cmp12B533F175A5515868CE3D649C31DE4C" />
+      <ComponentRef Id="cmpD808069835B1EBC224AB4FE408BCC2E9" />
+      <ComponentRef Id="cmp8370851256ADB8844FA5C89E8AA06B25" />
+      <ComponentRef Id="cmp876FFF8F05CEA8EC2E3266D9BD7B6932" />
+      <ComponentRef Id="cmpAA5B8901D03DFBEF5B8136C6A5B73AE9" />
+      <ComponentRef Id="cmpC34BB091FF298556A458F27E629B9546" />
+      <ComponentRef Id="cmp577F6800FBD0DD6AF94A122A89884498" />
+      <ComponentRef Id="cmp3B6F89DD6A7E03FD4CD322037372BDA3" />
+      <ComponentRef Id="cmpF27B7ABFC2933A0943F9A7430F23F3F6" />
+      <ComponentRef Id="cmp55ED96C9C29F1DF33647D0758FA2B56E" />
+      <ComponentRef Id="cmpC8CDE9FEBFB997BCC7F1FCCAE5AEEE2B" />
+      <ComponentRef Id="cmpD5CC1CF98039F976C486C0552A25C3F6" />
+      <ComponentRef Id="cmp6172E95DB9565846B585884CCF6CDC61" />
+      <ComponentRef Id="cmpA41E55D1DE35D577028AA2C843E4310D" />
+      <ComponentRef Id="cmpBB975F4AB85CC2789B35F43EA3E4A085" />
+      <ComponentRef Id="cmp59262305808097C88734D150F3DE0356" />
+      <ComponentRef Id="cmpBB05D0B08F0B91A006B645FE7C412C88" />
+      <ComponentRef Id="cmp39C2D1B7DCB16869B5B83EA5CB7BC170" />
+      <ComponentRef Id="cmpCD57D05400EC143F3D2F6D28D815C3DB" />
+      <ComponentRef Id="cmp793F76F06BEF6649022CA0B649A79C71" />
+      <ComponentRef Id="cmp5DDB4B020E40C8202470E9BFDC8CB0BE" />
+      <ComponentRef Id="cmpE5C9D66D6213EC2DE942F5CC900AA0EC" />
+      <ComponentRef Id="cmp4F9509BB66524E0D93C3A5812111DA33" />
+      <ComponentRef Id="cmp8B8776D3106260025403C27B2E2503F9" />
+      <ComponentRef Id="cmpDECA9779DA54B4849F5F9AB954BCF08D" />
+      <ComponentRef Id="cmp6A2F56244DD20CD5B237211B13294409" />
+      <ComponentRef Id="cmp0DE865B38750F8E340B077CA79C182FE" />
+      <ComponentRef Id="cmpFA1A08E914D767B83176652B6D815B1D" />
+      <ComponentRef Id="cmp34FAF184683BF1203C2FC5321599309A" />
+      <ComponentRef Id="cmpBA1DD738FC715946DBB9A0A153854A8F" />
+      <ComponentRef Id="cmp8588F6D99A4240F4F5A14BB9FBD26459" />
+      <ComponentRef Id="cmpA749DB95ED5F44F9769DCD1D4DA214DD" />
+      <ComponentRef Id="cmpAFBE16765982C08237FB649678DA45B3" />
+      <ComponentRef Id="cmp36BB316930CD78F56785A0E2F20017B0" />
+      <ComponentRef Id="cmpA49D3884CABB11DE7ADB5ACB24A926D7" />
+      <ComponentRef Id="cmp2C94E478B8535FF09F62703E6CC7D5AF" />
+      <ComponentRef Id="cmp9D67AB6DA79EDAA47F15C66EFE448F60" />
+      <ComponentRef Id="cmp806C663FEAD55F32E17434ABF77AC648" />
+      <ComponentRef Id="cmp7EC99B0A735A51AC35B3EFC8036E9DFD" />
+      <ComponentRef Id="cmp47005F314CBFB6D85C21FD89EC528B25" />
+      <ComponentRef Id="cmp5817148959E6DF8E048078548C5C3705" />
+      <ComponentRef Id="cmp0E6A3EBCFC58D5E1479C01E625EA2AF0" />
+      <ComponentRef Id="cmp8303EF8EFC771A96634299C9F2329568" />
+      <ComponentRef Id="cmp9B479B01185E760384A7C1A0C9CF70D3" />
+      <ComponentRef Id="cmpD4909C56BD9181DC8D6C05CD5363C587" />
+      <ComponentRef Id="cmp98B88EFF79B04CFDACED07A315C79CE3" />
+      <ComponentRef Id="cmpEEAA4A8F33F8653D88915D8E50758933" />
+      <ComponentRef Id="cmp3BA536A768592F0F16B4D3A6F2A875DF" />
+      <ComponentRef Id="cmp956E9FC3252EE4776A4FA29B7EFB3E3B" />
+      <ComponentRef Id="cmp3D515BDC9E2571323818C81143AAAB9E" />
+      <ComponentRef Id="cmpAB8199331C14FDECD86D7667C0E59D61" />
+      <ComponentRef Id="cmpB5F238FF01D0EEA47D7FE6D3E2425EE1" />
+      <ComponentRef Id="cmp2AD6AD870D7C8F047516A634E9E1CCF3" />
+      <ComponentRef Id="cmp66C4373039A63783D8F51A44B930440A" />
+      <ComponentRef Id="cmp82FC9A895AD049A60CB2FAB98EDBEFC5" />
+      <ComponentRef Id="cmp4FB91B36B10231CA99E168B9DACA6824" />
+      <ComponentRef Id="cmpA2741CD91F36C2E4C1AE6AF30B51FFA4" />
+      <ComponentRef Id="cmp0043366536723EFAE728D5BF6057D4D0" />
+      <ComponentRef Id="cmp01DFC20D6308442D1A2BBC7473D83563" />
+      <ComponentRef Id="cmp4B247564391110137E500887268E842C" />
+      <ComponentRef Id="cmpEA689EFE801FFAEFD61CB57144AA16A1" />
+      <ComponentRef Id="cmp1BDA5CA14E9BCDC391FC6D16F0D1785B" />
+      <ComponentRef Id="cmp496ED277C2C7E7ABAFDD68D567E9F8E0" />
+      <ComponentRef Id="cmpAB171F8B8868848C3D288F6EE0B8769B" />
+      <ComponentRef Id="cmp0BAC6BF68049F16C19D9477D8B1D2FE3" />
+      <ComponentRef Id="cmp61AEC90D4EBD24FEC57B88A7EEEFA046" />
+      <ComponentRef Id="cmpF0AF88FA90E0E05DA8DD07AAF444EA40" />
+      <ComponentRef Id="cmpEA247E20EC4A409A399165811A8F877D" />
+      <ComponentRef Id="cmp5FA1AEC13C15D0348F5E0120C622A7C4" />
+      <ComponentRef Id="cmp940CC60555655C1639499989B991DE7E" />
+      <ComponentRef Id="cmp46B431A966FCCDAC848DC8A08836E9D7" />
+      <ComponentRef Id="cmp7843614B2345E4F7FCCBD0978BAA23F7" />
+      <ComponentRef Id="cmpC4CC55C33C8B40730FAE979095ECA605" />
+      <ComponentRef Id="cmp456F408B32AB145CE59A96B27477292A" />
+      <ComponentRef Id="cmp8B2B2D43C62C9AD05812A8DAD37C4174" />
+      <ComponentRef Id="cmp1438BDA4DB63FA1046801189DBF0D053" />
+      <ComponentRef Id="cmpFAFA666C19E39E6D50E599A1AC220880" />
+      <ComponentRef Id="cmp493D050AEFF336A4DC57E5279F2FF2DA" />
+      <ComponentRef Id="cmp3D4FCCF450A206913F0B3ADACCB9B64E" />
+      <ComponentRef Id="cmp275AFDF0EFAC0645DCAED8941E86B062" />
+      <ComponentRef Id="cmp279C27CB5167CA737480763CDC6DEBC5" />
+      <ComponentRef Id="cmpDBA050FBF9CFFCED39E4AF6BF6316E8D" />
+      <ComponentRef Id="cmp0B7F5947F81FCD8943781161EF841EB5" />
+      <ComponentRef Id="cmp1A39807EBB666EF19826673C2AF11CCE" />
+      <ComponentRef Id="cmp148F83E0B7AF17E160E4FACAA58B407C" />
+      <ComponentRef Id="cmp0B792896D549E2D755EB27817B1120A8" />
+      <ComponentRef Id="cmpD74777733653948036D019AA1BA55CC4" />
+    </ComponentGroup>
+  </Fragment>
+</Wix>
