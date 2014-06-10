@@ -8,6 +8,11 @@ namespace WellEmulator.Service
     public interface IWellEmulator
     {
         [OperationContract]
+        void SetNumberDbValues(int number);
+        [OperationContract]
+        int GetNumberDbValues();
+
+        [OperationContract]
         bool Connect();
 
         [OperationContract]

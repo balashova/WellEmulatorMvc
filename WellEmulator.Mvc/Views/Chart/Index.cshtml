@@ -20,11 +20,46 @@
     </div>
 </div>
 
+
+<button id="send">Send</button>
+
 @section Scripts
 {
+    @Scripts.Render("~/bundles/signalr")
+    @Scripts.Render("~/signalr/hubs")
     @Scripts.Render("~/bundles/flot")
 
     <script>
         var plot = $.plot("#chart", [[[0, 0], [50, 50]]], { yaxis: { min: 0, max: 100 }, xaxis: { show: false } });
+
+        $(function() {
+            $.connection.hub.logging = true;
+            var chart = $.connection.chart;
+
+            chart.client.HistorianDataChanged = onHistorianDataChanged;
+            chart.client.PdgtmDataChanged = onPdgtmDataChanged;
+            chart.client.SendMessage = onSendMessage;
+            
+            $('#send').click(onSend);
+
+            $.connection.hub.start();
+
+
+            function onHistorianDataChanged(historianValues) {
+                console.log(historianValues);
+            }
+
+            function onPdgtmDataChanged(pdgtmValues) {
+                console.log(pdgtmValues);
+            }
+
+            function onSend() {
+                chart.server.sendMessage('Hello!');
+            }
+
+            function onSendMessage(message) {
+                alert(message);
+            }
+        });
     </script>   
 }

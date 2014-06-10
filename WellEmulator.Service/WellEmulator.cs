@@ -23,6 +23,8 @@ namespace WellEmulator.Service
         private static DatabaseObserver _databaseObserver;
         private static List<IWellEmulatorCallback> _subscribers;
 
+        private static int _numberDataBaseValues = 50;
+
         private static bool _initialized = false;
 
         public WellEmulator()
@@ -43,34 +45,8 @@ namespace WellEmulator.Service
                     _subscribers = new List<IWellEmulatorCallback>();
 
                     _databaseObserver = new DatabaseObserver();
-                    _databaseObserver.OnHistorianDataChanged += () =>
-                    {
-                        _subscribers.ForEach(delegate(IWellEmulatorCallback callback)
-                        {
-                            if (((ICommunicationObject)callback).State == CommunicationState.Opened)
-                            {
-                                callback.OnHistorianDataChanged(_historianAdapter.GetValues(50));
-                            }
-                            else
-                            {
-                                _subscribers.Remove(callback);
-                            }
-                        });
-                    };
-                    _databaseObserver.OnPdgtmDataChanged += () =>
-                    {
-                        _subscribers.ForEach(delegate(IWellEmulatorCallback callback)
-                        {
-                            if (((ICommunicationObject) callback).State == CommunicationState.Opened)
-                            {
-                                callback.OnPdgtmDataChanged(_pdgtmDbAdapter.GetValues(50));
-                            }
-                            else
-                            {
-                                _subscribers.Remove(callback);
-                            }
-                        });
-                    };
+                    _databaseObserver.OnHistorianDataChanged += OnHistorianDataChanged;
+                    _databaseObserver.OnPdgtmDataChanged += OnPdgtmDataChanged;
 
                     LoadSettings();
                 }
@@ -79,6 +55,46 @@ namespace WellEmulator.Service
             {
                 throw new Exception("Load failed", ex);
             }
+        }
+
+        private void OnHistorianDataChanged()
+        {
+            _subscribers.ForEach(delegate(IWellEmulatorCallback callback)
+            {
+                if (((ICommunicationObject)callback).State == CommunicationState.Opened)
+                {
+                    callback.OnHistorianDataChanged(_historianAdapter.GetValues(_numberDataBaseValues));
+                }
+                else
+                {
+                    _subscribers.Remove(callback);
+                }
+            });
+        }
+
+        private void OnPdgtmDataChanged()
+        {
+            _subscribers.ForEach(delegate(IWellEmulatorCallback callback)
+            {
+                if (((ICommunicationObject)callback).State == CommunicationState.Opened)
+                {
+                    callback.OnPdgtmDataChanged(_pdgtmDbAdapter.GetValues(_numberDataBaseValues));
+                }
+                else
+                {
+                    _subscribers.Remove(callback);
+                }
+            });
+        }
+
+        public void SetNumberDbValues(int number)
+        {
+            _numberDataBaseValues = number;
+        }
+
+        public int GetNumberDbValues()
+        {
+            return _numberDataBaseValues;
         }
 
         public bool Connect()

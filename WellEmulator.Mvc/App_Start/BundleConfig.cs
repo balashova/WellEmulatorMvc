@@ -44,6 +44,9 @@ namespace WellEmulator.Mvc
             // Мои скрипты
             bundles.Add(new ScriptBundle("~/bundles/flot").Include(
                         "~/Content/Flot/jquery.flot.min.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/signalr").Include(
+                        "~/Scripts/jquery.signalR-2.0.3.js"));
         }
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.Web;
+using WellEmulator.Mvc.Hubs;
 using WellEmulator.Service.Client.ServiceReference;
 
 namespace WellEmulator.Mvc.ServiceListeners
@@ -28,12 +29,12 @@ namespace WellEmulator.Mvc.ServiceListeners
     {
         public void OnPdgtmDataChanged(PdgtmValue[] pdgtmValues)
         {
-            throw new NotImplementedException();
+            ChartHub.PdgtmDataChanged(pdgtmValues);
         }
 
         public void OnHistorianDataChanged(HistorianValue[] historianValues)
         {
-            throw new NotImplementedException();
+            ChartHub.HistorianDataChanged(historianValues);
         }
     }
 }
