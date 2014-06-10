@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -15,18 +16,24 @@ namespace WellEmulator.Core
     public class Emulator : IEmulator
     {
         private readonly Random _random = new Random();
-        private List<Tag> _tags = new List<Tag>();
+        private IList<Tag> _tags;
         private TimeSpan _autoSaveReportPeriod = new TimeSpan(0, 0, 0, 10);
         private TimeSpan _generationPeriod = new TimeSpan(0, 0, 0, 1);
         private StopableThread _emulationThread;
         private StopableThread _autoSaveThread;
         private readonly IReporter _reporter;
 
-        private Logger _logger = LogManager.GetCurrentClassLogger();
-
         public Emulator(IReporter reporter)
         {
-            ValuesDelay = new TimeSpan(0, 0, 3, 0);
+            _tags = new List<Tag>();
+            ValuesDelay = new TimeSpan(0, 0, 3);
+            _reporter = reporter;
+        }
+
+        public Emulator(IReporter reporter, IList<Tag> tags)
+        {
+            _tags = tags;
+            ValuesDelay = new TimeSpan(0, 0, 3);
             _reporter = reporter;
         }
 
@@ -38,7 +45,6 @@ namespace WellEmulator.Core
             get { return _autoSaveReportPeriod; }
             set
             {
-                if (value.Equals(default(TimeSpan))) throw new InvalidTimeSpanException();
                 _autoSaveReportPeriod = value;
                 if (IsRunning) AutoSaveThreadRestart();
             }
@@ -49,7 +55,6 @@ namespace WellEmulator.Core
             get { return _generationPeriod; }
             set
             {
-                if (value.Equals(default(TimeSpan))) throw new InvalidTimeSpanException();
                 _generationPeriod = value;
                 if (IsRunning) EmulationThreadRestart();
             }
@@ -63,7 +68,7 @@ namespace WellEmulator.Core
             }
         }
 
-        public List<Tag> Tags
+        public IList<Tag> Tags
         {
             get { return _tags; }
             set

@@ -12,12 +12,19 @@ namespace WellEmulator.Core
     public class CsvReporter : IReporter
     {
         private readonly DirectoryInfo _directoryInfo;
-        private readonly List<CsvStruct> _csvStructs = new List<CsvStruct>(1000);
+        private readonly IList<CsvStruct> _cache;
 
         private const char Splitter = '|';
 
         public CsvReporter(DirectoryInfo directoryInfo)
         {
+            _cache = new List<CsvStruct>();
+            _directoryInfo = directoryInfo;
+        }
+
+        public CsvReporter(DirectoryInfo directoryInfo, IList<CsvStruct> cache)
+        {
+            _cache = cache;
             _directoryInfo = directoryInfo;
         }
 
@@ -27,9 +34,9 @@ namespace WellEmulator.Core
         {
             set
             {
-                lock (_csvStructs)
+                lock (_cache)
                 {
-                    _csvStructs.Add(new CsvStruct
+                    _cache.Add(new CsvStruct
                     {
                         Value = value,
                         Name = name,
@@ -39,7 +46,7 @@ namespace WellEmulator.Core
             }
         }
 
-        private struct CsvStruct
+        public struct CsvStruct
         {
             internal double Value { get; set; }
             internal DateTime TimeStamp { get; set; }
@@ -57,9 +64,9 @@ namespace WellEmulator.Core
             textWriter.WriteLine(Splitter);
             textWriter.WriteLine("{1}{0}1{0}Server Local{0}10{0}2", Splitter, "Andrey Cherkashin");
 
-            lock (_csvStructs)
+            lock (_cache)
             {
-                foreach (var tag in _csvStructs)
+                foreach (var tag in _cache)
                 {
                     var time = tag.TimeStamp.Subtract(Delay);
                     textWriter.WriteLine("{1}{0}0{0}{2}{0}{3}{0}1{0}{4}{0}192",
@@ -69,7 +76,7 @@ namespace WellEmulator.Core
                                          time.ToString("HH:mm:ss.fff", CultureInfo.InvariantCulture),
                                          tag.Value.ToString("F1", CultureInfo.InvariantCulture));
                 }
-                _csvStructs.Clear();
+                _cache.Clear();
             }
             textWriter.Close();
         }

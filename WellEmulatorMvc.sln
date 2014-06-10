@@ -34,10 +34,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{E4E013A7
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WellEmulator.Core.Tests", "Tests\WellEmulator.Core.Tests\WellEmulator.Core.Tests.csproj", "{2B37B3E5-1C49-4857-8A32-5602B6DF7774}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WellEmulator.Core.Tests", "Tests.XUnit\WellEmulator.Core.Tests\WellEmulator.Core.Tests.csproj", "{CFEA9631-0750-4122-A828-A46E9F8403C3}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests.XUnit", "Tests.XUnit", "{C2910A23-A13D-4CFD-B970-88633224F65C}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -135,22 +131,11 @@ Global
 		{2B37B3E5-1C49-4857-8A32-5602B6DF7774}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{2B37B3E5-1C49-4857-8A32-5602B6DF7774}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{2B37B3E5-1C49-4857-8A32-5602B6DF7774}.Release|x86.ActiveCfg = Release|Any CPU
-		{CFEA9631-0750-4122-A828-A46E9F8403C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CFEA9631-0750-4122-A828-A46E9F8403C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CFEA9631-0750-4122-A828-A46E9F8403C3}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{CFEA9631-0750-4122-A828-A46E9F8403C3}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{CFEA9631-0750-4122-A828-A46E9F8403C3}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{CFEA9631-0750-4122-A828-A46E9F8403C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CFEA9631-0750-4122-A828-A46E9F8403C3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CFEA9631-0750-4122-A828-A46E9F8403C3}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{CFEA9631-0750-4122-A828-A46E9F8403C3}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{CFEA9631-0750-4122-A828-A46E9F8403C3}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{2B37B3E5-1C49-4857-8A32-5602B6DF7774} = {E4E013A7-B325-42B1-8F97-FB5FCE0254E7}
-		{CFEA9631-0750-4122-A828-A46E9F8403C3} = {C2910A23-A13D-4CFD-B970-88633224F65C}
 	EndGlobalSection
 EndGlobal

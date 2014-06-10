@@ -9,10 +9,17 @@ namespace WellEmulator.Core
     public class DbReporter : IReporter
     {
         private readonly IHistorianAdapter _historianAdapter;
-        private readonly Dictionary<string, List<double>> _cache = new Dictionary<string, List<double>>();
+        private readonly IDictionary<string, IList<double>> _cache;
 
         public DbReporter(IHistorianAdapter historianAdapter)
         {
+            _cache = new Dictionary<string, IList<double>>();
+            _historianAdapter = historianAdapter;
+        }
+
+        public DbReporter(IHistorianAdapter historianAdapter, IDictionary<string, IList<double>> cache)
+        {
+            _cache = cache;
             _historianAdapter = historianAdapter;
         }
 
@@ -33,14 +40,15 @@ namespace WellEmulator.Core
             {
                 lock (_cache)
                 {
-                    if (_cache.ContainsKey(name))
+                    IList<double> values;
+                    if (_cache.TryGetValue(name, out values))
                     {
-                        _cache[name].Add(value);
+                        values.Add(value);
                     }
                     else
                     {
-                        _cache.Add(name, new List<double>());
-                        _cache[name].Add(value);
+                        values = new List<double> { value };
+                        _cache.Add(name, values);
                     } 
                 }
             }

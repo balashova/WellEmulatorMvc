@@ -26,7 +26,7 @@ namespace WellEmulator.Core
         /// <returns></returns>
         Dictionary<string, double> GetTagValues(List<string> tags);
 
-        void InsertTagValues(Dictionary<string, List<double>> tagsValues);
+        void InsertTagValues(IDictionary<string, IList<double>> tagsValues);
         List<HistorianValue> GetValues(TimeSpan range);
     }
 }

@@ -13,9 +13,11 @@ namespace WellEmulator.Core
 {
     public class DatabaseObserver : IDisposable, IDatabaseObserver
     {
-        private readonly string _historianConnectionString; 
-        private readonly string _pdgtmConnectionString;
+        private readonly List<string> _connectionStrings = new List<string>(); 
         private readonly Logger _logger = LogManager.GetCurrentClassLogger();
+
+        private readonly string _historianConnectionString;
+        private readonly string _pdgtmConnectionString;
 
         public event EventHandler OnHistorianDataChanged;
         public event EventHandler OnPdgtmDataChanged;
@@ -26,60 +28,59 @@ namespace WellEmulator.Core
             _historianConnectionString = historianConnectionString;
             _pdgtmConnectionString = pdgtmConnectionString;
 
+            _connectionStrings.Add(historianConnectionString);
+            _connectionStrings.Add(pdgtmConnectionString);
+
             SqlDependency.Start(_historianConnectionString);
             SqlDependency.Start(_pdgtmConnectionString);
+            
             ObserveHistorian();
             ObservePdgtm();
         }
 
+        public DatabaseObserver()
+        {      
+        }
+
+        public void StartObserverOn(string connectionString)
+        {
+            _connectionStrings.Add(connectionString);
+            SqlDependency.Start(connectionString);
+        }
+
         public void ObserveHistorian()
         {
-            try
-            {
-                using (var connection = new SqlConnection(_historianConnectionString))
-                {
-                    connection.Open();
-                    using (
-                        var command = new SqlCommand(@"SELECT [Id],[TagName],[Value],[Time] FROM [dbo].[History]",
-                            connection))
-                    {
-                        command.Notification = null;
-                        var dependency = new SqlDependency(command);
-                        dependency.OnChange += Historian_OnChange;
-                        command.ExecuteNonQuery();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                _logger.Error("Error observing History table", ex);
-                throw;
-            }
+            Observe(@"SELECT [Id],[TagName],[Value],[Time] FROM [dbo].[History]", 
+                _historianConnectionString,
+                Historian_OnChange);
         }
 
         public void ObservePdgtm()
         {
+            Observe(@"SELECT [Id],[WellId],[OilRate],[GasRate],[WaterRate],[Time] FROM [dbo].[Values]",
+                _pdgtmConnectionString,
+                Pdgtm_OnChange);
+        }
+
+        public void Observe(string query, string connectionString, OnChangeEventHandler func)
+        {
             try
             {
-                using (var connection = new SqlConnection(_pdgtmConnectionString))
+                using (var connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    using (
-                        var command =
-                            new SqlCommand(
-                                @"SELECT [Id],[WellId],[OilRate],[GasRate],[WaterRate],[Time] FROM [dbo].[Values]",
-                                connection))
+                    using (var command = new SqlCommand(query, connection))
                     {
                         command.Notification = null;
                         var dependency = new SqlDependency(command);
-                        dependency.OnChange += Pdgtm_OnChange;
+                        dependency.OnChange += func;
                         command.ExecuteNonQuery();
                     }
                 }
             }
             catch (Exception ex)
             {
-                _logger.Error("Error observing PDGTM table", ex);
+                _logger.Error("Error observing table. Query: {0}", query, ex);
                 throw;
             }
         }
@@ -102,8 +103,7 @@ namespace WellEmulator.Core
 
         public void Dispose()
         {
-            SqlDependency.Stop(_historianConnectionString);
-            SqlDependency.Stop(_pdgtmConnectionString);
+            _connectionStrings.ForEach(connStr => SqlDependency.Stop(connStr));
         }
     }
 }

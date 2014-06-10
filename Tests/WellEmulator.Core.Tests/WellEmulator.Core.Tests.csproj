@@ -39,6 +39,7 @@
       <HintPath>..\..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -47,16 +48,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CsvReporterTests.cs" />
+    <Compile Include="DatabaseObserverTests.cs" />
+    <Compile Include="DbReporterTests.cs" />
+    <Compile Include="EmulatorTests.cs" />
     <Compile Include="StopableThreadTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\WellEmulator.Service\App.config">
+      <Link>App.config</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\WellEmulator.Core\WellEmulator.Core.csproj">
       <Project>{770eba8c-b610-4c52-816a-fd4127d909dd}</Project>
       <Name>WellEmulator.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\WellEmulator.Models\WellEmulator.Models.csproj">
+      <Project>{1b5d2be4-f200-4d91-b869-98cceffd5747}</Project>
+      <Name>WellEmulator.Models</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

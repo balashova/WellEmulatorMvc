@@ -11,7 +11,7 @@ namespace WellEmulator.Core
         TimeSpan AutoSaveReportPeriod { get; set; }
         TimeSpan GenerationPeriod { get; set; }
         IEnumerable<string> TagNames { get; }
-        List<Tag> Tags { get; set; }
+        IList<Tag> Tags { get; set; }
         void AddTag(Tag tag);
         Tag GetTag(int tagId);
         void RemoveTag(Tag tag);

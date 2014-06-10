@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Diagnostics;
 using System.Reflection;
@@ -22,7 +23,6 @@ namespace WellEmulator.Service
 
         protected override void OnStart(string[] args)
         {
-            //Version version = Assembly.GetEntryAssembly().GetName().Version;
             Assembly assembly = Assembly.GetExecutingAssembly();
             FileVersionInfo fileVersionInfo = FileVersionInfo.GetVersionInfo(assembly.Location);
  

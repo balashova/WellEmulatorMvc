@@ -198,7 +198,7 @@ namespace WellEmulator.Core
             return dictionary;
         }
 
-        public void InsertTagValues(Dictionary<string, List<double>> tagsValues)
+        public void InsertTagValues(IDictionary<string, IList<double>> tagsValues)
         {
             if(tagsValues == null || !tagsValues.Any()) return;
 
