@@ -36,11 +36,6 @@ namespace WellEmulator.Mvc.Controllers
             return View(tags);
         }
 
-        //public ActionResult Wells()
-        //{
-        //    return View();
-        //}
-
         public ActionResult Mapping()
         {
             var histWells = _client.GetHistWells();

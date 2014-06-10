@@ -118,7 +118,7 @@
             showMessage();
             $.ajax({
                 data: { groupName: group },
-                url: "/api/service/getobjs",
+                url: "/api/service/getWitsmlObjects",
                 dataType: 'json',
                 contentType: 'application/json; charset=utf-8',
                 success: function(result) {
@@ -145,7 +145,7 @@
             showMessage();
             $.ajax({
                 data: { groupName: group, objectName: object },
-                url: "/api/service/getels",
+                url: "/api/service/getWitsmlElements",
                 success: function(result) {
                     if (result) {
                         $("select#tag-name").html(function() {
@@ -196,7 +196,7 @@
             $.ajax({
                 type: "POST",
                 data: JSON.stringify(createTag()),
-                url: "/api/service/newtag",
+                url: "/api/service/createTag",
                 dataType: 'json',
                 contentType: 'application/json; charset=utf-8',
                 success: function(result) {

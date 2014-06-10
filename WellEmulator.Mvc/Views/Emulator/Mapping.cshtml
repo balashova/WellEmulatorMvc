@@ -135,7 +135,7 @@
             
             $.ajax({
                 type: "POST",
-                url: "/api/service/removemaps",
+                url: "/api/service/removeMapingItems",
                 data: JSON.stringify(mapsId),
                 dataType: 'json',
                 contentType: 'application/json; charset=utf-8',
@@ -155,7 +155,7 @@
 
         var updateMapItems = function() {
             $.ajax({
-                url: "/api/service/getmappings",
+                url: "/api/service/getMappings",
                 dataType: 'json',
                 contentType: 'application/json; charset=utf-8',
                 success: function (result) {
@@ -194,7 +194,7 @@
             showMessage();
             var wellName = $("select#historian-wells :selected").val();
             $.ajax({
-                url: "/api/service/gethisttags",
+                url: "/api/service/getHistorianTags",
                 data: { wellName: wellName },
                 dataType: 'json',
                 contentType: 'application/json; charset=utf-8',
@@ -222,7 +222,7 @@
             showMessage();
             var wellName = $("select#pdgtm-wells :selected").val();
             $.ajax({
-                url: "/api/service/getpdgtmtags",
+                url: "/api/service/getPdgtmTags",
                 data: { wellName: wellName },
                 dataType: 'json',
                 contentType: 'application/json; charset=utf-8',
@@ -252,7 +252,7 @@
             $.ajax({
                 type: "POST",
                 data: JSON.stringify(createMapItem()),
-                url: "/api/service/addmap",
+                url: "/api/service/addMappingItem",
                 dataType: 'json',
                 contentType: 'application/json; charset=utf-8',
                 success: function (result) {

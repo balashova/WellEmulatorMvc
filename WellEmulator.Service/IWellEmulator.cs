@@ -4,9 +4,15 @@ using WellEmulator.Models;
 
 namespace WellEmulator.Service
 {
-    [ServiceContract(Namespace = "http://WellEmulator.com")]
+    [ServiceContract(Namespace = "http://WellEmulator.com", CallbackContract = typeof(IWellEmulatorCallback))]
     public interface IWellEmulator
     {
+        [OperationContract]
+        bool Connect();
+
+        [OperationContract]
+        bool Disconnect();
+
         [OperationContract]
         void DisableReplication();
 

@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Динамика";
+    ViewBag.SubTitle = "поступления данных";
+    string units = null;
+}
+
+@section Styles
+{
+    <style>
+        #chart {
+            width: 600px;
+            height: 300px;
+        }
+    </style>
+}
+
+<div id="chart-container">
+    <div id="chart">
+        
+    </div>
+</div>
+
+@section Scripts
+{
+    @Scripts.Render("~/bundles/flot")
+
+    <script>
+        var plot = $.plot("#chart", [[[0, 0], [50, 50]]], { yaxis: { min: 0, max: 100 }, xaxis: { show: false } });
+    </script>   
+}

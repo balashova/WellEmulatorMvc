@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Web.Http;
 using WellEmulator.Service.Client.ServiceReference;
 
-namespace WellEmulator.Mvc.Controllers
+namespace WellEmulator.Mvc.Api
 {
     public class ServiceController : ApiController
     {
         private readonly WellEmulatorClient _client = new WellEmulatorClient();
 
-        [ActionName("start")]
+        [ActionName("startEmulator")]
         public string StartEmulator()
         {
             try
@@ -23,7 +23,7 @@ namespace WellEmulator.Mvc.Controllers
             }
         }
 
-        [ActionName("stop")]
+        [ActionName("stopEmulator")]
         public string StopEmulator()
         {
             try
@@ -37,7 +37,7 @@ namespace WellEmulator.Mvc.Controllers
             }
         }
 
-        [ActionName("apply")]
+        [ActionName("applySettings")]
         public string SetSettings(Dictionary<string, double> dict)
         {
             try
@@ -57,7 +57,7 @@ namespace WellEmulator.Mvc.Controllers
             }
         }
 
-        [ActionName("repon")]
+        [ActionName("startReplication")]
         public string StartReplication()
         {
             try
@@ -71,7 +71,7 @@ namespace WellEmulator.Mvc.Controllers
             }
         }
 
-        [ActionName("repoff")]
+        [ActionName("stopReplication")]
         public string StopReplication()
         {
             try
@@ -85,19 +85,19 @@ namespace WellEmulator.Mvc.Controllers
             }
         }
 
-        [ActionName("getobjs")]
+        [ActionName("getWitsmlObjects")]
         public IEnumerable<string> GetWitsmlObjects(string groupName)
         {
             return _client.GetWitsmlObjects(groupName);
         }
 
-        [ActionName("getels")]
+        [ActionName("getWitsmlElements")]
         public IEnumerable<string> GetWitsmlElements(string groupName, string objectName)
         {
             return _client.GetWitsmlElements(groupName, objectName);
         }
 
-        [ActionName("newtag")]
+        [ActionName("createTag")]
         public string CreateNewTag(Tag tag)
         {
             try
@@ -111,19 +111,19 @@ namespace WellEmulator.Mvc.Controllers
             }
         }
 
-        [ActionName("gettag")]
+        [ActionName("getTag")]
         public Tag GetTag(int tagId)
         {
             return _client.GetTag(tagId);
         }
 
-        [ActionName("gettags")]
+        [ActionName("getAllTagsFromSettings")]
         public IEnumerable<Tag> GetTags()
         {
             return _client.GetSettingsTags();
         }
 
-        [ActionName("removetag"), HttpGet]
+        [ActionName("removeTag"), HttpGet]
         public string RemoveTag(int tagId)
         {
             try
@@ -137,19 +137,19 @@ namespace WellEmulator.Mvc.Controllers
             }
         }
 
-        [ActionName("gethisttags")]
+        [ActionName("getHistorianTags")]
         public IEnumerable<string> GetHistTags(string wellName)
         {
             return _client.GetNotMappedHistTags(wellName);
         }
 
-        [ActionName("getpdgtmtags")]
+        [ActionName("getPdgtmTags")]
         public IEnumerable<string> GetPdgtmTags(string wellName)
         {
             return _client.GetNotMappedPdgtmTags(wellName);
         }
 
-        [ActionName("addmap")]
+        [ActionName("addMappingItem")]
         public string AddMapItem(MapItem mapItem)
         {
             try
@@ -163,7 +163,7 @@ namespace WellEmulator.Mvc.Controllers
             }
         }
 
-        [ActionName("removemaps")]
+        [ActionName("removeMapingItems")]
         public string RemoveMapItems(List<int> ids)
         {
             try
@@ -177,7 +177,7 @@ namespace WellEmulator.Mvc.Controllers
             }
         }
 
-        [ActionName("getmappings")]
+        [ActionName("getMappings")]
         public IEnumerable<MapItem> GetMappings()
         {
             return _client.GetMappings();

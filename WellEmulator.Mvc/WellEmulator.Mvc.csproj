@@ -161,9 +161,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\ChartController.cs" />
     <Compile Include="Controllers\EmulatorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ServiceController.cs" />
+    <Compile Include="Api\ServiceController.cs" />
     <Compile Include="Extensions\Extension.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -177,6 +178,7 @@
     <Content Include="Content\bootstrap\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap\bootstrap.css" />
     <Content Include="Content\bootstrap\bootstrap.min.css" />
+    <Content Include="Content\Flot\jquery.flot.min.js" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -281,6 +283,7 @@
     <Content Include="Views\Emulator\Tags.cshtml" />
     <Content Include="Views\Emulator\Wells.cshtml" />
     <Content Include="Views\Emulator\Mapping.cshtml" />
+    <Content Include="Views\Chart\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

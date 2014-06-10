@@ -25,9 +25,6 @@
                                     <li class="@("Управление".Equals(ViewBag.Title) ? "active": "")">
                                         <a href="@Url.Action("Control", "Emulator")">Управление</a>
                                     </li>
-                                    @*<li class="@("Скважины".Equals(ViewBag.Title) ? "active": "")">
-                                        <a href="@Url.Action("Wells", "Emulator")">Скважины</a>
-                                    </li>*@
                                     <li class="@("Новый тег".Equals(ViewBag.Title) ? "active": "")">
                                         <a href="@Url.Action("NewTag", "Emulator")">Добавление тега</a>
                                     </li>
@@ -37,19 +34,10 @@
                                     <li class="@("Сопоставление".Equals(ViewBag.Title) ? "active": "")">
                                         <a href="@Url.Action("Mapping", "Emulator")">Репликация</a>
                                     </li>
-                                </ul>
-                                @*<ul class="nav navbar-nav navbar-right">
-                                    <li>
-                                        <button type="button" class="btn btn-default">
-                                            <span class="glyphicon glyphicon-play"></span>
-                                            Запустить
-                                        </button>
-                                        <button type="button" class="btn btn-default">
-                                            <span class="glyphicon glyphicon-stop"></span>
-                                            Остановить
-                                        </button>
+                                    <li class="@("Динамика".Equals(ViewBag.Title) ? "active" : "")">
+                                        <a href="@Url.Action("Index", "Chart")">Графики</a>
                                     </li>
-                                </ul>*@
+                                </ul>
                             </div>
                         </nav>
                     </div>

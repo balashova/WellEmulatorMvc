@@ -40,6 +40,10 @@ namespace WellEmulator.Mvc
                         "~/Content/themes/base/jquery.ui.datepicker.css",
                         "~/Content/themes/base/jquery.ui.progressbar.css",
                         "~/Content/themes/base/jquery.ui.theme.css"));
+
+            // Мои скрипты
+            bundles.Add(new ScriptBundle("~/bundles/flot").Include(
+                        "~/Content/Flot/jquery.flot.min.js"));
         }
     }
 }

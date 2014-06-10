@@ -13,7 +13,7 @@
         .column-header {
             text-align: center;
             padding: 10px;
-            margin: 0px 50px 30px;
+            margin: 0 50px 30px;
             font-weight: bold;
             color: #999999;
             border-bottom: 1px solid #eeeeee;
@@ -112,7 +112,7 @@
         var getTag = function() {
             var tagId = $("select#tag-list :selected").data("tag-id");
             $.ajax({
-                url: "/api/service/gettag",
+                url: "/api/service/getTag",
                 data: { tagId: tagId },
                 dataType: 'json',
                 contentType: 'application/json; charset=utf-8',
@@ -139,7 +139,7 @@
             var tagId = $("select#tag-list :selected").data("tag-id");
             console.log({ tagId: tagId });
             $.ajax({
-                url: "/api/service/removetag",
+                url: "/api/service/removeTag",
                 data: { tagId: tagId },
                 dataType: 'json',
                 contentType: 'application/json; charset=utf-8',
@@ -159,7 +159,7 @@
         
         var updateTags = function () {
             $.ajax({
-                url: "/api/service/gettags",
+                url: "/api/service/getAllTagsFromSettings",
                 dataType: 'json',
                 contentType: 'application/json; charset=utf-8',
                 success: function (result) {

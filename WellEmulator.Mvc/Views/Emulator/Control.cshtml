@@ -162,7 +162,7 @@
             showMessage();
             $.ajax({
                 type: "POST",
-                url: "/api/service/repon",
+                url: "/api/service/startReplication",
                 success: function (result) {
                     if (result == "ok") {
                         $("button#start-replication").attr("disabled", "disabled");
@@ -182,7 +182,7 @@
             showMessage();
             $.ajax({
                 type: "POST",
-                url: "/api/service/repoff",
+                url: "/api/service/stopReplication",
                 success: function (result) {
                     if (result == "ok") {
                         $("button#start-replication").removeAttr("disabled");
@@ -202,7 +202,7 @@
             showMessage();
             $.ajax({
                 type: "POST",
-                url: "/api/service/start",
+                url: "/api/service/startEmulator",
                 success: function (result) {
                     if (result == "ok") {
                         $("button#start-emulator").attr("disabled", "disabled");
@@ -222,7 +222,7 @@
             showMessage();
             $.ajax({
                 type: "POST",
-                url: "/api/service/stop",
+                url: "/api/service/stopEmulator",
                 success: function (result) {
                     if (result == "ok") {
                         $("button#start-emulator").removeAttr("disabled");
@@ -253,7 +253,7 @@
             showMessage();
             $.ajax({
                 type: "POST",
-                url: "/api/service/apply",
+                url: "/api/service/applySettings",
                 data: JSON.stringify(settings),
                 dataType: 'json',
                 contentType: 'application/json; charset=utf-8',

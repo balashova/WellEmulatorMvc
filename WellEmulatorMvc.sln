@@ -12,8 +12,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WellEmulator.Models", "Well
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WellEmulator.Core", "WellEmulator.Core\WellEmulator.Core.csproj", "{770EBA8C-B610-4C52-816A-FD4127D909DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApplication", "TestApplication\TestApplication.csproj", "{F530CE32-1BB2-48D4-83B0-466BBFC51AAA}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WellEmulator.Service", "WellEmulator.Service\WellEmulator.Service.csproj", "{7A1FF0A7-9A89-49D1-AE0B-6D7B6309EEDF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WellEmulator.Service.Host.Console", "WellEmulator.Service.Host.Console\WellEmulator.Service.Host.Console.csproj", "{1C5CA0CB-E0A0-42FB-BD2D-CB5071387800}"
@@ -31,6 +29,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{BC5F18
 		.nuget\NuGet.exe = .nuget\NuGet.exe
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{E4E013A7-B325-42B1-8F97-FB5FCE0254E7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,17 +75,6 @@ Global
 		{770EBA8C-B610-4C52-816A-FD4127D909DD}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{770EBA8C-B610-4C52-816A-FD4127D909DD}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{770EBA8C-B610-4C52-816A-FD4127D909DD}.Release|x86.ActiveCfg = Release|Any CPU
-		{F530CE32-1BB2-48D4-83B0-466BBFC51AAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F530CE32-1BB2-48D4-83B0-466BBFC51AAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F530CE32-1BB2-48D4-83B0-466BBFC51AAA}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{F530CE32-1BB2-48D4-83B0-466BBFC51AAA}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{F530CE32-1BB2-48D4-83B0-466BBFC51AAA}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{F530CE32-1BB2-48D4-83B0-466BBFC51AAA}.Debug|x86.Build.0 = Debug|Any CPU
-		{F530CE32-1BB2-48D4-83B0-466BBFC51AAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F530CE32-1BB2-48D4-83B0-466BBFC51AAA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F530CE32-1BB2-48D4-83B0-466BBFC51AAA}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{F530CE32-1BB2-48D4-83B0-466BBFC51AAA}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{F530CE32-1BB2-48D4-83B0-466BBFC51AAA}.Release|x86.ActiveCfg = Release|Any CPU
 		{7A1FF0A7-9A89-49D1-AE0B-6D7B6309EEDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7A1FF0A7-9A89-49D1-AE0B-6D7B6309EEDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A1FF0A7-9A89-49D1-AE0B-6D7B6309EEDF}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
