@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Globalization;
 using System.Linq;
@@ -145,5 +146,48 @@ namespace WellEmulator.Core
                 }
             }
         }
+
+        public List<PdgtmValue> GetValues(int number)
+        {
+            List<PdgtmValue> list = null;
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    using (
+                        var command =
+                            new SqlCommand(
+                                string.Format("SELECT TOP {0} [Id],[WellId],[OilRate],[GasRate],[WaterRate],[Time] FROM [dbo].[History]",
+                                    number),
+                                connection))
+                    {
+                        using (var reader = command.ExecuteReader())
+                        {
+                            list = reader.Cast<IDataRecord>()
+                                .Select(x => new PdgtmValue
+                                {
+                                    Id = x.GetInt32(0),
+                                    WellId = x.GetInt32(1),
+                                    OilRate = Double.Parse(x[2].ToString()),
+                                    GasRate = Double.Parse(x[3].ToString()),
+                                    WaterRate = Double.Parse(x[4].ToString()),
+                                    Time = x.GetDateTime(5)
+                                }).ToList();
+                        }
+                    }
+                }
+                catch (SqlException ex)
+                {
+                    _logger.FatalException(string.Format("Row number: {0}", number), ex);
+                    throw new PDGTMSelectTopValuesException(ex.ToString());
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+            return list;
+        } 
     }
 }

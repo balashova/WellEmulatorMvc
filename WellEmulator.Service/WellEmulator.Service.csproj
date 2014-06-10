@@ -79,6 +79,7 @@
   <ItemGroup>
     <Compile Include="Extension\Extension.cs" />
     <Compile Include="IWellEmulator.cs" />
+    <Compile Include="IWellEmulatorCallback.cs" />
     <Compile Include="Parsers\WitsmlElementsParser.cs" />
     <Compile Include="ProjectInstaller.cs">
       <SubType>Component</SubType>

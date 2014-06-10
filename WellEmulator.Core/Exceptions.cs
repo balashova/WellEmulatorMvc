@@ -49,4 +49,12 @@ namespace WellEmulator.Core
         public PDGTMConnectionStringException(string message, Exception innerException)
             : base(message, innerException) { }
     }
+
+    public class PDGTMSelectTopValuesException : Exception
+    {
+        public PDGTMSelectTopValuesException(string message) : base(message)
+        {
+            
+        }
+    }
 }

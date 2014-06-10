@@ -14,7 +14,7 @@ by this:
 $(var.WellEmulator.Service.TargetDir)Standards
 
 
-
+To create databases:
 
 USE [master]
 GO
@@ -23,11 +23,16 @@ IF EXISTS(select * from sys.databases where name='PDGTM')
 DROP DATABASE [PDGTM]
 CREATE DATABASE [PDGTM]
 GO
+ALTER DATABASE [PDGTM] SET ENABLE_BROKER WITH ROLLBACK IMMEDIATE;
+GO
 
 IF EXISTS(select * from sys.databases where name='Runtime')
 DROP DATABASE [Runtime]
 CREATE DATABASE [Runtime]
 GO
+ALTER DATABASE [Runtime] SET ENABLE_BROKER WITH ROLLBACK IMMEDIATE;
+GO
+
 
 IF EXISTS(select * from sys.databases where name='WellEmulatorSettings')
 DROP DATABASE [WellEmulatorSettings]
@@ -51,6 +56,7 @@ CREATE TABLE [dbo].[Values] (
     [OilRate]   REAL CONSTRAINT [DF_Values_OilRate] DEFAULT ((0)) NOT NULL,
     [GasRate]   REAL CONSTRAINT [DF_Values_GasRate] DEFAULT ((0)) NOT NULL,
     [WaterRate] REAL CONSTRAINT [DF_Values_WaterRate] DEFAULT ((0)) NOT NULL,
+    [Time] [datetime] CONSTRAINT [DF_Values_Time] DEFAULT (getdate()) NOT NULL,
     CONSTRAINT [PK_Values] PRIMARY KEY CLUSTERED ([Id] ASC),
     CONSTRAINT [FK_Values_WellId] FOREIGN KEY ([WellId]) REFERENCES [dbo].[Well] ([Id]) ON DELETE CASCADE
 );
@@ -64,6 +70,7 @@ CREATE TABLE [dbo].[History] (
     [Id]      INT          IDENTITY (1, 1) NOT NULL,
     [TagName] VARCHAR (50) NOT NULL,
     [Value]   REAL         NOT NULL,
+    [Time] [datetime]      NOT NULL CONSTRAINT [DF_History_Time] DEFAULT (getdate()),
     CONSTRAINT [PK_History] PRIMARY KEY CLUSTERED ([Id] ASC)
 );
 

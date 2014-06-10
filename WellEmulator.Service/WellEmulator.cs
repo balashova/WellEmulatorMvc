@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.ServiceModel;
 using NLog;
 using WellEmulator.Core;
 using WellEmulator.Models;
@@ -19,6 +20,8 @@ namespace WellEmulator.Service
         private static PdgtmDbAdapter _pdgtmDbAdapter;
         private static HistorianAdapter _historianAdapter;
         private static SettingsManager _settingsManager;
+        private static DatabaseObserver _databaseObserver;
+        private static List<IWellEmulatorCallback> _subscribers;
 
         private static bool _initialized = false;
 
@@ -37,6 +40,37 @@ namespace WellEmulator.Service
                     _pdgtmDbAdapter = new PdgtmDbAdapter();
                     _historianAdapter = new HistorianAdapter();
                     _settingsManager = new SettingsManager();
+                    _subscribers = new List<IWellEmulatorCallback>();
+
+                    _databaseObserver = new DatabaseObserver();
+                    _databaseObserver.OnHistorianDataChanged += () =>
+                    {
+                        _subscribers.ForEach(delegate(IWellEmulatorCallback callback)
+                        {
+                            if (((ICommunicationObject)callback).State == CommunicationState.Opened)
+                            {
+                                callback.OnHistorianDataChanged(_historianAdapter.GetValues(50));
+                            }
+                            else
+                            {
+                                _subscribers.Remove(callback);
+                            }
+                        });
+                    };
+                    _databaseObserver.OnPdgtmDataChanged += () =>
+                    {
+                        _subscribers.ForEach(delegate(IWellEmulatorCallback callback)
+                        {
+                            if (((ICommunicationObject) callback).State == CommunicationState.Opened)
+                            {
+                                callback.OnPdgtmDataChanged(_pdgtmDbAdapter.GetValues(50));
+                            }
+                            else
+                            {
+                                _subscribers.Remove(callback);
+                            }
+                        });
+                    };
 
                     LoadSettings();
                 }
@@ -44,6 +78,34 @@ namespace WellEmulator.Service
             catch (Exception ex)
             {
                 throw new Exception("Load failed", ex);
+            }
+        }
+
+        public bool Connect()
+        {
+            try
+            {
+                var callback = OperationContext.Current.GetCallbackChannel<IWellEmulatorCallback>();
+                if (!_subscribers.Contains(callback)) _subscribers.Add(callback);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool Disconnect()
+        {
+            try
+            {
+                var callback = OperationContext.Current.GetCallbackChannel<IWellEmulatorCallback>();
+                if (_subscribers.Contains(callback)) _subscribers.Remove(callback);
+                return true;
+            }
+            catch
+            {
+                return false;
             }
         }
 

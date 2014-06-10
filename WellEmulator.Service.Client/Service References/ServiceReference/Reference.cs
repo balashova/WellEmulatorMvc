@@ -497,9 +497,239 @@ namespace WellEmulator.Service.Client.ServiceReference {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PdgtmValue", Namespace="http://schemas.datacontract.org/2004/07/WellEmulator.Models")]
+    [System.SerializableAttribute()]
+    public partial class PdgtmValue : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double GasRateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double OilRateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime TimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double WaterRateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int WellIdField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double GasRate {
+            get {
+                return this.GasRateField;
+            }
+            set {
+                if ((this.GasRateField.Equals(value) != true)) {
+                    this.GasRateField = value;
+                    this.RaisePropertyChanged("GasRate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double OilRate {
+            get {
+                return this.OilRateField;
+            }
+            set {
+                if ((this.OilRateField.Equals(value) != true)) {
+                    this.OilRateField = value;
+                    this.RaisePropertyChanged("OilRate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime Time {
+            get {
+                return this.TimeField;
+            }
+            set {
+                if ((this.TimeField.Equals(value) != true)) {
+                    this.TimeField = value;
+                    this.RaisePropertyChanged("Time");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double WaterRate {
+            get {
+                return this.WaterRateField;
+            }
+            set {
+                if ((this.WaterRateField.Equals(value) != true)) {
+                    this.WaterRateField = value;
+                    this.RaisePropertyChanged("WaterRate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int WellId {
+            get {
+                return this.WellIdField;
+            }
+            set {
+                if ((this.WellIdField.Equals(value) != true)) {
+                    this.WellIdField = value;
+                    this.RaisePropertyChanged("WellId");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="HistorianValue", Namespace="http://schemas.datacontract.org/2004/07/WellEmulator.Models")]
+    [System.SerializableAttribute()]
+    public partial class HistorianValue : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TagNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime TimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double ValueField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TagName {
+            get {
+                return this.TagNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TagNameField, value) != true)) {
+                    this.TagNameField = value;
+                    this.RaisePropertyChanged("TagName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime Time {
+            get {
+                return this.TimeField;
+            }
+            set {
+                if ((this.TimeField.Equals(value) != true)) {
+                    this.TimeField = value;
+                    this.RaisePropertyChanged("Time");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double Value {
+            get {
+                return this.ValueField;
+            }
+            set {
+                if ((this.ValueField.Equals(value) != true)) {
+                    this.ValueField = value;
+                    this.RaisePropertyChanged("Value");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="http://WellEmulator.com", ConfigurationName="ServiceReference.IWellEmulator")]
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://WellEmulator.com", ConfigurationName="ServiceReference.IWellEmulator", CallbackContract=typeof(WellEmulator.Service.Client.ServiceReference.IWellEmulatorCallback))]
     public interface IWellEmulator {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/Connect", ReplyAction="http://WellEmulator.com/IWellEmulator/ConnectResponse")]
+        bool Connect();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/Connect", ReplyAction="http://WellEmulator.com/IWellEmulator/ConnectResponse")]
+        System.Threading.Tasks.Task<bool> ConnectAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/Disconnect", ReplyAction="http://WellEmulator.com/IWellEmulator/DisconnectResponse")]
+        bool Disconnect();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/Disconnect", ReplyAction="http://WellEmulator.com/IWellEmulator/DisconnectResponse")]
+        System.Threading.Tasks.Task<bool> DisconnectAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/DisableReplication", ReplyAction="http://WellEmulator.com/IWellEmulator/DisableReplicationResponse")]
         void DisableReplication();
@@ -647,30 +877,57 @@ namespace WellEmulator.Service.Client.ServiceReference {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IWellEmulatorCallback {
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://WellEmulator.com/IWellEmulator/OnPdgtmDataChanged")]
+        void OnPdgtmDataChanged(WellEmulator.Service.Client.ServiceReference.PdgtmValue[] pdgtmValues);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://WellEmulator.com/IWellEmulator/OnHistorianDataChanged")]
+        void OnHistorianDataChanged(WellEmulator.Service.Client.ServiceReference.HistorianValue[] historianValues);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface IWellEmulatorChannel : WellEmulator.Service.Client.ServiceReference.IWellEmulator, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class WellEmulatorClient : System.ServiceModel.ClientBase<WellEmulator.Service.Client.ServiceReference.IWellEmulator>, WellEmulator.Service.Client.ServiceReference.IWellEmulator {
+    public partial class WellEmulatorClient : System.ServiceModel.DuplexClientBase<WellEmulator.Service.Client.ServiceReference.IWellEmulator>, WellEmulator.Service.Client.ServiceReference.IWellEmulator {
         
-        public WellEmulatorClient() {
+        public WellEmulatorClient(System.ServiceModel.InstanceContext callbackInstance) : 
+                base(callbackInstance) {
         }
         
-        public WellEmulatorClient(string endpointConfigurationName) : 
-                base(endpointConfigurationName) {
+        public WellEmulatorClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
+                base(callbackInstance, endpointConfigurationName) {
         }
         
-        public WellEmulatorClient(string endpointConfigurationName, string remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
+        public WellEmulatorClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
         }
         
-        public WellEmulatorClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
+        public WellEmulatorClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
         }
         
-        public WellEmulatorClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(binding, remoteAddress) {
+        public WellEmulatorClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, binding, remoteAddress) {
+        }
+        
+        public bool Connect() {
+            return base.Channel.Connect();
+        }
+        
+        public System.Threading.Tasks.Task<bool> ConnectAsync() {
+            return base.Channel.ConnectAsync();
+        }
+        
+        public bool Disconnect() {
+            return base.Channel.Disconnect();
+        }
+        
+        public System.Threading.Tasks.Task<bool> DisconnectAsync() {
+            return base.Channel.DisconnectAsync();
         }
         
         public void DisableReplication() {

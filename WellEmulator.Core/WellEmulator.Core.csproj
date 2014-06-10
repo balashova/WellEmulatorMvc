@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CsvReporter.cs" />
+    <Compile Include="DatabaseObserver.cs" />
     <Compile Include="DbReporter.cs" />
     <Compile Include="Emulator.cs" />
     <Compile Include="Exceptions.cs" />

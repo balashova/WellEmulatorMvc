@@ -8,6 +8,18 @@
       <xsd:import schemaLocation="http://localhost:9439/WellEmulatorService?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="IWellEmulator_Connect_InputMessage">
+    <wsdl:part name="parameters" element="tns:Connect" />
+  </wsdl:message>
+  <wsdl:message name="IWellEmulator_Connect_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConnectResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWellEmulator_Disconnect_InputMessage">
+    <wsdl:part name="parameters" element="tns:Disconnect" />
+  </wsdl:message>
+  <wsdl:message name="IWellEmulator_Disconnect_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DisconnectResponse" />
+  </wsdl:message>
   <wsdl:message name="IWellEmulator_DisableReplication_InputMessage">
     <wsdl:part name="parameters" element="tns:DisableReplication" />
   </wsdl:message>
@@ -152,7 +164,21 @@
   <wsdl:message name="IWellEmulator_GetNotMappedPdgtmTags_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetNotMappedPdgtmTagsResponse" />
   </wsdl:message>
+  <wsdl:message name="IWellEmulator_OnPdgtmDataChanged_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnPdgtmDataChanged" />
+  </wsdl:message>
+  <wsdl:message name="IWellEmulator_OnHistorianDataChanged_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnHistorianDataChanged" />
+  </wsdl:message>
   <wsdl:portType name="IWellEmulator">
+    <wsdl:operation name="Connect">
+      <wsdl:input wsaw:Action="http://WellEmulator.com/IWellEmulator/Connect" message="tns:IWellEmulator_Connect_InputMessage" />
+      <wsdl:output wsaw:Action="http://WellEmulator.com/IWellEmulator/ConnectResponse" message="tns:IWellEmulator_Connect_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Disconnect">
+      <wsdl:input wsaw:Action="http://WellEmulator.com/IWellEmulator/Disconnect" message="tns:IWellEmulator_Disconnect_InputMessage" />
+      <wsdl:output wsaw:Action="http://WellEmulator.com/IWellEmulator/DisconnectResponse" message="tns:IWellEmulator_Disconnect_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="DisableReplication">
       <wsdl:input wsaw:Action="http://WellEmulator.com/IWellEmulator/DisableReplication" message="tns:IWellEmulator_DisableReplication_InputMessage" />
       <wsdl:output wsaw:Action="http://WellEmulator.com/IWellEmulator/DisableReplicationResponse" message="tns:IWellEmulator_DisableReplication_OutputMessage" />
@@ -248,6 +274,12 @@
     <wsdl:operation name="GetNotMappedPdgtmTags">
       <wsdl:input wsaw:Action="http://WellEmulator.com/IWellEmulator/GetNotMappedPdgtmTags" message="tns:IWellEmulator_GetNotMappedPdgtmTags_InputMessage" />
       <wsdl:output wsaw:Action="http://WellEmulator.com/IWellEmulator/GetNotMappedPdgtmTagsResponse" message="tns:IWellEmulator_GetNotMappedPdgtmTags_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OnPdgtmDataChanged">
+      <wsdl:output wsaw:Action="http://WellEmulator.com/IWellEmulator/OnPdgtmDataChanged" message="tns:IWellEmulator_OnPdgtmDataChanged_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OnHistorianDataChanged">
+      <wsdl:output wsaw:Action="http://WellEmulator.com/IWellEmulator/OnHistorianDataChanged" message="tns:IWellEmulator_OnHistorianDataChanged_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
 </wsdl:definitions>

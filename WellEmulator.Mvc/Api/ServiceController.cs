@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ServiceModel;
 using System.Web.Http;
+using WellEmulator.Mvc.ServiceListeners;
 using WellEmulator.Service.Client.ServiceReference;
 
 namespace WellEmulator.Mvc.Api
 {
     public class ServiceController : ApiController
     {
-        private readonly WellEmulatorClient _client = new WellEmulatorClient();
+        private readonly WellEmulatorClient _client = new ServiceListenerClient();
 
         [ActionName("startEmulator")]
         public string StartEmulator()

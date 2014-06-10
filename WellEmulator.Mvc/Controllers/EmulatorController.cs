@@ -1,13 +1,15 @@
 ﻿using System.Linq;
+using System.ServiceModel;
 using System.Web.Mvc;
 using WellEmulator.Mvc.Models;
+using WellEmulator.Mvc.ServiceListeners;
 using WellEmulator.Service.Client.ServiceReference;
 
 namespace WellEmulator.Mvc.Controllers
 {
     public class EmulatorController : Controller
     {
-        private readonly WellEmulatorClient _client = new WellEmulatorClient();
+        private readonly WellEmulatorClient _client = new ServiceListenerClient();
 
         public ActionResult Control()
         {

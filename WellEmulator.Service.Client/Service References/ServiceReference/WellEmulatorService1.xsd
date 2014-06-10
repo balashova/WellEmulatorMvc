@@ -62,4 +62,36 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Well" nillable="true" type="tns:Well" />
+  <xs:complexType name="ArrayOfPdgtmValue">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PdgtmValue" nillable="true" type="tns:PdgtmValue" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPdgtmValue" nillable="true" type="tns:ArrayOfPdgtmValue" />
+  <xs:complexType name="PdgtmValue">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="GasRate" type="xs:double" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="OilRate" type="xs:double" />
+      <xs:element minOccurs="0" name="Time" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="WaterRate" type="xs:double" />
+      <xs:element minOccurs="0" name="WellId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PdgtmValue" nillable="true" type="tns:PdgtmValue" />
+  <xs:complexType name="ArrayOfHistorianValue">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="HistorianValue" nillable="true" type="tns:HistorianValue" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfHistorianValue" nillable="true" type="tns:ArrayOfHistorianValue" />
+  <xs:complexType name="HistorianValue">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="TagName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Time" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Value" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="HistorianValue" nillable="true" type="tns:HistorianValue" />
 </xs:schema>

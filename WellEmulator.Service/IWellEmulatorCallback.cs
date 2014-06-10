@@ -4,12 +4,16 @@ using System.Linq;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
+using WellEmulator.Models;
 
 namespace WellEmulator.Service
 {
     interface IWellEmulatorCallback
     {
         [OperationContract(IsOneWay = true)]
-        void OnDataAdded(string data);
+        void OnPdgtmDataChanged(List<PdgtmValue> pdgtmValues);
+
+        [OperationContract(IsOneWay = true)]
+        void OnHistorianDataChanged(List<HistorianValue>  historianValues);
     }
 }

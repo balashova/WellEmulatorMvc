@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -209,8 +210,8 @@ namespace WellEmulator.Core
                 }
                 catch (SqlException ex)
                 {
-                    _logger.FatalException(tags.Aggregate(new StringBuilder(), (builder, tag) => builder.
-                                Append((builder.Length == 0 ? "" : ", ") + "'" + tag + "'")).ToString(), ex);
+                    _logger.FatalException(
+                        tags.Aggregate("", (s, tag) => s += (s.Length == 0 ? "" : ", ") + "'" + tag + "'"), ex);
                     throw new HistorianServerNotRunningException(ex);
                 }
                 finally
@@ -261,5 +262,46 @@ namespace WellEmulator.Core
                 }
             }
         }
+
+        public List<HistorianValue> GetValues(int number)
+        {
+            List<HistorianValue> list = null;
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    using (
+                        var command =
+                            new SqlCommand(
+                                string.Format("SELECT TOP {0} [Id], [TagName], [Value], [Time] FROM [dbo].[History]",
+                                    number),
+                                connection))
+                    {
+                        using (var reader = command.ExecuteReader())
+                        {
+                            list = reader.Cast<IDataRecord>()
+                                .Select(x => new HistorianValue
+                                {
+                                    Id = x.GetInt32(0),
+                                    TagName = x.GetString(1),
+                                    Value = Double.Parse(x[2].ToString()),
+                                    Time = x.GetDateTime(3)
+                                }).ToList();
+                        }
+                    }
+                }
+                catch (SqlException ex)
+                {
+                    _logger.FatalException(string.Format("Row number: {0}", number), ex);
+                    throw new HistorianServerNotRunningException(ex);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+            return list;
+        } 
     }
 }
