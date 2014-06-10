@@ -11,24 +11,21 @@ using NLog;
 
 namespace WellEmulator.Core
 {
-    public class DatabaseObserver : IDisposable
+    public class DatabaseObserver : IDisposable, IDatabaseObserver
     {
-        public delegate void OnHistorianDataChangeEventHandler();
-        public event OnHistorianDataChangeEventHandler OnHistorianDataChanged;
-
-        public delegate void OnPdgtmDataChangeEventHandler();
-        public event OnPdgtmDataChangeEventHandler OnPdgtmDataChanged;
-
-        private readonly string _historianConnectionString =
-            ConfigurationManager.ConnectionStrings["HistorianConnection"].ConnectionString;
-
-        private readonly string _pdgtmConnectionString =
-            ConfigurationManager.ConnectionStrings["TeamworkConnection"].ConnectionString;
-
+        private readonly string _historianConnectionString; 
+        private readonly string _pdgtmConnectionString;
         private readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
-        public DatabaseObserver()
+        public event EventHandler OnHistorianDataChanged;
+        public event EventHandler OnPdgtmDataChanged;
+
+        public DatabaseObserver(
+            string historianConnectionString, string pdgtmConnectionString)
         {
+            _historianConnectionString = historianConnectionString;
+            _pdgtmConnectionString = pdgtmConnectionString;
+
             SqlDependency.Start(_historianConnectionString);
             SqlDependency.Start(_pdgtmConnectionString);
             ObserveHistorian();
@@ -51,7 +48,6 @@ namespace WellEmulator.Core
                         dependency.OnChange += Historian_OnChange;
                         command.ExecuteNonQuery();
                     }
-                    connection.Close();
                 }
             }
             catch (Exception ex)
@@ -90,16 +86,16 @@ namespace WellEmulator.Core
 
         private void Historian_OnChange(object sender, SqlNotificationEventArgs e)
         {
-            OnHistorianDataChangeEventHandler handler = OnHistorianDataChanged;
-            if (handler != null) handler();
+            EventHandler handler = OnHistorianDataChanged;
+            if (handler != null) handler(this, e);
 
             ObserveHistorian();
         }
 
         private void Pdgtm_OnChange(object sender, SqlNotificationEventArgs e)
         {
-            OnPdgtmDataChangeEventHandler handler = OnPdgtmDataChanged;
-            if (handler != null) handler();
+            EventHandler handler = OnPdgtmDataChanged;
+            if (handler != null) handler(this, e);
             
             ObservePdgtm();
         }

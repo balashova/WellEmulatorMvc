@@ -6,17 +6,32 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using NLog;
 using WellEmulator.Core.Annotations;
 using WellEmulator.Models;
 
 namespace WellEmulator.Core
 {
-    public class Emulator
+    public class Emulator : IEmulator
     {
-        public bool IsRunning
+        private readonly Random _random = new Random();
+        private List<Tag> _tags = new List<Tag>();
+        private TimeSpan _autoSaveReportPeriod = new TimeSpan(0, 0, 0, 10);
+        private TimeSpan _generationPeriod = new TimeSpan(0, 0, 0, 1);
+        private StopableThread _emulationThread;
+        private StopableThread _autoSaveThread;
+        private readonly IReporter _reporter;
+
+        private Logger _logger = LogManager.GetCurrentClassLogger();
+
+        public Emulator(IReporter reporter)
         {
-            get { return _isRunning; }
+            ValuesDelay = new TimeSpan(0, 0, 3, 0);
+            _reporter = reporter;
         }
+
+        public TimeSpan ValuesDelay { get; set; }
+        public bool IsRunning { get; private set; }
 
         public TimeSpan AutoSaveReportPeriod
         {
@@ -25,7 +40,7 @@ namespace WellEmulator.Core
             {
                 if (value.Equals(default(TimeSpan))) throw new InvalidTimeSpanException();
                 _autoSaveReportPeriod = value;
-                if (_isRunning) AutoSaveThreadRestart();
+                if (IsRunning) AutoSaveThreadRestart();
             }
         }
 
@@ -36,20 +51,10 @@ namespace WellEmulator.Core
             {
                 if (value.Equals(default(TimeSpan))) throw new InvalidTimeSpanException();
                 _generationPeriod = value;
-                if (_isRunning) EmulationThreadRestart();
+                if (IsRunning) EmulationThreadRestart();
             }
         }
-
-        public TimeSpan ValuesDelay
-        {
-            get { return _valuesDelay; }
-            set
-            {
-                if (value.Equals(default(TimeSpan))) throw new InvalidTimeSpanException();
-                _valuesDelay = value;
-            }
-        }
-
+        
         public IEnumerable<string> TagNames
         {
             get
@@ -63,28 +68,15 @@ namespace WellEmulator.Core
             get { return _tags; }
             set
             {
-                if (value == null) throw new NullReferenceException();
-                _tags = value;
+                if (value == null) throw new NullReferenceException("Tags");
+                lock (_tags)
+                {
+                    _tags = value;
+                }
             }
         }
 
-        private readonly Random _random = new Random(DateTime.Now.Second);
-        private List<Tag> _tags = new List<Tag>();
-        private TimeSpan _autoSaveReportPeriod = new TimeSpan(0, 0, 0, 10);
-        private TimeSpan _generationPeriod = new TimeSpan(0, 0, 0, 1);
-        private TimeSpan _valuesDelay = new TimeSpan(0, 0, 3, 0);
-        private bool _isRunning;
-        private StopableThread _emulationThread;
-        private StopableThread _autoSaveThread;
-        private readonly IReporter _reporter;
-
-        public Emulator()
-        {
-            var path = ConfigurationManager.AppSettings.Get("ReportUpload");
-            var directory = new DirectoryInfo(path ?? @"C:\Historian\Data\DataImport\FastLoad");
-            if (!directory.Exists) directory.Create();
-            _reporter = new DbReporter(); //new CsvReporter(directory);
-        }
+        // Methods
 
         public void AddTag(Tag tag)
         {
@@ -109,12 +101,12 @@ namespace WellEmulator.Core
 
         public void Start()
         {
-            if (_isRunning) return;
+            if (IsRunning) return;
 
             EmulationThreadStart();
             AutoSaveThreadStart();
 
-            _isRunning = true;
+            IsRunning = true;
         }
 
         public void Restart()
@@ -128,12 +120,13 @@ namespace WellEmulator.Core
             EmulationThreadStop();
             AutoSaveThreadStop();
 
-            _isRunning = false;
+            IsRunning = false;
         }
 
         private void AutoSave()
         {
-            _reporter.Save(_valuesDelay);
+            _reporter.Delay = ValuesDelay;
+            _reporter.Save();
         }
 
         private void Emulation()

@@ -62,7 +62,7 @@
             Interactive="no"
             Account="LocalSystem"
             ErrorControl="critical"
-              >
+            >
         </ServiceInstall>
         <ServiceControl Id="WellEmulator.Service.exe.Control"
                         Start="install"

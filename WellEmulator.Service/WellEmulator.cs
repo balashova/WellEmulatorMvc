@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.ServiceModel;
+using System.Threading;
 using NLog;
 using WellEmulator.Core;
 using WellEmulator.Models;
@@ -12,51 +13,49 @@ namespace WellEmulator.Service
 {
     public class WellEmulator: IWellEmulator
     {
-        private static readonly object SyncRoot = new object();
         private readonly Logger _logger = LogManager.GetCurrentClassLogger();
-
-        private static Emulator _emulator;
-        private static Replicator _replicator;
-        private static PdgtmDbAdapter _pdgtmDbAdapter;
-        private static HistorianAdapter _historianAdapter;
-        private static SettingsManager _settingsManager;
-        private static DatabaseObserver _databaseObserver;
+        private static IEmulator _emulator;
+        private static IReplicator _replicator;
+        private static IPdgtmDbAdapter _pdgtmDbAdapter;
+        private static IHistorianAdapter _historianAdapter;
+        private static ISettingsManager _settingsManager;
+        private static IDatabaseObserver _databaseObserver;
         private static IWellEmulatorCallback _subscriber;
 
-        private static TimeSpan _queryRange = TimeSpan.FromMinutes(6);
+        private static TimeSpan _queryRange = TimeSpan.FromMinutes(5);
 
-        private static bool _initialized = false;
-
-        public WellEmulator()
+        public WellEmulator(
+            IEmulator emulator,
+            IReplicator replicator,
+            IPdgtmDbAdapter pdgtmDbAdapter,
+            IHistorianAdapter historianAdapter,
+            ISettingsManager settingsManager,
+            IDatabaseObserver databaseObserver)
         {
+            _emulator = emulator;
+            _replicator = replicator;
+            _pdgtmDbAdapter = pdgtmDbAdapter;
+            _historianAdapter = historianAdapter;
+            _settingsManager = settingsManager;
+            _databaseObserver = databaseObserver;
+
+            _databaseObserver.OnHistorianDataChanged += OnHistorianDataChanged;
+            _databaseObserver.OnPdgtmDataChanged += OnPdgtmDataChanged;
+
             try
             {
-                if (_initialized) return;
-                lock (SyncRoot)
-                {
-                    if (_initialized) return;
-                    _initialized = true;
-
-                    _emulator = new Emulator();
-                    _replicator = new Replicator();
-                    _pdgtmDbAdapter = new PdgtmDbAdapter();
-                    _historianAdapter = new HistorianAdapter();
-                    _settingsManager = new SettingsManager();
-
-                    _databaseObserver = new DatabaseObserver();
-                    _databaseObserver.OnHistorianDataChanged += OnHistorianDataChanged;
-                    _databaseObserver.OnPdgtmDataChanged += OnPdgtmDataChanged;
-
-                    LoadSettings();
-                }
+                LoadSettings();
             }
-            catch (Exception ex)
+            catch (LoadSettingsException ex)
             {
-                throw new Exception("Load failed", ex);
+                _logger.Error("Error while loading settings", ex);
+                throw;
             }
+
+            _logger.Trace("Service object created");
         }
 
-        private void OnHistorianDataChanged()
+        private void OnHistorianDataChanged(object sender, EventArgs eventArgs)
         {
             if (_subscriber == null) return;
             try
@@ -69,12 +68,12 @@ namespace WellEmulator.Service
             }
             catch (Exception ex)
             {
-                _logger.Error("Client notification PDGTM failed", ex);
+                _logger.Error("Client notifications by HISTORIAN failed!!! Don't worry baby, service continues work.", ex);
                 throw;
             }
         }
         
-        private void OnPdgtmDataChanged()
+        private void OnPdgtmDataChanged(object sender, EventArgs eventArgs)
         {
             if (_subscriber == null) return;
             try
@@ -236,8 +235,8 @@ namespace WellEmulator.Service
             try
             {
                 _settingsManager.AddTag(tag);
-                _emulator.Tags = _settingsManager.GetTags();
                 _historianAdapter.AddTag(tag);
+                _emulator.AddTag(tag);
             }
             catch (Exception ex)
             {
@@ -251,9 +250,9 @@ namespace WellEmulator.Service
             {
                 var tag = _settingsManager.GetTag(tagId);
 
-                _emulator.RemoveTag(tag);
                 _historianAdapter.RemoveTag(tag);
                 _settingsManager.RemoveTag(tag);
+                _emulator.RemoveTag(tag);
             }
             catch (Exception ex)
             {
@@ -385,5 +384,9 @@ namespace WellEmulator.Service
                 throw new Exception(ex.Message + "\n" + ex.StackTrace, ex);
             }
         }
+    }
+
+    public class LoadSettingsException : Exception
+    {
     }
 }

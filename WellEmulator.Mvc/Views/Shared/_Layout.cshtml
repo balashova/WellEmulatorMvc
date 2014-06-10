@@ -1,87 +1,116 @@
 ﻿@using Microsoft.Ajax.Utilities
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width" />
-        <title>@ViewBag.Title</title>
-        @Styles.Render("~/Content/bootstrap/base")
-        @Styles.Render("~/Content/css")
-        @RenderSection("Styles", required: false)
-        @Scripts.Render("~/bundles/modernizr")
-        <meta name="description" content="The description of my page" />
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/bootstrap/base")
+    
+    
+    @{
+    var themeCookie = Request.Cookies["theme"];
+    if (themeCookie != null)
+    {
+        var theme = themeCookie.Value;
+        if (theme != null && !string.IsNullOrEmpty(theme) && theme != "Default")
+        {
+            <link href="@Url.Content(string.Format("~/Content/bootstrap/themes/{0}.bootstrap.min.css", theme.ToLower()))" rel="stylesheet" />
+        }
+    }
+}
+
+    @Styles.Render("~/Content/css")
+    @RenderSection("Styles", required: false)
+    @Scripts.Render("~/bundles/modernizr")
+    <meta name="description" content="The description of my page" />
 </head>
-    <body>
-        <div id="wrap">
-            <div id="main" class="clearfix">
-                <header>
-                    <div class="container">
-                        <nav class="navbar navbar-default" role="navigation">
-                            <div class="navbar-collapse">
-                                <div class="navbar-header">
-                                    <a class="navbar-brand" href="@Url.Action("About", "Home")">Emulator</a>
-                                </div>
-                                <ul class="nav navbar-nav">
-                                    <li class="@("Управление".Equals(ViewBag.Title) ? "active": "")">
-                                        <a href="@Url.Action("Control", "Emulator")">Управление</a>
-                                    </li>
-                                    <li class="@("Новый тег".Equals(ViewBag.Title) ? "active": "")">
-                                        <a href="@Url.Action("NewTag", "Emulator")">Добавление тега</a>
-                                    </li>
-                                    <li class="@("Теги".Equals(ViewBag.Title) ? "active": "")">
-                                        <a href="@Url.Action("Tags", "Emulator")">Список тегов</a>
-                                    </li>
-                                    <li class="@("Сопоставление".Equals(ViewBag.Title) ? "active": "")">
-                                        <a href="@Url.Action("Mapping", "Emulator")">Репликация</a>
-                                    </li>
-                                    <li class="@("Динамика".Equals(ViewBag.Title) ? "active" : "")">
-                                        <a href="@Url.Action("Index", "Chart")">Графики</a>
-                                    </li>
-                                </ul>
+<body>
+    <div id="wrap">
+        <div id="main" class="clearfix">
+            <header>
+                <div class="container">
+                    <nav class="navbar navbar-default" role="navigation">
+                        <div class="navbar-collapse">
+                            <div class="navbar-header">
+                                <a class="navbar-brand" href="@Url.Action("Index", "Home")">Emulator</a>
                             </div>
-                        </nav>
-                    </div>
-                </header>
-
-                <div id="page-content" class="container">
-                    <div class="page-header">
-                        <h1>@ViewBag.Title<small>&ensp;@ViewBag.SubTitle</small></h1>
-                    </div>
-
-                    @RenderBody()
-
+                            <ul class="nav navbar-nav">
+                                <li class="@("Управление".Equals(ViewBag.Title) ? "active": "")">
+                                    <a href="@Url.Action("Control", "Emulator")">Управление</a>
+                                </li>
+                                <li class="@("Новый тег".Equals(ViewBag.Title) ? "active": "")">
+                                    <a href="@Url.Action("NewTag", "Emulator")">Добавление тега</a>
+                                </li>
+                                <li class="@("Теги".Equals(ViewBag.Title) ? "active": "")">
+                                    <a href="@Url.Action("Tags", "Emulator")">Список тегов</a>
+                                </li>
+                                <li class="@("Сопоставление".Equals(ViewBag.Title) ? "active": "")">
+                                    <a href="@Url.Action("Mapping", "Emulator")">Репликация</a>
+                                </li>
+                                <li class="@("Динамика".Equals(ViewBag.Title) ? "active" : "")">
+                                    <a href="@Url.Action("Index", "Chart")">Графики</a>
+                                </li>
+                            </ul>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Тема <b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="theme-switch" href="@Request.Url">Default</a></li>
+                                        <li><a class="theme-switch" href="@Request.Url">Amelia</a></li>
+                                        <li><a class="theme-switch" href="@Request.Url">Cerulean</a></li>
+                                        <li><a class="theme-switch" href="@Request.Url">Cosmo</a></li>
+                                        <li><a class="theme-switch" href="@Request.Url">Flatly</a></li>
+                                        <li><a class="theme-switch" href="@Request.Url">Lumen</a></li>
+                                        <li><a class="theme-switch" href="@Request.Url">Slate</a></li>
+                                        <li><a class="theme-switch" href="@Request.Url">Superhero</a></li>
+                                        <li><a class="theme-switch" href="@Request.Url">Yeti</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
                 </div>
-            </div>   
-        </div>
-        <div id="footer">
-            <footer>
-                <div class="container footer-line"></div>
-                Tomsk Polytechnic University - @DateTime.Now.Year
-            </footer>
-        </div>
-       
-        <div class="modal fade" id="wait-dialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">Запрос выполняется...</h4>
-                    </div>
-                    <div class="modal-body">
-                        <span id="modal-body">Пожалуйста подождите...</span>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" id="modal-ok-button" class="btn btn-primary" data-dismiss="modal">Ок</button>
-                    </div>
+            </header>
+
+            <div id="page-content" class="container">
+                <div class="page-header">
+                    <h1>@ViewBag.Title<small>&ensp;@ViewBag.SubTitle</small></h1>
                 </div>
-                <!-- /.modal-content -->
+
+                @RenderBody()
+
             </div>
-            <!-- /.modal-dialog -->
         </div>
-        <!-- /.modal -->
+    </div>
+    <div id="footer">
+        <footer>
+            <div class="container footer-line"></div>
+            Tomsk Polytechnic University - @DateTime.Now.Year
+        </footer>
+    </div>
 
-        @Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/bootstrap")
-        @Scripts.Render("~/bundles/script")
-        @RenderSection("Scripts", required: false)
-    </body>
+    <div class="modal fade" id="wait-dialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Запрос выполняется...</h4>
+                </div>
+                <div class="modal-body">
+                    <span id="modal-body">Пожалуйста подождите...</span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="modal-ok-button" class="btn btn-primary" data-dismiss="modal">Ок</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/script")
+    @RenderSection("Scripts", required: false)
+</body>
 </html>

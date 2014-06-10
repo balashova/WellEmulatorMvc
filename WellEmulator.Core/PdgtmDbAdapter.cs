@@ -13,22 +13,14 @@ using WellEmulator.Models;
 
 namespace WellEmulator.Core
 {
-    public class PdgtmDbAdapter
+    public class PdgtmDbAdapter : IPdgtmDbAdapter
     {
         private readonly Logger _logger = LogManager.GetCurrentClassLogger();
         private readonly string _connectionString;
 
-        public PdgtmDbAdapter()
+        public PdgtmDbAdapter(string connectionString)
         {
-            try
-            {
-                _connectionString = ConfigurationManager.ConnectionStrings["TeamworkConnection"].ConnectionString;
-            }
-            catch (Exception ex)
-            {
-                _logger.Fatal("Connection initialization failed.", ex);
-                throw new PDGTMConnectionStringException(ex);
-            }
+            _connectionString = connectionString;
         }
 
         public int GetWellId(string wellName)
@@ -51,10 +43,6 @@ namespace WellEmulator.Core
                 {
                     _logger.Fatal(_connectionString, ex);
                     throw;
-                }
-                finally
-                {
-                    connection.Close();
                 }
             }
         }
@@ -140,10 +128,6 @@ namespace WellEmulator.Core
                     _logger.Fatal(commandText, ex);
                     throw;
                 }
-                finally
-                {
-                    connection.Close();
-                }
             }
         }
 
@@ -183,10 +167,6 @@ namespace WellEmulator.Core
                 {
                     _logger.Fatal(string.Format("Time range: {0}", range), ex);
                     throw;
-                }
-                finally
-                {
-                    connection.Close();
                 }
             }
             return list;

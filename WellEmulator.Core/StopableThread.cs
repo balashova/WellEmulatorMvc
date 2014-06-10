@@ -9,7 +9,6 @@ namespace WellEmulator.Core
 {
     public class StopableThread
     {
-        public bool Stopped { get; private set; }
         private readonly Thread _thread;
         private readonly TimeSpan _delay;
         private bool _isFirstIteration = true;
@@ -19,8 +18,11 @@ namespace WellEmulator.Core
         {
             _delay = delay;
             _thread = new Thread(() =>
+            {
+                IsRunning = true;
+                try
                 {
-                    while (!Stopped)
+                    while (IsRunning)
                     {
                         if (!_isFirstIteration)
                         {
@@ -31,8 +33,16 @@ namespace WellEmulator.Core
                         else _isFirstIteration = false;
                         Thread.Sleep(_delay);
                     }
-                }) { IsBackground = true };
+                }
+                catch (Exception)
+                {
+                    IsRunning = false;
+                    throw;
+                }
+            }) { IsBackground = true };
         }
+
+        public bool IsRunning { get; private set; }
 
         public void Stop()
         {
@@ -40,7 +50,7 @@ namespace WellEmulator.Core
             {
                 _thread.Abort();
             }
-            Stopped = true;
+            IsRunning = false;
         }
 
         public void Start()

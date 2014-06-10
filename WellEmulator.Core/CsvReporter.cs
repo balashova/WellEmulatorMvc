@@ -21,33 +21,7 @@ namespace WellEmulator.Core
             _directoryInfo = directoryInfo;
         }
 
-        public void Save(TimeSpan delay = default(TimeSpan))
-        {
-            var file = new FileInfo(string.Format(@"{0}\{1}.csv",
-                                                  _directoryInfo.FullName,
-                                                  DateTime.Now.ToString("yyyy.MM.dd_hh.mm.ss.fff")));
-
-            var textWriter = new StreamWriter(file.OpenWrite(), Encoding.Unicode);
-            textWriter.WriteLine(textWriter.Encoding.EncodingName.ToUpper());
-            textWriter.WriteLine(Splitter);
-            textWriter.WriteLine("{1}{0}1{0}Server Local{0}10{0}2", Splitter, "Andrey Cherkashin");
-
-            lock (_csvStructs)
-            {
-                foreach (var tag in _csvStructs)
-                {
-                    var time = delay.Equals(default(TimeSpan)) ? tag.TimeStamp : tag.TimeStamp.Subtract(delay);
-                    textWriter.WriteLine("{1}{0}0{0}{2}{0}{3}{0}1{0}{4}{0}192",
-                                         Splitter,
-                                         tag.Name,
-                                         time.ToString("yyyy/MM/dd", CultureInfo.InvariantCulture),
-                                         time.ToString("HH:mm:ss.fff", CultureInfo.InvariantCulture),
-                                         tag.Value.ToString("F1", CultureInfo.InvariantCulture));
-                }
-                _csvStructs.Clear();
-            }
-            textWriter.Close();
-        }
+        public TimeSpan Delay { get; set; }
 
         public double this[string name]
         {
@@ -70,6 +44,34 @@ namespace WellEmulator.Core
             internal double Value { get; set; }
             internal DateTime TimeStamp { get; set; }
             internal string Name { get; set; }
+        }
+
+        public void Save()
+        {
+            var file = new FileInfo(string.Format(@"{0}\{1}.csv",
+                                                  _directoryInfo.FullName,
+                                                  DateTime.Now.ToString("yyyy.MM.dd_hh.mm.ss.fff")));
+
+            var textWriter = new StreamWriter(file.OpenWrite(), Encoding.Unicode);
+            textWriter.WriteLine(textWriter.Encoding.EncodingName.ToUpper());
+            textWriter.WriteLine(Splitter);
+            textWriter.WriteLine("{1}{0}1{0}Server Local{0}10{0}2", Splitter, "Andrey Cherkashin");
+
+            lock (_csvStructs)
+            {
+                foreach (var tag in _csvStructs)
+                {
+                    var time = tag.TimeStamp.Subtract(Delay);
+                    textWriter.WriteLine("{1}{0}0{0}{2}{0}{3}{0}1{0}{4}{0}192",
+                                         Splitter,
+                                         tag.Name,
+                                         time.ToString("yyyy/MM/dd", CultureInfo.InvariantCulture),
+                                         time.ToString("HH:mm:ss.fff", CultureInfo.InvariantCulture),
+                                         tag.Value.ToString("F1", CultureInfo.InvariantCulture));
+                }
+                _csvStructs.Clear();
+            }
+            textWriter.Close();
         }
     }
 }

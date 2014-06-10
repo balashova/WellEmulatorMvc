@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace WellEmulator.Core
 {
+    [Serializable]
     public class InvalidTimeSpanException : Exception
     {
         public InvalidTimeSpanException() : base("Invalid TimeStamp value.") { }
     }
 
+    [Serializable]
     public class HistorianServerNotRunningException : Exception
     {
         private new const string Message = "Wonderware Historian server is not running.";
@@ -24,6 +26,7 @@ namespace WellEmulator.Core
             : base(message, innerException) { }
     }
 
+    [Serializable]
     public class HistorianConnectionStringException : Exception
     {
         private new const string Message = "Failed loading a connection string to Historian server.";
@@ -37,6 +40,7 @@ namespace WellEmulator.Core
             : base(message, innerException) { }
     }
 
+    [Serializable]
     public class PDGTMConnectionStringException : Exception
     {
         private new const string Message = "Failed loading a connection string to PDGTM server.";
@@ -50,6 +54,7 @@ namespace WellEmulator.Core
             : base(message, innerException) { }
     }
 
+    [Serializable]
     public class PDGTMSelectTopValuesException : Exception
     {
         public PDGTMSelectTopValuesException(string message) : base(message)

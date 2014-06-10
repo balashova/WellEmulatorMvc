@@ -39,6 +39,7 @@
       <HintPath>..\packages\NLog.3.0.0.0\lib\net45\NLog.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
     <Reference Include="System.ServiceModel" />
@@ -63,6 +64,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\WellEmulator.Core\WellEmulator.Core.csproj">
+      <Project>{770eba8c-b610-4c52-816a-fd4127d909dd}</Project>
+      <Name>WellEmulator.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WellEmulator.Models\WellEmulator.Models.csproj">
+      <Project>{1b5d2be4-f200-4d91-b869-98cceffd5747}</Project>
+      <Name>WellEmulator.Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WellEmulator.Service\WellEmulator.Service.csproj">
       <Project>{7a1ff0a7-9a89-49d1-ae0b-6d7b6309eedf}</Project>
       <Name>WellEmulator.Service</Name>

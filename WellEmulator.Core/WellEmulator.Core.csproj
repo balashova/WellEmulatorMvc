@@ -52,6 +52,11 @@
     <Compile Include="Emulator.cs" />
     <Compile Include="Exceptions.cs" />
     <Compile Include="HistorianAdapter.cs" />
+    <Compile Include="IDatabaseObserver.cs" />
+    <Compile Include="IEmulator.cs" />
+    <Compile Include="IPdgtmDbAdapter.cs" />
+    <Compile Include="IHistorianAdapter.cs" />
+    <Compile Include="IReplicator.cs" />
     <Compile Include="PdgtmDbAdapter.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

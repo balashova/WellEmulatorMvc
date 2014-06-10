@@ -13,22 +13,14 @@ using WellEmulator.Models;
 
 namespace WellEmulator.Core
 {
-    public class HistorianAdapter
+    public class HistorianAdapter : IHistorianAdapter
     {
         private readonly Logger _logger = LogManager.GetCurrentClassLogger();
         private readonly string _connectionString;
 
-        public HistorianAdapter()
+        public HistorianAdapter(string connectionString)
         {
-            try
-            {
-                _connectionString = ConfigurationManager.ConnectionStrings["HistorianConnection"].ConnectionString;
-            }
-            catch (Exception ex)
-            {
-                _logger.Fatal("Connection initialization failed.", ex);
-                throw new HistorianConnectionStringException(ex);
-            }
+            _connectionString = connectionString;
         }
 
         public IEnumerable<string> GetAllTags()
@@ -60,10 +52,6 @@ namespace WellEmulator.Core
                 {
                     _logger.Fatal("sql command execution failed", ex);
                     throw;
-                }
-                finally
-                {
-                    connection.Close();
                 }
             }
             return tags;
@@ -128,10 +116,6 @@ namespace WellEmulator.Core
                     _logger.Fatal("sql command execution failed", ex);
                     throw;
                 }
-                finally
-                {
-                    connection.Close();
-                }
             }
         }
 
@@ -144,7 +128,7 @@ namespace WellEmulator.Core
         /// Имя тега в формате "wellName.tagName".
         /// </summary>
         /// <param name="tagName">"wellName.tagName"</param>
-        private void RemoveTag(string tagName)
+        public void RemoveTag(string tagName)
         {
             using (var connection = new SqlConnection(_connectionString))
             {
@@ -164,10 +148,6 @@ namespace WellEmulator.Core
                 {
                     _logger.Fatal("sql command execution failed", ex);
                     throw;
-                }
-                finally
-                {
-                    connection.Close();
                 }
             }
         }
@@ -214,10 +194,6 @@ namespace WellEmulator.Core
                         tags.Aggregate("", (s, tag) => s += (s.Length == 0 ? "" : ", ") + "'" + tag + "'"), ex);
                     throw new HistorianServerNotRunningException(ex);
                 }
-                finally
-                {
-                    connection.Close();
-                }
             }
             return dictionary;
         }
@@ -256,10 +232,6 @@ namespace WellEmulator.Core
                     _logger.Fatal(com.ToString(), ex);
                     throw new HistorianServerNotRunningException(ex);
                 }
-                finally
-                {
-                    connection.Close();
-                }
             }
         }
 
@@ -296,10 +268,6 @@ namespace WellEmulator.Core
                 {
                     _logger.Fatal(string.Format("Time range: {0}", range), ex);
                     throw;
-                }
-                finally
-                {
-                    connection.Close();
                 }
             }
             return list;

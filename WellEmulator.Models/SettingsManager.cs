@@ -15,22 +15,14 @@ namespace WellEmulator.Models
         Pdgtm
     };
 
-    public class SettingsManager
+    public class SettingsManager : ISettingsManager
     {
         private readonly Logger _logger = LogManager.GetCurrentClassLogger();
         private readonly string _connectionString;
 
-        public SettingsManager()
+        public SettingsManager(string connectionString)
         {
-            try
-            {
-                _connectionString = ConfigurationManager.ConnectionStrings["SettingsDb"].ConnectionString;
-            }
-            catch (Exception ex)
-            {
-                _logger.Fatal("Connection initialization failed.", ex);
-                throw;
-            }
+            _connectionString = connectionString;
         }
 
         public void SaveSettings(Settings settings)
@@ -64,10 +56,6 @@ namespace WellEmulator.Models
                 {
                     _logger.Fatal("sql command execution failed", ex);
                     throw;
-                }
-                finally
-                {
-                    connection.Close();
                 }
             }
         }
@@ -108,15 +96,11 @@ namespace WellEmulator.Models
                     _logger.Fatal("sql command execution failed", ex);
                     throw;
                 }
-                finally
-                {
-                    connection.Close();
-                }
             }
             return null;
         }
 
-        private bool Exist(Tag tag)
+        public bool IsExist(Tag tag)
         {
             var tagComparer = new TagComparer();
             return GetTags().Contains(tag, tagComparer);
@@ -124,7 +108,7 @@ namespace WellEmulator.Models
 
         public void AddTag(Tag tag)
         {
-            if (Exist(tag))
+            if (IsExist(tag))
             {
                 throw new Exception("Такой элемент уже содержится в базе данных");
             }
@@ -150,10 +134,6 @@ namespace WellEmulator.Models
                     _logger.Fatal("sql command execution failed", ex);
                     throw;
                 }
-                finally
-                {
-                    connection.Close();
-                }
             }
         }
 
@@ -177,10 +157,6 @@ namespace WellEmulator.Models
                 {
                     _logger.Fatal("Removing tag from settings db failed", ex);
                     throw;
-                }
-                finally
-                {
-                    connection.Close();
                 }
             }
         }
@@ -208,10 +184,6 @@ namespace WellEmulator.Models
                     _logger.Fatal("sql command execution failed", ex);
                     throw;
                 }
-                finally
-                {
-                    connection.Close();
-                }
             }
         }
 
@@ -237,10 +209,6 @@ namespace WellEmulator.Models
                 {
                     _logger.Fatal("sql command execution failed", ex);
                     throw;
-                }
-                finally
-                {
-                    connection.Close();
                 }
             }
         }
@@ -279,10 +247,6 @@ namespace WellEmulator.Models
                 {
                     _logger.Fatal("sql command execution failed", ex);
                     throw;
-                }
-                finally
-                {
-                    connection.Close();
                 }
             }
             return mappings;
@@ -326,10 +290,6 @@ namespace WellEmulator.Models
                 {
                     _logger.Fatal("sql command execution failed", ex);
                     throw;
-                }
-                finally
-                {
-                    connection.Close();
                 }
             }
             return mappings;
@@ -376,10 +336,6 @@ namespace WellEmulator.Models
                     _logger.Fatal("sql command execution failed", ex);
                     throw;
                 }
-                finally
-                {
-                    connection.Close();
-                }
             }
             return null;
         }
@@ -423,10 +379,6 @@ namespace WellEmulator.Models
                 {
                     _logger.Fatal("sql command execution failed", ex);
                     throw;
-                }
-                finally
-                {
-                    connection.Close();
                 }
             }
             return tags;

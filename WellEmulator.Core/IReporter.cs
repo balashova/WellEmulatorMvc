@@ -8,7 +8,8 @@ namespace WellEmulator.Core
 {
     public interface IReporter
     {
-        void Save(TimeSpan delay = default(TimeSpan));
+        void Save();
         double this[string name] { set; }
+        TimeSpan Delay { get; set; }
     }
 }

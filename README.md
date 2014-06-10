@@ -1,21 +1,23 @@
-WellEmulatorMvc
-===============
+# WellEmulatorMvc
+
+### Customize installer
 
 To build .wxs that include all .xsd files from WITSML standards directory use heat.exe with next parameters:
 
-heat dir ".\Standards" -out ".\StandardsFileGroup.wxs" -gg -var "var.WellEmulator.Service.TargetDir" -cg StandardsFileGroup -sfrag  -dr "INSTALLFOLDER"
+> heat dir ".\Standards" -out ".\StandardsFileGroup.wxs" -gg -var "var.WellEmulator.Service.TargetDir" -cg StandardsFileGroup -sfrag  -dr "INSTALLFOLDER"
 
 Than replace following string:
 
-$(var.WellEmulator.Service.TargetDir)
+> $(var.WellEmulator.Service.TargetDir)
 
 by this:
 
-$(var.WellEmulator.Service.TargetDir)Standards
+> $(var.WellEmulator.Service.TargetDir)Standards
 
 
-To create databases:
+### To create databases:
 
+```SQL
 USE [master]
 GO
 
@@ -115,4 +117,4 @@ CREATE TABLE [dbo].[Tags] (
     [Delta]    REAL         NULL,
     CONSTRAINT [PK_Tags] PRIMARY KEY CLUSTERED ([Id] ASC)
 );
-
+```

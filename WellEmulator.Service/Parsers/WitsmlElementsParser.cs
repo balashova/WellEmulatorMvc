@@ -9,6 +9,13 @@ namespace WellEmulator.Service.Parsers
 {
     public static class WitsmlElementsParser
     {
+        struct Element
+        {
+            public string Name { get; set; }
+            public string Type { get; set; }
+            public string Description { get; set; }
+        }
+
         public static IEnumerable<string> GetWitsmlObjects(string standard)
         {
             var directory = new DirectoryInfo(string.Format(@"{1}\Standards\{0}", standard ?? "WITSML", AppDomain.CurrentDomain.BaseDirectory));
@@ -88,13 +95,6 @@ namespace WellEmulator.Service.Parsers
                     if (subNodes.Any()) Parse(node.Elements(), ref elements);
                 }
             }
-        }
-
-        struct Element
-        {
-            public string Name { get; set; }
-            public string Type { get; set; }
-            public string Description { get; set; }
         }
     }
 }

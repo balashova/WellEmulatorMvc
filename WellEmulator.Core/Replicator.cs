@@ -8,9 +8,24 @@ using WellEmulator.Models;
 
 namespace WellEmulator.Core
 {
-    public class Replicator
+    public class Replicator : IReplicator
     {
         private readonly Logger _logger = LogManager.GetCurrentClassLogger();
+
+        private TimeSpan _replicationPeriod = new TimeSpan(0, 0, 15, 0);
+        private readonly IPdgtmDbAdapter _pdgtmDbAdapter;
+        private readonly IHistorianAdapter _historianAdapter;
+        private List<MapItem> _mappings = new List<MapItem>();
+        private StopableThread _replicationThread;
+        private bool _isRunning;
+
+        public Replicator(
+            IPdgtmDbAdapter pdgtmDbAdapter,
+            IHistorianAdapter historianAdapter)
+        {
+            _pdgtmDbAdapter = pdgtmDbAdapter;
+            _historianAdapter = historianAdapter;
+        }
 
         public bool IsRunning
         {
@@ -22,7 +37,6 @@ namespace WellEmulator.Core
             get { return _replicationPeriod; }
             set
             {
-                if (value.Equals(default(TimeSpan))) throw new InvalidTimeSpanException();
                 _replicationPeriod = value;
                 if (_isRunning) ReplicationThreadRestart();
             }
@@ -38,12 +52,7 @@ namespace WellEmulator.Core
             }
         }
 
-        private TimeSpan _replicationPeriod = new TimeSpan(0, 0, 15, 0);
-        private readonly PdgtmDbAdapter _pdgtmDbAdapter = new PdgtmDbAdapter();
-        private readonly HistorianAdapter _historianAdapter = new HistorianAdapter();
-        private List<MapItem> _mappings = new List<MapItem>();
-        private StopableThread _replicationThread;
-        private bool _isRunning;
+        // Methods               
 
         public void AddMapping(MapItem mapItem)
         {

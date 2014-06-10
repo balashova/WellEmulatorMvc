@@ -125,6 +125,10 @@ button#modal-ok-button {
             
 }
 
+.modal-dialog {
+    position: static;
+}
+
 /* Styles for About.cshtml
 -----------------------------------------------------------*/
 .content-about {

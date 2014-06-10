@@ -182,6 +182,14 @@
     <Content Include="Content\bootstrap\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap\bootstrap.css" />
     <Content Include="Content\bootstrap\bootstrap.min.css" />
+    <Content Include="Content\bootstrap\themes\amelia.bootstrap.min.css" />
+    <Content Include="Content\bootstrap\themes\cerulean.bootstrap.min.css" />
+    <Content Include="Content\bootstrap\themes\cosmo.bootstrap.min.css" />
+    <Content Include="Content\bootstrap\themes\flatly.bootstrap.min.css" />
+    <Content Include="Content\bootstrap\themes\lumen.bootstrap.min.css" />
+    <Content Include="Content\bootstrap\themes\slate.bootstrap.min.css" />
+    <Content Include="Content\bootstrap\themes\superhero.bootstrap.min.css" />
+    <Content Include="Content\bootstrap\themes\yeti.bootstrap.min.css" />
     <Content Include="Content\Flot\jquery.flot.min.js" />
     <Content Include="Content\Flot\jquery.flot.time.min.js" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />

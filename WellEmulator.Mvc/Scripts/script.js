@@ -2,6 +2,16 @@
 var modalShown = false;
 var delayedMessage = undefined;
 
+$(function() {
+    $(".theme-switch").click(function () {
+        var date = new Date();
+        date.setYear(date.getFullYear() + 1);
+        var cookie = 'theme=' + this.innerText + '; expires=' + date.toUTCString() + '; path=/';
+        document.cookie = cookie;
+        return true;
+    });
+});
+
 var showMessage = function (message) {
     if (modalShown) {
         delayedMessage = message;

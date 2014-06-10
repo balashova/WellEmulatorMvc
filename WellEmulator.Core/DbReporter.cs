@@ -8,9 +8,17 @@ namespace WellEmulator.Core
 {
     public class DbReporter : IReporter
     {
-        private readonly HistorianAdapter _historianAdapter = new HistorianAdapter();
-        private readonly Dictionary<string, List<double>> _cache = new Dictionary<string, List<double>>(); 
-        public void Save(TimeSpan delay = new TimeSpan())
+        private readonly IHistorianAdapter _historianAdapter;
+        private readonly Dictionary<string, List<double>> _cache = new Dictionary<string, List<double>>();
+
+        public DbReporter(IHistorianAdapter historianAdapter)
+        {
+            _historianAdapter = historianAdapter;
+        }
+
+        public TimeSpan Delay { get; set; }
+
+        public void Save()
         {
             lock (_cache)
             {
