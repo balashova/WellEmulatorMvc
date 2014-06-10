@@ -16,13 +16,13 @@ namespace WellEmulator.Mvc.Hubs
         public static void HistorianDataChanged(HistorianValue[] historianValues)
         {
             IHubContext context = GlobalHost.ConnectionManager.GetHubContext<ChartHub>();
-            context.Clients.Group("historian").dataChanged(historianValues);
+            context.Clients.Group("historian").HistorianDataChanged(historianValues);
         }
 
         public static void PdgtmDataChanged(PdgtmValue[] pdgtmValues)
         {
             IHubContext context = GlobalHost.ConnectionManager.GetHubContext<ChartHub>();
-            context.Clients.Group("pdgtm").dataChanged(pdgtmValues);
+            context.Clients.Group("pdgtm").PdgtmDataChanged(pdgtmValues);
         }
         public void SubscribeOn(string data)
         {
@@ -39,6 +39,7 @@ namespace WellEmulator.Mvc.Hubs
         public override Task OnConnected()
         {
             Groups.Add(Context.ConnectionId, "historian");
+            Groups.Add(Context.ConnectionId, "pdgtm");
             new ServiceObservableClient();   
             return base.OnConnected();
         }

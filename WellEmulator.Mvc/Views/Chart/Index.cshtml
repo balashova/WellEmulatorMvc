@@ -4,23 +4,87 @@
     string units = null;
 }
 
-@section Styles
-{
-    <style>
+@section Styles {
+    <style >
+        .axisLabel {
+            position: absolute;
+            text-align: center;
+            font-family: proxima-nova, Helvetica, Arial, sans-serif;
+            font-size: 16px;
+        }
+
+        .yaxisLabel {
+            top: 50%;
+            left: -30px;
+            transform: rotate(-90deg);
+            -o-transform: rotate(-90deg);
+            -ms-transform: rotate(-90deg);
+            -moz-transform: rotate(-90deg);
+            -webkit-transform: rotate(-90deg);
+            transform-origin: 0 0;
+            -o-transform-origin: 0 0;
+            -ms-transform-origin: 0 0;
+            -moz-transform-origin: 0 0;
+            -webkit-transform-origin: 0 0;
+        }
+
+        .xaxisLabel {
+            bottom: -30px;
+            left: 50%
+        }
+
+
+        #chart-container {
+            width: 100%;
+            text-align: left;
+            -webkit-border-radius: 2px;
+            -ms-border-radius: 2px;
+            border-radius: 2px;
+            -webkit-box-shadow: 3px 3px 11px 3px #BBBBBB;
+            -ms-box-shadow: 3px 3px 11px 3px #BBBBBB;
+            box-shadow: 3px 3px 11px 3px #BBBBBB;
+            -webkit-transition: all 0.5s ease;
+            -moz-transition: all 0.5s ease;
+            -ms-transition: all 0.5s ease;
+            -o-transition: all 0.5s ease;
+            transition: all 0.5s ease;
+            padding: 50px;
+        }
+
         #chart {
-            width: 600px;
-            height: 300px;
+            display: inline-block;
+            width: 85%;
+            float: left;
+            height: 500px;
+        }
+
+        #choices {
+            display: inline-block;
+            float: right; 
+            width: 100px;
+        }
+
+        legend {
+            padding-top: 40px;
         }
     </style>
 }
 
 <div id="chart-container">
-    <div id="chart">
-        
-    </div>
+    <div id="chart"></div>
+    <p id="choices">
+        <br/>
+        <input type="checkbox" name="historian" checked="checked" id="historian"/>
+        <label for="historian">Historian</label>
+        <br/>
+        <input type="checkbox" name="pdgtm" checked="checked" id="pdgtm" />
+        <label for="pdgtm">PDGTM</label>
+    </p>
+    <legend></legend>
 </div>
-
-<button id="switch-data">switch</button>
+<input type="text" id="number"/>
+<button id="set-number">&nbsp;Set&nbsp;</button>
+<button id="log">&nbsp;Log&nbsp;</button>
 
 @section Scripts
 {
@@ -29,24 +93,137 @@
     @Scripts.Render("~/bundles/flot")
 
     <script>
-        var plot = $.plot("#chart", [[[0, 0], [50, 50]]], { yaxis: { min: 0, max: 100 }, xaxis: { show: false } });
-
         $(function() {
-            $.connection.hub.logging = true;
-            var chart = $.connection.chart;
-            chart.client.dataChanged = onDataChanged;
-            $.connection.hub.start();
+            $('#set-number').click(function() {
+                var value = $('#number').val();
+                $.ajax({
+                    type: "POST",
+                    url: "/api/asd/setNumberDbValues/?number=" + value,
+                });
+            });
+        });
 
-            var dataMode = 'historian';
+        $(function(parameters) {
+            $('#log').click(function() {
+                console.log(series);
+                //series[1].data = [[0, 0], [100, 100]];
+            });
+        });
 
-            $('#switch-data').click(function () {
-                unSubscribeFrom(dataMode);
-                dataMode = dataMode == 'historian' ? 'pdgtm' : 'historian';
-                subscribeOn(dataMode);
+        var series = [
+            {
+                label: "Historian",
+                data: [],
+                color: 3,
+            },
+            {
+                label: "Gas rate",
+                data: [],
+                color: 2
+            },
+            {
+                label: "Oil rate",
+                data: [],
+                color: 4
+            },
+            {
+                label: "Water rate",
+                data: [],
+                color: 6
+            }
+        ];
+
+        $(function () {
+            var container = $("#chart");
+
+            var plot = $.plot(container, series, {
+                xaxis: {
+                    mode: "time",
+                    timeformat: "%M:%S"
+                },
+                yaxis: {
+                    tickDecimals: 0,
+                },
+                grid: {
+                    borderWidth: 0,
+                },
+                //xaxes: [
+				//    { position: 'bottom' },
+                //    {
+                //        position: 'bottom',
+                //        mode: "time",
+                //        timeformat: "%H:%M:%S"
+                //    }
+                //]
             });
 
-            function onDataChanged(historianValues) {
+            var yaxisLabel = $("<div class='axisLabel yaxisLabel'></div>")
+                .text("Value (%)")
+                .appendTo(container);
+            yaxisLabel.css("margin-top", yaxisLabel.width() / 2 - 20);
+
+            var xaxisLabel = $("<div class='axisLabel xaxisLabel'></div>")
+                .text("Timestamp")
+                .appendTo(container);
+            xaxisLabel.css("margin-right", xaxisLabel.width() / 2 - 20);
+
+            setInterval(function updatePlot() {
+                //console.log(series[0].data.length);
+                plot.setData(series);
+                plot.draw();
+                plot.setupGrid();
+            }, 50);
+        });
+
+        $(function() {
+            //$.connection.hub.logging = true;
+            var chart = $.connection.chart;
+            chart.client.pdgtmDataChanged = onPdgtmDataChanged;
+            chart.client.historianDataChanged = onHistorianDataChanged;
+            $.connection.hub.start();
+
+            $('#pdgtm').change(function() {
+                if (this.checked) {
+                    subscribeOn('pdgtm');
+                } else {
+                    unSubscribeFrom('pdgtm');
+                    series[1].data = [];
+                    series[2].data = [];
+                    series[3].data = [];
+                }
+            });
+
+            $('#historian').change(function() {
+                if (this.checked) {
+                    subscribeOn('historian');
+                } else {
+                    unSubscribeFrom('historian');
+                    series[0].data = [];
+                }
+            });
+
+            function onPdgtmDataChanged(pdgtmValues) {
+                var gasData = [];
+                var oilData = [];
+                var waterData = [];
+                for (var i = 0; i < pdgtmValues.length; i++) {
+                    gasData.push([new Date(Date.parse(pdgtmValues[i].Time)).getTime(), pdgtmValues[i].GasRate]);
+                    oilData.push([new Date(Date.parse(pdgtmValues[i].Time)).getTime(), pdgtmValues[i].OilRate]);
+                    waterData.push([new Date(Date.parse(pdgtmValues[i].Time)).getTime(), pdgtmValues[i].WaterRate]);
+                }
+                series[1].data = gasData;
+                series[2].data = oilData;
+                series[3].data = waterData;
+            }
+
+            function onHistorianDataChanged(historianValues) {
                 console.log(historianValues.length);
+
+                var data = [];
+                for (var i = 0; i < historianValues.length; i++) {
+                    data.push([new Date(Date.parse(historianValues[i].Time)).getTime(), historianValues[i].Value]);
+                }
+                series[0].data = data;
             }
 
             function subscribeOn(data) {

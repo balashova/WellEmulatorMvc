@@ -9,18 +9,17 @@ using WellEmulator.Service.Client.ServiceReference;
 
 namespace WellEmulator.Mvc.Api
 {
-    public class ChartApiController : ApiController
+    public class AsdController : ApiController
     {
         private readonly WellEmulatorClient _client = new ServiceClient();
-
-
+    
         [ActionName("getNumberDbValues")]
         public int GetNumberDbValues()
         {
             return _client.GetNumberDbValues();
         }
-        
-        [ActionName("setNumberDbValues")]
+
+        [ActionName("setNumberDbValues"), HttpPost, HttpGet]
         public void SetNumberDbValues(int number)
         {
             _client.SetNumberDbValues(number);

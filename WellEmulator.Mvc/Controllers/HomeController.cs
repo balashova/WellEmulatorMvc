@@ -4,7 +4,7 @@ namespace WellEmulator.Mvc.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult About()
+        public ActionResult Index()
         {
             return View();
         }

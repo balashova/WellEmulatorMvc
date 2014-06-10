@@ -158,7 +158,7 @@ namespace WellEmulator.Core
                     using (
                         var command =
                             new SqlCommand(
-                                string.Format("SELECT TOP {0} [Id],[WellId],[OilRate],[GasRate],[WaterRate],[Time] FROM [dbo].[Values]",
+                                string.Format("SELECT TOP {0} [Id],[WellId],[OilRate],[GasRate],[WaterRate],[Time] FROM [dbo].[Values] ORDER BY [Id] DESC",
                                     number),
                                 connection))
                     {

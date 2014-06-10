@@ -274,7 +274,7 @@ namespace WellEmulator.Core
                     using (
                         var command =
                             new SqlCommand(
-                                string.Format("SELECT TOP {0} [Id], [TagName], [Value], [Time] FROM [dbo].[History]",
+                                string.Format("SELECT TOP {0} [Id], [TagName], [Value], [Time] FROM [dbo].[History] ORDER BY [Id] DESC",
                                     number),
                                 connection))
                     {
@@ -294,7 +294,7 @@ namespace WellEmulator.Core
                 catch (SqlException ex)
                 {
                     _logger.FatalException(string.Format("Row number: {0}", number), ex);
-                    throw new HistorianServerNotRunningException(ex);
+                    throw;
                 }
                 finally
                 {
