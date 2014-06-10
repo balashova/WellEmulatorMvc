@@ -4,6 +4,8 @@ using System.Linq;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.Web;
+using Microsoft.Owin.Logging;
+using NLog;
 using WellEmulator.Mvc.Hubs;
 using WellEmulator.Service.Client.ServiceReference;
 

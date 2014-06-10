@@ -26,7 +26,7 @@ namespace WellEmulator.Core
             }
             catch (Exception ex)
             {
-                _logger.FatalException("Connection initialization failed.", ex);
+                _logger.Fatal("Connection initialization failed.", ex);
                 throw new HistorianConnectionStringException(ex);
             }
         }
@@ -58,7 +58,7 @@ namespace WellEmulator.Core
                 }
                 catch (Exception ex)
                 {
-                    _logger.FatalException("sql command execution failed", ex);
+                    _logger.Fatal("sql command execution failed", ex);
                     throw;
                 }
                 finally
@@ -125,7 +125,7 @@ namespace WellEmulator.Core
                 }
                 catch (Exception ex)
                 {
-                    _logger.FatalException("sql command execution failed", ex);
+                    _logger.Fatal("sql command execution failed", ex);
                     throw;
                 }
                 finally
@@ -162,7 +162,7 @@ namespace WellEmulator.Core
                 }
                 catch (Exception ex)
                 {
-                    _logger.FatalException("sql command execution failed", ex);
+                    _logger.Fatal("sql command execution failed", ex);
                     throw;
                 }
                 finally
@@ -210,7 +210,7 @@ namespace WellEmulator.Core
                 }
                 catch (SqlException ex)
                 {
-                    _logger.FatalException(
+                    _logger.Fatal(
                         tags.Aggregate("", (s, tag) => s += (s.Length == 0 ? "" : ", ") + "'" + tag + "'"), ex);
                     throw new HistorianServerNotRunningException(ex);
                 }
@@ -253,7 +253,7 @@ namespace WellEmulator.Core
                 }
                 catch (SqlException ex)
                 {
-                    _logger.FatalException(com.ToString(), ex);
+                    _logger.Fatal(com.ToString(), ex);
                     throw new HistorianServerNotRunningException(ex);
                 }
                 finally
@@ -263,7 +263,7 @@ namespace WellEmulator.Core
             }
         }
 
-        public List<HistorianValue> GetValues(int number)
+        public List<HistorianValue> GetValues(TimeSpan range)
         {
             List<HistorianValue> list = null;
             using (var connection = new SqlConnection(_connectionString))
@@ -274,8 +274,9 @@ namespace WellEmulator.Core
                     using (
                         var command =
                             new SqlCommand(
-                                string.Format("SELECT TOP {0} [Id], [TagName], [Value], [Time] FROM [dbo].[History] ORDER BY [Id] DESC",
-                                    number),
+                                string.Format(
+                                    "SELECT [Id], [TagName], [Value], [Time] FROM [dbo].[History] WHERE [Time] > '{0}'",
+                                    DateTime.Now.Subtract(range).ToString("yyyy-MM-dd HH:mm:ss")),
                                 connection))
                     {
                         using (var reader = command.ExecuteReader())
@@ -293,7 +294,7 @@ namespace WellEmulator.Core
                 }
                 catch (SqlException ex)
                 {
-                    _logger.FatalException(string.Format("Row number: {0}", number), ex);
+                    _logger.Fatal(string.Format("Time range: {0}", range), ex);
                     throw;
                 }
                 finally

@@ -8,17 +8,17 @@
       <xsd:import schemaLocation="http://localhost:9439/WellEmulatorService?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="IWellEmulator_SetNumberDbValues_InputMessage">
-    <wsdl:part name="parameters" element="tns:SetNumberDbValues" />
+  <wsdl:message name="IWellEmulator_SetQueryRange_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetQueryRange" />
   </wsdl:message>
-  <wsdl:message name="IWellEmulator_SetNumberDbValues_OutputMessage">
-    <wsdl:part name="parameters" element="tns:SetNumberDbValuesResponse" />
+  <wsdl:message name="IWellEmulator_SetQueryRange_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetQueryRangeResponse" />
   </wsdl:message>
-  <wsdl:message name="IWellEmulator_GetNumberDbValues_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetNumberDbValues" />
+  <wsdl:message name="IWellEmulator_GetQueryRange_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetQueryRange" />
   </wsdl:message>
-  <wsdl:message name="IWellEmulator_GetNumberDbValues_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetNumberDbValuesResponse" />
+  <wsdl:message name="IWellEmulator_GetQueryRange_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetQueryRangeResponse" />
   </wsdl:message>
   <wsdl:message name="IWellEmulator_Connect_InputMessage">
     <wsdl:part name="parameters" element="tns:Connect" />
@@ -183,13 +183,13 @@
     <wsdl:part name="parameters" element="tns:OnHistorianDataChanged" />
   </wsdl:message>
   <wsdl:portType name="IWellEmulator">
-    <wsdl:operation name="SetNumberDbValues">
-      <wsdl:input wsaw:Action="http://WellEmulator.com/IWellEmulator/SetNumberDbValues" message="tns:IWellEmulator_SetNumberDbValues_InputMessage" />
-      <wsdl:output wsaw:Action="http://WellEmulator.com/IWellEmulator/SetNumberDbValuesResponse" message="tns:IWellEmulator_SetNumberDbValues_OutputMessage" />
+    <wsdl:operation name="SetQueryRange">
+      <wsdl:input wsaw:Action="http://WellEmulator.com/IWellEmulator/SetQueryRange" message="tns:IWellEmulator_SetQueryRange_InputMessage" />
+      <wsdl:output wsaw:Action="http://WellEmulator.com/IWellEmulator/SetQueryRangeResponse" message="tns:IWellEmulator_SetQueryRange_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetNumberDbValues">
-      <wsdl:input wsaw:Action="http://WellEmulator.com/IWellEmulator/GetNumberDbValues" message="tns:IWellEmulator_GetNumberDbValues_InputMessage" />
-      <wsdl:output wsaw:Action="http://WellEmulator.com/IWellEmulator/GetNumberDbValuesResponse" message="tns:IWellEmulator_GetNumberDbValues_OutputMessage" />
+    <wsdl:operation name="GetQueryRange">
+      <wsdl:input wsaw:Action="http://WellEmulator.com/IWellEmulator/GetQueryRange" message="tns:IWellEmulator_GetQueryRange_InputMessage" />
+      <wsdl:output wsaw:Action="http://WellEmulator.com/IWellEmulator/GetQueryRangeResponse" message="tns:IWellEmulator_GetQueryRange_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="Connect">
       <wsdl:input wsaw:Action="http://WellEmulator.com/IWellEmulator/Connect" message="tns:IWellEmulator_Connect_InputMessage" />

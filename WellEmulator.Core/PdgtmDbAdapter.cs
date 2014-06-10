@@ -26,7 +26,7 @@ namespace WellEmulator.Core
             }
             catch (Exception ex)
             {
-                _logger.FatalException("Connection initialization failed.", ex);
+                _logger.Fatal("Connection initialization failed.", ex);
                 throw new PDGTMConnectionStringException(ex);
             }
         }
@@ -49,7 +49,7 @@ namespace WellEmulator.Core
                 }
                 catch (Exception ex)
                 {
-                    _logger.FatalException(_connectionString, ex);
+                    _logger.Fatal(_connectionString, ex);
                     throw;
                 }
                 finally
@@ -96,7 +96,7 @@ namespace WellEmulator.Core
                 }
                 catch (Exception ex)
                 {
-                    _logger.FatalException(_connectionString, ex);
+                    _logger.Fatal(_connectionString, ex);
                     throw;
                 }
                 finally
@@ -137,7 +137,7 @@ namespace WellEmulator.Core
                 }
                 catch (Exception ex)
                 {
-                    _logger.FatalException(commandText, ex);
+                    _logger.Fatal(commandText, ex);
                     throw;
                 }
                 finally
@@ -147,9 +147,10 @@ namespace WellEmulator.Core
             }
         }
 
-        public List<PdgtmValue> GetValues(int number)
+        public List<PdgtmValue> GetValues(TimeSpan range)
         {
             List<PdgtmValue> list = null;
+
             using (var connection = new SqlConnection(_connectionString))
             {
                 try
@@ -158,8 +159,9 @@ namespace WellEmulator.Core
                     using (
                         var command =
                             new SqlCommand(
-                                string.Format("SELECT TOP {0} [Id],[WellId],[OilRate],[GasRate],[WaterRate],[Time] FROM [dbo].[Values] ORDER BY [Id] DESC",
-                                    number),
+                                string.Format(
+                                    "SELECT [Id],[WellId],[OilRate],[GasRate],[WaterRate],[Time] FROM [dbo].[Values] WHERE [Time] > '{0}'",
+                                    DateTime.Now.Subtract(range).ToString("yyyy-MM-dd HH:mm:ss")),
                                 connection))
                     {
                         using (var reader = command.ExecuteReader())
@@ -179,7 +181,7 @@ namespace WellEmulator.Core
                 }
                 catch (SqlException ex)
                 {
-                    _logger.FatalException(string.Format("Row number: {0}", number), ex);
+                    _logger.Fatal(string.Format("Time range: {0}", range), ex);
                     throw;
                 }
                 finally

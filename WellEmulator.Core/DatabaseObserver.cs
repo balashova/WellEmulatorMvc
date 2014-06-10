@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Sql;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Configuration;
 using System.Text;
 using System.Threading.Tasks;
+using NLog;
 
 namespace WellEmulator.Core
 {
@@ -23,6 +25,8 @@ namespace WellEmulator.Core
         private readonly string _pdgtmConnectionString =
             ConfigurationManager.ConnectionStrings["TeamworkConnection"].ConnectionString;
 
+        private readonly Logger _logger = LogManager.GetCurrentClassLogger();
+
         public DatabaseObserver()
         {
             SqlDependency.Start(_historianConnectionString);
@@ -33,31 +37,54 @@ namespace WellEmulator.Core
 
         public void ObserveHistorian()
         {
-            using (var connection = new SqlConnection(_historianConnectionString))
+            try
             {
-                connection.Open();
-                using (var command = new SqlCommand(@"SELECT [Id],[TagName],[Value],[Time] FROM [dbo].[History]", connection))
+                using (var connection = new SqlConnection(_historianConnectionString))
                 {
-                    command.Notification = null;
-                    var dependency = new SqlDependency(command);
-                    dependency.OnChange += Historian_OnChange;
-                    command.ExecuteNonQuery();
+                    connection.Open();
+                    using (
+                        var command = new SqlCommand(@"SELECT [Id],[TagName],[Value],[Time] FROM [dbo].[History]",
+                            connection))
+                    {
+                        command.Notification = null;
+                        var dependency = new SqlDependency(command);
+                        dependency.OnChange += Historian_OnChange;
+                        command.ExecuteNonQuery();
+                    }
+                    connection.Close();
                 }
+            }
+            catch (Exception ex)
+            {
+                _logger.Error("Error observing History table", ex);
+                throw;
             }
         }
 
         public void ObservePdgtm()
         {
-            using (var connection = new SqlConnection(_pdgtmConnectionString))
+            try
             {
-                connection.Open();
-                using (var command = new SqlCommand(@"SELECT [Id],[WellId],[OilRate],[GasRate],[WaterRate],[Time] FROM [dbo].[Values]", connection))
+                using (var connection = new SqlConnection(_pdgtmConnectionString))
                 {
-                    command.Notification = null;
-                    var dependency = new SqlDependency(command);
-                    dependency.OnChange += Pdgtm_OnChange;
-                    command.ExecuteNonQuery();
+                    connection.Open();
+                    using (
+                        var command =
+                            new SqlCommand(
+                                @"SELECT [Id],[WellId],[OilRate],[GasRate],[WaterRate],[Time] FROM [dbo].[Values]",
+                                connection))
+                    {
+                        command.Notification = null;
+                        var dependency = new SqlDependency(command);
+                        dependency.OnChange += Pdgtm_OnChange;
+                        command.ExecuteNonQuery();
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                _logger.Error("Error observing PDGTM table", ex);
+                throw;
             }
         }
 
@@ -73,7 +100,7 @@ namespace WellEmulator.Core
         {
             OnPdgtmDataChangeEventHandler handler = OnPdgtmDataChanged;
             if (handler != null) handler();
-
+            
             ObservePdgtm();
         }
 

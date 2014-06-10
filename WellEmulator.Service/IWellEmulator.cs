@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ServiceModel;
 using WellEmulator.Models;
 
@@ -8,9 +9,9 @@ namespace WellEmulator.Service
     public interface IWellEmulator
     {
         [OperationContract]
-        void SetNumberDbValues(int number);
+        void SetQueryRange(TimeSpan timeSpan);
         [OperationContract]
-        int GetNumberDbValues();
+        TimeSpan GetQueryRange();
 
         [OperationContract]
         bool Connect();

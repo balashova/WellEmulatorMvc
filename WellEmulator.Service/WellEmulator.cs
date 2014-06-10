@@ -23,7 +23,7 @@ namespace WellEmulator.Service
         private static DatabaseObserver _databaseObserver;
         private static IWellEmulatorCallback _subscriber;
 
-        private static int _numberDataBaseValues = 50;
+        private static TimeSpan _queryRange = TimeSpan.FromMinutes(6);
 
         private static bool _initialized = false;
 
@@ -59,31 +59,47 @@ namespace WellEmulator.Service
         private void OnHistorianDataChanged()
         {
             if (_subscriber == null) return;
-            if (((ICommunicationObject) _subscriber).State == CommunicationState.Opened)
+            try
             {
-                var values = _historianAdapter.GetValues(_numberDataBaseValues);
-                _subscriber.OnHistorianDataChanged(values);
+                if (((ICommunicationObject) _subscriber).State == CommunicationState.Opened)
+                {
+                    var values = _historianAdapter.GetValues(_queryRange);
+                    _subscriber.OnHistorianDataChanged(values);
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.Error("Client notification PDGTM failed", ex);
+                throw;
             }
         }
-
+        
         private void OnPdgtmDataChanged()
         {
             if (_subscriber == null) return;
-            if (((ICommunicationObject) _subscriber).State == CommunicationState.Opened)
+            try
             {
-                var values = _pdgtmDbAdapter.GetValues(_numberDataBaseValues);
-                _subscriber.OnPdgtmDataChanged(values);
+                if (((ICommunicationObject) _subscriber).State == CommunicationState.Opened)
+                {
+                    var values = _pdgtmDbAdapter.GetValues(_queryRange);
+                    _subscriber.OnPdgtmDataChanged(values);
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.Error("Client notification PDGTM failed", ex);
+                throw;
             }
         }
 
-        public void SetNumberDbValues(int number)
+        public void SetQueryRange(TimeSpan timeSpan)
         {
-            _numberDataBaseValues = number;
+            _queryRange = timeSpan;
         }
 
-        public int GetNumberDbValues()
+        public TimeSpan GetQueryRange()
         {
-            return _numberDataBaseValues;
+            return _queryRange;
         }
 
         public bool Connect()

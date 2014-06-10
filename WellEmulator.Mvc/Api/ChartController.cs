@@ -9,20 +9,20 @@ using WellEmulator.Service.Client.ServiceReference;
 
 namespace WellEmulator.Mvc.Api
 {
-    public class AsdController : ApiController
+    public class ChartController : ApiController
     {
         private readonly WellEmulatorClient _client = new ServiceClient();
-    
-        [ActionName("getNumberDbValues")]
-        public int GetNumberDbValues()
+
+        [ActionName("getQueryRange")]
+        public int GetQueryRange()
         {
-            return _client.GetNumberDbValues();
+            return _client.GetQueryRange().Minutes;
         }
 
-        [ActionName("setNumberDbValues"), HttpPost, HttpGet]
-        public void SetNumberDbValues(int number)
+        [ActionName("setQueryRange"), HttpPost, HttpGet]
+        public void SetQueryRange(int minutes)
         {
-            _client.SetNumberDbValues(number);
+            _client.SetQueryRange(TimeSpan.FromMinutes(minutes));
         }
     }
 }

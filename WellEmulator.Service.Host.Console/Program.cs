@@ -22,7 +22,7 @@ namespace WellEmulator.Service.Host.Console
             }
             catch (CommunicationObjectFaultedException ex)
             {
-                logger.FatalException("Restart with administrator rights.", ex);
+                logger.Fatal("Restart with administrator rights.", ex);
 
                 System.Console.WriteLine(ex.ToString());
                 System.Console.WriteLine();
@@ -31,7 +31,7 @@ namespace WellEmulator.Service.Host.Console
             }
             catch (Exception ex)
             {
-                logger.FatalException("Service loading failed.", ex);
+                logger.Fatal("Service loading failed.", ex);
                 throw;
             }            
         }

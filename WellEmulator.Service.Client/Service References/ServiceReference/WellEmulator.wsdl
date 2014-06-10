@@ -103,7 +103,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSDualHttpBinding_IWellEmulator_SetNumberDbValues_Input_policy">
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IWellEmulator_SetQueryRange_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -126,7 +126,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSDualHttpBinding_IWellEmulator_SetNumberDbValues_output_policy">
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IWellEmulator_SetQueryRange_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -149,7 +149,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSDualHttpBinding_IWellEmulator_GetNumberDbValues_Input_policy">
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IWellEmulator_GetQueryRange_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -172,7 +172,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSDualHttpBinding_IWellEmulator_GetNumberDbValues_output_policy">
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IWellEmulator_GetQueryRange_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -1442,25 +1442,25 @@
   <wsdl:binding name="WSDualHttpBinding_IWellEmulator" type="i0:IWellEmulator">
     <wsp:PolicyReference URI="#WSDualHttpBinding_IWellEmulator_policy" />
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="SetNumberDbValues">
-      <soap12:operation soapAction="http://WellEmulator.com/IWellEmulator/SetNumberDbValues" style="document" />
+    <wsdl:operation name="SetQueryRange">
+      <soap12:operation soapAction="http://WellEmulator.com/IWellEmulator/SetQueryRange" style="document" />
       <wsdl:input>
-        <wsp:PolicyReference URI="#WSDualHttpBinding_IWellEmulator_SetNumberDbValues_Input_policy" />
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IWellEmulator_SetQueryRange_Input_policy" />
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <wsp:PolicyReference URI="#WSDualHttpBinding_IWellEmulator_SetNumberDbValues_output_policy" />
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IWellEmulator_SetQueryRange_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetNumberDbValues">
-      <soap12:operation soapAction="http://WellEmulator.com/IWellEmulator/GetNumberDbValues" style="document" />
+    <wsdl:operation name="GetQueryRange">
+      <soap12:operation soapAction="http://WellEmulator.com/IWellEmulator/GetQueryRange" style="document" />
       <wsdl:input>
-        <wsp:PolicyReference URI="#WSDualHttpBinding_IWellEmulator_GetNumberDbValues_Input_policy" />
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IWellEmulator_GetQueryRange_Input_policy" />
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <wsp:PolicyReference URI="#WSDualHttpBinding_IWellEmulator_GetNumberDbValues_output_policy" />
+        <wsp:PolicyReference URI="#WSDualHttpBinding_IWellEmulator_GetQueryRange_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>

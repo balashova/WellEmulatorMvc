@@ -142,7 +142,7 @@ namespace WellEmulator.Core
             }
             catch (Exception ex)
             {
-                _logger.FatalException("replication failed", ex);
+                _logger.Fatal("replication failed", ex);
                 throw;
             }
         }

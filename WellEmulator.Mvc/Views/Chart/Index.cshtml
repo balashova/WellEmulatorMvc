@@ -5,7 +5,7 @@
 }
 
 @section Styles {
-    <style >
+    <style>
         .axisLabel {
             position: absolute;
             text-align: center;
@@ -30,7 +30,7 @@
 
         .xaxisLabel {
             bottom: -30px;
-            left: 50%
+            left: 50%;
         }
 
 
@@ -60,12 +60,35 @@
 
         #choices {
             display: inline-block;
-            float: right; 
-            width: 100px;
+            float: right;
+            width: 120px;
         }
 
         legend {
             padding-top: 40px;
+        }
+
+        #query-rate-block {
+            display: inline-block;
+            float: right;
+            width: 120px;
+            margin-top: 30px;
+        }
+
+        #rate-number-input-block {
+            display: inline-block;
+            text-align: center;
+        }
+
+        #rate-number-input-block > input {
+            display: inline;
+            width: 60px;
+        }
+
+        #set-query-range-btn {
+            width: 100%;
+            padding: 0 10px;
+            margin-top: 10px;
         }
     </style>
 }
@@ -73,18 +96,24 @@
 <div id="chart-container">
     <div id="chart"></div>
     <p id="choices">
-        <br/>
-        <input type="checkbox" name="historian" checked="checked" id="historian"/>
+        <br />
+        <input type="checkbox" name="historian" checked="checked" id="historian" />
         <label for="historian">Historian</label>
-        <br/>
+        <br />
         <input type="checkbox" name="pdgtm" checked="checked" id="pdgtm" />
         <label for="pdgtm">PDGTM</label>
+        <br />
+        <div id="query-rate-block">
+            <label for="query-rate">Период</label>
+            <div id="rate-number-input-block">
+                <input id="query-rate" type="number" min="1" class="form-control" max="59" value="@Html.Action("GetQueryRange", "Chart")" />
+                <label for="query-rate">Мин</label>
+            </div>
+            <button id="set-query-range-btn">Ok</button>
+        </div>
     </p>
     <legend></legend>
 </div>
-<input type="text" id="number"/>
-<button id="set-number">&nbsp;Set&nbsp;</button>
-<button id="log">&nbsp;Log&nbsp;</button>
 
 @section Scripts
 {
@@ -93,20 +122,13 @@
     @Scripts.Render("~/bundles/flot")
 
     <script>
-        $(function() {
-            $('#set-number').click(function() {
-                var value = $('#number').val();
+        $(function () {
+            $('#set-query-range-btn').click(function () {
+                var value = $('#query-rate').val();
                 $.ajax({
                     type: "POST",
-                    url: "/api/asd/setNumberDbValues/?number=" + value,
+                    url: "/api/chart/setQueryRange/?minutes=" + value,
                 });
-            });
-        });
-
-        $(function(parameters) {
-            $('#log').click(function() {
-                console.log(series);
-                //series[1].data = [[0, 0], [100, 100]];
             });
         });
 
@@ -114,22 +136,18 @@
             {
                 label: "Historian",
                 data: [],
-                color: 3,
             },
             {
                 label: "Gas rate",
                 data: [],
-                color: 2
             },
             {
                 label: "Oil rate",
                 data: [],
-                color: 4
             },
             {
                 label: "Water rate",
                 data: [],
-                color: 6
             }
         ];
 
@@ -147,14 +165,11 @@
                 grid: {
                     borderWidth: 0,
                 },
-                //xaxes: [
-				//    { position: 'bottom' },
-                //    {
-                //        position: 'bottom',
-                //        mode: "time",
-                //        timeformat: "%H:%M:%S"
-                //    }
-                //]
+                legend: {
+                    labelFormatter: function (label) {
+                        return '&nbsp;' + label;
+                    }
+                }
             });
 
             var yaxisLabel = $("<div class='axisLabel yaxisLabel'></div>")
@@ -168,21 +183,19 @@
             xaxisLabel.css("margin-right", xaxisLabel.width() / 2 - 20);
 
             setInterval(function updatePlot() {
-                //console.log(series[0].data.length);
                 plot.setData(series);
                 plot.draw();
                 plot.setupGrid();
             }, 50);
         });
 
-        $(function() {
-            //$.connection.hub.logging = true;
+        $(function () {
             var chart = $.connection.chart;
             chart.client.pdgtmDataChanged = onPdgtmDataChanged;
             chart.client.historianDataChanged = onHistorianDataChanged;
             $.connection.hub.start();
 
-            $('#pdgtm').change(function() {
+            $('#pdgtm').change(function () {
                 if (this.checked) {
                     subscribeOn('pdgtm');
                 } else {
@@ -193,7 +206,7 @@
                 }
             });
 
-            $('#historian').change(function() {
+            $('#historian').change(function () {
                 if (this.checked) {
                     subscribeOn('historian');
                 } else {
@@ -203,6 +216,7 @@
             });
 
             function onPdgtmDataChanged(pdgtmValues) {
+                //console.log('pdgtm: ' + pdgtmValues.length);
                 var gasData = [];
                 var oilData = [];
                 var waterData = [];
@@ -217,8 +231,7 @@
             }
 
             function onHistorianDataChanged(historianValues) {
-                console.log(historianValues.length);
-
+                //console.log('historian: ' + historianValues.length);
                 var data = [];
                 for (var i = 0; i < historianValues.length; i++) {
                     data.push([new Date(Date.parse(historianValues[i].Time)).getTime(), historianValues[i].Value]);
@@ -234,5 +247,5 @@
                 chart.server.unSubscribeFrom(data);
             }
         });
-    </script>   
+    </script>
 }

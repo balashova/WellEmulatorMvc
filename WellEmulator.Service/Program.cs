@@ -26,7 +26,7 @@ namespace WellEmulator.Service
             }
             catch (Exception ex)
             {
-                logger.FatalException("Service was not started.", ex);
+                logger.Fatal("Service was not started.", ex);
                 throw;
             }
         }

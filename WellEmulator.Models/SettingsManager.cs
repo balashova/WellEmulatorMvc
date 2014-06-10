@@ -28,7 +28,7 @@ namespace WellEmulator.Models
             }
             catch (Exception ex)
             {
-                _logger.FatalException("Connection initialization failed.", ex);
+                _logger.Fatal("Connection initialization failed.", ex);
                 throw;
             }
         }
@@ -62,7 +62,7 @@ namespace WellEmulator.Models
                 }
                 catch (Exception ex)
                 {
-                    _logger.FatalException("sql command execution failed", ex);
+                    _logger.Fatal("sql command execution failed", ex);
                     throw;
                 }
                 finally
@@ -105,7 +105,7 @@ namespace WellEmulator.Models
                 }
                 catch (Exception ex)
                 {
-                    _logger.FatalException("sql command execution failed", ex);
+                    _logger.Fatal("sql command execution failed", ex);
                     throw;
                 }
                 finally
@@ -147,7 +147,7 @@ namespace WellEmulator.Models
                 }
                 catch (Exception ex)
                 {
-                    _logger.FatalException("sql command execution failed", ex);
+                    _logger.Fatal("sql command execution failed", ex);
                     throw;
                 }
                 finally
@@ -175,7 +175,7 @@ namespace WellEmulator.Models
                 }
                 catch (Exception ex)
                 {
-                    _logger.FatalException("Removing tag from settings db failed", ex);
+                    _logger.Fatal("Removing tag from settings db failed", ex);
                     throw;
                 }
                 finally
@@ -205,7 +205,7 @@ namespace WellEmulator.Models
                 }
                 catch (Exception ex)
                 {
-                    _logger.FatalException("sql command execution failed", ex);
+                    _logger.Fatal("sql command execution failed", ex);
                     throw;
                 }
                 finally
@@ -235,7 +235,7 @@ namespace WellEmulator.Models
                 }
                 catch (Exception ex)
                 {
-                    _logger.FatalException("sql command execution failed", ex);
+                    _logger.Fatal("sql command execution failed", ex);
                     throw;
                 }
                 finally
@@ -277,7 +277,7 @@ namespace WellEmulator.Models
                 }
                 catch (Exception ex)
                 {
-                    _logger.FatalException("sql command execution failed", ex);
+                    _logger.Fatal("sql command execution failed", ex);
                     throw;
                 }
                 finally
@@ -324,7 +324,7 @@ namespace WellEmulator.Models
                 }
                 catch (Exception ex)
                 {
-                    _logger.FatalException("sql command execution failed", ex);
+                    _logger.Fatal("sql command execution failed", ex);
                     throw;
                 }
                 finally
@@ -373,7 +373,7 @@ namespace WellEmulator.Models
                 }
                 catch (Exception ex)
                 {
-                    _logger.FatalException("sql command execution failed", ex);
+                    _logger.Fatal("sql command execution failed", ex);
                     throw;
                 }
                 finally
@@ -421,7 +421,7 @@ namespace WellEmulator.Models
                 }
                 catch (Exception ex)
                 {
-                    _logger.FatalException("sql command execution failed", ex);
+                    _logger.Fatal("sql command execution failed", ex);
                     throw;
                 }
                 finally

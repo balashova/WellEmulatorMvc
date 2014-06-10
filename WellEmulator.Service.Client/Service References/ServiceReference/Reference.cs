@@ -719,17 +719,17 @@ namespace WellEmulator.Service.Client.ServiceReference {
     [System.ServiceModel.ServiceContractAttribute(Namespace="http://WellEmulator.com", ConfigurationName="ServiceReference.IWellEmulator", CallbackContract=typeof(WellEmulator.Service.Client.ServiceReference.IWellEmulatorCallback))]
     public interface IWellEmulator {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/SetNumberDbValues", ReplyAction="http://WellEmulator.com/IWellEmulator/SetNumberDbValuesResponse")]
-        void SetNumberDbValues(int number);
+        [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/SetQueryRange", ReplyAction="http://WellEmulator.com/IWellEmulator/SetQueryRangeResponse")]
+        void SetQueryRange(System.TimeSpan timeSpan);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/SetNumberDbValues", ReplyAction="http://WellEmulator.com/IWellEmulator/SetNumberDbValuesResponse")]
-        System.Threading.Tasks.Task SetNumberDbValuesAsync(int number);
+        [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/SetQueryRange", ReplyAction="http://WellEmulator.com/IWellEmulator/SetQueryRangeResponse")]
+        System.Threading.Tasks.Task SetQueryRangeAsync(System.TimeSpan timeSpan);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/GetNumberDbValues", ReplyAction="http://WellEmulator.com/IWellEmulator/GetNumberDbValuesResponse")]
-        int GetNumberDbValues();
+        [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/GetQueryRange", ReplyAction="http://WellEmulator.com/IWellEmulator/GetQueryRangeResponse")]
+        System.TimeSpan GetQueryRange();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/GetNumberDbValues", ReplyAction="http://WellEmulator.com/IWellEmulator/GetNumberDbValuesResponse")]
-        System.Threading.Tasks.Task<int> GetNumberDbValuesAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/GetQueryRange", ReplyAction="http://WellEmulator.com/IWellEmulator/GetQueryRangeResponse")]
+        System.Threading.Tasks.Task<System.TimeSpan> GetQueryRangeAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/Connect", ReplyAction="http://WellEmulator.com/IWellEmulator/ConnectResponse")]
         bool Connect();
@@ -926,20 +926,20 @@ namespace WellEmulator.Service.Client.ServiceReference {
                 base(callbackInstance, binding, remoteAddress) {
         }
         
-        public void SetNumberDbValues(int number) {
-            base.Channel.SetNumberDbValues(number);
+        public void SetQueryRange(System.TimeSpan timeSpan) {
+            base.Channel.SetQueryRange(timeSpan);
         }
         
-        public System.Threading.Tasks.Task SetNumberDbValuesAsync(int number) {
-            return base.Channel.SetNumberDbValuesAsync(number);
+        public System.Threading.Tasks.Task SetQueryRangeAsync(System.TimeSpan timeSpan) {
+            return base.Channel.SetQueryRangeAsync(timeSpan);
         }
         
-        public int GetNumberDbValues() {
-            return base.Channel.GetNumberDbValues();
+        public System.TimeSpan GetQueryRange() {
+            return base.Channel.GetQueryRange();
         }
         
-        public System.Threading.Tasks.Task<int> GetNumberDbValuesAsync() {
-            return base.Channel.GetNumberDbValuesAsync();
+        public System.Threading.Tasks.Task<System.TimeSpan> GetQueryRangeAsync() {
+            return base.Channel.GetQueryRangeAsync();
         }
         
         public bool Connect() {

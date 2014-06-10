@@ -34,7 +34,7 @@ namespace WellEmulator.Service
             }
             catch (Exception ex)
             {
-                _logger.ErrorException("Fail to load connection string", ex);
+                _logger.Fatal("Fail to load connection string", ex);
             }
 
             try
@@ -50,7 +50,7 @@ namespace WellEmulator.Service
             }
             catch (Exception ex)
             {
-                _logger.FatalException("root fatal", ex);
+                _logger.Fatal("root fatal", ex);
                 throw;
             }
         }
