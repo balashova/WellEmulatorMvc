@@ -719,6 +719,18 @@ namespace WellEmulator.Service.Client.ServiceReference {
     [System.ServiceModel.ServiceContractAttribute(Namespace="http://WellEmulator.com", ConfigurationName="ServiceReference.IWellEmulator", CallbackContract=typeof(WellEmulator.Service.Client.ServiceReference.IWellEmulatorCallback))]
     public interface IWellEmulator {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/SetNumberDbValues", ReplyAction="http://WellEmulator.com/IWellEmulator/SetNumberDbValuesResponse")]
+        void SetNumberDbValues(int number);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/SetNumberDbValues", ReplyAction="http://WellEmulator.com/IWellEmulator/SetNumberDbValuesResponse")]
+        System.Threading.Tasks.Task SetNumberDbValuesAsync(int number);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/GetNumberDbValues", ReplyAction="http://WellEmulator.com/IWellEmulator/GetNumberDbValuesResponse")]
+        int GetNumberDbValues();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/GetNumberDbValues", ReplyAction="http://WellEmulator.com/IWellEmulator/GetNumberDbValuesResponse")]
+        System.Threading.Tasks.Task<int> GetNumberDbValuesAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/Connect", ReplyAction="http://WellEmulator.com/IWellEmulator/ConnectResponse")]
         bool Connect();
         
@@ -726,10 +738,10 @@ namespace WellEmulator.Service.Client.ServiceReference {
         System.Threading.Tasks.Task<bool> ConnectAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/Disconnect", ReplyAction="http://WellEmulator.com/IWellEmulator/DisconnectResponse")]
-        bool Disconnect();
+        void Disconnect();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/Disconnect", ReplyAction="http://WellEmulator.com/IWellEmulator/DisconnectResponse")]
-        System.Threading.Tasks.Task<bool> DisconnectAsync();
+        System.Threading.Tasks.Task DisconnectAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://WellEmulator.com/IWellEmulator/DisableReplication", ReplyAction="http://WellEmulator.com/IWellEmulator/DisableReplicationResponse")]
         void DisableReplication();
@@ -914,6 +926,22 @@ namespace WellEmulator.Service.Client.ServiceReference {
                 base(callbackInstance, binding, remoteAddress) {
         }
         
+        public void SetNumberDbValues(int number) {
+            base.Channel.SetNumberDbValues(number);
+        }
+        
+        public System.Threading.Tasks.Task SetNumberDbValuesAsync(int number) {
+            return base.Channel.SetNumberDbValuesAsync(number);
+        }
+        
+        public int GetNumberDbValues() {
+            return base.Channel.GetNumberDbValues();
+        }
+        
+        public System.Threading.Tasks.Task<int> GetNumberDbValuesAsync() {
+            return base.Channel.GetNumberDbValuesAsync();
+        }
+        
         public bool Connect() {
             return base.Channel.Connect();
         }
@@ -922,11 +950,11 @@ namespace WellEmulator.Service.Client.ServiceReference {
             return base.Channel.ConnectAsync();
         }
         
-        public bool Disconnect() {
-            return base.Channel.Disconnect();
+        public void Disconnect() {
+            base.Channel.Disconnect();
         }
         
-        public System.Threading.Tasks.Task<bool> DisconnectAsync() {
+        public System.Threading.Tasks.Task DisconnectAsync() {
             return base.Channel.DisconnectAsync();
         }
         

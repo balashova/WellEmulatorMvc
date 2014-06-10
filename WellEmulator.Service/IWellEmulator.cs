@@ -16,7 +16,7 @@ namespace WellEmulator.Service
         bool Connect();
 
         [OperationContract]
-        bool Disconnect();
+        void Disconnect();
 
         [OperationContract]
         void DisableReplication();

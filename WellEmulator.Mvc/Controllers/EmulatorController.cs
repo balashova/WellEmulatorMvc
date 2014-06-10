@@ -9,7 +9,7 @@ namespace WellEmulator.Mvc.Controllers
 {
     public class EmulatorController : Controller
     {
-        private readonly WellEmulatorClient _client = new ServiceListenerClient();
+        private readonly WellEmulatorClient _client = new ServiceClient();
 
         public ActionResult Control()
         {

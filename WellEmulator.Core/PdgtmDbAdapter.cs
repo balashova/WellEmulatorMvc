@@ -158,7 +158,7 @@ namespace WellEmulator.Core
                     using (
                         var command =
                             new SqlCommand(
-                                string.Format("SELECT TOP {0} [Id],[WellId],[OilRate],[GasRate],[WaterRate],[Time] FROM [dbo].[History]",
+                                string.Format("SELECT TOP {0} [Id],[WellId],[OilRate],[GasRate],[WaterRate],[Time] FROM [dbo].[Values]",
                                     number),
                                 connection))
                     {
@@ -180,7 +180,7 @@ namespace WellEmulator.Core
                 catch (SqlException ex)
                 {
                     _logger.FatalException(string.Format("Row number: {0}", number), ex);
-                    throw new PDGTMSelectTopValuesException(ex.ToString());
+                    throw;
                 }
                 finally
                 {

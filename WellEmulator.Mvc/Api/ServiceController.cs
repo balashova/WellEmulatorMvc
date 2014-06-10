@@ -9,7 +9,7 @@ namespace WellEmulator.Mvc.Api
 {
     public class ServiceController : ApiController
     {
-        private readonly WellEmulatorClient _client = new ServiceListenerClient();
+        private readonly WellEmulatorClient _client = new ServiceClient();
 
         [ActionName("startEmulator")]
         public string StartEmulator()

@@ -9,9 +9,17 @@ using WellEmulator.Service.Client.ServiceReference;
 
 namespace WellEmulator.Mvc.ServiceListeners
 {
-    public class ServiceListenerClient : WellEmulatorClient, IDisposable
+    public class ServiceClient : WellEmulatorClient
     {
-        public ServiceListenerClient()
+        public ServiceClient()
+            : base(new InstanceContext(new ServiceListener()))
+        {
+        }
+    }
+
+    public class ServiceObservableClient : WellEmulatorClient, IDisposable
+    {
+        public ServiceObservableClient()
             : base(new InstanceContext(new ServiceListener()))
         {
             Connect();

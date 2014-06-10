@@ -20,8 +20,7 @@
     </div>
 </div>
 
-
-<button id="send">Send</button>
+<button id="switch-data">switch</button>
 
 @section Scripts
 {
@@ -35,30 +34,27 @@
         $(function() {
             $.connection.hub.logging = true;
             var chart = $.connection.chart;
-
-            chart.client.HistorianDataChanged = onHistorianDataChanged;
-            chart.client.PdgtmDataChanged = onPdgtmDataChanged;
-            chart.client.SendMessage = onSendMessage;
-            
-            $('#send').click(onSend);
-
+            chart.client.dataChanged = onDataChanged;
             $.connection.hub.start();
 
+            var dataMode = 'historian';
 
-            function onHistorianDataChanged(historianValues) {
-                console.log(historianValues);
+            $('#switch-data').click(function () {
+                unSubscribeFrom(dataMode);
+                dataMode = dataMode == 'historian' ? 'pdgtm' : 'historian';
+                subscribeOn(dataMode);
+            });
+
+            function onDataChanged(historianValues) {
+                console.log(historianValues.length);
             }
 
-            function onPdgtmDataChanged(pdgtmValues) {
-                console.log(pdgtmValues);
+            function subscribeOn(data) {
+                chart.server.subscribeOn(data);
             }
 
-            function onSend() {
-                chart.server.sendMessage('Hello!');
-            }
-
-            function onSendMessage(message) {
-                alert(message);
+            function unSubscribeFrom(data) {
+                chart.server.unSubscribeFrom(data);
             }
         });
     </script>   

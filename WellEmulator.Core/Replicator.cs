@@ -97,45 +97,47 @@ namespace WellEmulator.Core
             {
                 if (!_mappings.Any()) return;
 
+                List<MapItem> mappings;
                 lock (_mappings)
                 {
-                    var mappings = _mappings;
-                    var tags =
-                        _historianAdapter.GetTagValues(
-                            mappings.Select(m => string.Format("{0}.{1}", m.HistorianWellName, m.HistorianTag)).ToList());
+                    mappings = _mappings;
+                }
 
-                    foreach (var well in mappings.GroupBy(m => m.PdgtmWellName))
+                var tags =
+                    _historianAdapter.GetTagValues(
+                        mappings.Select(m => string.Format("{0}.{1}", m.HistorianWellName, m.HistorianTag)).ToList());
+
+                foreach (var well in mappings.GroupBy(m => m.PdgtmWellName))
+                {
+                    var mapOilRate = well.SingleOrDefault(m => m.PdgtmTag.Equals("oilRate"));
+                    var mapGasRate = well.SingleOrDefault(m => m.PdgtmTag.Equals("gasRate"));
+                    var mapWaterRate = well.SingleOrDefault(m => m.PdgtmTag.Equals("waterRate"));
+
+                    double oilRate = 0;
+                    if (mapOilRate != null)
                     {
-                        var mapOilRate = well.SingleOrDefault(m => m.PdgtmTag.Equals("oilRate"));
-                        var mapGasRate = well.SingleOrDefault(m => m.PdgtmTag.Equals("gasRate"));
-                        var mapWaterRate = well.SingleOrDefault(m => m.PdgtmTag.Equals("waterRate"));
-
-                        double oilRate = 0;
-                        if (mapOilRate != null)
-                        {
-                            tags.TryGetValue(
-                                string.Format("{0}.{1}", mapOilRate.HistorianWellName, mapOilRate.HistorianTag),
-                                out oilRate);
-                        }
-
-                        double gasRate = 0;
-                        if (mapGasRate != null)
-                        {
-                            tags.TryGetValue(
-                                string.Format("{0}.{1}", mapGasRate.HistorianWellName, mapGasRate.HistorianTag),
-                                out gasRate);
-                        }
-
-                        double waterRate = 0;
-                        if (mapWaterRate != null)
-                        {
-                            tags.TryGetValue(
-                                string.Format("{0}.{1}", mapWaterRate.HistorianWellName, mapWaterRate.HistorianTag),
-                                out waterRate);
-                        }
-
-                        _pdgtmDbAdapter.InsertValues(_pdgtmDbAdapter.GetWellId(well.Key), oilRate, gasRate, waterRate);
+                        tags.TryGetValue(
+                            string.Format("{0}.{1}", mapOilRate.HistorianWellName, mapOilRate.HistorianTag),
+                            out oilRate);
                     }
+
+                    double gasRate = 0;
+                    if (mapGasRate != null)
+                    {
+                        tags.TryGetValue(
+                            string.Format("{0}.{1}", mapGasRate.HistorianWellName, mapGasRate.HistorianTag),
+                            out gasRate);
+                    }
+
+                    double waterRate = 0;
+                    if (mapWaterRate != null)
+                    {
+                        tags.TryGetValue(
+                            string.Format("{0}.{1}", mapWaterRate.HistorianWellName, mapWaterRate.HistorianTag),
+                            out waterRate);
+                    }
+
+                    _pdgtmDbAdapter.InsertValues(_pdgtmDbAdapter.GetWellId(well.Key), oilRate, gasRate, waterRate);
                 }
             }
             catch (Exception ex)

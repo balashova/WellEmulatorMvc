@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using Microsoft.AspNet.SignalR;
 using Microsoft.AspNet.SignalR.Hubs;
+using WellEmulator.Mvc.ServiceListeners;
 using WellEmulator.Service.Client.ServiceReference;
 
 namespace WellEmulator.Mvc.Hubs
@@ -14,24 +16,38 @@ namespace WellEmulator.Mvc.Hubs
         public static void HistorianDataChanged(HistorianValue[] historianValues)
         {
             IHubContext context = GlobalHost.ConnectionManager.GetHubContext<ChartHub>();
-            context.Clients.All.HistorianDataChanged(historianValues);
+            context.Clients.Group("historian").dataChanged(historianValues);
         }
 
         public static void PdgtmDataChanged(PdgtmValue[] pdgtmValues)
         {
             IHubContext context = GlobalHost.ConnectionManager.GetHubContext<ChartHub>();
-            context.Clients.All.PdgtmDataChanged(pdgtmValues);
+            context.Clients.Group("pdgtm").dataChanged(pdgtmValues);
+        }
+        public void SubscribeOn(string data)
+        {
+            // NOTE: this is not persisted - ....
+            Groups.Add(Context.ConnectionId, data);
         }
 
-        private static void SM(string m)
+        public void UnSubscribeFrom(string data)
         {
-            IHubContext context = GlobalHost.ConnectionManager.GetHubContext<ChartHub>();
-            context.Clients.All.SendMessage(m);
+            // NOTE: this is not persisted - ....
+            Groups.Remove(Context.ConnectionId, data);
         }
 
-        public void SendMessage(string message)
+        public override Task OnConnected()
         {
-            SM(message);
+            Groups.Add(Context.ConnectionId, "historian");
+            new ServiceObservableClient();   
+            return base.OnConnected();
+        }
+
+        public override Task OnDisconnected()
+        {
+            Groups.Remove(Context.ConnectionId, "historian");
+            Groups.Remove(Context.ConnectionId, "pdgtm");
+            return base.OnDisconnected();
         }
     }
 }
