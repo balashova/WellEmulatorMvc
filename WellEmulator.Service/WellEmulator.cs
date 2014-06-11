@@ -119,7 +119,7 @@ namespace WellEmulator.Service
             _subscriber = null;
         }
 
-        private void LoadSettings()
+        public void LoadSettings()
         {
             try
             {

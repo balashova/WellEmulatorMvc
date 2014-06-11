@@ -34,6 +34,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{E4E013A7
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WellEmulator.Core.Tests", "Tests\WellEmulator.Core.Tests\WellEmulator.Core.Tests.csproj", "{2B37B3E5-1C49-4857-8A32-5602B6DF7774}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WellEmulator.Service.Tests", "Tests\WellEmulator.Service.Tests\WellEmulator.Service.Tests.csproj", "{49AB3EAF-710B-468E-87D2-3531F1D6C8F0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -131,11 +133,22 @@ Global
 		{2B37B3E5-1C49-4857-8A32-5602B6DF7774}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{2B37B3E5-1C49-4857-8A32-5602B6DF7774}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{2B37B3E5-1C49-4857-8A32-5602B6DF7774}.Release|x86.ActiveCfg = Release|Any CPU
+		{49AB3EAF-710B-468E-87D2-3531F1D6C8F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49AB3EAF-710B-468E-87D2-3531F1D6C8F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49AB3EAF-710B-468E-87D2-3531F1D6C8F0}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{49AB3EAF-710B-468E-87D2-3531F1D6C8F0}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{49AB3EAF-710B-468E-87D2-3531F1D6C8F0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{49AB3EAF-710B-468E-87D2-3531F1D6C8F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49AB3EAF-710B-468E-87D2-3531F1D6C8F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49AB3EAF-710B-468E-87D2-3531F1D6C8F0}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{49AB3EAF-710B-468E-87D2-3531F1D6C8F0}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{49AB3EAF-710B-468E-87D2-3531F1D6C8F0}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{2B37B3E5-1C49-4857-8A32-5602B6DF7774} = {E4E013A7-B325-42B1-8F97-FB5FCE0254E7}
+		{49AB3EAF-710B-468E-87D2-3531F1D6C8F0} = {E4E013A7-B325-42B1-8F97-FB5FCE0254E7}
 	EndGlobalSection
 EndGlobal

@@ -10,7 +10,7 @@ using NUnit.Framework;
 
 namespace WellEmulator.Core.Tests
 {
-    [TestFixture]
+    [TestFixture, Ignore]
     public class DatabaseObserverTests
     {
         private string _connStr;
@@ -53,7 +53,7 @@ namespace WellEmulator.Core.Tests
             void Do(object s, EventArgs e);
         }
 
-        [Test]
+        [Test, Ignore]
         public void Should_raise_event_after_insert()
         {
             // Arrange 
